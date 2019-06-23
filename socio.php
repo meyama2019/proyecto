@@ -1,5 +1,3 @@
-<!-- 21.06.2019 marcelo he introducido este cambio para que lo veamos todos -->
-<!-- 23.06.2019 elisa comentario de prueba para probar la subida de los cambios -->
 <!doctype html>
 <html lang="es">
 <head>
@@ -14,7 +12,6 @@
 	<link rel="stylesheet" type="text/css" href="estilos.css">
 	<meta name="robots" content="noindex,nofollow" />
 
-		
 
 
 <!--PARA ROTAR LAS IMÁGENES DE FONDO-->
@@ -45,45 +42,57 @@
 <body>
 <div id="capa_contenedora">
 
-		<header id="cabecera">
-				<section id="logo">
-					<a href="index.html">
-					<img src="images/logo.gif" alt="logo" style="width:30%; height:30%; margin:5px; padding=5px;"/>
-					</a>
-					<br>
-					<em>ASOCIACIÓN DE HOTELEROS</em>
-					<br>
-					<em>DE MARTE</em>
-				</section>
-		</header>
-		
-		<nav id='cssmenu'>
-		<ul>
-			<li><a href="index.html">Inicio</a></li>
-			<li><a href="gallery1.html">Galería de fotos</a></li>
-			<li><a href="noticias.html">Noticias</a></li>
-			<li><a href="socio.html">Hazte Socio</a></li>
-			<li><a href="asociados.html">Nuestros Asociados</a></li>
-
-		</ul>
-		</nav>
+			<header id="cabecera">
+					<section id="logo">
+						<a href="index.php">
+						<img src="images/logo.gif" alt="logo" style="width:30%; height:30%; margin:5px; padding=5px;"/>
+						</a>
+						<br>
+						<em>ASOCIACIÓN DE HOTELEROS</em>
+						<br>
+						<em>DE MARTE</em>
+					</section>
+			</header>
+			
+			<nav id='cssmenu'>
+			<ul>
+				<li><a href="index.php">Inicio</a></li>
+				<li><a href="gallery1.php">Galería de fotos</a></li>
+				<li><a href="noticias.php">Noticias</a></li>
+				<li><a href="socio.php">Hazte Socio</a></li>
+				<li><a href="asociados.php">Nuestros Asociados</a></li>
+			</ul>
+			</nav>
+			
 
 		 <main id="central">
 		 <div id="central" class="container-main">
 		 
 			<hr>
-		   <h1>¿Quiénes somos?</h1>
+		   <h1>HAZTE SOCIO/A</h1>
 		   <hr>
 		   <article>
 				<p>
-				 Os damos la bienvenida a la Asociación de Comerciantes de Marte. Nuestro objetivo es dar a conocer las actividades comerciales que se llevan a cabo en nuestro planeta.
-				 </p>
-				 <br>
-				 <img src="images/central.png" alt="logo" style="width:100%; height:100%; margin:auto; padding=5px; "/>
-				 <br>
-				 <p>
-				 Nuestra misión es potenciar el valor de los negocios locales 
-				 </p>
+				Puedes hacerte socio/a en varias maneras:<br>
+				1. Llamando al 999 999 999.<br>
+				2. Envíanos tus datos rellenando el formulario a continuación y te llamaremos nosotros/as.<br>
+				3. Enviar un mensaje al telf. 999 999 999 con la frase “quiero ser socio” y te llamaremos nosotros/as.<br>
+				</p>
+				<div align="center">
+				<form action="#" method="post">
+				   <label for="nombre">NOMBRE Y APELLIDOS</label>
+				   <input id="nombre" name="nombre" placeholder="Nombre y apellidos" required>
+				   <label for="email">EMAIL</label>
+				   <input id="email" name="email" type="email" placeholder="ejemplo@email.com" required>
+				   <label for="telf">TELÉFONO</label>
+				   <input type="tel" id="telf" name="telf" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+
+				   <br>
+				   <input id="submit" name="submit" type="submit" value="Enviar">
+				</form>
+				</div>
+				
+
 		   </article>
 		</div>	
      	</main>
@@ -93,28 +102,14 @@
 		<footer id="pie">
 		<div class="flexbox-container">
 			<div>
-				<form action="#" method="post">
-				   <label for="nombre">NOMBRE Y APELLIDOS</label>
-				   <input id="nombre" name="nombre" placeholder="Nombre y apellidos" required>
-				   <label for="email">EMAIL</label>
-				   <input id="email" name="email" type="email" placeholder="ejemplo@email.com" required>
-				   <label for="mensaje">MENSAJE</label>
-				   <textarea id="mensaje" name="mensaje" placeholder="Tu mensaje (max. 250 carácteres)" maxlength="250" required></textarea>
-				   <br>
-				   <input id="submit" name="submit" type="submit" value="Enviar">
-				</form>
-			</div>
-			<div>
 				<form>
 				   <label for="sus">QUIERE RECIBIR LAS MEJORES OFERTAS</label>
 				   <input id="email" name="email" type="email" placeholder="ejemplo@email.com" required>
 				   <br>
 				   <input id="submit" name="submit" type="submit" value="Me apunto">
 				</form>
-					<br>
-					<hr>
-					<br>
-				
+			</div>
+			<div>
 				<section>
 					<p>
 						<a href="https://www.facebook.com" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img src="images/facebook.png" width="20" height="20" alt="facebook"></a>

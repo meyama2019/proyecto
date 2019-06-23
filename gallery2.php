@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>ASOCIACIÓN DE HOTELEROS DE MARTE</title>
+	<meta name="description" content="Trabajo I - Curso de Desarrollo de Aplicaciones Web Dinámicas - UNED 2019"/>
+	
+	<link rel="icon" type="image/png" href="images/favicon.ico"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" type="text/css" href="estilos.css">
+	<meta name="robots" content="noindex,nofollow" />
+
+
+
+<!--PARA ROTAR LAS IMÁGENES DE FONDO-->
+	<script type="text/javascript" src="./js/jquery-1.6.1.min.js"></script>
+	<script type="text/javascript" src="./js/vegas/jquery.vegas.js"></script>
+	<link rel="stylesheet" type="text/css" href="./js/vegas/jquery.vegas.css">
+	<script type="text/javascript">
+	<!--
+	$.vegas('slideshow', {
+	  backgrounds:[
+		{ src:'./images/bg1.jpg', fade:1000 },
+		{ src:'./images/bg2.jpg', fade:1000 },
+		{ src:'./images/bg4.jpg', fade:1000 },
+		{ src:'./images/bg3.jpg', fade:1000 }
+	  ]
+	})('overlay', {
+	  src:'/vegas/overlays/11.png'
+	});
+	-->
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><br>
+<![endif]-->
+
+</head>
+
+<body>
+<div id="capa_contenedora">
+
+		<header id="cabecera">
+				<section id="logo">
+					<a href="index.php">
+					<img src="images/logo.gif" alt="logo" style="width:30%; height:30%; margin:5px; padding=5px;"/>
+					</a>
+					<br>
+					<em>ASOCIACIÓN DE HOTELEROS</em>
+					<br>
+					<em>DE MARTE</em>
+				</section>
+		</header>
+		
+		<nav id='cssmenu'>
+		<ul>
+			<li><a href="index.php">Inicio</a></li>
+			<li><a href="gallery1.php">Galería de fotos</a></li>
+			<li><a href="noticias.php">Noticias</a></li>
+			<li><a href="socio.php">Hazte Socio</a></li>
+			<li><a href="asociados.php">Nuestros Asociados</a></li>
+		</ul>
+		</nav>
+		
+
+		 <main id="central">
+		 <div id="central" class="container-main">
+			<hr>
+			<h1>UNA IMAGEN VALE MÁS QUE MIL PALABRAS</h1>
+			<h4 id="limit" style="text-align: center;">Este apartado est&aacute; limitado a 200 fotos. Si quieres ver m&aacute;s, hazte socio y tendr&aacute;s acceso a todo el archivo. O reg&iacute;strate (es gratis) y tendr&aacute;s acceso a todas las fotos de hasta 6 meses de antig&uuml;edad</h4>
+			<hr>
+			
+			<section class="row">
+					<figure class="column"><img src="images/multimedia/photo_06.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 7</figcaption></figure>
+					<figure class="column"><img src="images/multimedia/photo_07.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 8</figcaption></figure>
+					<figure class="column"><img src="images/multimedia/photo_08.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 9</figcaption></figure>
+					<figure class="column"><img src="images/multimedia/photo_09.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 10</figcaption></figure>
+					<figure class="column"><img src="images/multimedia/photo_010.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 11</figcaption></figure>
+					<figure class="column"><img src="images/multimedia/photo_011.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 12</figcaption></figure>
+			
+			</section>
+			<hr>
+			<div class="pagination">
+			  <a href="gallery1.php">1</a>
+			  <a href="gallery2.php">2</a>
+			</div>
+			<hr>
+		</div>	
+     	</main>
+
+
+
+		<footer id="pie">
+		<div class="flexbox-container">
+			<div>
+				<form action="#" method="post">
+				   <label for="nombre">NOMBRE Y APELLIDOS</label>
+				   <input id="nombre" name="nombre" placeholder="Nombre y apellidos" required>
+				   <label for="email">EMAIL</label>
+				   <input id="email" name="email" type="email" placeholder="ejemplo@email.com" required>
+				   <label for="mensaje">MENSAJE</label>
+				   <textarea id="mensaje" name="mensaje" placeholder="Tu mensaje (max. 250 carácteres)" maxlength="250" required></textarea>
+				   <br>
+				   <input id="submit" name="submit" type="submit" value="Enviar">
+				</form>
+			</div>
+			<div>
+				<form>
+				   <label for="sus">QUIERE RECIBIR LAS MEJORES OFERTAS</label>
+				   <input id="email" name="email" type="email" placeholder="ejemplo@email.com" required>
+				   <br>
+				   <input id="submit" name="submit" type="submit" value="Me apunto">
+				</form>
+					<br>
+					<hr>
+					<br>
+				
+				<section>
+					<p>
+						<a href="https://www.facebook.com" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img src="images/facebook.png" width="20" height="20" alt="facebook"></a>
+						<a href="https://twitter.com" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px;"><img src="images/twitter.png" width="20" height="20" alt="twitter"></a>
+						<a href="https://www.instagram.com" target="_blank" style="width:20px; height:20px; margin:6px 0 6px 0;"><img src="images/instagram.png" width="20" height="20" alt="instagram"></a>
+						<a href="https://www.flickr.com" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0;"><img src="images/flickr.png" width="20" height="20" alt="flickr"></a>
+						<a href="https://www.youtube.com" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0;;"><img src="images/youtube.png" width="20" height="20" alt="youtube"></a>
+						<br>
+						Syrtis Major - Marte
+						<br>
+						Política de privacidad
+					</p>
+				</section>
+			</div>
+			</div>
+		</footer>
+
+</div>
+</body>
+</html>

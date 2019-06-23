@@ -1,4 +1,3 @@
-<!-- 23.06.2019 marcelo he introducido este cambio para que lo veamos todos -->
 <!doctype html>
 <html lang="es">
 <head>
@@ -45,7 +44,7 @@
 
 		<header id="cabecera">
 				<section id="logo">
-					<a href="index.html">
+					<a href="index.php">
 					<img src="images/logo.gif" alt="logo" style="width:30%; height:30%; margin:5px; padding=5px;"/>
 					</a>
 					<br>
@@ -57,56 +56,36 @@
 		
 		<nav id='cssmenu'>
 		<ul>
-			<li><a href="index.html">Inicio</a></li>
-			<li><a href="gallery1.html">Galería de fotos</a></li>
-			<li><a href="noticias.html">Noticias</a></li>
-			<li><a href="socio.html">Hazte Socio</a></li>
-			<li><a href="asociados.html">Nuestros Asociados</a></li>
+		   <li><a href="index.php">Inicio</a></li>
+			<li><a href="destino.php">Destino Marte</a></li>
+			<li><a href="prensa.php">Prensa</a></li>
+			<li><a href="socio.php">Hazte Socio</a></li>
+			<li><a href="asociados.php">Nuestros Asociados</a></li>
 		</ul>
 		</nav>
 		
 
 		 <main id="central">
-		 <div id="central" class="container-mainnews">
-		 
+		 <div id="central" class="container-main">
 			<hr>
-		   <h1>NOTAS DE PRENSA</h1>
-			<h4 id="limit" style="text-align: center;">Este apartado est&aacute; limitado a 200 fotos. Si quieres ver m&aacute;s, hazte socio y tendr&aacute;s acceso a todo el archivo. O reg&iacute;strate (es gratis) y tendr&aacute;s acceso a todas las fotos de hasta 6 meses de antig&uuml;edad</h4>
-		   <hr>
-		   
-			<div class="container">
-	
-				<figure>
-				<img src="news/noticia_1.jpg" alt="noticia" style="width:50%; height:50%; margin:5px; padding=5px;">
-				<div class="overlay">
-					<div class="text">
-					<a href="https://www.deia.eus/2019/01/23/sociedad/euskadi/la-alerta-naranja-por-lluvias-se-alarga-hasta-el-mediodia-de-manana">LEER</a>
-					</div>
-				</div>
-				<figcaption><a href="https://www.deia.eus/2019/01/23/sociedad/euskadi/la-alerta-naranja-por-lluvias-se-alarga-hasta-el-mediodia-de-manana">La alerta naranja por lluvias se alarga hasta el mediodía de mañana</a></figcaption>
-				</figure> 
-				<br>
+			<h1>UNA IMAGEN VALE MÁS QUE MIL PALABRAS</h1>
+			<hr>
+			
+			<section class="row">
+					<figure class="column"><img src="images/multimedia/photo_00.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 1</figcaption></figure>
+					<figure class="column"><img src="images/multimedia/photo_01.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 2</figcaption></figure>
+					<figure class="column"><img src="images/multimedia/photo_02.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 3</figcaption></figure>
+					<figure class="column"><img src="images/multimedia/photo_03.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 4</figcaption></figure>
+					<figure class="column"><img src="images/multimedia/photo_04.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 5</figcaption></figure>
+					<figure class="column"><img src="images/multimedia/photo_05.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 6</figcaption></figure>
+			
+			</section>
+			<hr>
+			<div class="pagination">
+			  <a href="destino.php">1</a>
+			  <a href="destino1.php">2</a>
 			</div>
-			
-		   <div class="container">
-				<figure>
-				<img src="news/noticia_2.jpg" alt="noticia" style="width:50%; height:50%; margin:5px; padding=5px;">
-				<div class="overlay">
-					<div class="text">
-					<a href="https://www.elcorreo.com/">LEER</a>
-					</div>
-				</div>
-				<figcaption><a href="https://www.elcorreo.com/">Un destino diferente para disfrutar en familia</a></figcaption>
-				</figure>  
-				<br>
-			</div>
-			
-			
-			
-			
-			
-			
-	   
+			<hr>
 		</div>	
      	</main>
 

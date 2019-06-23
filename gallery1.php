@@ -44,7 +44,7 @@
 
 		<header id="cabecera">
 				<section id="logo">
-					<a href="index.html">
+					<a href="index.php">
 					<img src="images/logo.gif" alt="logo" style="width:30%; height:30%; margin:5px; padding=5px;"/>
 					</a>
 					<br>
@@ -56,11 +56,11 @@
 		
 		<nav id='cssmenu'>
 		<ul>
-			<li><a href="index.html">Inicio</a></li>
-			<li><a href="gallery1.html">Galería de fotos</a></li>
-			<li><a href="noticias.html">Noticias</a></li>
-			<li><a href="socio.html">Hazte Socio</a></li>
-			<li><a href="asociados.html">Nuestros Asociados</a></li>
+			<li><a href="index.php">Inicio</a></li>
+			<li><a href="gallery1.php">Galería de fotos</a></li>
+			<li><a href="noticias.php">Noticias</a></li>
+			<li><a href="socio.php">Hazte Socio</a></li>
+			<li><a href="asociados.php">Nuestros Asociados</a></li>
 		</ul>
 		</nav>
 		
@@ -73,18 +73,18 @@
 			<hr>
 			
 			<section class="row">
-					<figure class="column"><img src="images/multimedia/photo_06.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 7</figcaption></figure>
-					<figure class="column"><img src="images/multimedia/photo_07.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 8</figcaption></figure>
-					<figure class="column"><img src="images/multimedia/photo_08.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 9</figcaption></figure>
-					<figure class="column"><img src="images/multimedia/photo_09.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 10</figcaption></figure>
-					<figure class="column"><img src="images/multimedia/photo_010.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 11</figcaption></figure>
-					<figure class="column"><img src="images/multimedia/photo_011.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 12</figcaption></figure>
+					<figure class="column"><img src="images/multimedia/photo_00.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 1</figcaption></figure>
+					<figure class="column"><img src="images/multimedia/photo_01.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 2</figcaption></figure>
+					<figure class="column"><img src="images/multimedia/photo_02.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 3</figcaption></figure>
+					<figure class="column"><img src="images/multimedia/photo_03.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 4</figcaption></figure>
+					<figure class="column"><img src="images/multimedia/photo_04.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 5</figcaption></figure>
+					<figure class="column"><img src="images/multimedia/photo_05.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 6</figcaption></figure>
 			
 			</section>
 			<hr>
 			<div class="pagination">
-			  <a href="gallery1.html">1</a>
-			  <a href="gallery2.html">2</a>
+			  <a href="gallery1.php">1</a>
+			  <a href="gallery2.php">2</a>
 			</div>
 			<hr>
 		</div>	

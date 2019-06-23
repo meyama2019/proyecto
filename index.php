@@ -1,3 +1,5 @@
+<!-- 21.06.2019 marcelo he introducido este cambio para que lo veamos todos -->
+<!-- 23.06.2019 elisa comentario de prueba para probar la subida de los cambios -->
 <!doctype html>
 <html lang="es">
 <head>
@@ -12,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="estilos.css">
 	<meta name="robots" content="noindex,nofollow" />
 
+		
 
 
 <!--PARA ROTAR LAS IMÁGENES DE FONDO-->
@@ -44,7 +47,7 @@
 
 		<header id="cabecera">
 				<section id="logo">
-					<a href="index.html">
+					<a href="index.php">
 					<img src="images/logo.gif" alt="logo" style="width:30%; height:30%; margin:5px; padding=5px;"/>
 					</a>
 					<br>
@@ -56,37 +59,32 @@
 		
 		<nav id='cssmenu'>
 		<ul>
-			<li><a href="index.html">Inicio</a></li>
-			<li><a href="gallery1.html">Galería de fotos</a></li>
-			<li><a href="noticias.html">Noticias</a></li>
-			<li><a href="socio.html">Hazte Socio</a></li>
-			<li><a href="asociados.html">Nuestros Asociados</a></li>
+			<li><a href="index.php">Inicio</a></li>
+			<li><a href="gallery1.php">Galería de fotos</a></li>
+			<li><a href="noticias.php">Noticias</a></li>
+			<li><a href="socio.php">Hazte Socio</a></li>
+			<li><a href="asociados.php">Nuestros Asociados</a></li>
+
 		</ul>
 		</nav>
-		
 
 		 <main id="central">
 		 <div id="central" class="container-main">
+		 
 			<hr>
-			<h1>UNA IMAGEN VALE MÁS QUE MIL PALABRAS</h1>
-			<h4 id="limit" style="text-align: center;">Este apartado est&aacute; limitado a 200 fotos. Si quieres ver m&aacute;s, hazte socio y tendr&aacute;s acceso a todo el archivo. O reg&iacute;strate (es gratis) y tendr&aacute;s acceso a todas las fotos de hasta 6 meses de antig&uuml;edad</h4>
-			<hr>
-			
-			<section class="row">
-					<figure class="column"><img src="images/multimedia/photo_00.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 1</figcaption></figure>
-					<figure class="column"><img src="images/multimedia/photo_01.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 2</figcaption></figure>
-					<figure class="column"><img src="images/multimedia/photo_02.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 3</figcaption></figure>
-					<figure class="column"><img src="images/multimedia/photo_03.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 4</figcaption></figure>
-					<figure class="column"><img src="images/multimedia/photo_04.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 5</figcaption></figure>
-					<figure class="column"><img src="images/multimedia/photo_05.JPG" style="width:100%; height:100%; margin:2px; padding=2px;"><figcaption>EXPLICACIÓN FOTO 6</figcaption></figure>
-			
-			</section>
-			<hr>
-			<div class="pagination">
-			  <a href="gallery1.html">1</a>
-			  <a href="gallery2.html">2</a>
-			</div>
-			<hr>
+		   <h1>¿Quiénes somos?</h1>
+		   <hr>
+		   <article>
+				<p>
+				 Os damos la bienvenida a la Asociación de Comerciantes de Marte. Nuestro objetivo es dar a conocer las actividades comerciales que se llevan a cabo en nuestro planeta.
+				 </p>
+				 <br>
+				 <img src="images/central.png" alt="logo" style="width:100%; height:100%; margin:auto; padding=5px; "/>
+				 <br>
+				 <p>
+				 Nuestra misión es potenciar el valor de los negocios locales 
+				 </p>
+		   </article>
 		</div>	
      	</main>
 
