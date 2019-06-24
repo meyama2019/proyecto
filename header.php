@@ -65,6 +65,7 @@
 			<li><a href="noticias.php">Noticias</a></li>
 			<li><a href="socio.php">Hazte Socio</a></li>
 			<li><a href="asociados.php">Nuestros Asociados</a></li>
+			<li><a href="roles.php">Gestion Roles</a></li>
 
 		</ul>
 		</nav>
