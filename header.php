@@ -1,6 +1,7 @@
 ﻿<!-- 21.06.2019 marcelo he introducido este cambio para que lo veamos todos -->
 <!-- 23.06.2019 elisa comentario de prueba para probar la subida de los cambios -->
 <!-- 24.06.2019 elisa comentario de prueba desde el trabajo -->
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -65,7 +66,6 @@
 			<li><a href="noticias.php">Noticias</a></li>
 			<li><a href="socio.php">Hazte Socio</a></li>
 			<li><a href="asociados.php">Nuestros Asociados</a></li>
-			<li><a href="roles.php">Gestion Roles</a></li>
-
+		
 		</ul>
 		</nav>
