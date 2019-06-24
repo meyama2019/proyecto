@@ -8,10 +8,10 @@
 	<title>ASOCIACIÓN DE HOTELEROS DE MARTE</title>
 	<meta name="description" content="Trabajo I - Curso de Desarrollo de Aplicaciones Web Dinámicas - UNED 2019"/>
 	
-	<link rel="icon" type="image/png" href="http://localhost/images/favicon.ico"/>
+	<link rel="icon" type="image/png" href="./intranet/images/favicon.ico"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<link rel="stylesheet" type="text/css" href="http://localhost/estilos.css">
+	<link rel="stylesheet" type="text/css" href="./estilos.css">
 	<meta name="robots" content="noindex,nofollow" />
 
 		
@@ -47,7 +47,7 @@
 
 		<header id="cabecera">
 				<section id="logo">
-					<a href="http://localhost/index.php">
+					<a href="../index.php">
 					<img src="images/logo.gif" alt="logo" style="width:30%; height:30%; margin:5px; padding=5px;"/>
 					</a>
 					<br>
@@ -59,13 +59,13 @@
 		
 		<nav id='cssmenu'>
 		<ul>
-			<li><a href="http://localhost/index.php">Inicio</a></li>
-			<li><a href="http://localhost/gallery1.php">Galería de fotos</a></li>
-			<li><a href="http://localhost/noticias.php">Noticias</a></li>
-			<li><a href="http://localhost/socio.php">Hazte Socio</a></li>
-			<li><a href="http://localhost/asociados.php">Nuestros Asociados</a></li>
-			<li><a href="http://localhost/documentos.php">Documentos</a></li>
-			<li><a href="http://localhost/intranet/acceder.php">Acceder</a></li>
+			<li><a href="../index.php">Inicio</a></li>
+			<li><a href="../gallery1.php">Galería de fotos</a></li>
+			<li><a href="../noticias.php">Noticias</a></li>
+			<li><a href="../socio.php">Hazte Socio</a></li>
+			<li><a href="../asociados.php">Nuestros Asociados</a></li>
+			<li><a href="../documentos.php">Documentos</a></li>
+			<li><a href="../intranet/acceder.php">Acceder</a></li>
 
 		</ul>
 		</nav>
