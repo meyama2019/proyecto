@@ -1,6 +1,6 @@
 <?php 
 
-	include('header.php');
+	include('includes/header.php');
 
 ?>
 
@@ -11,7 +11,7 @@
 		 
 			<hr>
 		   <h1>NOTAS DE PRENSA</h1>
-			<h4 id="limit" style="text-align: center;">Este apartado est&aacute; limitado a 200 fotos. Si quieres ver m&aacute;s, hazte socio y tendr&aacute;s acceso a todo el archivo. O reg&iacute;strate (es gratis) y tendr&aacute;s acceso a todas las fotos de hasta 6 meses de antig&uuml;edad</h4>
+			<h4 id="limit" style="text-align: center;">No estás registrado. Solo puedes ver unas cuantas noticias. Reg&iacute;strate y tendr&aacute;s acceso a todo el archivo</h4>
 		   <hr>
 		   
 			<div class="container">
@@ -53,6 +53,6 @@
 
 <?php 
 
-	include('footer.php');
+	include('includes/footer.php');
 
 ?>
