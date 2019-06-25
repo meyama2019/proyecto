@@ -1,0 +1,240 @@
+<?php
+
+define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/empresa/');
+include(RAIZ . 'includes/header.php');
+  
+?>
+
+       
+  
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item ">
+                      <a class="nav-link" href="../home.php">Home </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="<?php RAIZ ?>galeria.php">Galería</a>
+                    </li>
+                     <li class="nav-item">
+                      <a class="nav-link" href="<?php RAIZ ?>noticias.php">Noticias</a>
+                    </li>
+                     <li class="nav-item ">
+                      <a class="nav-link" href="<?php RAIZ ?>asociados.php">Asociados </a>
+                    </li>
+                     <li class="nav-item active">
+                      <a class="nav-link" href="#">Documentos<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Gestión del Sitio
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Roles de Usuario</a>
+                        <a class="dropdown-item" href="#">Usuarios</a>
+                        <a class="dropdown-item" href="#">Noticias</a>
+                        <a class="dropdown-item" href="#">Fotos</a>
+                        <a class="dropdown-item" href="#">Documentos</a>
+
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                      </div>
+                    </li>
+                    
+                  </ul>
+                  <form class="form-inline my-2 my-lg-0">
+                    <ul class="nav">
+                               <li class="nav-item">
+                                <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa2">
+                                    Hazte Socio
+                                </button>
+                              </li> 
+                              <li class="nav-item">
+                                <button type="button" class=" btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa3">
+                                    Acceder
+                                </button>
+                              </li> 
+
+                          </ul>
+                  </form>
+                </div>
+              </nav>
+           
+
+
+
+     
+            <div class="accordion" id="accordionExample">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Registro / Solicitudes
+                    </button>
+                  </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse show container" aria-labelledby="headingOne" data-parent="#accordionExample">
+                  <div class="card-body ">
+                      <div class="container">
+                      
+                          <table class="table">
+                            <thead class="thead-light">
+                              <tr>
+                                <th scope="col">Cod</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Fecha</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                              </tr>
+                               <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                              </tr>
+                         
+                            </tbody>
+                          </table>
+                      
+                        </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                     Manuales / Doc. en pdf
+                    </button>
+                  </h2>
+                </div>
+                <div id="collapseTwo" class="collapse container" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                  <div class="card-body">
+                   <div class="container">
+                      
+                          <table class="table">
+                            <thead class="thead-light">
+                              <tr>
+                                <th scope="col">Cod</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Fecha</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                              </tr>
+                               <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                              </tr>
+                         
+                            </tbody>
+                          </table>
+                      
+                        </div>
+                  </div>
+                </div>
+              </div>
+                <div class="card">
+                <div class="card-header" id="headingThree">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      Reservas
+                    </button>
+                  </h2>
+                </div>
+                
+                <div id="collapseThree" class="collapse container" aria-labelledby="headingThree" data-parent="#accordionExample">
+                  <div class="card-body">
+                   <div class="container">
+                      
+                          <table class="table">
+                            <thead class="thead-light">
+                              <tr>
+                                <th scope="col">Cod</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Fecha</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                              </tr>
+                               <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                              </tr>
+                         
+                            </tbody>
+                          </table>
+                      
+                        </div>
+                  </div>
+                </div>
+                
+            
+
+ 
+   
+
+<?php
+  require (RAIZ . 'includes/footer.php');
+?>

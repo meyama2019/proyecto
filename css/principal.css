@@ -1,0 +1,294 @@
+/* ---- Estilos básicos ---------------------------------------------------- */
+
+body {
+    margin: 0;
+    padding:0px;
+    background: lightgray;
+    font-family: arial;
+    font-size:0.9em;
+}
+
+a {
+    color:#0066ff;
+}
+a:hover {
+    color: red;
+    /*color: #006450;*/
+}
+
+p {
+    margin: 1em 0;
+    padding: 0;
+    line-height: 2em; 
+}
+
+.clear {
+    clear: both;
+}
+
+h1, h2, h3, h4 {
+    margin: 1em 0;
+    padding:0;
+}
+
+h1 {
+    font-size: 175%;
+    font-family: "georgia", serif;
+    font-weight: bold;
+}
+
+h2 {
+    font-size:180%;
+    font-family: "georgia", serif;
+    font-weight:bold;
+    border-bottom: 2px solid black;
+    margin-top:50px;
+    margin-bottom: 0;
+}
+
+h3 {
+    font-size:120%;
+    font-weight:bold;
+
+}
+
+h4 {
+    font-weight:bold;
+}
+
+ul {
+    margin: 1em 0 1em 2em;
+    padding:0;
+}
+
+/* ---- Layout ------------------------------------------------------------- */
+
+#contenedor {
+    max-width: 1100px;
+    min-width: 300px;
+    margin: 50px auto 0 auto;
+}
+
+#cabecera {
+  width:100%;
+  position: relative;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  margin-bottom:0px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  /*background: grey;*/
+  background:#006450;
+  color: #ffffff;
+  
+}
+
+#banner{
+    margin:0;
+    padding:0;
+
+}
+
+#varios {
+  width: 100%;
+  margin: 0;
+  border-top:2px solid black;  
+  padding-bottom: 25px;
+}
+
+#noticias {
+  width: 100%;
+  margin: 0 ;
+  border-top:2px solid black;
+}
+
+#formularios{
+    width:50%;
+    float:left;
+    margin-left: 20px;
+    margin-bottom:75px;
+}
+
+#imgalcaudete{
+    width:30%;
+    /*float:right;*/
+    max-height: 100px;
+    max-width: 100px;
+}
+
+
+.img1 {
+  height: 200px;
+  width: 200px;
+}
+
+
+
+
+
+
+#pie {
+  clear: both;
+  height: 60px;
+  margin-top: 15px;
+  margin-bottom: 100px;
+  border-top: 2px solid black;
+  position: relative;
+  top:5px;
+}
+
+/* ---- Cabecera ----------------------------------------------------------- */
+
+#cabecera h1 {
+  width:40%;
+  position: relative;
+  margin:0;
+  top: 0px;
+  left: 20px;
+  float:left;
+}
+
+#cabecera #buscador {
+  width:34%;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  float:right;
+  margin:0;  
+}
+
+#cabecera #buscador legend {
+  display: none;
+}
+
+#cabecera #buscador fieldset {
+  border: none;
+  margin-left:45px;
+}
+
+/* ---- Menú --------------------------------------------------------------- */
+
+
+#menu {
+  /*background: gray;*/
+  /*background: lightslategrey;*/
+  margin: 0;
+  padding-top: 0px;
+  padding-bottom: 1px;
+  height: 50px;
+  width:100%;
+}
+
+/*
+#menu ul {
+  clear: both;
+  float: left;
+  width: 100%;
+  list-style: none;
+  margin-left: 10px;
+  margin-top:0px;
+  margin-right: 30px;
+  padding: 0;  
+}
+
+#menu ul li {
+    background: #006450;
+    float: left;
+    padding: 12px 0px 12px 0px;
+    margin: 8px 15px;
+   }
+   
+#menu ul li a {
+   text-decoration: none;
+   color: #ffffff;
+   font-weight: bold;
+   padding: 12px 22px 15px 22px;
+ }
+
+#menu ul li a:hover {
+  background: lightslategrey;
+}
+
+*/
+/* ---- Contenidos --------------------------------------------------------- */
+
+#varios #beneficios{
+    float:left;
+    width:35%;   
+    margin-right: 25px;
+}
+
+#varios #beneficios .benef{
+   background:#006450;
+    padding:10px 0 10px 10px;
+}
+
+#varios #varios1 #asesorar{
+    float:left;
+    width:32%;
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
+#varios #varios1 #asesorar .asesora{
+    background:#006450;
+    padding:10px 0 10px 10px;
+}
+
+#varios #varios1 #ayudas{
+    float:right;
+    width:25%; 
+}
+
+#varios #varios1 #ayudas .sub{
+    background:#006450;
+    padding:10px 0 10px 10px;
+}
+
+#noticias #asoc{
+    float:left;
+    width:45%;
+}
+
+#noticias #asoc .titasoc {
+    background:#006450;
+    padding:10px 0 10px 10px;
+}
+
+#noticias #general{
+    float:right;
+    width:50%;
+}
+
+#noticias #general .titgeneral{
+    background:#006450;
+    padding:10px 0 10px 10px;
+}
+
+#ayudas{
+  font-size: 0.75em;
+}
+
+/* ---- Pie ---------------------------------------------------------------- */
+#pie{
+  font-size: 0.75em;
+}
+
+#pie #sede {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  line-height: 1.2em;
+  float:left
+}
+
+#pie #copyright {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 110px;
+  right: 40px;
+  float:right
+}
+
+
