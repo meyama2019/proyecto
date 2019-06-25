@@ -2,6 +2,17 @@
 
 define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/empresa/');
 include(RAIZ . 'includes/header.php');
+include('../models/connection.php');
+    $listaUsuarios =[];
+    $db=Db::getConnect();
+    $sql=$db->query('SELECT * FROM usuarios');
+
+    // carga en la $listaUsuarios cada registro desde la base de datos
+    foreach ($sql->fetchAll() as $usuario) {
+      $listaUsuarios[]= ($usuario['rol_id']);
+    }
+    //return $listaUsuarios;
+
   
 ?>
 
@@ -24,7 +35,9 @@ include(RAIZ . 'includes/header.php');
                      <li class="nav-item active">
                       <a class="nav-link" href="#">Documentos<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item dropdown">
+                     <?php
+                     if ($listaUsuarios[0]==95)
+                      echo '<li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Gestión del Sitio
                       </a>
@@ -38,7 +51,9 @@ include(RAIZ . 'includes/header.php');
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                       </div>
-                    </li>
+                    </li>'
+                    
+                    ?>
                     
                   </ul>
                   <form class="form-inline my-2 my-lg-0">
