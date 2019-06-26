@@ -3,9 +3,9 @@
 define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/');
 include(RAIZ . 'includes/header.php');
 
-include('models/connection.php');
+require_once('models/connection.php');
     $listaUsuarios =[];
-    $db=Db::getConnect();
+    $db= Db::getConnect();
     $sql=$db->query('SELECT * FROM usuarios');
 
     // carga en la $listaUsuarios cada registro desde la base de datos
@@ -61,12 +61,19 @@ include('models/connection.php');
                                 <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa2">
                                     Hazte Socio
                                 </button>
-                              </li> 
+                              </li>  
                               <li class="nav-item">
                                 <button type="button" class=" btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa3">
-                                    Acceder
+                                    <?php
+                                    if ($listaUsuarios[0]==95)
+                                      {
+                                        echo($listaUsuarios[0]);
+                                      } 
+                                      $db=Db::cerrar();
+                                      ?>
                                 </button>
                               </li> 
+                             
 
                           </ul>
                   </form>

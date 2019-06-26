@@ -2,14 +2,23 @@
 
 define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/empresa/');
 include(RAIZ . 'includes/header.php');
-include('../models/connection.php');
-    $listaUsuarios =[];
+require_once('../models/connection.php');
+    $listaUsuarios = array(
+   array('id_usuario' => '','usuario' => '','passwd' => '','metodo' => '','email' => '','Nom_Ape' => '','dni' => '','provincia' => '','Pais' => '','telefono' => '','cuenta' => '','activo' => '1','rol_id' => '')
+);
+    $listanoticias = array(
+  array('id_noticia' => '1','userid' => '1','fechainicio' => '2019-06-25','fechafin' => '2019-06-30','titulo' => 'MOOC: ¿Estás preparado para competir? Transformación digital para pymes.','descripcion' => 'La transformación digital de las empresas es un factor clave hoy día para su competitividad y productividad. Próximamente, Andalucía Digital pone en marcha un MOOC sobre este tema, para los que quieran formarse de forma gratuita y on-line.')
+);
+  
     $db=Db::getConnect();
-    $sql=$db->query('SELECT * FROM usuarios');
+    $y=0;
+    $sql=$db->query('SELECT * FROM usuarios where id_usuario=1');
 
     // carga en la $listaUsuarios cada registro desde la base de datos
+
     foreach ($sql->fetchAll() as $usuario) {
-      $listaUsuarios[]= ($usuario['rol_id']);
+      $listaUsuarios[$y]= $usuario;
+      $y=$y+1;
     }
     //return $listaUsuarios;
 
@@ -32,16 +41,16 @@ include('../models/connection.php');
                       <a class="nav-link" href="#">Noticias<span class="sr-only">(current)</span></a>
                     </li>
                      <li class="nav-item">
-                      <a class="nav-link" href="<?php RAIZ ?>galeria.php">Asociados</a>
+                      <a class="nav-link" href="<?php RAIZ ?>asociados.php">Asociados</a>
                     </li>
                      <li class="nav-item">
-                      <a class="nav-link" href="<?php RAIZ ?>galeria.php">Documentos</a>
+                      <a class="nav-link" href="<?php RAIZ ?>documentos.php">Documentos</a>
                     </li>
                      <?php
-                     if ($listaUsuarios[0]==95)
+                     if ($listaUsuarios[0]['rol_id']==95)
                       echo '<li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Gestión del Sitio
+                        Gestión del Sitio 
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Roles de Usuario</a>
@@ -78,64 +87,52 @@ include('../models/connection.php');
 
  
 
+                 <?php
+                              $x = 0;
+                              switch ($listaUsuarios[0]['rol_id']) {
+                                case 95:
+                                  # code...
+                                  $sql=$db->query('SELECT * FROM noticias');
+                                  break;
+                                 case 2:
+                                  # code...
+                                   $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()');
+                                  break;
+                                  case 1:
+                                  # code...
+                                   $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()  limit 1');
+                                  break;
+                                
+                                default:
+                                  # code...
+                                  break;
+                              }
+                             
+                              // $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()  limit 1');
+                              foreach ($sql->fetchAll() as $listanoticias[$x]) {
+                                //$listanoticias[]= $noticias;
+                                
+                              echo('<div class="card">
+                                <div class="card-header"><h3> '. utf8_encode($listanoticias[$x]['titulo']) .'            
+                                         </h3>
+                                      </div>
+                                      <div class="card-body">
+                                        <h6 class="card-title">'. utf8_encode($listanoticias[$x]['fechafin']) .'</h6>
+                                        <p class="card-text">'. utf8_encode($listanoticias[$x]['descripcion']) .'</p>
+                                     
+                                        <a href="#" class="btn btn-primary">Ver más..</a>
+                                      </div>
+                                </div>');
 
-              <div class="card">
-                    <div class="card-header"><h3>
-                      MOOC: ¿Est&aacute;s preparado para competir? Transformaci&oacute;n digital para pymes.</h3>
-                    </div>
-                    <div class="card-body">
-                      <h6 class="card-title">15 de febrero de 2019</h6>
-                      <p class="card-text">La transformaci&oacute;n digital de las empresas es un factor clave hoy d&iacute;a para su
-                   competitividad y productividad. Pr&oacute;ximamente, Andaluc&iacute;a Digital pone en marcha un MOOC sobre
-                   este tema, para los que quieran formarse de forma gratuita y on-line.</p>
-                   
-                      <a href="#" class="btn btn-primary">Ver más..</a>
-                    </div>
-              </div>
+                              $x=$x+1;
+                              }
+                  
+                              $db=Db::cerrar();
+                ?>
 
-              <div class="card">
-                <div class="card-header"><h3>
-                 El Ayuntamiento de Alcaudete ha presentado la primera edici&oacute;n del Premio a la Mejor Idea Empresarial.</h3>
-                </div>
+             
 
-                <div class="card-body">
-                    <h6 class="card-title">20 de Marzo de 2019</h6>
-                    <p class="card-text">Este certamen est&aacute; dirigido a emprendedores de hasta 35 años. La idea es potenciar
-                 el desarrollo de nuevos proyectos empresariales. Cuenta con un premio de 4.000 € y otro de 1.000 €. El plazo
-                 de presentaci&oacute;n de proyectos va del 1 de febrero al 15 de Marzo del 2019</p>
-                 
-                    <a href="#" class="btn btn-primary">Ver más..</a>
-                </div>
-              </div>
-
-               <div class="card">
-                <div class="card-header"><h3>
-                 LINCE, un Evento para el Emprendedor y sus Ideas</h3>
-                </div>
-                <div class="card-body">
-                  <h6 class="card-title"> 23 de junio de 2017</h6>
-                  <p class="card-text">LINCE pretende apoyar a los mejores proyectos en marcha e ideas de Emprendimiento de la
-               Provincia. Visualizar el Ecosistema de Emprendimiento de la Provincia. Crear Redes entre Emprendedores,
-               Empresarios e Instituciones, y Mostrar Buenas Pr&aacute;cticas y Experiencias de Empresas.</p>
-               
-                  <a href="#" class="btn btn-primary">Ver más..</a>
-                </div>
-              </div>
-          
-              <div class="card">
-                <div class="card-header"><h3>
-                 IMEFE: abierto el plazo de solicitud para la cesi&oacute;n gratuita de espacios de negocio</h3>
-                </div>
-                <div class="card-body">
-                  <h6 class="card-title">27 de junio de 2017</h6>
-                  <p class="card-text">El Instituto Municipal de Empleo y Formaci&oacute;n Empresarial del Excmo. Ayuntamiento
-               informa que, actualmente y hasta el 18 de agosto de 2017 (13:00 horas), se encuentra abierto el plazo de
-               solicitud para la cesi&oacute;n gratuita de negocio</p>
-               
-                  <a href="#" class="btn btn-primary">Ver más..</a>
-                </div>
-              </div>
-
+           
          
         
         
