@@ -14,6 +14,12 @@ require_once('models/connection.php');
     foreach ($sql->fetchAll() as $usuario) {
       $listaUsuarios[]= ($usuario['rol_id']);
     }
+    $num_rows=$db->query('SELECT * FROM usuarios where activo=1');
+    $tot=0;
+     foreach ($num_rows->fetchAll() as $usuario) {
+      $tot=$tot+1;
+    }
+
     //return $listaUsuarios;
 
   
@@ -53,8 +59,17 @@ require_once('models/connection.php');
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                       </div>
+                    </li>
+                     <li class="nav-item">
+                      <button type="button" class="btn btn-primary">
+                        Solicitudes <span class="badge badge-light">'.$tot.'</span>
+                        <span class="sr-only">unread messages</span>
+                      </button>
                     </li>'
-                    
+ 
+
+
+
                     ?>
                   </ul>
                   <form class="form-inline my-2 my-lg-0">
