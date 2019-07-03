@@ -1,6 +1,6 @@
 <?php
 
-define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/empresa/'); // yo he puesto /empresa/ porque el proyecto cuelga de htdocs/empresa
+define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/proyecto/'); 
 include(RAIZ . 'includes/header.php');
 
 include('../models/connection.php');

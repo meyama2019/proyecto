@@ -1,6 +1,6 @@
 <?php
 
-define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/empresa/');
+define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/proyecto/');
 include(RAIZ . 'includes/header.php');
 require_once('../models/connection.php');
     $listaUsuarios = array(
