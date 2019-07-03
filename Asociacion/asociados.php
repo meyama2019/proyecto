@@ -1,7 +1,8 @@
 <?php
 
-define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/proyecto/'); 
-include(RAIZ . 'includes/header.php');
+define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
+include(RAIZ . 'asociacion/header.php');
+
 
 include('../models/connection.php');
      $listaUsuarios = array(

@@ -1,7 +1,8 @@
 <?php
 
 define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/proyecto/');
-include(RAIZ . 'includes/header.php');
+include(RAIZ . 'asociacion/header.php');
+
 require_once('../models/connection.php');
     $listaUsuarios = array(
    array('id_usuario' => '','usuario' => '','passwd' => '','metodo' => '','email' => '','Nom_Ape' => '','dni' => '','provincia' => '','Pais' => '','telefono' => '','cuenta' => '','activo' => '1','rol_id' => '')

@@ -1,7 +1,9 @@
 <?php
 
-define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/');
-include(RAIZ . 'proyecto/includes/header.php');
+//define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/');
+//include('../proyecto/includes/header.php');
+define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/proyecto/'); 
+include(RAIZ . 'includes/header.php');
 
 require_once('models/connection.php');
     $listaUsuarios =[];
@@ -138,5 +140,5 @@ require_once('models/connection.php');
             </div>
 
 <?php
-  require (RAIZ . 'proyecto/includes/footer.php');
+  require (RAIZ . 'includes/footer.php');
 ?>

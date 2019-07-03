@@ -1,6 +1,4 @@
 
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,11 +6,11 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Trabajo - Modulo 3</title>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" media="screen" type="text/css" href="css/principal.css" />
-    <link rel="stylesheet" media="print" type="text/css" href="css/imprimir.css" />
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" media="screen" type="text/css" href="../css/principal.css" />
+    <link rel="stylesheet" media="print" type="text/css" href="../css/imprimir.css" />
 </head>
 
 
