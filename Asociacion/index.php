@@ -1,7 +1,7 @@
 <?php
 
 define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/');
-include(RAIZ . 'includes/header.php');
+include(RAIZ . 'proyecto/includes/header.php');
 
 require_once('models/connection.php');
     $listaUsuarios =[];
@@ -67,7 +67,7 @@ require_once('models/connection.php');
                                     <?php
                                     if ($listaUsuarios[0]==95)
                                       {
-                                        echo($listaUsuarios[0]);
+                                        echo('Administrador');
                                       } 
                                       $db=Db::cerrar();
                                       ?>
@@ -138,5 +138,5 @@ require_once('models/connection.php');
             </div>
 
 <?php
-  require (RAIZ . 'includes/footer.php');
+  require (RAIZ . 'proyecto/includes/footer.php');
 ?>
