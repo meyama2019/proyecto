@@ -1,7 +1,7 @@
 <?php
 
 /*
-
+05.07.2019
 $_SESSION['login']  <-- contiene campo usuario de tabla usuarios
 $_SESSION['start']  <-- contiene tipo fecha y hora de inicio de sesión
 $_SESSION['expire'] <-- contiene tipo fecha y hora de fin sesión
