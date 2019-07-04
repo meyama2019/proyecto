@@ -170,7 +170,7 @@ require_once('models/connection.php');
                    por el Ayuntamiento de Alcaudete.</p>
                 <p>Tras la redacci&oacute;n del proyecto, da comienzo la construcci&oacute;n de un espacio "skatepark"
                    junto a los casi finalizados parque de educaci&oacute;n vial y zona infantil de juegos.</p>
-                   <a href="asociacion/noticias.html" class="btn btn-primary">Ver más..</a>
+                   <a href="asociacion/noticias.php" class="btn btn-primary">Ver más..</a>
             </article>
             </div>
 
