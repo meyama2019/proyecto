@@ -5,8 +5,15 @@
 define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/proyecto/'); 
 include(RAIZ . 'includes/header.php');
 
+session_start();
+//$tot=2;
+ 
+
+
+ //$listaUsuarios[0] =6;
+/*
 require_once('models/connection.php');
-    $listaUsuarios =[];
+   
     $db= Db::getConnect();
     $sql=$db->query('SELECT * FROM usuarios');
 
@@ -21,6 +28,7 @@ require_once('models/connection.php');
     }
 
     //return $listaUsuarios;
+*/
 
   
 ?>
@@ -44,7 +52,8 @@ require_once('models/connection.php');
                       <a class="nav-link" href="<?php RAIZ ?>asociacion/documentos.php">Documentos</a>
                     </li>
                     <?php
-                     if ($listaUsuarios[0]==95)
+
+                     if (isset($_SESSION['rol1']) && $_SESSION['rol1']==95)
                       echo '<li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Gestión del Sitio
@@ -62,7 +71,7 @@ require_once('models/connection.php');
                     </li>
                      <li class="nav-item">
                       <button type="button" class="btn btn-primary">
-                        Solicitudes <span class="badge badge-light">'.$tot.'</span>
+                        Solicitudes <span class="badge badge-light">'.$_SESSION['tot_pen'].'</span>
                         <span class="sr-only">unread messages</span>
                       </button>
                     </li>'
@@ -72,7 +81,7 @@ require_once('models/connection.php');
 
                     ?>
                   </ul>
-                  <form class="form-inline my-2 my-lg-0">
+                  <form class="form-inline form my-2 my-lg-0" action="asociacion/logout.php" method="post">
                     <ul class="nav">
                                <li class="nav-item">
                                 <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa2">
@@ -80,14 +89,25 @@ require_once('models/connection.php');
                                 </button>
                               </li>  
                               <li class="nav-item">
-                                <button type="button" class=" btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa3">
-                                    <?php
-                                    if ($listaUsuarios[0]==95)
+                                <?php
+                                    if (isset($_SESSION['rol1']) )
                                       {
-                                        echo('Administrador');
+                                        echo('<button type="submit" class=" btn btn-outline-primary btn-sm" >Salir');
+                                        
                                       } 
-                                      $db=Db::cerrar();
+                                    elseif (!isset($_SESSION['rol1']))
+                                    {
+                                      echo('<button type="button" class=" btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa3">Accede');
+                                    }
+                                   
+                                     
+                                     
+                                   
+                                     // $db=Db::cerrar();
                                       ?>
+                                       
+                               
+                                    
                                 </button>
                               </li> 
                              

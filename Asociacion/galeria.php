@@ -1,5 +1,5 @@
 <?php
-
+ session_start();
 define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/proyecto/');
 include(RAIZ . 'asociacion/header.php');
 include('../models/connection.php');
@@ -13,7 +13,7 @@ include('../models/connection.php');
     }
     //return $listaUsuarios;
 
-  
+ 
 ?>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -34,7 +34,7 @@ include('../models/connection.php');
                       <a class="nav-link" href="<?php RAIZ ?>documentos.php">Documentos</a>
                     </li>
                      <?php
-                     if ($listaUsuarios[0]==95)
+                     if (isset($_SESSION['rol1']) && $_SESSION['rol1']==95)
                       echo '<li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Gestión del Sitio
@@ -49,12 +49,17 @@ include('../models/connection.php');
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                       </div>
+                    </li><li class="nav-item">
+                      <button type="button" class="btn btn-primary">
+                        Solicitudes <span class="badge badge-light">'.$_SESSION['tot_pen'].'</span>
+                        <span class="sr-only">unread messages</span>
+                      </button>
                     </li>'
                     
                     ?>
                     
                   </ul>
-                  <form class="form-inline my-2 my-lg-0">
+                  <form class="form-inline my-2 my-lg-0" action="http://localhost/proyecto/asociacion/logout.php" method="post">
                     <ul class="nav">
                                <li class="nav-item">
                                 <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa2">
@@ -62,9 +67,22 @@ include('../models/connection.php');
                                 </button>
                               </li> 
                               <li class="nav-item">
-                                <button type="button" class=" btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa3">
-                                    Acceder
-                                </button>
+                                 <?php
+                                    if (isset($_SESSION['rol1']) )
+                                      {
+                                        echo('<button type="submit" class=" btn btn-outline-primary btn-sm" >Salir');
+                                        
+                                      } 
+                                    elseif (!isset($_SESSION['rol1']))
+                                    {
+                                      echo('<button type="button" class=" btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa3">Accede');
+                                    }
+                                   
+                                     
+                                     
+                                   
+                                     // $db=Db::cerrar();
+                                      ?>
                               </li> 
 
                           </ul>

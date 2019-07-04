@@ -21,7 +21,10 @@ $(document).ready(function(){
    		  			});
    		  		});
    		  });
-   		  
+   	$("#alert1").hide();
+            
+         
+           
    		  
    		});
    		

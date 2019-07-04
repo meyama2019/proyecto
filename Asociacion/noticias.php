@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/proyecto/');
 include(RAIZ . 'asociacion/header.php');
 
@@ -48,7 +48,7 @@ require_once('../models/connection.php');
                       <a class="nav-link" href="<?php RAIZ ?>documentos.php">Documentos</a>
                     </li>
                      <?php
-                     if ($listaUsuarios[0]['rol_id']==95)
+                     if (isset($_SESSION['rol1']) && $_SESSION['rol1']==95)
                       echo '<li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Gestión del Sitio 
@@ -63,12 +63,18 @@ require_once('../models/connection.php');
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                       </div>
+                    </li>
+                    <li class="nav-item">
+                      <button type="button" class="btn btn-primary">
+                        Solicitudes <span class="badge badge-light">'.$_SESSION['tot_pen'].'</span>
+                        <span class="sr-only">unread messages</span>
+                      </button>
                     </li>'
                     
                     ?>
                     
                   </ul>
-                  <form class="form-inline my-2 my-lg-0">
+                  <form class="form-inline my-2 my-lg-0" action="http://localhost/proyecto/asociacion/logout.php" method="post">
                     <ul class="nav">
                                <li class="nav-item">
                                 <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa2">
@@ -76,8 +82,22 @@ require_once('../models/connection.php');
                                 </button>
                               </li> 
                               <li class="nav-item">
-                                <button type="button" class=" btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa3">
-                                    Acceder
+                                <?php
+                                    if (isset($_SESSION['rol1']) )
+                                      {
+                                        echo('<button type="submit" class=" btn btn-outline-primary btn-sm" >Salir');
+                                        
+                                      } 
+                                    elseif (!isset($_SESSION['rol1']))
+                                    {
+                                      echo('<button type="button" class=" btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa3">Accede');
+                                    }
+                                   
+                                     
+                                     
+                                   
+                                     // $db=Db::cerrar();
+                                      ?>
                                 </button>
                               </li> 
 
@@ -89,26 +109,36 @@ require_once('../models/connection.php');
  
 
                  <?php
-                              $x = 0;
-                              switch ($listaUsuarios[0]['rol_id']) {
-                                case 95:
-                                  # code...
-                                  $sql=$db->query('SELECT * FROM noticias');
-                                  break;
-                                 case 2:
-                                  # code...
-                                   $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()');
-                                  break;
-                                  case 1:
-                                  # code...
-                                   $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()  limit 1');
-                                  break;
-                                
-                                default:
-                                  # code...
-                                  break;
-                              }
+                             $x = 0;
+                              if (isset($_SESSION['rol1']))
+                              {
+
+                               
+                                switch ($_SESSION['rol1']) 
+                                {
+                                  case 95:
+                                    # code...
+                                    $sql=$db->query('SELECT * FROM noticias');
+                                    break;
+                                   case 2:
+                                    # code...
+                                     $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()');
+                                    break;
+                                    case 1:
+                                    # code...
+                                     $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()  limit 1');
+                                    break;
+                                  
+                                  default:
+                                    # code...
+                                    break;
+                                }
+                            }
                              
+                            else
+                            {
+                               $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()  limit 1');
+                            }
                               // $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()  limit 1');
                               foreach ($sql->fetchAll() as $listanoticias[$x]) {
                                 //$listanoticias[]= $noticias;
