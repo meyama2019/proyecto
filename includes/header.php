@@ -12,6 +12,19 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" media="screen" type="text/css" href="css/principal.css" />
     <link rel="stylesheet" media="print" type="text/css" href="css/imprimir.css" />
+    <style type="text/css">
+         .carousel-inner img {
+            width: 100%;
+            max-height: 460px;
+        }
+
+        .carousel-inner{
+         height: 250px;
+        }
+    </style>
+   
+       
+   
 </head>
 
 

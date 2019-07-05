@@ -13,7 +13,7 @@ require_once('../models/connection.php');
   
     $db=Db::getConnect();
     $y=0;
-    $sql=$db->query('SELECT * FROM usuarios where id_usuario=1');
+    $sql=$db->query('SELECT * FROM usuarios');
 
     // carga en la $listaUsuarios cada registro desde la base de datos
 
