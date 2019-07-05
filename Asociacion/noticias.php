@@ -148,7 +148,7 @@ require_once('../models/connection.php');
                                          </h3>
                                       </div>
                                       <div class="card-body">
-                                        <h6 class="card-title">'. utf8_encode($listanoticias[$x]['fechafin']) .'</h6>
+                                        <h6 class="card-title">'. utf8_encode($listanoticias[$x]['fechainicio']) .'</h6>
                                         <p class="card-text">'. utf8_encode($listanoticias[$x]['descripcion']) .'</p>
                                      
                                         <a href="#" class="btn btn-primary">Ver más..</a>
