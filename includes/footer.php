@@ -129,7 +129,7 @@
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="Inputemail" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input type="email" class="form-control" id="Inputemail" name ="Inputemail" aria-describedby="emailHelp" placeholder="Enter email">
                       
                       </div>
                       <div class="form-group">

@@ -1,121 +1,16 @@
 <?php
-
+session_start();
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/');
 //include('../proyecto/includes/header.php');
 define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/proyecto/'); 
 include(RAIZ . 'includes/header.php');
+//include('http://localhost/proyecto/includes/header.php');
 
-session_start();
-//$tot=2;
- 
-
-
- //$listaUsuarios[0] =6;
-/*
-require_once('models/connection.php');
-   
-    $db= Db::getConnect();
-    $sql=$db->query('SELECT * FROM usuarios');
-
-    // carga en la $listaUsuarios cada registro desde la base de datos
-    foreach ($sql->fetchAll() as $usuario) {
-      $listaUsuarios[]= ($usuario['rol_id']);
-    }
-    $num_rows=$db->query('SELECT * FROM usuarios where activo=1');
-    $tot=0;
-     foreach ($num_rows->fetchAll() as $usuario) {
-      $tot=$tot+1;
-    }
-
-    //return $listaUsuarios;
-*/
+require_once('menu.php');
 
   
 ?>
 
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item ">
-                      <a class="nav-link" href="<?php RAIZ ?>asociacion/galeria.php">Galería</a>
-                    </li>
-                     <li class="nav-item ">
-                      <a class="nav-link" href="<?php RAIZ ?>asociacion/noticias.php">Noticias</a>
-                    </li>
-                     <li class="nav-item ">
-                      <a class="nav-link" href="<?php RAIZ ?>asociacion/asociados.php">Asociados </a>
-                    </li>
-                     <li class="nav-item">
-                      <a class="nav-link" href="<?php RAIZ ?>asociacion/documentos.php">Documentos</a>
-                    </li>
-                    <?php
-
-                     if (isset($_SESSION['rol1']) && $_SESSION['rol1']==95)
-                      echo '<li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Gestión del Sitio
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Roles de Usuario</a>
-                        <a class="dropdown-item" href="#">Usuarios</a>
-                        <a class="dropdown-item" href="#">Noticias</a>
-                        <a class="dropdown-item" href="#">Fotos</a>
-                        <a class="dropdown-item" href="#">Documentos</a>
-
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
-                    </li>
-                     <li class="nav-item">
-                      <button type="button" class="btn btn-primary">
-                        Solicitudes <span class="badge badge-light">'.$_SESSION['tot_pen'].'</span>
-                        <span class="sr-only">unread messages</span>
-                      </button>
-                    </li>'
- 
-
-
-
-                    ?>
-                  </ul>
-                  <form class="form-inline form my-2 my-lg-0" action="asociacion/logout.php" method="post">
-                    <ul class="nav">
-                               <li class="nav-item">
-                                <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa2">
-                                    Hazte Socio
-                                </button>
-                              </li>  
-                              <li class="nav-item">
-                                <?php
-                                    if (isset($_SESSION['rol1']) )
-                                      {
-                                        echo('<button type="submit" class=" btn btn-outline-primary btn-sm" >Salir');
-                                        
-                                      } 
-                                    elseif (!isset($_SESSION['rol1']))
-                                    {
-                                      echo('<button type="button" class=" btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa3">Accede');
-                                    }
-                                   
-                                     
-                                     
-                                   
-                                     // $db=Db::cerrar();
-                                      ?>
-                                       
-                               
-                                    
-                                </button>
-                              </li> 
-                             
-
-                          </ul>
-                  </form>
-                </div>
-              </nav>
 
 
 

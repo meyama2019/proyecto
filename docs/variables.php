@@ -8,7 +8,12 @@ $_SESSION['expire'] <-- contiene tipo fecha y hora de fin sesión
 $_SESSION['rol']    <-- contiene Rol_id de tabla usuario para controlar qué se muestra según el tipo de usuario
 
 
+*********** ESTADOS DEL SOCIO / USUARIO campo activo tabla usuarios.
 
+0	ACTIVO
+1	PENDIENTE APROBACION	
+2	BAJA PROVISIONAL
+3	BAJA DEFINITIVA
 
 
 

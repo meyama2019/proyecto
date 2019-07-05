@@ -20,10 +20,55 @@
 
 <body>
 
-           <div class="container">
+             <div class="container">
             <header id="cabecera">
-                <h1>ASOCIACION DE HOTELEROS DE MARTE</h1>
+               
+                    <div class="row">
+                        <div class="col-9">
+                             <h1>ASOCIACION DE HOTELEROS DE MARTE</h1>
+                        </div>
+                        <div class="col-3">
+                              <?php
+                                if (isset($_SESSION['activo'])) 
+                                {
+                                    switch ($_SESSION['activo'])
+                                    {
+                                        case '0':
+                                            # code...
+                                            echo('<div class="alert alert-success" role="alert">Bienvenido '.$_SESSION['login1'].'!</div>');
+                                            break;
+                                        case '1':
+                                            # code...
+                                            echo('<div class="alert alert-warning" role="alert">
+                                                  Pendiente confirmación '.$_SESSION['login1'].'!
+                                                </div>');
+                                            break;
+                                        case '2':
+                                            # code...
+                                            echo('<div class="alert alert-danger" role="alert">
+                                                  Usuario de Baja - '.$_SESSION['login1'].'!
+                                                </div>');
+                                            break;
+                                        
+                                        default:
+                                            # code...
+                                            break;
+                                    }
+                                }
+
+
+                       
+                                ?>
+                        </div>
+                 
+                   
+               
+               
+
+               
                 
+            </div> 
+
                 <div class="clear"></div>
             </header>
           
