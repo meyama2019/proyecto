@@ -37,18 +37,23 @@
 							{
 								
 								$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+								$username = $_POST['SocioUsuario'];
 								$userdni = $_POST['SocioDNI'];
 								$useremail = $_POST['socioEmail'];
 								
+								$sql_u = "SELECT * FROM usuarios WHERE usuario='$username'";
 								$sql_d = "SELECT * FROM usuarios WHERE dni='$userdni'";
 								$sql_e = "SELECT * FROM usuarios WHERE email='$useremail'";
+								$res_u = mysqli_query($conexion, $sql_u);
 								$res_d = mysqli_query($conexion, $sql_d);
 								$res_e = mysqli_query($conexion, $sql_e);
 								
-								if ((mysqli_num_rows($res_d) == 0) && (mysqli_num_rows($res_e) == 0))
+								$password = sha1($_POST['SocioPassword']);
+								
+								if ((mysqli_num_rows($res_d) == 0) && (mysqli_num_rows($res_e) == 0) && (mysqli_num_rows($res_u) == 0))
 								
 								{
-									$sql = "INSERT INTO usuarios (usuario, email, passwd,  dni, telefono, activo) values ('$_POST[SocioUsuario]','$_POST[socioEmail]','$_POST[SocioPassword]','$_POST[SocioDNI]','$_POST[SocioTelf]', 1)";
+									$sql = "INSERT INTO usuarios (usuario, email, passwd,  dni, telefono, activo, rol_id ) values ('$_POST[SocioUsuario]','$_POST[socioEmail]','$password','$_POST[SocioDNI]','$_POST[SocioTelf]', 1, 1)";
 									$consulta = mysqli_query($conexion, $sql);
 									if($consulta)
 										{
