@@ -29,49 +29,52 @@
 
 
 <?php
-					if(isset($_POST['submit1']))
-					{
-
-					
-						if (( !empty($_POST['SocioUsuario'])) && ( !empty($_POST['socioEmail'])) && ( !empty($_POST['SocioPassword'])) && ( !empty($_POST['SocioDNI'])) && ( !empty($_POST['SocioTelf'])) )
-							{
-								
-								$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-								$userdni = $_POST['SocioDNI'];
-								$useremail = $_POST['socioEmail'];
-								
-								$sql_d = "SELECT * FROM usuarios WHERE dni='$userdni'";
-								$sql_e = "SELECT * FROM usuarios WHERE email='$useremail'";
-								$res_d = mysqli_query($conexion, $sql_d);
-								$res_e = mysqli_query($conexion, $sql_e);
-								
-								if ((mysqli_num_rows($res_d) == 0) && (mysqli_num_rows($res_e) == 0))
-								
-								{
-                  // Habría que ponerle sah1($_POST[SocioPassword]) <- Para que no se viera el passwd si consultamos en BBDD
-									$sql = "INSERT INTO usuarios (usuario, email, passwd,  dni, telefono, activo) values ('$_POST[SocioUsuario]','$_POST[socioEmail]','$_POST[SocioPassword]','$_POST[SocioDNI]','$_POST[SocioTelf]', 1)";
-									$consulta = mysqli_query($conexion, $sql);
-									if($consulta)
-										{
-											include ('confirm.php');
-											//ini_set('SMTP','smtp.gmail.com');
-											//ini_set('smtp_port',587);
-											//$to = "meyama2019@gmail.com";
-											//$subject = "Alta como socio";
-											//$mensaje = "Buenos días,\r\n¡Te damos la bienvenida!.\r\n¡Gracias por formar parte de nuestra familia!\r\n" ;
-											//$headers = "From: meyama2019@gmail.com" . "\r\n" . "BCC: meyama2019@gmail.com;  ";
-											//mail($to,$subject,$mensaje,$headers);
-										}
-									mysqli_close($conexion);
-								
-								}
-								else
-								{
-									include ('noconfirm.php');		
-								}
-							}
-					}													
-										
+          if(isset($_POST['submit1']))
+          {
+          
+            if (( !empty($_POST['SocioUsuario'])) && ( !empty($_POST['socioEmail'])) && ( !empty($_POST['SocioPassword'])) && ( !empty($_POST['SocioDNI'])) && ( !empty($_POST['SocioTelf'])) )
+              {
+                
+                $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                $username = $_POST['SocioUsuario'];
+                $userdni = $_POST['SocioDNI'];
+                $useremail = $_POST['socioEmail'];
+                
+                $sql_u = "SELECT * FROM usuarios WHERE usuario='$username'";
+                $sql_d = "SELECT * FROM usuarios WHERE dni='$userdni'";
+                $sql_e = "SELECT * FROM usuarios WHERE email='$useremail'";
+                $res_u = mysqli_query($conexion, $sql_u);
+                $res_d = mysqli_query($conexion, $sql_d);
+                $res_e = mysqli_query($conexion, $sql_e);
+                
+                $password = sha1($_POST['SocioPassword']);
+                
+                if ((mysqli_num_rows($res_d) == 0) && (mysqli_num_rows($res_e) == 0) && (mysqli_num_rows($res_u) == 0))
+                
+                {
+                  $sql = "INSERT INTO usuarios (usuario, email, passwd,  dni, telefono, activo, rol_id ) values ('$_POST[SocioUsuario]','$_POST[socioEmail]','$password','$_POST[SocioDNI]','$_POST[SocioTelf]', 1, 1)";
+                  $consulta = mysqli_query($conexion, $sql);
+                  if($consulta)
+                    {
+                      include ('confirm.php');
+                      //ini_set('SMTP','smtp.gmail.com');
+                      //ini_set('smtp_port',587);
+                      //$to = "meyama2019@gmail.com";
+                      //$subject = "Alta como socio";
+                      //$mensaje = "Buenos días,\r\n¡Te damos la bienvenida!.\r\n¡Gracias por formar parte de nuestra familia!\r\n" ;
+                      //$headers = "From: meyama2019@gmail.com" . "\r\n" . "BCC: meyama2019@gmail.com;  ";
+                      //mail($to,$subject,$mensaje,$headers);
+                    }
+                  mysqli_close($conexion);
+                
+                }
+                else
+                {
+                  include ('noconfirm.php');    
+                }
+              }
+          }                         
+                    
 ?>
 
 
