@@ -27,6 +27,7 @@
 </head>
 
 
+
 <?php
 					if(isset($_POST['submit1']))
 					{
@@ -71,6 +72,7 @@
 					}													
 										
 ?>
+
 
 
 
@@ -125,7 +127,7 @@
 
      <!-- Modal del Alta de Socio  ------------------------------------------------------->
 
-       <!-- Modal -->
+      <!-- Modal -->
            <div class="modal fade" id="exampleModa2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe2" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -172,7 +174,13 @@
                       </center>
                      
                     </form>
-             
+					
+					
+					
+					
+
+
+                  
                 </div>
                
               </div>

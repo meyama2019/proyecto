@@ -1,8 +1,24 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Trabajo - Modulo 3</title>
+    <script type="text/javascript" src="http://localhost/proyecto/js/jquery.js"></script>
+    <script type="text/javascript" src="http://localhost/proyecto/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://localhost/proyecto/css/bootstrap.min.css">
+    <link rel="stylesheet" media="screen" type="text/css" href="http://localhost/proyecto/css/principal.css" />
+    <link rel="stylesheet" media="print" type="text/css" href="http://localhost/proyecto/css/imprimir.css" />
+</head>
+
+
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                      <a class="nav-link" href="../home.php">Home <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="http://localhost/proyecto/home.php">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item ">
                       <a class="nav-link" href="http://localhost/proyecto/asociacion/galeria.php">Galería</a>
@@ -50,9 +66,13 @@
                   <form class="form-inline form my-2 my-lg-0" action="http://localhost/proyecto/asociacion/logout.php" method="post">
                     <ul class="nav">
                                <li class="nav-item">
-                                <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa2">
-                                    Hazte Socio
-                                </button>
+							   
+								<?php
+                                    if (isset($_SESSION['rol1']) !==  1 )
+                                      {
+										echo ('<button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa2">Hazte Socio</button>');
+									  }
+								?>	  
                               </li>  
                               <li class="nav-item">
                                 <?php

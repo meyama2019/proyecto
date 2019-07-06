@@ -1,9 +1,9 @@
 <?php
 session_start();
-define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/proyecto/');
-include(RAIZ . 'asociacion/header.php');
-
-require_once('../models/connection.php');
+//define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
+//include(RAIZ . 'asociacion/header.php');
+include ('../includes/header.php');
+include('../models/connection.php');
     $listaUsuarios = array(
    array('id_usuario' => '','usuario' => '','passwd' => '','metodo' => '','email' => '','Nom_Ape' => '','dni' => '','provincia' => '','Pais' => '','telefono' => '','cuenta' => '','activo' => '1','rol_id' => '')
 );
@@ -95,5 +95,5 @@ require_once('../models/connection.php');
 
 
  <?php
-  require (RAIZ . 'includes/footer.php');
+  include ('footer.php');
 ?>

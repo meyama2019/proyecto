@@ -1,7 +1,9 @@
 <?php
 
-define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/proyecto/');
-include(RAIZ . 'asociacion/header.php');
+//define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
+//include(RAIZ . 'asociacion/header.php');
+include ('includes/header.php');
+
   
 ?>
 
@@ -72,5 +74,5 @@ include(RAIZ . 'asociacion/header.php');
 
  
 <?php
-  require (RAIZ . 'includes/footer.php');
+  include ('footer.php');
 ?>

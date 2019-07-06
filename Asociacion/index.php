@@ -1,10 +1,9 @@
 <?php
 session_start();
-//define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/');
-//include('../proyecto/includes/header.php');
-define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/proyecto/'); 
-include(RAIZ . 'includes/header.php');
-//include('http://localhost/proyecto/includes/header.php');
+//define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
+//include(RAIZ . 'asociacion/header.php');
+include ('includes/header.php');
+include('models/connection.php');
 
 require_once('menu.php');
 
@@ -90,5 +89,5 @@ require_once('menu.php');
             </div>
 
 <?php
-  require (RAIZ . 'includes/footer.php');
+  include ('footer.php');
 ?>

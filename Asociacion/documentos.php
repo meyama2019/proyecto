@@ -1,7 +1,8 @@
 <?php
 session_start();
-define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/proyecto/');
-include(RAIZ . 'asociacion/header.php');
+//define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
+//include(RAIZ . 'asociacion/header.php');
+include ('../includes/header.php');
 include('../models/connection.php');
     $listaUsuarios =[];
     $db=Db::getConnect();
@@ -205,5 +206,5 @@ include('../models/connection.php');
    
 
 <?php
-  require (RAIZ . 'includes/footer.php');
+  include ('footer.php');
 ?>
