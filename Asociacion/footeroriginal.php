@@ -27,7 +27,6 @@
 
 
 
-
 <?php
           if(isset($_POST['submit1']))
           {
@@ -76,36 +75,45 @@
           }  
 
 
-    ?>
-
-    <?php
-     if(isset($_POST['submitur']))
+                        
+                    
+          // Inserción en BBDD de Usuarios Registrados
+          if(isset($_POST['submitur'])) 
           {
-          
-           if ((!empty($_POST['ur_email'])) && (!empty($_POST['ur_passwd'])))
+            if (!empty($_POST['ur_email']) && !empty($_POST['ur_passwd']))  
               {
-                
-                $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                 $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+   
+                    // Comprobamos los campos si están inicializados (los obligatorios)
+
+                //$us=$_POST["as_usuario"]; // obligatorio
                 $em=$_POST['ur_email']; //obligatorio
                 $pw=sha1($_POST['ur_passwd']); //obligatorio
+                //$na=$_POST["as_nbape"];  //obligatorio
+                //$dni=$_POST["as_dni"];  //obligatorio
+                //$pro=$_POST["as_prov"];
+                //$pais=$_POST["as_pais"];
+                //$tfno=$_POST["as_tfno"]; //obligatorio
+                //$cta=$_POST["as_cta"];  
                 $activo=0; // <- Usuario registrado activo
-                $rol=1;    // <- Rol de Usuario registrado
+                $rol=1;    // <- Rol de Usuario registrado          
+                //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
                 
-               
-                $sql_e = "SELECT * FROM usuarios WHERE email='$em'";
-               
+                
+             
+                $sql_e = "SELECT * FROM usuarios WHERE email='$em' ";               
                 $res_e = mysqli_query($conexion, $sql_e);
-                
-               
-                
+             
+
                 if ((mysqli_num_rows($res_e) == 0))
                 
                 {
-                  $sql = "INSERT INTO usuarios ( email, passwd, metodo, activo, rol_id )
-                   values ('$_POST[ur_email]','$pw',1,'$activo', '$rol')";
+                  $sql = "INSERT INTO usuarios (email, passwd,metodo, activo, rol_id )
+                   values ('$em','$pw',1, 0, 1)";
                   $consulta = mysqli_query($conexion, $sql);
                   if($consulta)
                     {
+                      mysqli_close($conexion);    
                       include ('confirm_ur.php');
                       //ini_set('SMTP','smtp.gmail.com');
                       //ini_set('smtp_port',587);
@@ -115,18 +123,19 @@
                       //$headers = "From: meyama2019@gmail.com" . "\r\n" . "BCC: meyama2019@gmail.com;  ";
                       //mail($to,$subject,$mensaje,$headers);
                     }
-                  mysqli_close($conexion);
-                
-                }
+                              
                 else
-                {
-                  include ('noconfirm_ur.php');    
-                }
+                  {
+                      mysqli_close($conexion);  
+                    include ('noconfirm_ur.php');    
+                  }
               }
-          }  
+          }
+
+            
+
 
     ?>
-
                 
 
 
@@ -137,7 +146,7 @@
 
 
       <!-- Modal -->
-          <div class="modal fade" id="exampleModalur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelur" aria-hidden="true">
+          <div class="modal fade" id="exampleModalur" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabelur" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -380,6 +389,7 @@
       </div>
        
     </div>   
-
+       
+  
 </body>
 </html>

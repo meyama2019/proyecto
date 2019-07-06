@@ -55,7 +55,7 @@ require_once('menu.php');
                    asociaci&oacute;n, teniendo voz y voto en las decisiones que se tomen. Disfrutar de todas las
                    ventajas de pertenecer a nuestra Asociaci&oacute;n, convenios, acuerdos, adoptados con otras
                    entidades y servicios que dia a dia vamos seleccionando para dar lo mejor.</p>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalur">
                       Regístrate
                     </button>
             </article>
@@ -89,5 +89,5 @@ require_once('menu.php');
             </div>
 
 <?php
-  include ('footer.php');
+  include_once ('footer.php');
 ?>
