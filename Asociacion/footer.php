@@ -48,6 +48,7 @@
 								if ((mysqli_num_rows($res_d) == 0) && (mysqli_num_rows($res_e) == 0))
 								
 								{
+                  // Habría que ponerle sah1($_POST[SocioPassword]) <- Para que no se viera el passwd si consultamos en BBDD
 									$sql = "INSERT INTO usuarios (usuario, email, passwd,  dni, telefono, activo) values ('$_POST[SocioUsuario]','$_POST[socioEmail]','$_POST[SocioPassword]','$_POST[SocioDNI]','$_POST[SocioTelf]', 1)";
 									$consulta = mysqli_query($conexion, $sql);
 									if($consulta)

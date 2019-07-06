@@ -16,6 +16,15 @@ $_SESSION['rol']    <-- contiene Rol_id de tabla usuario para controlar qué se 
 3	BAJA DEFINITIVA
 
 
+*/
+
+
+/* *********** ESTADOS DEL SOCIO / USUARIO campo activo tabla usuarios.
+
+1	Usuario Registrado
+2	SOCIO
+95 	Administrador
+
 
 */
 
