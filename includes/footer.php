@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,79 +21,233 @@
         }
     </style>
    
-       
+ <script type="text/javascript">
+ function contar ()
+{
+    var x = document.getElementById("ContactoMensasje").value.length;
+		
+		if (x == 0)
+		{
+			document.getElementById("labelcontactmessage").innerHTML = "M&aacute;nimo 200 car&aacute;cteres";
+		}
+		else if (x > 0 && x < 200)
+		{
+			var y = "Quedan " + (201-x) + " " + "letras";
+			y = y.bold();
+			document.getElementById("labelcontactmessage").innerHTML = y;
+		}
+
+}	
+</script>      
    
 </head>
 
 
 
+
 <?php
-					if(isset($_POST['submit1']))
+          if(isset($_POST['submit1']))
+          {
+          
+            if (( !empty($_POST['SocioUsuario'])) && ( !empty($_POST['socioEmail'])) && ( !empty($_POST['SocioPassword'])) && ( !empty($_POST['SocioDNI'])) && ( !empty($_POST['SocioTelf'])) )
+              {
+                
+                $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                $username = $_POST['SocioUsuario'];
+                $userdni = $_POST['SocioDNI'];
+                $useremail = $_POST['socioEmail'];
+                
+                $sql_u = "SELECT * FROM usuarios WHERE usuario='$username'";
+                $sql_d = "SELECT * FROM usuarios WHERE dni='$userdni'";
+                $sql_e = "SELECT * FROM usuarios WHERE email='$useremail'";
+                $res_u = mysqli_query($conexion, $sql_u);
+                $res_d = mysqli_query($conexion, $sql_d);
+                $res_e = mysqli_query($conexion, $sql_e);
+                
+                $password = sha1($_POST['SocioPassword']);
+                
+                if ((mysqli_num_rows($res_d) == 0) && (mysqli_num_rows($res_e) == 0) && (mysqli_num_rows($res_u) == 0))
+                
+                {
+                  $sql = "INSERT INTO usuarios (usuario, email, passwd,  dni, telefono, activo, rol_id ) values ('$_POST[SocioUsuario]','$_POST[socioEmail]','$password','$_POST[SocioDNI]','$_POST[SocioTelf]', 1, 1)";
+                  $consulta = mysqli_query($conexion, $sql);
+                  if($consulta)
+                    {
+                      include ('confirm.php');
+                      //ini_set('SMTP','smtp.gmail.com');
+                      //ini_set('smtp_port',587);
+                      //$to = "meyama2019@gmail.com";
+                      //$subject = "Alta como socio";
+                      //$mensaje = "Buenos días,\r\n¡Te damos la bienvenida!.\r\n¡Gracias por formar parte de nuestra familia!\r\n" ;
+                      //$headers = "From: meyama2019@gmail.com" . "\r\n" . "BCC: meyama2019@gmail.com;  ";
+                      //mail($to,$subject,$mensaje,$headers);
+                    }
+                  mysqli_close($conexion);
+                
+                }
+                else
+                {
+                  include ('noconfirm.php');    
+                }
+              }
+          }  
+
+
+    ?>
+
+<?php
+     if(isset($_POST['submitur']))
+          {
+          
+           if ((!empty($_POST['ur_email'])) && (!empty($_POST['ur_passwd'])))
+              {
+                
+                $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                $em=$_POST['ur_email']; //obligatorio
+                $pw=sha1($_POST['ur_passwd']); //obligatorio
+                $activo=0; // <- Usuario registrado activo
+                $rol=1;    // <- Rol de Usuario registrado
+                
+               
+                $sql_e = "SELECT * FROM usuarios WHERE email='$em'";
+               
+                $res_e = mysqli_query($conexion, $sql_e);
+                
+               
+                
+                if ((mysqli_num_rows($res_e) == 0))
+                
+                {
+                  $sql = "INSERT INTO usuarios ( email, passwd, metodo, activo, rol_id )
+                   values ('$_POST[ur_email]','$pw',1,'$activo', '$rol')";
+                  $consulta = mysqli_query($conexion, $sql);
+                  if($consulta)
+                    {
+                      include ('confirm_ur.php');
+                      //ini_set('SMTP','smtp.gmail.com');
+                      //ini_set('smtp_port',587);
+                      //$to = "meyama2019@gmail.com";
+                      //$subject = "Alta como socio";
+                      //$mensaje = "Buenos días,\r\n¡Te damos la bienvenida!.\r\n¡Gracias por formar parte de nuestra familia!\r\n" ;
+                      //$headers = "From: meyama2019@gmail.com" . "\r\n" . "BCC: meyama2019@gmail.com;  ";
+                      //mail($to,$subject,$mensaje,$headers);
+                    }
+                  mysqli_close($conexion);
+                
+                }
+                else
+                {
+                  include ('noconfirm_ur.php');    
+                }
+              }
+          }  
+
+    ?>
+
+ 
+
+<?php
+          if(isset($_POST['submitContacto']))
+          {
+
+                $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                $sql = "INSERT INTO contacto (nombre, email, telefono, asunto, mensaje, activo) values ('$_POST[ContactoNombre]','$_POST[ContactoEmail]','$_POST[ContactoTelefono]','$_POST[ContactoAsunto]','$_POST[ContactoMensasje]', 1)";
+                $consulta = mysqli_query($conexion, $sql);
+				if($consulta)
+                    {
+                      include ('confirm_me.php');
+                      //ini_set('SMTP','smtp.gmail.com');
+                      //ini_set('smtp_port',587);
+                      //$to = "meyama2019@gmail.com";
+                      //$subject = "Alta como socio";
+                      //$mensaje = "Buenos días,\r\n¡Te damos la bienvenida!.\r\n¡Gracias por formar parte de nuestra familia!\r\n" ;
+                      //$headers = "From: meyama2019@gmail.com" . "\r\n" . "BCC: meyama2019@gmail.com;  ";
+                      //mail($to,$subject,$mensaje,$headers);
+                    mysqli_close($conexion);
+					}
+				else
 					{
+					  include ('noconfirm.php');    
+					}
+          }  
 
-					
-						if (( !empty($_POST['SocioUsuario'])) && ( !empty($_POST['socioEmail'])) && ( !empty($_POST['SocioPassword'])) && ( !empty($_POST['SocioDNI'])) && ( !empty($_POST['SocioTelf'])) )
-							{
-								
-								$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-								$username = $_POST['SocioUsuario'];
-								$userdni = $_POST['SocioDNI'];
-								$useremail = $_POST['socioEmail'];
-								
-								$sql_u = "SELECT * FROM usuarios WHERE usuario='$username'";
-								$sql_d = "SELECT * FROM usuarios WHERE dni='$userdni'";
-								$sql_e = "SELECT * FROM usuarios WHERE email='$useremail'";
-								$res_u = mysqli_query($conexion, $sql_u);
-								$res_d = mysqli_query($conexion, $sql_d);
-								$res_e = mysqli_query($conexion, $sql_e);
-								
-								$password = sha1($_POST['SocioPassword']);
-								
-								if ((mysqli_num_rows($res_d) == 0) && (mysqli_num_rows($res_e) == 0) && (mysqli_num_rows($res_u) == 0))
-								
-								{
-									$sql = "INSERT INTO usuarios (usuario, email, passwd,  dni, telefono, activo, rol_id ) values ('$_POST[SocioUsuario]','$_POST[socioEmail]','$password','$_POST[SocioDNI]','$_POST[SocioTelf]', 1, 1)";
-									$consulta = mysqli_query($conexion, $sql);
-									if($consulta)
-										{
-											include ('confirm.php');
-											//ini_set('SMTP','smtp.gmail.com');
-											//ini_set('smtp_port',587);
-											//$to = "meyama2019@gmail.com";
-											//$subject = "Alta como socio";
-											//$mensaje = "Buenos días,\r\n¡Te damos la bienvenida!.\r\n¡Gracias por formar parte de nuestra familia!\r\n" ;
-											//$headers = "From: meyama2019@gmail.com" . "\r\n" . "BCC: meyama2019@gmail.com;  ";
-											//mail($to,$subject,$mensaje,$headers);
-										}
-									mysqli_close($conexion);
-								
-								}
-								else
-								{
-									include ('noconfirm.php');		
-								}
-							}
-					}													
-										
-?>
+
+    ?>
 
 
 
+ 
+ <!-- Modal del Contacto y comunicación con Administrador / Empresa  ------------------------------------------------------->
+
+      <!-- Modal -->
+           <div class="modal fade" id="exampleModa4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe4" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabe4">Contactar con la Asociación</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                       <div class="form-group">
+                        <label for="ContactoNombre">Nombre y apellidos</label>
+                        <input type="text" class="form-control" name="ContactoNombre" aria-describedby="emailHelp" placeholder="¿Cómo quieres que te llamemos?" pattern="[A-Za-z \- \/_]{1,45}" title="máximo 45 letras (se admiten espacios y '-&_'" required>
+                      
+                      </div>
+                      <div class="form-group">
+                        <label for="ContactoEmail">Email</label>
+                        <input type="email" class="form-control" name="ContactoEmail" aria-describedby="emailHelp" placeholder="Ej. tuemail@dominio.es" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}" title="Comprueba tu email por favor" required>
+                     
+                      </div>
+                      <div class="form-group">
+                        <label for="ContactoTelefono"´>Teléfono de Contacto</label>
+                        <input type="text" class="form-control" name="ContactoTelefono" aria-describedby="emailHelp" placeholder="Ej. +343987159" pattern="(\+34|0034|34)?[\s|\-|\.]?[6|7|9][\s|\-|\.]?([0-9][\s|\-|\.]?){8}" title="Comprueba tu teléfono por favor: ejemplos: 0034666666666 / +34777777777 / 999999999">
+                      
+                       </div>
+                       <div class="form-group">
+                        <label for="ContactoAsunto">Asunto</label>
+                        <input type="text" class="form-control" name="ContactoAsunto" aria-describedby="asuntoHelp" placeholder="Ej. Queja / Información" required>
+                      
+                      </div>
+                       <div class="form-group">
+                        <label for="ContactoMensasje"´ id="labelcontactmessage" >Mensaje Max.200 Caract.</label>
+                      
+                        <textarea class="span6 form-control" id="ContactoMensasje" name="ContactoMensasje" maxlength="200" rows="3" cols="50" oninput="contar(this)"  placeholder="Escribe tu mensaje..." required></textarea>
+                      
+                      </div>
+
+                        <center>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" name="submitContacto">Enviar</button>
+                       </center>
+                     
+                           
+                     
+                    </form>
 
 
-  <!-- FOOTERRR ---->
-   <!-- Modal del Regístrate ------------------------------------------------------->
+                  
+                </div>
+               
+            </div>
+          </div>
+        </div>
+
+
 
 
 
 
 
       <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="exampleModalur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelur" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Registro de usuario</h5>
+                  <h5 class="modal-title" id="exampleModalLabelur">Registro de usuario</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -103,28 +256,25 @@
 
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                       <div class="form-group">
-                        <label for="exampleInputEmail1">Email address coño</label>
+                        <label for="ur_email">Email address coñazo</label>
                         <input type="email" class="form-control" id="ur_email" name="ur_email" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <small id="emailHelpur" class="form-text text-muted">We'll never share your email with anyone else.</small>
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
+                        <label for="ur_passwd">Password</label>
                         <input type="password" class="form-control" id="ur_passwd" name="ur_passwd" placeholder="Password">
                       </div>
                       <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Enviar Noticias</label>
+                        <input type="checkbox" class="form-check-input" id="exampleCheckur">
+                        <label class="form-check-label" for="exampleCheckur">Enviar Noticias</label>
                       </div>
-                    
-                    </form>
-
-
-                  
+                              
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
                   <button type="submit" class="btn btn-primary" name="submitur">Registro</button>
                 </div>
+               </form>
               </div>
             </div>
           </div>
@@ -243,64 +393,7 @@
         </div>
 
 
-        <!-- Modal del Contacto y comunicación con Administrador / Empresa  ------------------------------------------------------->
-
-      <!-- Modal -->
-           <div class="modal fade" id="exampleModa4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe4" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabe4">Contactar con la Asociación</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-
-                    <form>
-                       <div class="form-group">
-                        <label for="exampleInputEmail4">Nombre y apellidos</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="namelHelp" placeholder="Name" required>
-                      
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
-                      
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputEmail1"´>Teléfono de Contacto</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="tfnolHelp" placeholder="Enter your phone" >
-                      
-                       </div>
-                       <div class="form-group">
-                        <label for="exampleInputEmail1">Asunto</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="asuntoHelp" placeholder="Enter your phone" >
-                      
-                      </div>
-                       <div class="form-group">
-                        <label for="exampleInputEmail1"´>Mensaje Max.200 Caract.</label>
-                      
-                        <textarea class="span6 form-control" rows="3" cols="50" placeholder="Escribe tus comentarios..." required></textarea>
-                      
-                      </div>
-
-                        <center>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Enviar</button>
-                       </center>
-                     
-                           
-                     
-                    </form>
-
-
-                  
-                </div>
-               
-            </div>
-          </div>
-        </div>
+       
 
 
 
@@ -336,7 +429,6 @@
       </div>
        
     </div>   
-       
-  
+
 </body>
 </html>
