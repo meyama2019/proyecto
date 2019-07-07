@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6eb03604-314e-4f13-b6fb-961427d77393" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Asociacion/noticias.php" beforeDir="false" afterPath="$PROJECT_DIR$/Asociacion/noticias.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,28 +16,12 @@
     </execution>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Asociacion/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2431">
-              <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Asociacion/login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1117" />
-          </provider>
-        </entry>
-      </file>
+    <leaf>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Asociacion/noticias.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="151" column="61" lean-forward="true" selection-start-line="151" selection-start-column="61" selection-end-line="151" selection-end-column="61" />
+            <state relative-caret-position="172">
+              <caret line="77" column="75" selection-start-line="77" selection-start-column="58" selection-end-line="77" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -137,18 +121,20 @@
       <updated>1561407297336</updated>
       <workItem from="1561407299014" duration="1237000" />
       <workItem from="1561575754990" duration="446000" />
-      <workItem from="1562337917957" duration="304000" />
+      <workItem from="1562337917957" duration="728000" />
+      <workItem from="1562341346670" duration="197000" />
+      <workItem from="1562441204148" duration="12000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1770000" />
+    <option name="totallyTimeSpent" value="2403000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2647504" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -201,22 +187,20 @@
     <entry file="file://$PROJECT_DIR$/docs/variables.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/Asociacion/login.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/Asociacion/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2431">
-          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+        <state relative-caret-position="17">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Asociacion/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1117" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Asociacion/noticias.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="151" column="61" lean-forward="true" selection-start-line="151" selection-start-column="61" selection-end-line="151" selection-end-column="61" />
+        <state relative-caret-position="172">
+          <caret line="77" column="75" selection-start-line="77" selection-start-column="58" selection-end-line="77" selection-end-column="75" />
         </state>
       </provider>
     </entry>

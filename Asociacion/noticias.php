@@ -73,7 +73,9 @@ include('../models/connection.php');
                                       </div>
                                       <div class="card-body">
                                         <h6 class="card-title">'. utf8_encode($listanoticias[$x]['fechainicio']) .'</h6>
-                                        <p class="card-text">'. utf8_encode($listanoticias[$x]['descripcion']) .'</p>
+                                        <p class="card-text">'. utf8_encode(substr($listanoticias[$x]['descripcion'],0,105)) . '....'.'</p>
+                                        <p class="card-text1">'. utf8_encode($listanoticias[$x]['descripcion']) .'</p>
+ 
                                      
                                         <a href="#" class="btn btn-primary">Ver más..</a>
                                       </div>
@@ -97,3 +99,32 @@ include('../models/connection.php');
  <?php
   include ('footer.php');
 ?>
+
+<script type="text/javascript">
+
+    onload=function() {
+
+        $(document).ready(function () {
+
+            $(".card-text1").hide();
+
+            $(".card-body a").click(function () {
+
+                if ($(this).text() == "Ver más..") {
+
+                    $(this).prev().prev().hide();
+                    $(this).prev().slideToggle();
+                    $(this).text("Ocultar..");
+                }
+                else{
+                    $(this).prev().prev().show();
+                    $(this).prev().slideToggle();
+                    $(this).text("Ver más..");
+
+                }
+            });
+        });
+
+    }
+
+</script>
