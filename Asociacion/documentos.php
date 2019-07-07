@@ -16,11 +16,12 @@ include('../models/connection.php');
       require_once('menu.php');
   
 ?>
-
-		<?php
-            if (isset($_SESSION['rol1']) !==  1 )
+	<?php
+            if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 )
 				{
-				?>						
+				?>	
+
+								
 
 							<div class="accordion" id="accordionExample">
 								  <div class="card">
@@ -45,8 +46,9 @@ include('../models/connection.php');
 																<th onclick="w3.sortHTML('#myTable', '.item', 'td:nth-child(5)')" style="cursor:pointer" >Enlace</th>
 															</tr>
 															<tbody>
-															
 																<?php
+            													
+																
 																	$date = date("Y-m-d");
 																	$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
 																	$sql = "SELECT * FROM documentos, usuarios
@@ -80,6 +82,7 @@ include('../models/connection.php');
 																		{
 																			echo "No hay documentos que mostrar";
 																		}
+																	
 																?>
 
 
@@ -98,7 +101,11 @@ include('../models/connection.php');
 				}
 			else
 				{
-					echo ("No tienes permiso para visualizar el contenido");
+					echo('<div class="container">
+								<div class="alert alert-danger" role="alert">
+								 No tienes permiso para visualizar el contenido
+								</div></div> ');
+					
 				}		
 					  
 							  

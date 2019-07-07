@@ -54,8 +54,14 @@ include('../models/connection.php');
                  while($row1 = $result1->fetch_assoc())
                  {
                    
-                    echo('<div class="col-4"><img src='.$row1['documento'].' alt="..." class="img-thumbnail">
-                                      </div>');
+                   echo('<figure class="col-md-4">
+                        <a href='.$row1['documento'].' data-size="800x600">
+                          <img alt="picture" src='.$row1['documento'].' "
+                            class="img-fluid">
+                        </a>
+                      </figure>');
+                   // echo('<div class="col-4"><img src='.$row1['documento'].' alt="..." class="img-thumbnail">
+                   //                   </div>');
                  }
                  echo('</div>');
                }
@@ -66,7 +72,7 @@ include('../models/connection.php');
       
   ?>
 
- 
+
 
 
  

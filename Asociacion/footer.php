@@ -368,7 +368,7 @@
                   
                </div>
               <div class="col-1">
-                <a href="asociacion/contacto.html" class="badge badge-info" data-toggle="modal" data-target="#exampleModa4" >Contacto</a>
+                <a href="" class="badge badge-info" data-toggle="modal" data-target="#exampleModa4" >Contacto</a>
                 
               </div>
 
