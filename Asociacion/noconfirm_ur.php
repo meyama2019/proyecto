@@ -20,12 +20,16 @@
          height: 250px;
         }
     </style>
+    <script type="text/javascript">
+        $('.toast').toast('show');
+    </script>
    
        
    
 </head>
 
         
+
  
 
             <div class="col-12 col-5 shadow p-3 mb-5  rounded">

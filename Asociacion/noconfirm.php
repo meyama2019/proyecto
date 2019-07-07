@@ -1,6 +1,8 @@
 
         
- 
+ 			
+
+
 
             <div class="col-12 col-5 shadow p-3 mb-5  rounded">
              <article id="general">

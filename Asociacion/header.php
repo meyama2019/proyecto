@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <link rel="stylesheet" media="screen" type="text/css" href="../css/principal.css" />
     <link rel="stylesheet" media="print" type="text/css" href="../css/imprimir.css" />
+    <script type="text/javascript" src="../js/inicio.js"></script>
 </head>
 
 
