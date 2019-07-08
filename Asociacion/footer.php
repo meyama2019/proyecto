@@ -151,7 +151,9 @@
           {
 
                 $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                $sql = "INSERT INTO contacto (nombre, email, telefono, asunto, mensaje, activo) values ('$_POST[ContactoNombre]','$_POST[ContactoEmail]','$_POST[ContactoTelefono]','$_POST[ContactoAsunto]','$_POST[ContactoMensasje]', 1)";
+                $acentos="SET NAMES 'utf8'";
+                mysqli_query($conexion, $acentos);
+                $sql = "INSERT INTO contacto (fecha_entrada, nombre, email, telefono, asunto, mensaje, activo) values (current_timestamp ,'$_POST[ContactoNombre]','$_POST[ContactoEmail]','$_POST[ContactoTelefono]','$_POST[ContactoAsunto]','$_POST[ContactoMensasje]', 1)";
                 $consulta = mysqli_query($conexion, $sql);
 				if($consulta)
                     {

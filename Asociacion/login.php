@@ -97,6 +97,14 @@ require_once('../models/connection.php');
         }
         $_SESSION['tot_pen'] = $tot;
 
+        $num_rows=$db->query('SELECT * FROM contacto where activo=1'); // 1 Pendientes aprobación
+        $tot=0;
+         foreach ($num_rows->fetchAll() as $contacto) {
+          $tot=$tot+1;
+        }
+        $_SESSION['tot_con'] = $tot;
+
+
       }
 
     //echo ($_SESSION['login1'].$_SESSION['rol1']);

@@ -52,7 +52,12 @@
                     </li>
                      <li class="nav-item">
                       <button type="button" class="btn btn-outline-danger btn-sm">
-                        Solicitudes <span class="badge badge-light">'.$_SESSION['tot_pen'].'</span>
+                        Altas Socios <span class="badge badge-light">'.$_SESSION['tot_pen'].'</span>
+                        <span class="sr-only">unread messages</span>
+                      </button>
+                      <li class="nav-item">
+                      <button type="button" class="btn btn-outline-warning btn-sm">
+                        Mensajes <span class="badge badge-light">'.$_SESSION['tot_con'].'</span>
                         <span class="sr-only">unread messages</span>
                       </button>
                     </li>
