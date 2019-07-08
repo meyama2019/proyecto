@@ -17,7 +17,7 @@ include('../models/connection.php');
   
 ?>
 	<?php
-            if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 )
+            if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0) // Habría que controlar activo = 0
 				{
 				?>	
 

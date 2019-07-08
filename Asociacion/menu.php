@@ -49,18 +49,22 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                       </div>
-                    </li>
-                     <li class="nav-item">
-                      <button type="button" class="btn btn-outline-danger btn-sm">
-                        Altas Socios <span class="badge badge-light">'.$_SESSION['tot_pen'].'</span>
+                      </li>
+                     <li>
+                       <a href="http://localhost/proyecto/asociacion/sociosptes.php" class="btn btn-outline-danger btn-sm">
+                      Socios Ptes <span class="badge badge-light">'.$_SESSION['tot_pen'].'</span>
                         <span class="sr-only">unread messages</span>
-                      </button>
-                      <li class="nav-item">
-                      <button type="button" class="btn btn-outline-warning btn-sm">
-                        Mensajes <span class="badge badge-light">'.$_SESSION['tot_con'].'</span>
+                       </a>
+                     </li>
+
+                    <li>
+                       <a href="http://localhost/proyecto/asociacion/mensajesptes.php" class="btn btn-outline-warning btn-sm">
+                       Mensajes <span class="badge badge-light">'.$_SESSION['tot_con'].'</span>
                         <span class="sr-only">unread messages</span>
-                      </button>
-                    </li>
+                       </a>
+                     </li>
+
+                     
                    '
  
                     

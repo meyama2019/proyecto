@@ -19,7 +19,7 @@ $_SESSION['rol']    <-- contiene Rol_id de tabla usuario para controlar qué se 
 */
 
 
-/* *********** ESTADOS DEL SOCIO / USUARIO campo activo tabla usuarios.
+/* *********** ESTADOS DEL SOCIO / USUARIO campo Rol_id tabla usuarios.
 
 1	Usuario Registrado
 2	SOCIO
@@ -29,7 +29,10 @@ $_SESSION['rol']    <-- contiene Rol_id de tabla usuario para controlar qué se 
 */
 
 
+/* *********** ESTADOS campo activo TABLA CONTACTO.
 
+0 - Leido
+1 - Pendiente leer 
 
 
 
