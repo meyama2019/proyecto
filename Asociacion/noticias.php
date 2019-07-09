@@ -42,11 +42,11 @@ include('../models/connection.php');
                                 {
                                   case 95:
                                     # code...
-                                    $sql=$db->query('SELECT * FROM noticias order by 3');
+                                    $sql=$db->query('SELECT * FROM noticias order by 3 desc');
                                     break;
                                    case 2:
                                     # code...
-                                     $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate() order by 3');
+                                     $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate() order by 3 desc');
                                     break;
                                     case 1:
                                     # code...
@@ -115,6 +115,7 @@ include('../models/connection.php');
                     $(this).prev().prev().hide();
                     $(this).prev().slideToggle();
                     $(this).text("Ocultar..");
+                    
                 }
                 else{
                     $(this).prev().prev().show();
