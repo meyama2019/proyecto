@@ -42,11 +42,11 @@ include('../models/connection.php');
                                 {
                                   case 95:
                                     # code...
-                                    $sql=$db->query('SELECT * FROM noticias');
+                                    $sql=$db->query('SELECT * FROM noticias order by 3');
                                     break;
                                    case 2:
                                     # code...
-                                     $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()');
+                                     $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate() order by 3');
                                     break;
                                     case 1:
                                     # code...
