@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6eb03604-314e-4f13-b6fb-961427d77393" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Asociacion/noticias.php" beforeDir="false" afterPath="$PROJECT_DIR$/Asociacion/noticias.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Asociacion/noticias.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="48" column="90" selection-start-line="48" selection-start-column="90" selection-end-line="48" selection-end-column="90" />
+            <state relative-caret-position="325">
+              <caret line="123" column="57" selection-start-line="123" selection-start-column="57" selection-end-line="123" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -69,21 +70,6 @@
               <item name="proyecto" type="b2602c69:ProjectViewProjectNode" />
               <item name="proyecto" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="proyecto" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proyecto" type="462c0819:PsiDirectoryNode" />
-              <item name="Asociacion" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proyecto" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proyecto" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="proyecto" type="b2602c69:ProjectViewProjectNode" />
-              <item name="proyecto" type="462c0819:PsiDirectoryNode" />
-              <item name="includes" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -125,18 +111,20 @@
       <workItem from="1562341346670" duration="197000" />
       <workItem from="1562441204148" duration="12000" />
       <workItem from="1562523617058" duration="957000" />
-      <workItem from="1562697311457" duration="637000" />
+      <workItem from="1562697311457" duration="816000" />
+      <workItem from="1562830049176" duration="596000" />
+      <workItem from="1562839441846" duration="12000" />
+      <workItem from="1562861714410" duration="1130000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3997000" />
+    <option name="totallyTimeSpent" value="5914000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27231467" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28517398" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -201,8 +189,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Asociacion/noticias.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="48" column="90" selection-start-line="48" selection-start-column="90" selection-end-line="48" selection-end-column="90" />
+        <state relative-caret-position="325">
+          <caret line="123" column="57" selection-start-line="123" selection-start-column="57" selection-end-line="123" selection-end-column="57" />
         </state>
       </provider>
     </entry>
