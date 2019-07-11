@@ -69,7 +69,8 @@
                 if ((mysqli_num_rows($res_d) == 0) && (mysqli_num_rows($res_e) == 0) && (mysqli_num_rows($res_u) == 0))
                 
                 {
-                  $sql = "INSERT INTO usuarios (usuario, email, passwd,  dni, telefono, activo, rol_id ) values ('$_POST[SocioUsuario]','$_POST[socioEmail]','$password','$_POST[SocioDNI]','$_POST[SocioTelf]', 1, 1)";
+                  $sql = "INSERT INTO usuarios (usuario, passwd, email, Nom_Ape,  dni, provincias, pais, telefono, cuenta, activo, rol_id ) 
+				  values ('$_POST[SocioUsuario]','$password','$_POST[socioEmail]','$_POST[NombreApellidosSocio]','$_POST[SocioDNI]','$_POST[SocioProvincia]','$_POST[SocioPais]','$_POST[SocioTelf]', '$_POST[SocioCuenta]',1, 1)";
                   $consulta = mysqli_query($conexion, $sql);
                   if($consulta)
                     {
@@ -94,6 +95,11 @@
 
 
     ?>
+
+ 	
+	
+	
+	
 
 <?php
      if(isset($_POST['submitur']))
@@ -300,30 +306,69 @@
 				    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                       <div class="form-group">
                         <label for="socioEmail">Correo electrónico</label>
-                        <input type="email" class="form-control" id="socioEmail" name ="socioEmail" aria-describedby="emailHelp" placeholder="Ej. tuemail@dominio.es" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}" title="Comprueba tu email por favor">
+                        <input required type="email" class="form-control" id="socioEmail" name ="socioEmail" aria-describedby="emailHelp" placeholder="Ej. tuemail@dominio.es" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}" title="Comprueba tu email por favor">
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
                       <div class="form-group">
                         <label for="SocioPassword">Password</label>
-                        <input type="password" class="form-control" id="SocioPassword" name ="SocioPassword" placeholder="Contraseña">
+                        <input required type="password" class="form-control" id="SocioPassword" name ="SocioPassword" placeholder="Contraseña">
                       </div>
                       <div class="form-group">
                         <label for="SocioUsuario">Usuario</label>
-                        <input type="text" class="form-control" id="SocioUsuario" name ="SocioUsuario" aria-describedby="emailHelp" placeholder="Nombre de usuario" pattern="[A-Za-z \- \/_]{1,45}" title="máximo 45 letras (se admiten espacios y '-&_'">
+                        <input required type="text" class="form-control" id="SocioUsuario" name ="SocioUsuario" aria-describedby="emailHelp" placeholder="Nombre de usuario" pattern="[A-Za-z \- \/_]{1,45}" title="máximo 45 letras (se admiten espacios y '-&_'">
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
+                      </div>
+					  <div class="form-group">
+                        <label for="NombreApellidosSocio">Nombre y apellidos</label>
+                        <input required type="text" class="form-control" id="NombreApellidosSocio" name ="NombreApellidosSocio" aria-describedby="emailHelp" placeholder="Nombre y Apellidos" pattern="[A-Za-z \- \/_]{1,45}" title="máximo 45 letras (se admiten espacios y '-&_'">
                       </div>
                       <div class="form-group">
                         <label for="SocioDNI">DNI</label>
-                        <input type="text" class="form-control" id="SocioDNI" name ="SocioDNI" aria-describedby="emailHelp" placeholder="DNI">
+                        <input required type="text" class="form-control" id="SocioDNI" name ="SocioDNI" aria-describedby="emailHelp" placeholder="DNI">
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
+                      </div>
+					  <div class="form-group">
+                        <label for="SocioProvincia">Provincia</label>
+						<?php
+						  $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+						?>
+						<select class="form-control" id="SocioProvincia" name ="SocioProvincia" required >
+						<option value="0">Seleccione:</option>
+						<?php
+						  $query = $mysqli -> query ("SELECT * FROM provincias");
+						  while ($valores = mysqli_fetch_array($query)) {
+							echo '<option value="'.$valores[id_provincia].'">'.$valores[provincia].'</option>';
+						  }
+						?>
+					  </select>
+                      </div>
+					  <div class="form-group">
+                        <label for="SocioPais">País</label>
+						<?php
+						  $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+						?>
+						<select class="form-control" id="SocioPais" name ="SocioPais" required >
+						<option value="0">Seleccione:</option>
+						<?php
+						  $query = $mysqli -> query ("SELECT * FROM paises");
+						  while ($valores = mysqli_fetch_array($query)) {
+							echo '<option value="'.$valores[id].'">'.$valores[nombre].'</option>';
+						  }
+						?>
+					  </select>
                       </div>
                       <div class="form-group">
                         <label for="SocioTelf">Teléfono</label>
-                        <input type="text" class="form-control" id="SocioTelf" name ="SocioTelf" aria-describedby="emailHelp" placeholder="Ej. +343987159" pattern="(\+34|0034|34)?[\s|\-|\.]?[6|7|9][\s|\-|\.]?([0-9][\s|\-|\.]?){8}" title="Comprueba tu teléfono por favor: ejemplos: 0034666666666 / +34777777777 / 999999999">
+                        <input required type="text" class="form-control" id="SocioTelf" name ="SocioTelf" aria-describedby="emailHelp" placeholder="Ej. +343987159" pattern="(\+34|0034|34)?[\s|\-|\.]?[6|7|9][\s|\-|\.]?([0-9][\s|\-|\.]?){8}" >
+                        <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
+                      </div>
+					  <div class="form-group">
+                        <label for="SocioCuenta">Nº de Cuenta</label>
+                        <input required type="text" class="form-control" id="SocioCuenta" name ="SocioCuenta" aria-describedby="emailHelp"  >
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
                       <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <input required type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Acepto los términos y condiciones </label>
                       </div>
                       <center>
