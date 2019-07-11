@@ -44,6 +44,7 @@ require_once('../models/connection.php');
         
          if($us == $listaUsuarios[0]['usuario'] && $pw == $listaUsuarios[0]['passwd'])
          {
+          $_SESSION['id_usuario'] = $listaUsuarios[0]['id_usuario'];
           $_SESSION['login1'] = $listaUsuarios[0]['usuario'];
           $_SESSION['start'] = time();
           $_SESSION['expire'] = $_SESSION['start'] * (5 * 60);

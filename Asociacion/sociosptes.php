@@ -21,7 +21,18 @@ include('../models/connection.php');
    
   
 ?>
+<?php
+  if (!isset($_SESSION['rol1']))
+  {
 
+    echo('<div class="container"><div class="alert alert-danger" role="alert">
+              Hay que estar registrado para poder visualizar este contenido, Ve a Home y regístrate
+            </div></div>');
+    //header("Location: http://localhost/proyecto/home.php");
+    exit;
+  }
+
+?>  
       
 
 

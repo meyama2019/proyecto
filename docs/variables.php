@@ -7,8 +7,8 @@ $_SESSION['start']  <-- contiene tipo fecha y hora de inicio de sesión
 $_SESSION['expire'] <-- contiene tipo fecha y hora de fin sesión
 $_SESSION['rol1']    <-- contiene Rol_id de tabla usuario para controlar qué se muestra según el tipo de usuario
 $_SESSION['activo'] <-- Contiene el estado del socio, activo, pendiente confirmacion
-
-
+11.07.2019 nueva variable de $_SESSION['id_usuario'] en login para las fotos y documentos.
+$_SESSION['id_usuario']
 
 *********** ESTADOS DEL SOCIO / USUARIO campo activo tabla usuarios.
 

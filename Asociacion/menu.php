@@ -20,9 +20,18 @@
                     <li class="nav-item active">
                       <a class="nav-link" href="http://localhost/proyecto/home.php">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item ">
-                      <a class="nav-link" href="http://localhost/proyecto/asociacion/galeria.php">Galería</a>
+
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Galería
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="http://localhost/proyecto/asociacion/galeria.php">Fotos de la Asociación</a>
+                        <a class="dropdown-item" href="http://localhost/proyecto/asociacion/momentos.php">Momentos compartidos</a>
+                     
                     </li>
+                  
+               
                      <li class="nav-item ">
                       <a class="nav-link" href="http://localhost/proyecto/asociacion/noticias.php">Noticias</a>
                     </li>
@@ -62,10 +71,7 @@
                        Mensajes <span class="badge badge-light">'.$_SESSION['tot_con'].'</span>
                         <span class="sr-only">unread messages</span>
                        </a>
-                     </li>
-
-                     
-                   '
+                     </li>'
  
                     
 
@@ -73,7 +79,7 @@
                     ?>
                   </ul>
                   <form class="form-inline form my-2 my-lg-0" action="http://localhost/proyecto/asociacion/logout.php" method="post">
-                    <ul class="nav">
+                    <ul class="nav"> 
                                <li class="nav-item">
 							   
 								<?php
