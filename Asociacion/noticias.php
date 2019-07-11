@@ -50,7 +50,7 @@ include('../models/connection.php');
                                     break;
                                     case 1:
                                     # code...
-                                     $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()  limit 1');
+                                     $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate() order by 3 desc limit 1');
                                     break;
                                   
                                   default:
@@ -61,7 +61,7 @@ include('../models/connection.php');
                              
                             else
                             {
-                               $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()  limit 1');
+                               $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate() order by 3 desc limit 1');
                             }
                               // $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()  limit 1');
                               foreach ($sql->fetchAll() as $listanoticias[$x]) {

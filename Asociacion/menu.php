@@ -77,10 +77,14 @@
                                <li class="nav-item">
 							   
 								<?php
-                                    if (isset($_SESSION['rol1']) !==  1 )
-                                      {
-										echo ('<button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa2">Hazte Socio</button>');
+                    if (isset($_SESSION['rol1']))
+                    {
+										    echo ('<button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa2" disabled>Hazte Socio</button>');
 									  }
+                    else
+                    {
+                        echo ('<button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa2" >Hazte Socio</button>');
+                    }
 								?>	  
                               </li>  
                               <li class="nav-item">

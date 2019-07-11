@@ -55,9 +55,22 @@ require_once('menu.php');
                    asociaci&oacute;n, teniendo voz y voto en las decisiones que se tomen. Disfrutar de todas las
                    ventajas de pertenecer a nuestra Asociaci&oacute;n, convenios, acuerdos, adoptados con otras
                    entidades y servicios que dia a dia vamos seleccionando para dar lo mejor.</p>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalur">
-                      Regístrate
-                    </button>
+                    <?php
+                      if (isset($_SESSION['login1']))
+                      {
+                        echo('<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalur" disabled>
+                                Regístrate
+                              </button>');
+                      }
+                      else
+                      {
+                         echo('<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalur">
+                                Regístrate
+                              </button>');
+                      }
+
+                    ?>
+                   
             </article>
             </div>
             <div class=" col-6 shadow p-3 mb-5 bg-white rounded">

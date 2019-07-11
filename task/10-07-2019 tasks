@@ -1,0 +1,16 @@
+10.07.2017
+
+(Elisa)		1.	Formulario Socio 
+		        a.	Faltan cosas en el formulario de socios (nombre y apellidos, pais, provincia)
+		        b.	Control formulario al dar enviar, debe exigir todos los datos
+
+(Yarub) 	2.	Formulario acceder: añadir en placeholder que usuarios registrados solo deben acceder con email y contraseña
+
+(Marcelo)	3.	Nueva funcionalidad:
+		        a.	usuarios registrados y socios pueden subir fotos
+		        b.	crear una página específica y publica (comparte tus momentos o algo así) para que se vean las  fotos ordenadas subida por quién, fecha y comentario.
+		        c.	Habilita en fotos para que puedan subir los registrados
+
+		        - Añado control cuando un usuario está logado, que se deshabiliten los botones de regístrate y hazte socio (ya que si está logado es socio o usuario registrado).
+
+************************************************************************************************************************************		        
