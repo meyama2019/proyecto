@@ -350,9 +350,9 @@
 						<select class="form-control" id="SocioPais" name ="SocioPais" required >
 						<option value="0">Seleccione:</option>
 						<?php
-						  $query = $mysqli -> query ("SELECT * FROM paises");
-						  while ($valores = mysqli_fetch_array($query)) {
-							echo '<option value="'.$valores[id].'">'.$valores[nombre].'</option>';
+						  $query1 = $mysqli -> query ("SELECT * FROM paises");
+						  while ($valores1 = mysqli_fetch_array($query1)) {
+							echo '<option value="'.$valores1[id].'">'.$valores1[nombre].'</option>';
 						  }
 						?>
 					  </select>
@@ -364,11 +364,11 @@
                       </div>
 					  <div class="form-group">
                         <label for="SocioCuenta">Nº de Cuenta</label>
-                        <input required type="text" class="form-control" id="SocioCuenta" name ="SocioCuenta" aria-describedby="emailHelp"  >
+                        <input type="text" class="form-control" id="SocioCuenta" name ="SocioCuenta" aria-describedby="emailHelp"  >
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
                       <div class="form-group form-check">
-                        <input required type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Acepto los términos y condiciones </label>
                       </div>
                       <center>
