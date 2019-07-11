@@ -314,12 +314,12 @@
                       </div>
                       <div class="form-group">
                         <label for="SocioUsuario">Usuario</label>
-                        <input required type="text" class="form-control" id="SocioUsuario" name ="SocioUsuario" aria-describedby="emailHelp" placeholder="Nombre de usuario" pattern="[A-Za-z \- \/_]{1,45}" title="máximo 45 letras (se admiten espacios y '-&_'">
+                        <input required type="text" class="form-control" id="SocioUsuario" name ="SocioUsuario" aria-describedby="emailHelp" placeholder="Nombre de usuario" >
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
 					  <div class="form-group">
                         <label for="NombreApellidosSocio">Nombre y apellidos</label>
-                        <input required type="text" class="form-control" id="NombreApellidosSocio" name ="NombreApellidosSocio" aria-describedby="emailHelp" placeholder="Nombre y Apellidos" pattern="[A-Za-z \- \/_]{1,45}" title="máximo 45 letras (se admiten espacios y '-&_'">
+                        <input required type="text" class="form-control" id="NombreApellidosSocio" name ="NombreApellidosSocio" aria-describedby="emailHelp" placeholder="Nombre y Apellidos" >
                       </div>
                       <div class="form-group">
                         <label for="SocioDNI">DNI</label>
