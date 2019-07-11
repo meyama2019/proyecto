@@ -2,10 +2,12 @@
 
 /*
 05.07.2019
-$_SESSION['login']  <-- contiene campo usuario de tabla usuarios
+$_SESSION['login1']  <-- contiene campo usuario de tabla usuarios
 $_SESSION['start']  <-- contiene tipo fecha y hora de inicio de sesión
 $_SESSION['expire'] <-- contiene tipo fecha y hora de fin sesión
-$_SESSION['rol']    <-- contiene Rol_id de tabla usuario para controlar qué se muestra según el tipo de usuario
+$_SESSION['rol1']    <-- contiene Rol_id de tabla usuario para controlar qué se muestra según el tipo de usuario
+$_SESSION['activo'] <-- Contiene el estado del socio, activo, pendiente confirmacion
+
 
 
 *********** ESTADOS DEL SOCIO / USUARIO campo activo tabla usuarios.
@@ -37,3 +39,19 @@ $_SESSION['rol']    <-- contiene Rol_id de tabla usuario para controlar qué se 
 
 
 ?>
+
+
+/* USUARIOS */
+
+usuario admin
+contraseña mojitos2019
+email admin@marte.com
+
+usuario socio
+contraseña cervecitas2019
+email socio1@marte.com
+
+usuario registrado
+contraseña verano2019
+email registrado@marte.comr
+

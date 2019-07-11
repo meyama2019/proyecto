@@ -50,7 +50,7 @@ include('../models/connection.php');
                                     break;
                                     case 1:
                                     # code...
-                                     $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()  limit 1');
+                                     $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate() order by 3 desc limit 1');
                                     break;
                                   
                                   default:
@@ -61,7 +61,7 @@ include('../models/connection.php');
                              
                             else
                             {
-                               $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()  limit 1');
+                               $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate() order by 3 desc limit 1');
                             }
                               // $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()  limit 1');
                               foreach ($sql->fetchAll() as $listanoticias[$x]) {
@@ -115,16 +115,27 @@ include('../models/connection.php');
                     $(this).prev().prev().hide();
                     $(this).prev().slideToggle();
                     $(this).text("Ocultar..");
-                    
+                    goToId($(this).prev().attr('class'));
                 }
                 else{
                     $(this).prev().prev().show();
                     $(this).prev().slideToggle();
                     $(this).text("Ver más..");
+                    goToId($(this).prev().attr('class'));
 
                 }
             });
         });
+
+        function goToId(idName)
+        {
+            if($("."+idName).length)
+            {
+                var target_offset = $("."+idName).offset();
+                var target_top = target_offset.top;
+                $('html,body').animate({scrollTop:target_top},{duration:"slow"});
+            }
+        }
 
     }
 

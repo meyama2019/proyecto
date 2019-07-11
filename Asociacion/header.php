@@ -67,8 +67,7 @@
                
 
                
-                
-            </div> 
+           <img src="/open-iconic/svg/comment-square.svg">
 
                 <div class="clear"></div>
             </header>
