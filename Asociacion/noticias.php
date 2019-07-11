@@ -115,16 +115,27 @@ include('../models/connection.php');
                     $(this).prev().prev().hide();
                     $(this).prev().slideToggle();
                     $(this).text("Ocultar..");
-                    
+                    goToId($(this).prev().attr('class'));
                 }
                 else{
                     $(this).prev().prev().show();
                     $(this).prev().slideToggle();
                     $(this).text("Ver más..");
+                    goToId($(this).prev().attr('class'));
 
                 }
             });
         });
+
+        function goToId(idName)
+        {
+            if($("."+idName).length)
+            {
+                var target_offset = $("."+idName).offset();
+                var target_top = target_offset.top;
+                $('html,body').animate({scrollTop:target_top},{duration:"slow"});
+            }
+        }
 
     }
 
