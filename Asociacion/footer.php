@@ -249,7 +249,6 @@
 
 
 
-
       <!-- Modal -->
           <div class="modal fade" id="exampleModalur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelur" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -264,13 +263,13 @@
 
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                       <div class="form-group">
-                        <label for="ur_email">Email address coñazo</label>
-                        <input type="email" class="form-control" id="ur_email" name="ur_email" aria-describedby="emailHelp" placeholder="Enter email">
+                        <label for="ur_email">Email address</label>
+                        <input type="email" class="form-control" id="ur_email" name="ur_email" aria-describedby="emailHelp" placeholder="Enter email" required>
                         <small id="emailHelpur" class="form-text text-muted">We'll never share your email with anyone else.</small>
                       </div>
                       <div class="form-group">
                         <label for="ur_passwd">Password</label>
-                        <input type="password" class="form-control" id="ur_passwd" name="ur_passwd" placeholder="Password">
+                        <input type="password" class="form-control" id="ur_passwd" name="ur_passwd" placeholder="Password" required>
                       </div>
                       <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheckur">
@@ -410,17 +409,18 @@
                     <form action="http://localhost/proyecto/asociacion/login.php" method="post">
                        <div class="form-group">
                         <label for="exampleInputEmail1">Usuario</label>
-                        <input type="text" class="form-control" id="Inputuser" name= "Inputuser" aria-describedby="emailHelp" placeholder="Enter User">
+                        <input type="text" class="form-control" id="Inputuser" name= "Inputuser" aria-describedby="emailHelp" placeholder="Para Socios y/o Admins">
                       
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="Inputemail" name ="Inputemail" aria-describedby="emailHelp" placeholder="Enter email">
+
+                        <input type="email" class="form-control" id="Inputemail" name ="Inputemail" aria-describedby="emailHelp" placeholder="Para usuarios registrados, Socios y/o Admins">
                       
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="InputPassword" name="ole" placeholder="Password">
+                        <input type="password" class="form-control" id="InputPassword" name="ole" placeholder="Password" required>
                       </div>
                         <center>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
