@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-07-2019 a las 20:10:08
+-- Tiempo de generación: 11-07-2019 a las 21:00:55
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.4
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `paises` (
   `id` int(11) NOT NULL,
   `iso` char(2) DEFAULT NULL,
-  `nombre` varchar(80) DEFAULT NULL
+  `nombre` varchar(80) CHARACTER SET utf8 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -66,7 +66,7 @@ INSERT INTO `paises` (`id`, `iso`, `nombre`) VALUES
 (25, 'BZ', 'Belice'),
 (26, 'BJ', 'Benin'),
 (27, 'BM', 'Bermudas'),
-(28, 'BT', 'Bhután'),
+(28, 'BT', 'Bhutón'),
 (29, 'BO', 'Bolivia'),
 (30, 'BA', 'Bosnia y Herzegovina'),
 (31, 'BW', 'Botsuana'),
@@ -83,7 +83,7 @@ INSERT INTO `paises` (`id`, `iso`, `nombre`) VALUES
 (42, 'CA', 'Canadá'),
 (43, 'CF', 'República Centroafricana'),
 (44, 'TD', 'Chad'),
-(45, 'CZ', 'República Checa'),
+(45, 'CZ', 'República  Checa'),
 (46, 'CL', 'Chile'),
 (47, 'CN', 'China'),
 (48, 'CY', 'Chipre'),
@@ -184,7 +184,7 @@ INSERT INTO `paises` (`id`, `iso`, `nombre`) VALUES
 (143, 'MU', 'Mauricio'),
 (144, 'MR', 'Mauritania'),
 (145, 'YT', 'Mayotte'),
-(146, 'MX', 'México'),
+(146, 'MX', 'M?xico'),
 (147, 'FM', 'Micronesia'),
 (148, 'MD', 'Moldavia'),
 (149, 'MC', 'Mónaco'),
@@ -205,7 +205,7 @@ INSERT INTO `paises` (`id`, `iso`, `nombre`) VALUES
 (164, 'NZ', 'Nueva Zelanda'),
 (165, 'OM', 'Omán'),
 (166, 'NL', 'Países Bajos'),
-(167, 'PK', 'Pakistán'),
+(167, 'PK', 'Pakist?n'),
 (168, 'PW', 'Palau'),
 (169, 'PS', 'Palestina'),
 (170, 'PA', 'Panamá'),
@@ -232,7 +232,7 @@ INSERT INTO `paises` (`id`, `iso`, `nombre`) VALUES
 (191, 'PM', 'San Pedro y Miquelón'),
 (192, 'VC', 'San Vicente y las Granadinas'),
 (193, 'SH', 'Santa Helena'),
-(194, 'LC', 'Santa Lucía'),
+(194, 'LC', 'Santa Luc?a'),
 (195, 'ST', 'Santo Tomé y Príncipe'),
 (196, 'SN', 'Senegal'),
 (197, 'CS', 'Serbia y Montenegro'),
@@ -244,16 +244,16 @@ INSERT INTO `paises` (`id`, `iso`, `nombre`) VALUES
 (203, 'LK', 'Sri Lanka'),
 (204, 'SZ', 'Suazilandia'),
 (205, 'ZA', 'Sudáfrica'),
-(206, 'SD', 'Sudán'),
+(206, 'SD', 'Sud?n'),
 (207, 'SE', 'Suecia'),
 (208, 'CH', 'Suiza'),
 (209, 'SR', 'Surinam'),
 (210, 'SJ', 'Svalbard y Jan Mayen'),
 (211, 'TH', 'Tailandia'),
-(212, 'TW', 'Taiwán'),
+(212, 'TW', 'Taiw?n'),
 (213, 'TZ', 'Tanzania'),
 (214, 'TJ', 'Tayikistán'),
-(215, 'IO', 'Territorio Británico del Océano Índico'),
+(215, 'IO', 'Territorio Británico del Océano ?ndico'),
 (216, 'TF', 'Territorios Australes Franceses'),
 (217, 'TL', 'Timor Oriental'),
 (218, 'TG', 'Togo'),
@@ -262,8 +262,8 @@ INSERT INTO `paises` (`id`, `iso`, `nombre`) VALUES
 (221, 'TT', 'Trinidad y Tobago'),
 (222, 'TN', 'Túnez'),
 (223, 'TC', 'Islas Turcas y Caicos'),
-(224, 'TM', 'Turkmenistán'),
-(225, 'TR', 'Turquía'),
+(224, 'TM', 'Turkmenist?n'),
+(225, 'TR', 'Turqu?a'),
 (226, 'TV', 'Tuvalu'),
 (227, 'UA', 'Ucrania'),
 (228, 'UG', 'Uganda'),
