@@ -50,7 +50,8 @@
           if(isset($_POST['submit1']))
           {
           
-            if (( !empty($_POST['SocioUsuario'])) && ( !empty($_POST['socioEmail'])) && ( !empty($_POST['SocioPassword'])) && ( !empty($_POST['SocioDNI'])) && ( !empty($_POST['SocioTelf'])) )
+            if (( !empty($_POST['SocioUsuario'])) && ( !empty($_POST['socioEmail'])) && ( !empty($_POST['SocioPassword'])) 
+              && ( !empty($_POST['SocioDNI'])) && ( !empty($_POST['SocioTelf'])) )
               {
                 
                 $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
@@ -70,8 +71,8 @@
                 if ((mysqli_num_rows($res_d) == 0) && (mysqli_num_rows($res_e) == 0) && (mysqli_num_rows($res_u) == 0))
                 
                 {
-                  $sql = "INSERT INTO usuarios (usuario, passwd, email, Nom_Ape,  dni, provincias, pais, telefono, cuenta, activo, rol_id ) 
-				  values ('$_POST[SocioUsuario]','$password','$_POST[socioEmail]','$_POST[NombreApellidosSocio]','$_POST[SocioDNI]','$_POST[SocioProvincia]','$_POST[SocioPais]','$_POST[SocioTelf]', '$_POST[SocioCuenta]',1, 1)";
+                  $sql = "INSERT INTO contacto (usuario, passwd,metodo, email, Nom_Ape,  dni, provincias, pais, telefono, cuenta, activo, rol_id ) 
+          values ($_POST[SocioUsuario],'$password',1,'$_POST[socioEmail]','$_POST[NombreApellidosSocio]','$_POST[SocioDNI]','$_POST[SocioProvincia]','$_POST[SocioPais]','$_POST[SocioTelf]', '$_POST[SocioCuenta]',1, 1)";
                   $consulta = mysqli_query($conexion, $sql);
                   if($consulta)
                     {
@@ -349,6 +350,7 @@
 						?>
 						<select class="form-control" id="SocioPais" name ="SocioPais" required >
 						<option value="0">Seleccione:</option>
+            
 						<?php
 						  $query1 = $mysqli -> query ("SELECT * FROM paises");
 						  while ($valores1 = mysqli_fetch_array($query1)) {
@@ -383,8 +385,7 @@
 					
 
 
-                  
-                </div>
+           
                
               </div>
             </div>

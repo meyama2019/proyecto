@@ -10,7 +10,7 @@
 
 (Marcelo)	3.	Nueva funcionalidad:
 		        a.	usuarios registrados y socios pueden subir fotos
-		        b.	crear una página específica y publica (comparte tus momentos o algo así) para que se vean las  fotos ordenadas subida por quién, fecha y comentario.
+		        b.	crear una página específica y publica (comparte tus momentos o algo así) para que se vean las  fotos ordenadas 	subida por quién, fecha y comentario.
 		        c.	Habilita en fotos para que puedan subir los registrados
 
 		        - Añado control cuando un usuario está logado, que se deshabiliten los botones de regístrate y hazte socio (ya que si está logado es socio o usuario registrado).

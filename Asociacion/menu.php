@@ -26,7 +26,13 @@
                         Galería
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="http://localhost/proyecto/asociacion/galeria.php">Fotos de la Asociación</a>
+                         <?php
+                          if (isset($_SESSION['rol1']))
+                          {
+                            echo('<a class="dropdown-item" href="http://localhost/proyecto/asociacion/galeria.php">Fotos de la Asociación</a>');
+                          }
+                        ?>
+
                         <a class="dropdown-item" href="http://localhost/proyecto/asociacion/momentos.php">Momentos compartidos</a>
                      
                     </li>

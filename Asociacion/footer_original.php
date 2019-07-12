@@ -68,32 +68,31 @@
                 if ((mysqli_num_rows($res_d) == 0) && (mysqli_num_rows($res_e) == 0) && (mysqli_num_rows($res_u) == 0))
                 
                 {
-                  try {
-                     $sql = "INSERT INTO usuarios (usuario, passwd,metodo, email, Nom_Ape,  dni,  telefono, cuenta, activo, rol_id ) 
-                  values ('NULL',$_POST[SocioUsuario],'$password',1,'$_POST[socioEmail]','$_POST[NombreApellidosSocio]','$_POST[SocioDNI]','$_POST[SocioTelf]', '$_POST[SocioCuenta]',1, 1)";
-                   $consulta = mysqli_query($conexion, $sql);
-                   include ('confirm.php');
-
-                      }
-
-                  catch(Exception $e) { 
-                    include ('noconfirm.php');
-                  }
-                  finally{
-                    mysqli_close($conexion);
-                  }
-
+                  $sql = "INSERT INTO contacto (usuario, passwd,metodo, email, Nom_Ape,  dni, provincias, pais, telefono, cuenta, activo, rol_id ) 
+				  values ($_POST[SocioUsuario],'$password',1,'$_POST[socioEmail]','$_POST[NombreApellidosSocio]','$_POST[SocioDNI]','$_POST[SocioProvincia]','$_POST[SocioPais]','$_POST[SocioTelf]', '$_POST[SocioCuenta]',1, 1)";
+                  $consulta = mysqli_query($conexion, $sql);
+                  if($consulta)
+                    {
+                      include ('confirm.php');
+                      //ini_set('SMTP','smtp.gmail.com');
+                      //ini_set('smtp_port',587);
+                      //$to = "meyama2019@gmail.com";
+                      //$subject = "Alta como socio";
+                      //$mensaje = "Buenos días,\r\n¡Te damos la bienvenida!.\r\n¡Gracias por formar parte de nuestra familia!\r\n" ;
+                      //$headers = "From: meyama2019@gmail.com" . "\r\n" . "BCC: meyama2019@gmail.com;  ";
+                      //mail($to,$subject,$mensaje,$headers);
+                    }
+                  mysqli_close($conexion);
+                
                 }
-               
-                
-                 
-               
-                      
-                
-          }
+                else
+                {
+                  include ('noconfirm.php');    
+                }
+              }
         
 
-?>
+    ?>
 
  	
 	
@@ -248,7 +247,7 @@
 
 
 
-      <!-- Modal Alta Usuario Registrado -->
+      <!-- Modal -->
           <div class="modal fade" id="exampleModalur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelur" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -330,7 +329,35 @@
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
 
-        
+          <div class="form-group">
+                        <label for="SocioProvincia">Provincia</label>
+            
+            <select class="form-control" id="SocioProvincia" name ="SocioProvincia" required >
+            <option value="0">Seleccione:</option>
+            <?php
+              $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+              $query = $mysqli -> query ("SELECT * FROM provincias");
+              while ($valores = mysqli_fetch_array($query)) {
+              echo '<option value="'.$valores[id_provincia].'">'.$valores[provincia].'</option>';
+              }
+            ?>
+              </select>
+                      </div>
+
+          <div class="form-group">
+                        <label for="SocioPais">País</label>
+            
+            <select class="form-control" id="SocioPais" name ="SocioPais" required >
+            <option value="0">Seleccione:</option>
+            <?php
+              $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+              $query1 = $mysqli -> query ("SELECT * FROM paises");
+              while ($valores1 = mysqli_fetch_array($query1)) {
+              echo '<option value="'.$valores1[id].'">'.$valores1[nombre].'</option>';
+              }
+            ?>
+              </select>
+                      </div>
 
                       <div class="form-group">
                         <label for="SocioTelf">Teléfono</label>
