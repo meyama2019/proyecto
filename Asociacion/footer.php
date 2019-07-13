@@ -414,17 +414,17 @@
                       
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
+                        <label for="exampleInputEmail1">Correo electrónico</label>
 
                         <input type="email" class="form-control" id="Inputemail" name ="Inputemail" aria-describedby="emailHelp" placeholder="Para usuarios registrados, Socios y/o Admins">
                       
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="InputPassword" name="ole" placeholder="Password" required>
+                        <input type="password" class="form-control" id="InputPassword" name="ole" placeholder="Contraseña" required>
                       </div>
                         <center>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-primary">Entrar</button>
                         </center>
                      
