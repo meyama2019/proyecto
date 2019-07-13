@@ -70,8 +70,13 @@
                 if ((mysqli_num_rows($res_d) == 0) && (mysqli_num_rows($res_e) == 0) && (mysqli_num_rows($res_u) == 0))
                 
                 {
+<<<<<<< HEAD
                   $sql = "INSERT INTO usuarios (usuario, passwd, email, Nom_Ape,  dni, provincia, pais, telefono, cuenta, activo, rol_id ) 
           values ('$_POST[SocioUsuario]','$password','$_POST[socioEmail]','$_POST[NombreApellidosSocio]','$_POST[SocioDNI]','$_POST[SocioProvincia]','$_POST[SocioPais]','$_POST[SocioTelf]', '$_POST[SocioCuenta]',1, 1)";
+=======
+                  $sql = "INSERT INTO usuarios (usuario, passwd, email, Nom_Ape,  dni, provincias, pais, telefono, cuenta, activo, rol_id ) 
+				  values ('$_POST[SocioUsuario]','$password','$_POST[socioEmail]','$_POST[NombreApellidosSocio]','$_POST[SocioDNI]','$_POST[SocioProvincia]','$_POST[SocioPais]','$_POST[SocioTelf]', '$_POST[SocioCuenta]',1, 1)";
+>>>>>>> e42a1946d210de0e747d8b051ce2f35747eb0b2c
                   $consulta = mysqli_query($conexion, $sql);
                   if($consulta)
                     {
@@ -86,9 +91,21 @@
                     }
                   mysqli_close($conexion);
                 
+                }
+                else
+                {
+                  include ('noconfirm.php');    
+                }
+              }
+          }  
+<<<<<<< HEAD
 
 
+=======
 
+
+>>>>>>> e42a1946d210de0e747d8b051ce2f35747eb0b2c
+    ?>
 
  	
 	
@@ -282,11 +299,33 @@
                
 
 
+<<<<<<< HEAD
+ <!-- Modal del Alta de Socio  ------------------------------------------------------->
 
+ <!-- Modal del Alta de Socio  ------------------------------------------------------->
 
+=======
+<!-- Modal del Alta de Socio  ------------------------------------------------------->
 
+>>>>>>> e42a1946d210de0e747d8b051ce2f35747eb0b2c
+      <!-- Modal -->
+           <div class="modal fade" id="exampleModa2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe2" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabe2">Alta de Socio</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
                 <div class="modal-body">
-
+<<<<<<< HEAD
+        
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+=======
+				
+				    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+>>>>>>> e42a1946d210de0e747d8b051ce2f35747eb0b2c
                       <div class="form-group">
                         <label for="socioEmail">Correo electrónico</label>
                         <input required type="email" class="form-control" id="socioEmail" name ="socioEmail" aria-describedby="emailHelp" placeholder="Ej. tuemail@dominio.es" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}" title="Comprueba tu email por favor">
@@ -301,7 +340,11 @@
                         <input required type="text" class="form-control" id="SocioUsuario" name ="SocioUsuario" aria-describedby="emailHelp" placeholder="Nombre de usuario" >
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
-
+<<<<<<< HEAD
+            <div class="form-group">
+=======
+					  <div class="form-group">
+>>>>>>> e42a1946d210de0e747d8b051ce2f35747eb0b2c
                         <label for="NombreApellidosSocio">Nombre y apellidos</label>
                         <input required type="text" class="form-control" id="NombreApellidosSocio" name ="NombreApellidosSocio" aria-describedby="emailHelp" placeholder="Nombre y Apellidos" >
                       </div>
@@ -310,13 +353,78 @@
                         <input required type="text" class="form-control" id="SocioDNI" name ="SocioDNI" aria-describedby="emailHelp" placeholder="DNI">
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
-
+<<<<<<< HEAD
+            <div class="form-group">
+                        <label for="SocioProvincia">Provincia</label>
+            <?php
+              $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+            ?>
+            <select class="form-control" id="SocioProvincia" name ="SocioProvincia" required >
+            <option value="0">Seleccione:</option>
+            <?php
+              $query = $mysqli -> query ("SELECT * FROM provincias");
+              while ($valores = mysqli_fetch_array($query)) {
+              echo '<option value="'.$valores[id_provincia].'">'.$valores[provincia].'</option>';
+              }
+            ?>
+            </select>
+                      </div>
+            <div class="form-group">
+                        <label for="SocioPais">País</label>
+            <?php
+              $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+            ?>
+            <select class="form-control" id="SocioPais" name ="SocioPais" required >
+            <option value="0">Seleccione:</option>
+            <?php
+              $query1 = $mysqli -> query ("SELECT * FROM paises");
+              while ($valores1 = mysqli_fetch_array($query1)) {
+              echo '<option value="'.$valores1[id].'">'.$valores1[nombre].'</option>';
+              }
+            ?>
+            </select>
+=======
+					  <div class="form-group">
+                        <label for="SocioProvincia">Provincia</label>
+						<?php
+						  $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+						?>
+						<select class="form-control" id="SocioProvincia" name ="SocioProvincia" required >
+						<option value="0">Seleccione:</option>
+						<?php
+						  $query = $mysqli -> query ("SELECT * FROM provincias");
+						  while ($valores = mysqli_fetch_array($query)) {
+							echo '<option value="'.$valores[id_provincia].'">'.$valores[provincia].'</option>';
+						  }
+						?>
+					  </select>
+                      </div>
+					  <div class="form-group">
+                        <label for="SocioPais">País</label>
+						<?php
+						  $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+						?>
+						<select class="form-control" id="SocioPais" name ="SocioPais" required >
+						<option value="0">Seleccione:</option>
+						<?php
+						  $query1 = $mysqli -> query ("SELECT * FROM paises");
+						  while ($valores1 = mysqli_fetch_array($query1)) {
+							echo '<option value="'.$valores1[id].'">'.$valores1[nombre].'</option>';
+						  }
+						?>
+					  </select>
+>>>>>>> e42a1946d210de0e747d8b051ce2f35747eb0b2c
+                      </div>
                       <div class="form-group">
                         <label for="SocioTelf">Teléfono</label>
                         <input required type="text" class="form-control" id="SocioTelf" name ="SocioTelf" aria-describedby="emailHelp" placeholder="Ej. +343987159" pattern="(\+34|0034|34)?[\s|\-|\.]?[6|7|9][\s|\-|\.]?([0-9][\s|\-|\.]?){8}" >
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
-
+<<<<<<< HEAD
+            <div class="form-group">
+=======
+					  <div class="form-group">
+>>>>>>> e42a1946d210de0e747d8b051ce2f35747eb0b2c
                         <label for="SocioCuenta">Nº de Cuenta</label>
                         <input type="text" class="form-control" id="SocioCuenta" name ="SocioCuenta" aria-describedby="emailHelp"  >
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
@@ -342,7 +450,15 @@
                
               </div>
             </div>
+<<<<<<< HEAD
+      
+          </div>
+=======
+			
+          </div>
 
+
+>>>>>>> e42a1946d210de0e747d8b051ce2f35747eb0b2c
 
  <!-- Modal del Acceso de Usuarios  ------------------------------------------------------->
 
