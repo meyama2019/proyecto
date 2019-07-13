@@ -17,10 +17,4 @@
 
 ************************************************************************************************************************************
 
-11.07.2017 	
-
-(Marcelo)	1. 	Botón Socios Ptes.
-				a.	cuando entra el administrador, selecciona los socios pendientes de confirmar y los activa, poniendo el estado del campo activo = 0.
-			2.	Botón Mensajes.
-				a.	cuando entra el administrador, selecciona los contactos recibidos, selecciona y activa el campo activo=0 (leido).
 

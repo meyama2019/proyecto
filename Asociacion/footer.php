@@ -50,7 +50,9 @@
           if(isset($_POST['submit1']))
           {
           
-                         
+            if (( !empty($_POST['SocioUsuario'])) && ( !empty($_POST['socioEmail'])) && ( !empty($_POST['SocioPassword'])) && ( !empty($_POST['SocioDNI'])) && ( !empty($_POST['SocioTelf'])) )
+              {
+                
                 $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
                 $username = $_POST['SocioUsuario'];
                 $userdni = $_POST['SocioDNI'];
@@ -68,32 +70,32 @@
                 if ((mysqli_num_rows($res_d) == 0) && (mysqli_num_rows($res_e) == 0) && (mysqli_num_rows($res_u) == 0))
                 
                 {
-                  try {
-                     $sql = "INSERT INTO usuarios (usuario, passwd,metodo, email, Nom_Ape,  dni,  telefono, cuenta, activo, rol_id ) 
-                  values ('NULL',$_POST[SocioUsuario],'$password',1,'$_POST[socioEmail]','$_POST[NombreApellidosSocio]','$_POST[SocioDNI]','$_POST[SocioTelf]', '$_POST[SocioCuenta]',1, 1)";
-                   $consulta = mysqli_query($conexion, $sql);
-                   include ('confirm.php');
-
-                      }
-
-                  catch(Exception $e) { 
-                    include ('noconfirm.php');
-                  }
-                  finally{
-                    mysqli_close($conexion);
-                  }
-
+                  $sql = "INSERT INTO usuarios (usuario, passwd, email, Nom_Ape,  dni, provincia, pais, telefono, cuenta, activo, rol_id ) 
+          values ('$_POST[SocioUsuario]','$password','$_POST[socioEmail]','$_POST[NombreApellidosSocio]','$_POST[SocioDNI]','$_POST[SocioProvincia]','$_POST[SocioPais]','$_POST[SocioTelf]', '$_POST[SocioCuenta]',1, 1)";
+                  $consulta = mysqli_query($conexion, $sql);
+                  if($consulta)
+                    {
+                      include ('confirm.php');
+                      //ini_set('SMTP','smtp.gmail.com');
+                      //ini_set('smtp_port',587);
+                      //$to = "meyama2019@gmail.com";
+                      //$subject = "Alta como socio";
+                      //$mensaje = "Buenos días,\r\n¡Te damos la bienvenida!.\r\n¡Gracias por formar parte de nuestra familia!\r\n" ;
+                      //$headers = "From: meyama2019@gmail.com" . "\r\n" . "BCC: meyama2019@gmail.com;  ";
+                      //mail($to,$subject,$mensaje,$headers);
+                    }
+                  mysqli_close($conexion);
+                
                 }
-               
-                
-                 
-               
-                      
-                
-          }
-        
+                else
+                {
+                  include ('noconfirm.php');    
+                }
+              }
+          }  
 
-?>
+
+    ?>
 
  	
 	
@@ -287,68 +289,90 @@
                
 
 
-     <!-- Modal del Alta de Socio  ------------------------------------------------------->
+ <!-- Modal del Alta de Socio  ------------------------------------------------------->
 
-<div class="modal fade" id="exampleModa2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe2" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-          <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabe2">Alta de Socio</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+ <!-- Modal del Alta de Socio  ------------------------------------------------------->
+
+      <!-- Modal -->
+           <div class="modal fade" id="exampleModa2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe2" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabe2">Alta de Socio</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
-
                 <div class="modal-body">
         
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                       <div class="form-group">
                         <label for="socioEmail">Correo electrónico</label>
                         <input required type="email" class="form-control" id="socioEmail" name ="socioEmail" aria-describedby="emailHelp" placeholder="Ej. tuemail@dominio.es" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}" title="Comprueba tu email por favor">
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
-
                       <div class="form-group">
                         <label for="SocioPassword">Password</label>
                         <input required type="password" class="form-control" id="SocioPassword" name ="SocioPassword" placeholder="Contraseña">
                       </div>
-
                       <div class="form-group">
                         <label for="SocioUsuario">Usuario</label>
                         <input required type="text" class="form-control" id="SocioUsuario" name ="SocioUsuario" aria-describedby="emailHelp" placeholder="Nombre de usuario" >
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
-
-          <div class="form-group">
+            <div class="form-group">
                         <label for="NombreApellidosSocio">Nombre y apellidos</label>
                         <input required type="text" class="form-control" id="NombreApellidosSocio" name ="NombreApellidosSocio" aria-describedby="emailHelp" placeholder="Nombre y Apellidos" >
                       </div>
-
                       <div class="form-group">
                         <label for="SocioDNI">DNI</label>
                         <input required type="text" class="form-control" id="SocioDNI" name ="SocioDNI" aria-describedby="emailHelp" placeholder="DNI">
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
-
-        
-
+            <div class="form-group">
+                        <label for="SocioProvincia">Provincia</label>
+            <?php
+              $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+            ?>
+            <select class="form-control" id="SocioProvincia" name ="SocioProvincia" required >
+            <option value="0">Seleccione:</option>
+            <?php
+              $query = $mysqli -> query ("SELECT * FROM provincias");
+              while ($valores = mysqli_fetch_array($query)) {
+              echo '<option value="'.$valores[id_provincia].'">'.$valores[provincia].'</option>';
+              }
+            ?>
+            </select>
+                      </div>
+            <div class="form-group">
+                        <label for="SocioPais">País</label>
+            <?php
+              $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+            ?>
+            <select class="form-control" id="SocioPais" name ="SocioPais" required >
+            <option value="0">Seleccione:</option>
+            <?php
+              $query1 = $mysqli -> query ("SELECT * FROM paises");
+              while ($valores1 = mysqli_fetch_array($query1)) {
+              echo '<option value="'.$valores1[id].'">'.$valores1[nombre].'</option>';
+              }
+            ?>
+            </select>
+                      </div>
                       <div class="form-group">
                         <label for="SocioTelf">Teléfono</label>
                         <input required type="text" class="form-control" id="SocioTelf" name ="SocioTelf" aria-describedby="emailHelp" placeholder="Ej. +343987159" pattern="(\+34|0034|34)?[\s|\-|\.]?[6|7|9][\s|\-|\.]?([0-9][\s|\-|\.]?){8}" >
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
-
-          <div class="form-group">
+            <div class="form-group">
                         <label for="SocioCuenta">Nº de Cuenta</label>
                         <input type="text" class="form-control" id="SocioCuenta" name ="SocioCuenta" aria-describedby="emailHelp"  >
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
-
                       <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Acepto los términos y condiciones </label>
                       </div>
-
                       <center>
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                       <button type="submit" class="btn btn-primary" name="submit1">Enviar</button>
@@ -366,8 +390,8 @@
                
               </div>
             </div>
-      </div>
-
+      
+          </div>
 
  <!-- Modal del Acceso de Usuarios  ------------------------------------------------------->
 

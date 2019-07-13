@@ -8,10 +8,11 @@
     <title>Trabajo - Modulo 3</title>
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/bootstrap.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-    <link rel="stylesheet" media="screen" type="text/css" href="../css/principal.css" />
-    <link rel="stylesheet" media="print" type="text/css" href="../css/imprimir.css" />
+    <link rel="stylesheet" type="text/css" href="http://localhost/proyecto/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost/proyecto/css/bootstrap.css">
+    <link rel="stylesheet" media="screen" type="text/css" href="http://localhost/proyecto/css/principal.css" />
+    <link rel="stylesheet" media="print" type="text/css" href="http://localhost/proyecto/css/imprimir.css" />
+
     <script type="text/javascript" src="../js/inicio.js"></script>
 </head>
 

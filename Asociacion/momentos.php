@@ -172,24 +172,27 @@ include('../models/connection.php');
          $consulta = mysqli_query($conexion, $sqlfoto);
         
          include ('confirm_foto.php');
-
+        
       
-        exit;
+       
          
       }   
       catch(Exception $e)   
       {
         echo($e);
         include ('noconfirm.php');
-        exit;
+       
 
       }
       finally{
         mysqli_close($conexion);
-        include ('footer.php');
-        exit;
+       
+        
       }
-         
+      
+
+     
+
       
 //INSERT INTO FOTOS (userid,documento,fecha_upload,titulo) values (1,'../imagenes/uploads_img/fondo.jpg',CURRENT_TIME,'Verano 2018')
                 
@@ -199,4 +202,7 @@ include('../models/connection.php');
   //echo '<img src="../imagenes/uploads_img/'.$_FILES['foto']['name'].'"/ width="200px" heigth="200px" />';
   // header('Location: ../../index.php');
   }
+   include ('footer.php'); 
 ?>
+
+</div>

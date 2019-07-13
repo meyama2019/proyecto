@@ -7,10 +7,16 @@ include('../models/connection.php');
 
 
      $listaUsuarios = array(
-   array('id_usuario' => '','usuario' => '','passwd' => '','metodo' => '','email' => '','Nom_Ape' => '','dni' => '','provincia' => '','Pais' => '','telefono' => '','cuenta' => '','activo' => '1','rol_id' => '')
+   array('id_usuario' => '','usuario' => '','passwd' => '','metodo' => '','email' => '','Nom_Ape' => '','dni' => '','provincia' => '','Pais' => '','telefono' => '','cuenta' => '','activo' => '','rol_id' => '')
     );
     $db=Db::getConnect();
-    $sql=$db->query('SELECT * FROM usuarios where activo=1');
+     $sql=$db->query("SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.id,telefono,cuenta,activo,rol_id 
+      FROM paises pa  
+      inner join usuarios us on us.Pais = pa.id
+      inner join provincias pr on pr.id_provincia = us.provincia
+      
+      where us.activo = 1 ");
+    //$sql=$db->query('SELECT * FROM usuarios where activo=1');
 
 
 
@@ -39,8 +45,8 @@ include('../models/connection.php');
   <div class="card">
   <h5 class="card-header">Revisión de Socios</h5>
   <div class="card-body">
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
   
-    <center><a href="#" class="btn btn-primary btn-sm">Activar</a></center>
       <div class="container">
           <br>
           <table class="table">
@@ -50,11 +56,11 @@ include('../models/connection.php');
                 <th scope="col">usuario</th>
                 <th scope="col">email</th>
                 <th scope="col">Nom_Ape</th>
-                <th scope="col">Provincia</th>
-                <th scope="col">Pais</th>
+                <th scope="col">Dni</th>
+                
                 <th scope="col">Teléfono</th>
                 <th scope="col">Cuenta</th>
-                <th scope="col">Marcar</th>
+                <th scope="col">Acción</th>
              
               </tr>
             </thead>
@@ -65,23 +71,29 @@ include('../models/connection.php');
                              $x=0;
                              
                              
-                              // $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()  limit 1');
+                           
                               foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
                               {
-                                //$listanoticias[]= $noticias;
+                            
                                     
                                   echo ('
-                                     <tr>
+                                           <tr>
                                           <th scope="row">'. utf8_encode($listaUsuarios[$x]['id_usuario']).'</th>
                                           <td>'. utf8_encode($listaUsuarios[$x]['usuario']). '</td>
                                           <td>'. utf8_encode($listaUsuarios[$x]['email']).'</td>
                                           <td>'. utf8_encode($listaUsuarios[$x]['Nom_Ape']).'</td>
-                                          <td>'. utf8_encode($listaUsuarios[$x]['provincia']).'</td>
-                                          <td>'. utf8_encode($listaUsuarios[$x]['Pais']).'</td>
+                                          <td>'. utf8_encode($listaUsuarios[$x]['dni']).'</td>
+                                         
+                                          
                                           <td>'. utf8_encode($listaUsuarios[$x]['telefono']).'</td>
-                                          <td>'. utf8_encode($listaUsuarios[$x]['cuenta']).'</td>
-                                          <td><center><input type="checkbox" class="form-check-input" id="exampleCheck1"></center></td>
-                                     </tr> '); 
+                                          <td>'. utf8_encode($listaUsuarios[$x]['cuenta']).'</td>');
+
+                                          if($listaUsuarios[$x]['activo']==1)
+                                          {
+                                            
+                                             echo('<td><button type="submit" class="btn btn-primary btn-sm" name="update_soc" 
+                                              value='.$listaUsuarios[$x]['id_usuario'].'>Activar</button></td>');
+                                          }
 
                                   $x=$x+1;
                                }
@@ -96,10 +108,28 @@ include('../models/connection.php');
           </table>
       
         </div>
+      </form>
   </div>
 </div>
 
 
+
+<?php // Se realiza el UPDATE en usuarios poniendo campo activo = 0 (Se activa plenamente el Socio)
+          if(isset($_POST['update_soc']))
+          {
+              
+                # code...
+               
+                $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                $acentos="SET NAMES 'utf8'";
+                mysqli_query($conexion, $acentos);
+
+                $sql="UPDATE usuarios set activo = 0 where id_usuario = $_POST[update_soc] ";
+                mysqli_query($conexion, $sql);
+                mysqli_close($conexion);
+           
+          }
+?>
 
 
 

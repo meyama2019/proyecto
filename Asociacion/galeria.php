@@ -74,7 +74,8 @@ include('../models/connection.php');
                      <div class="card-body">
                        <div class="row">');
 
-               $sql1 = "SELECT fo.documento,us.Nom_Ape,fo.fecha_upload FROM fotos fo inner join usuarios us on fo.userid=us.id_usuario
+               $sql1 = "SELECT fo.documento,us.Nom_Ape,fo.fecha_upload FROM fotos fo inner join usuarios us 
+               on fo.userid=us.id_usuario
                where titulo = '".$row['titulo']."' order by fecha_upload desc";
 
                $consulta1 = mysqli_query($conexion, $sql1);
@@ -84,14 +85,16 @@ include('../models/connection.php');
                {
                  while($row1 = $result1->fetch_assoc())
                  {
-                   echo('<div class="card" style="width: 18rem;">
-                          <img src='.$row1['documento'].' class="card-img-top img-thumbnail" alt="..." >
-                          <div class="card-body">
-                            <h5 class="card-title">'.$row1['Nom_Ape'].'</h5>
-                            <p class="card-text">Foto subida el: '.$row1['fecha_upload'].'</p>
-                          
-                          </div>
-                        </div>');
+                   
+                   echo('<figure class="col-md-4">
+                        <a href='.$row1['documento'].' data-size="800x600">
+                          <img alt="picture" src='.$row1['documento'].' "
+                            class="img-thumbnail">
+                            <h6 class="card-title">'.$row1['Nom_Ape'].'</h6>
+                            <h6 class="card-title">'.$row1['fecha_upload'].'</h6>
+                           
+                        </a>
+                      </figure>');
 
                   
                  }
@@ -139,7 +142,7 @@ include('../models/connection.php');
               </div>
             </div>
           </div>
-
+</div>
 
 <?php //*******************************Comprobación de las fotos y carga en BBDD 
   if (isset($_POST['upload1']))
@@ -186,25 +189,22 @@ include('../models/connection.php');
       
          $consulta = mysqli_query($conexion, $sqlfoto);
         
-         include ('confirm_foto.php');
-
-      
-        exit;
+        
          
       }   
       catch(Exception $e)   
       {
         echo($e);
         include ('noconfirm.php');
-        exit;
+      
 
       }
       finally{
         mysqli_close($conexion);
-        include ('footer.php');
-        exit;
+       
+        
       }
-         
+      
       
 //INSERT INTO FOTOS (userid,documento,fecha_upload,titulo) values (1,'../imagenes/uploads_img/fondo.jpg',CURRENT_TIME,'Verano 2018')
                 
@@ -215,8 +215,9 @@ include('../models/connection.php');
   // header('Location: ../../index.php');
   }
  
-
+ include ('footer.php');   
 ?>
 
+</div>
 
 
