@@ -32,7 +32,7 @@
                               $sql=$db->query("SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.nombre,telefono,cuenta,activo,rol_id 
                                 FROM paises pa  
                                 inner join usuarios us on us.Pais = pa.id
-                                inner join provincias pr on pr.id_provincia = us.provincia
+                                inner join provincias pr on pr.id_provincia = us.provincias
                                 
                                 where us.activo = 1 ");
                               foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
