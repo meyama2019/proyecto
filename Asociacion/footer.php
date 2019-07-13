@@ -69,7 +69,9 @@
                 
                 {
                   $sql = "INSERT INTO usuarios (usuario, passwd, email, Nom_Ape,  dni, provincias, pais, telefono, cuenta, activo, rol_id ) 
-          values ('$_POST[SocioUsuario]','$password','$_POST[socioEmail]','$_POST[NombreApellidosSocio]','$_POST[SocioDNI]','$_POST[SocioProvincia]','$_POST[SocioPais]','$_POST[SocioTelf]', '$_POST[SocioCuenta]',1, 1)";
+
+				  values ('$_POST[SocioUsuario]','$password','$_POST[socioEmail]','$_POST[NombreApellidosSocio]','$_POST[SocioDNI]','$_POST[SocioProvincia]','$_POST[SocioPais]','$_POST[SocioTelf]', '$_POST[SocioCuenta]',1, 1)";
+
                   $consulta = mysqli_query($conexion, $sql);
                   if($consulta)
                     {
@@ -97,6 +99,16 @@
   
   
   
+
+
+
+
+
+ 	
+	
+	
+	
+
 <!--Para el alta de USUARIOS REGISTRADOS-->
 <?php
      if(isset($_POST['submitur']))
@@ -294,8 +306,13 @@
                   </button>
                 </div>
                 <div class="modal-body">
+<<<<<<< HEAD
         
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+=======
+				
+				    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+>>>>>>> 006e8a144c19f52273b242a53adf0de8a3932e48
                       <div class="form-group">
                         <label for="socioEmail">Correo electrónico</label>
                         <input required type="email" class="form-control" id="socioEmail" name ="socioEmail" aria-describedby="emailHelp" placeholder="Ej. tuemail@dominio.es" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}" title="Comprueba tu email por favor">
@@ -310,7 +327,11 @@
                         <input required type="text" class="form-control" id="SocioUsuario" name ="SocioUsuario" aria-describedby="emailHelp" placeholder="Nombre de usuario" >
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
+<<<<<<< HEAD
             <div class="form-group">
+=======
+					  <div class="form-group">
+>>>>>>> 006e8a144c19f52273b242a53adf0de8a3932e48
                         <label for="NombreApellidosSocio">Nombre y apellidos</label>
                         <input required type="text" class="form-control" id="NombreApellidosSocio" name ="NombreApellidosSocio" aria-describedby="emailHelp" placeholder="Nombre y Apellidos" >
                       </div>
@@ -319,6 +340,7 @@
                         <input required type="text" class="form-control" id="SocioDNI" name ="SocioDNI" aria-describedby="emailHelp" placeholder="DNI">
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
+<<<<<<< HEAD
             <div class="form-group">
                         <label for="SocioProvincia">Provincia</label>
             <?php
@@ -348,13 +370,48 @@
               }
             ?>
             </select>
+=======
+					  <div class="form-group">
+                        <label for="SocioProvincia">Provincia</label>
+						<?php
+						  $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+						?>
+						<select class="form-control" id="SocioProvincia" name ="SocioProvincia" required >
+						<option value="0">Seleccione:</option>
+						<?php
+						  $query = $mysqli -> query ("SELECT * FROM provincias");
+						  while ($valores = mysqli_fetch_array($query)) {
+							echo '<option value="'.$valores[id_provincia].'">'.$valores[provincia].'</option>';
+						  }
+						?>
+					  </select>
+                      </div>
+					  <div class="form-group">
+                        <label for="SocioPais">País</label>
+						<?php
+						  $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+						?>
+						<select class="form-control" id="SocioPais" name ="SocioPais" required >
+						<option value="0">Seleccione:</option>
+						<?php
+						  $query1 = $mysqli -> query ("SELECT * FROM paises");
+						  while ($valores1 = mysqli_fetch_array($query1)) {
+							echo '<option value="'.$valores1[id].'">'.$valores1[nombre].'</option>';
+						  }
+						?>
+					  </select>
+>>>>>>> 006e8a144c19f52273b242a53adf0de8a3932e48
                       </div>
                       <div class="form-group">
                         <label for="SocioTelf">Teléfono</label>
                         <input required type="text" class="form-control" id="SocioTelf" name ="SocioTelf" aria-describedby="emailHelp" placeholder="Ej. +343987159" pattern="(\+34|0034|34)?[\s|\-|\.]?[6|7|9][\s|\-|\.]?([0-9][\s|\-|\.]?){8}" >
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
+<<<<<<< HEAD
             <div class="form-group">
+=======
+					  <div class="form-group">
+>>>>>>> 006e8a144c19f52273b242a53adf0de8a3932e48
                         <label for="SocioCuenta">Nº de Cuenta</label>
                         <input type="text" class="form-control" id="SocioCuenta" name ="SocioCuenta" aria-describedby="emailHelp"  >
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
@@ -380,7 +437,11 @@
                
               </div>
             </div>
+<<<<<<< HEAD
       
+=======
+			
+>>>>>>> 006e8a144c19f52273b242a53adf0de8a3932e48
           </div>
 
 
@@ -406,17 +467,17 @@
                       
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
+                        <label for="exampleInputEmail1">Correo electrónico</label>
 
                         <input type="email" class="form-control" id="Inputemail" name ="Inputemail" aria-describedby="emailHelp" placeholder="Para usuarios registrados, Socios y/o Admins">
                       
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="InputPassword" name="ole" placeholder="Password" required>
+                        <input type="password" class="form-control" id="InputPassword" name="ole" placeholder="Contraseña" required>
                       </div>
                         <center>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-primary">Entrar</button>
                         </center>
                      
@@ -471,4 +532,8 @@
     </div>   
 
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 006e8a144c19f52273b242a53adf0de8a3932e48
