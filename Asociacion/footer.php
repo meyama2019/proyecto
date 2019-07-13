@@ -193,7 +193,7 @@
  <!-- Modal del Contacto y comunicación con Administrador / Empresa  ------------------------------------------------------->
 
       <!-- Modal -->
-           <div class="modal fade" id="exampleModa4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe4" aria-hidden="true">
+          <div class="modal fade" id="exampleModa4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe4" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -306,13 +306,12 @@
                   </button>
                 </div>
                 <div class="modal-body">
-<<<<<<< HEAD
-        
-            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-=======
+       
+            <!--<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">-->
+
 				
 				    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
->>>>>>> 006e8a144c19f52273b242a53adf0de8a3932e48
+
                       <div class="form-group">
                         <label for="socioEmail">Correo electrónico</label>
                         <input required type="email" class="form-control" id="socioEmail" name ="socioEmail" aria-describedby="emailHelp" placeholder="Ej. tuemail@dominio.es" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}" title="Comprueba tu email por favor">
@@ -327,11 +326,11 @@
                         <input required type="text" class="form-control" id="SocioUsuario" name ="SocioUsuario" aria-describedby="emailHelp" placeholder="Nombre de usuario" >
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
-<<<<<<< HEAD
-            <div class="form-group">
-=======
-					  <div class="form-group">
->>>>>>> 006e8a144c19f52273b242a53adf0de8a3932e48
+
+            <!--<div class="form-group">-->
+
+					           <div class="form-group">
+
                         <label for="NombreApellidosSocio">Nombre y apellidos</label>
                         <input required type="text" class="form-control" id="NombreApellidosSocio" name ="NombreApellidosSocio" aria-describedby="emailHelp" placeholder="Nombre y Apellidos" >
                       </div>
@@ -340,7 +339,7 @@
                         <input required type="text" class="form-control" id="SocioDNI" name ="SocioDNI" aria-describedby="emailHelp" placeholder="DNI">
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
-<<<<<<< HEAD
+
             <div class="form-group">
                         <label for="SocioProvincia">Provincia</label>
             <?php
@@ -355,7 +354,7 @@
               }
             ?>
             </select>
-                      </div>
+            </div>
             <div class="form-group">
                         <label for="SocioPais">País</label>
             <?php
@@ -370,48 +369,18 @@
               }
             ?>
             </select>
-=======
-					  <div class="form-group">
-                        <label for="SocioProvincia">Provincia</label>
-						<?php
-						  $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
-						?>
-						<select class="form-control" id="SocioProvincia" name ="SocioProvincia" required >
-						<option value="0">Seleccione:</option>
-						<?php
-						  $query = $mysqli -> query ("SELECT * FROM provincias");
-						  while ($valores = mysqli_fetch_array($query)) {
-							echo '<option value="'.$valores[id_provincia].'">'.$valores[provincia].'</option>';
-						  }
-						?>
-					  </select>
-                      </div>
-					  <div class="form-group">
-                        <label for="SocioPais">País</label>
-						<?php
-						  $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
-						?>
-						<select class="form-control" id="SocioPais" name ="SocioPais" required >
-						<option value="0">Seleccione:</option>
-						<?php
-						  $query1 = $mysqli -> query ("SELECT * FROM paises");
-						  while ($valores1 = mysqli_fetch_array($query1)) {
-							echo '<option value="'.$valores1[id].'">'.$valores1[nombre].'</option>';
-						  }
-						?>
-					  </select>
->>>>>>> 006e8a144c19f52273b242a53adf0de8a3932e48
-                      </div>
+            </div>
+
+					  
                       <div class="form-group">
                         <label for="SocioTelf">Teléfono</label>
                         <input required type="text" class="form-control" id="SocioTelf" name ="SocioTelf" aria-describedby="emailHelp" placeholder="Ej. +343987159" pattern="(\+34|0034|34)?[\s|\-|\.]?[6|7|9][\s|\-|\.]?([0-9][\s|\-|\.]?){8}" >
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
-<<<<<<< HEAD
-            <div class="form-group">
-=======
+
+            <!--<div class="form-group">-->
 					  <div class="form-group">
->>>>>>> 006e8a144c19f52273b242a53adf0de8a3932e48
+
                         <label for="SocioCuenta">Nº de Cuenta</label>
                         <input type="text" class="form-control" id="SocioCuenta" name ="SocioCuenta" aria-describedby="emailHelp"  >
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
@@ -437,11 +406,7 @@
                
               </div>
             </div>
-<<<<<<< HEAD
-      
-=======
-			
->>>>>>> 006e8a144c19f52273b242a53adf0de8a3932e48
+
           </div>
 
 
@@ -449,7 +414,7 @@
  <!-- Modal del Acceso de Usuarios  ------------------------------------------------------->
 
       <!-- Modal -->
-           <div class="modal fade" id="exampleModa3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe2" aria-hidden="true">
+          <div class="modal fade" id="exampleModa3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe2" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -532,8 +497,5 @@
     </div>   
 
 </body>
-<<<<<<< HEAD
+
 </html>
-=======
-</html>
->>>>>>> 006e8a144c19f52273b242a53adf0de8a3932e48
