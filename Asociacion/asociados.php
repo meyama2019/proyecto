@@ -7,7 +7,7 @@ include('../models/connection.php');
 
 
      $listaUsuarios = array(
-   array('id_usuario' => '','usuario' => '','passwd' => '','metodo' => '','email' => '','Nom_Ape' => '','dni' => '','provincia' => '','Pais' => '','telefono' => '','cuenta' => '','activo' => '1','rol_id' => '')
+   array('id_usuario' => '','usuario' => '','passwd' => '','metodo' => '','email' => '','Nom_Ape' => '','dni' => '','provincias' => '','Pais' => '','telefono' => '','cuenta' => '','activo' => '1','rol_id' => '')
     );
     $db=Db::getConnect();
     $sql=$db->query('SELECT * FROM usuarios');
@@ -60,7 +60,7 @@ include('../models/connection.php');
                                           <td>'. utf8_encode($listaUsuarios[$x]['usuario']). '</td>
                                           <td>'. utf8_encode($listaUsuarios[$x]['email']).'</td>
                                           <td>'. utf8_encode($listaUsuarios[$x]['Nom_Ape']).'</td>
-                                          <td>'. utf8_encode($listaUsuarios[$x]['provincia']).'</td>
+                                          <td>'. utf8_encode($listaUsuarios[$x]['provincias']).'</td>
                                           <td>'. utf8_encode($listaUsuarios[$x]['Pais']).'</td>
                                           <td>'. utf8_encode($listaUsuarios[$x]['telefono']).'</td>
                                           <td>'. utf8_encode($listaUsuarios[$x]['cuenta']).'</td>
