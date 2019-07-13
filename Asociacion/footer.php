@@ -568,7 +568,7 @@
           <a class="dark-grey-text" href="#!">Your Account</a>
         </p>
         <p>
-          <a class="dark-grey-text" href="#!">Become an Affiliate</a>
+          <a href="" class="badge badge-info" data-toggle="modal" data-target="#exampleModa4" >Contacto</a>
         </p>
         <p>
           <a class="dark-grey-text" href="#!">Shipping Rates</a>
