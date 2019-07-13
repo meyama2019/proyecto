@@ -50,6 +50,9 @@
                     <?php
 
                      if (isset($_SESSION['rol1']) && $_SESSION['rol1']==95)
+                     {
+                      
+
                       echo '<li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Gestión del Sitio
@@ -77,9 +80,9 @@
                        Mensajes <span class="badge badge-light">'.$_SESSION['tot_con'].'</span>
                         <span class="sr-only">unread messages</span>
                        </a>
-                     </li>'
+                     </li>';
  
-                    
+                     }
 
 
                     ?>

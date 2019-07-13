@@ -7,15 +7,18 @@ include('../models/connection.php');
 
 
      $listaUsuarios = array(
-   array('id_usuario' => '','usuario' => '','passwd' => '','metodo' => '','email' => '','Nom_Ape' => '','dni' => '','provincia' => '','Pais' => '','telefono' => '','cuenta' => '','activo' => '','rol_id' => '')
+   array('id_usuario' => '','usuario' => '','passwd' => '','metodo' => '','email' => '','Nom_Ape' => '','dni' => '','provincia' => '','nombre' => '','telefono' => '','cuenta' => '','activo' => '','rol_id' => '')
     );
     $db=Db::getConnect();
-     $sql=$db->query("SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.id,telefono,cuenta,activo,rol_id 
-      FROM paises pa  
-      inner join usuarios us on us.Pais = pa.id
-      inner join provincias pr on pr.id_provincia = us.provincia
-      
-      where us.activo = 1 ");
+
+      $num_rows=$db->query('SELECT * FROM contacto where activo=1'); // 1 Pendientes aprobación
+      $tot=0;
+      foreach ($num_rows->fetchAll() as $contacto) {
+               $tot=$tot+1;
+               }
+      $_SESSION['tot_con'] = $tot;
+
+     
     //$sql=$db->query('SELECT * FROM usuarios where activo=1');
 
 
@@ -57,7 +60,8 @@ include('../models/connection.php');
                 <th scope="col">email</th>
                 <th scope="col">Nom_Ape</th>
                 <th scope="col">Dni</th>
-                
+                <th scope="col">Provincia</th>
+                <th scope="col">Pais</th>
                 <th scope="col">Teléfono</th>
                 <th scope="col">Cuenta</th>
                 <th scope="col">Acción</th>
@@ -71,7 +75,12 @@ include('../models/connection.php');
                              $x=0;
                              
                              
-                           
+                              $sql=$db->query("SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.nombre,telefono,cuenta,activo,rol_id 
+                                FROM paises pa  
+                                inner join usuarios us on us.Pais = pa.id
+                                inner join provincias pr on pr.id_provincia = us.provincia
+                                
+                                where us.activo = 1 ");
                               foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
                               {
                             
@@ -83,7 +92,8 @@ include('../models/connection.php');
                                           <td>'. utf8_encode($listaUsuarios[$x]['email']).'</td>
                                           <td>'. utf8_encode($listaUsuarios[$x]['Nom_Ape']).'</td>
                                           <td>'. utf8_encode($listaUsuarios[$x]['dni']).'</td>
-                                         
+                                          <td>'. utf8_encode($listaUsuarios[$x]['provincia']).'</td>
+                                          <td>'. utf8_encode($listaUsuarios[$x]['nombre']).'</td>
                                           
                                           <td>'. utf8_encode($listaUsuarios[$x]['telefono']).'</td>
                                           <td>'. utf8_encode($listaUsuarios[$x]['cuenta']).'</td>');
@@ -126,7 +136,19 @@ include('../models/connection.php');
 
                 $sql="UPDATE usuarios set activo = 0 where id_usuario = $_POST[update_soc] ";
                 mysqli_query($conexion, $sql);
+                
+                
+                $num_rows=$db->query('SELECT * FROM usuarios where activo=1'); // 1 Pendientes aprobación
+                $tot=0;
+                 foreach ($num_rows->fetchAll() as $usuario) {
+                  $tot=$tot+1;
+                }
+                $_SESSION['tot_pen'] = $tot;
                 mysqli_close($conexion);
+                require_once('sociosptes.php');
+                
+               
+                
            
           }
 ?>

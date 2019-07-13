@@ -12,6 +12,15 @@ include('../models/connection.php');
       'activo' =>'')
     );
     $db=Db::getConnect();
+    $num_rows=$db->query('SELECT * FROM usuarios where activo=1'); // 1 Pendientes aprobación
+                $tot=0;
+                 foreach ($num_rows->fetchAll() as $usuario) {
+                  $tot=$tot+1;
+                }
+                $_SESSION['tot_pen'] = $tot;
+              
+
+   
     
     $sql=$db->query('SELECT * from contacto where activo=1');
 
@@ -128,9 +137,13 @@ include('../models/connection.php');
                 mysqli_query($conexion, $sql);
                 mysqli_close($conexion);
 
-                //$_SESSION['tot_con'] = $_SESSION['tot_con'] - 1;
-                //exit;
-                                        
+                $num_rows=$db->query('SELECT * FROM contacto where activo=1'); // 1 Pendientes aprobación
+                $tot=0;
+                 foreach ($num_rows->fetchAll() as $contacto) {
+                  $tot=$tot+1;
+                }
+                $_SESSION['tot_con'] = $tot;
+               
                 
                
                 

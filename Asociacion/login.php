@@ -120,6 +120,7 @@ require_once('../models/connection.php');
     $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
     //$uri   = '/proyecto';
     $extra = '../home.php';
+    header("Refresh:0");
     header("Location: http://$host$uri/$extra");
     exit;
      
