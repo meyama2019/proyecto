@@ -1,6 +1,6 @@
 
   <div class="card">
-  <h5 class="card-header">Mensajes Recibidos</h5>
+  <h5 class="card-header" style="background-color: #F78181">Mensajes Recibidos</h5>
 
   <br>
   <div class="container">
@@ -54,7 +54,7 @@
     
       <div class="container">
           <br>
-          <table class="table">
+          <table class="table table-hover">
             <thead class="thead-light">
               <tr>
                 <th scope="col">id</th>

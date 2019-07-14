@@ -1,5 +1,5 @@
  <div class="card">
-  <h5 class="card-header">Revisión de Socios</h5>
+  <h5 class="card-header" style="background-color: #F78181">Revisión de Socios</h5>
 
   <!-- (1) Formulario de búsqueda por criterios ------->
   <br>
@@ -53,7 +53,7 @@
   
       <div class="container">
           <br>
-          <table class="table">
+          <table class="table table-hover">
             <thead class="thead-light">
               <tr>
                 <th scope="col">id</th>

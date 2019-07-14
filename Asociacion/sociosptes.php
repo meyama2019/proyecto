@@ -52,7 +52,7 @@ include('../models/connection.php');
                 $acentos="SET NAMES 'utf8'";
                 mysqli_query($conexion, $acentos);
 
-                $sql="UPDATE usuarios set activo = 0 where id_usuario = $_POST[update_soc] ";
+                $sql="UPDATE usuarios set activo = 0, rol_id=2 where id_usuario = $_POST[update_soc] ";
                 mysqli_query($conexion, $sql);
                 
                 

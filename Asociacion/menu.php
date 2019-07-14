@@ -79,7 +79,11 @@
                        <a href="http://localhost/proyecto/asociacion/mensajesptes.php" class="btn btn-outline-warning btn-sm">
                        Mensajes <span class="badge badge-light">'.$_SESSION['tot_con'].'</span>
                         <span class="sr-only">unread messages</span>
+                      
+
                        </a>
+                      
+
                      </li>';
  
                      }
@@ -101,7 +105,7 @@
                         echo ('<button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa2" >Hazte Socio</button>');
                     }
 								?>	  
-                              </li>  
+                              </li  >  
                               <li class="nav-item">
                                 <?php
                                     if (isset($_SESSION['rol1']) )
@@ -130,3 +134,6 @@
                   </form>
                 </div>
               </nav>
+
+
+
