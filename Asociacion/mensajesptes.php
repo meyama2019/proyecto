@@ -20,22 +20,9 @@ include('../models/connection.php');
                 $_SESSION['tot_pen'] = $tot;
               
 
-   
-    
-    $sql=$db->query('SELECT * from contacto where activo=1');
-
-
-
-
-
-  
     require_once('menu.php');
    
-  
-?>
-
-<?php
-  if (!isset($_SESSION['rol1']))
+    if(!isset($_SESSION['rol1']))
   {
 
     echo('<div class="container"><div class="alert alert-danger" role="alert">
@@ -47,80 +34,11 @@ include('../models/connection.php');
 
 ?>     
 
+<?php
+ 
 
-  <div class="card">
-  <h5 class="card-header">Mensajes Recibidos</h5>
-  <div class="card-body">
-   <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-    
-      <div class="container">
-          <br>
-          <table class="table">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">id</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Email</th>
-                <th scope="col">Telefono</th>
-                <th scope="col">Asunto</th>
-                <th scope="col">Mensaje</th>
-                <th scope="col">Acción</th>
-               
-               
-             
-              </tr>
-            </thead>
-             <tbody>
-
-              <?php
-                             
-                             $x=0;
-                             
-                              $checkvalue[]='';
-                              // $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()  limit 1');
-                              foreach ($sql->fetchAll() as $listaMensajes[$x]) 
-                              {
-                                //$listanoticias[]= $noticias;
-                                    
-                                  echo ('
-                                     <tr>
-                                          <th scope="row'.$x.'" name="row">'. utf8_encode($listaMensajes[$x]['id_solicitud']).'</th>
-                                          <td>'. utf8_encode($listaMensajes[$x]['fecha_entrada']). '</td>
-                                          <td>'. utf8_encode($listaMensajes[$x]['nombre']).'</td>
-                                          <td>'. utf8_encode($listaMensajes[$x]['email']).'</td>
-                                          <td>'. utf8_encode($listaMensajes[$x]['telefono']).'</td>
-                                          <td>'. utf8_encode($listaMensajes[$x]['asunto']).'</td>
-                                          <td>'. utf8_encode($listaMensajes[$x]['mensaje']).'</td>');
-
-                                          if($listaMensajes[$x]['activo']==1)
-                                          {
-                                            //echo('<td>Pdte</td>
-                                            //  <td ><center><input type="checkbox" class="form-check-input"  id="exampleCheck1" ></center></td>
-                                            //   </tr>');
-                                            echo('<td><button type="submit" class="btn btn-primary btn-sm" name="update_new" 
-                                              value='.$listaMensajes[$x]['id_solicitud'].'>Leido</button></td>');
-                                          }
-                               
-                                  
-                                   $x=$x+1;  
-                                 
-                               }
-                      require_once('mensajesptes.php');
-
-
-               ?>
-
-
-           
-            
-            </tbody>
-          </table>
-      
-        </div>
-      </form>
-  </div>
-</div>
+  require_once('vmensajesptes.php');
+?>
 
 <?php
           if(isset($_POST['update_new']))
@@ -135,7 +53,7 @@ include('../models/connection.php');
 
                 $sql="UPDATE contacto set activo= 0 where id_solicitud = $_POST[update_new] ";
                 mysqli_query($conexion, $sql);
-                mysqli_close($conexion);
+                
 
                 $num_rows=$db->query('SELECT * FROM contacto where activo=1'); // 1 Pendientes aprobación
                 $tot=0;
@@ -143,17 +61,10 @@ include('../models/connection.php');
                   $tot=$tot+1;
                 }
                 $_SESSION['tot_con'] = $tot;
-               
-                
-               
-                
-
-             
-               
+                mysqli_close($conexion);
+                            
           }
                 
-        
-
 
     ?>
 

@@ -18,19 +18,10 @@ include('../models/connection.php');
                }
       $_SESSION['tot_con'] = $tot;
 
-     
-    //$sql=$db->query('SELECT * FROM usuarios where activo=1');
 
-
-
-
-
-  
     require_once('menu.php');
    
   
-?>
-<?php
   if (!isset($_SESSION['rol1']))
   {
 
@@ -40,10 +31,15 @@ include('../models/connection.php');
     //header("Location: http://localhost/proyecto/home.php");
     exit;
   }
-  require_once('vsociosptes.php');
-?>  
-      
 
+ 
+?>  
+
+
+      
+<?php
+ require_once('vsociosptes.php');
+?>
 
 
 <?php // Se realiza el UPDATE en usuarios poniendo campo activo = 0 (Se activa plenamente el Socio)
@@ -73,6 +69,7 @@ include('../models/connection.php');
                 
            
           }
+          
 ?>
 
 

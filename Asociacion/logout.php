@@ -7,6 +7,8 @@ unset ($SESSION['login1']);
 unset ($SESSION['start']);
 unset ($SESSION['expire']);
 unset ($SESSION['rol1']);
+unset ($SESSION['activo']);
+unset ($SESSION['id_usuario']);
 session_destroy();
 
 
