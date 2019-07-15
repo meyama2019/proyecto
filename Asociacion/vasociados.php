@@ -91,7 +91,7 @@
                           }
                        
                        
-                         $sql=$db->query($sqlInicial);
+                        $sql=$db->query($sqlInicial);
                         
                         foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
                                 {
@@ -118,6 +118,47 @@
 
                                  }
                         echo ('<p>Resultados encontrados '.$X.'</p>');
+                    }
+                    else
+                    {
+                      $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                      $acentos="SET NAMES 'utf8'";
+                      mysqli_query($conexion, $acentos);
+                      $sqlInicial="SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.nombre,telefono,cuenta,activo,rol_id 
+                          FROM paises pa  
+                          inner join usuarios us on us.Pais = pa.id
+                          inner join provincias pr on pr.id_provincia = us.provincias                                
+                          where 1 and rol_id != 95"; 
+                       $x=0;
+                       Global $X;
+                       $sql=$db->query($sqlInicial);
+                        
+                        foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
+                                {
+                                   
+                                    
+                                    echo ('
+                                             <tr>
+                                            <th scope="row">'. utf8_encode($listaUsuarios[$x]['id_usuario']).'</th>
+                                            
+                                            <td>'. utf8_encode($listaUsuarios[$x]['email']).'</td>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['Nom_Ape']).'</td>
+                                           
+                                            <td>'. utf8_encode($listaUsuarios[$x]['provincia']).'</td>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['nombre']).'</td>
+                                            
+                                            <td>'. utf8_encode($listaUsuarios[$x]['telefono']).'</td>');
+                                           
+
+                                           
+                                    $x=$x+1;
+                                    $X=$x;
+
+
+
+                                 }
+                        echo ('<p>Resultados encontrados '.$X.'</p>');
+
                     }
 
                    mysqli_close($conexion);
