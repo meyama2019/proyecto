@@ -118,7 +118,9 @@ include('../models/connection.php');
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
-                  <button type="submit" class="btn btn-primary" name="upload1">Añadir Foto</button>
+                  <button id="upload1" type="submit" class="btn btn-primary" name="upload1" >Añadir Foto</button>
+                 
+          </script>
                 </div>
                </form>
               </div>
@@ -126,9 +128,13 @@ include('../models/connection.php');
           </div>
 
 
+    </div>      
+
+
 <?php //*******************************Comprobación de las fotos y carga en BBDD 
   if (isset($_POST['upload1']))
   {
+
      if ($_FILES['foto']['error'] > 0)
       {
         echo 'Problem mayor 0';
@@ -141,8 +147,9 @@ include('../models/connection.php');
         echo 'Problem type jpeg';
         exit;
       }
-      
-      $uploaled_file = '../imagenes/uploads_img/'.$_FILES['foto']['name'];
+      $aleatorio = rand(1,1000000);
+      $nombre= $_FILES['foto']['name'];
+      $uploaled_file = '../imagenes/uploads_img/'.$aleatorio .$nombre;
 
       if (is_uploaded_file($_FILES['foto']['tmp_name']))
       {
@@ -163,19 +170,16 @@ include('../models/connection.php');
      
       try{
      
-      $docu = '../imagenes/uploads_img/'. $_FILES['foto']['name'];
+      $docu=$uploaled_file;
+      //$docu = '../imagenes/uploads_img/'. $_FILES['foto']['name'];
       $user = $_SESSION['id_usuario'];
-      $titu = 'Fotos Varias';         
-      $sqlfoto = "INSERT INTO fotos (id_foto,userid,documento,fecha_upload,titulo) values (0,
+      $titu = 'Fotos Varias'; 
+
+      $sqlfotom = "INSERT INTO fotos (id_foto,userid,documento,fecha_upload,titulo) values (0,
       '$_SESSION[id_usuario]','$docu',current_timestamp,'$titu')";
       
-         $consulta = mysqli_query($conexion, $sqlfoto);
-        
-         include ('confirm_foto.php');
-        
-      
-       
-         
+         $consulta = mysqli_query($conexion, $sqlfotom);
+             
       }   
       catch(Exception $e)   
       {
@@ -186,21 +190,12 @@ include('../models/connection.php');
       }
       finally{
         mysqli_close($conexion);
+
        
         
       }
       
 
-     
-
-      
-//INSERT INTO FOTOS (userid,documento,fecha_upload,titulo) values (1,'../imagenes/uploads_img/fondo.jpg',CURRENT_TIME,'Verano 2018')
-                
-
-
-
-  //echo '<img src="../imagenes/uploads_img/'.$_FILES['foto']['name'].'"/ width="200px" heigth="200px" />';
-  // header('Location: ../../index.php');
   }
    include ('footer.php'); 
 ?>

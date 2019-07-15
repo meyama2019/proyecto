@@ -77,7 +77,6 @@
                   $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
                   $acentos="SET NAMES 'utf8'";
                   mysqli_query($conexion, $acentos);
-
                   $sql = "SELECT * from contacto where activo = 1";
                   $x=0;
                   Global $X;
@@ -115,7 +114,49 @@
                       
 
                         
-                         $sql1=$db->query($sql);
+                          $sql1=$db->query($sql);
+                         
+                         //echo($sql . $_POST['ccont'] );
+                          foreach ($sql1->fetchAll() as $listaMensajes[$x]) 
+                              {
+                                //$listanoticias[]= $noticias;
+                                    
+                                  echo ('
+                                     <tr>
+                                          <th scope="row'.$x.'" name="row">'. utf8_encode($listaMensajes[$x]['id_solicitud']).'</th>
+                                          <td>'. utf8_encode($listaMensajes[$x]['fecha_entrada']). '</td>
+                                          <td>'. utf8_encode($listaMensajes[$x]['nombre']).'</td>
+                                          <td>'. utf8_encode($listaMensajes[$x]['email']).'</td>
+                                          <td>'. utf8_encode($listaMensajes[$x]['telefono']).'</td>
+                                          <td>'. utf8_encode($listaMensajes[$x]['asunto']).'</td>
+                                          <td>'. utf8_encode($listaMensajes[$x]['mensaje']).'</td>');
+
+                                          if($listaMensajes[$x]['activo']==1)
+                                          {
+                                            //echo('<td>Pdte</td>
+                                            //  <td ><center><input type="checkbox" class="form-check-input"  id="exampleCheck1" ></center></td>
+                                            //   </tr>');
+                                            echo('<td><button type="submit" class="btn btn-outline-primary btn-sm" name="update_new" 
+                                              value='.$listaMensajes[$x]['id_solicitud'].'>Leido</button></td>');
+                                          }
+                               
+                                  
+                                   $x=$x+1; 
+                                   $X=$x; 
+                                 
+                               }
+                           echo ('<p>Resultados encontrados '.$X.'</p>');
+                        
+                  }
+                  else
+                  {
+                      $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                      $acentos="SET NAMES 'utf8'";
+                      mysqli_query($conexion, $acentos);
+                      $sql = "SELECT * from contacto where activo = 1";
+                      $x=0;
+                      Global $X;
+                       $sql1=$db->query($sql);
                          
                          //echo($sql . $_POST['ccont'] );
                           foreach ($sql1->fetchAll() as $listaMensajes[$x]) 

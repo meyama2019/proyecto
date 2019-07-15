@@ -4,8 +4,9 @@
 
 14.07.2017 	
 
-(Marcelo)	1-Revisar nombres de fotos (para que no sobre escriba si hay una con ese nombre
-(Marcelo)	2-BUG - Inserción de varias fotos en una misma acción 
+(Marcelo)	1-Revisar nombres de fotos (para que no sobre escriba si hay una con ese nombres		OK                              
+(Marcelo)	2-BUG - Inserción de varias fotos en una misma acción 									No consigo reproducir el error
+(Marcelo)	- Modifico Mensajes ptes y Socios Pts confirmar para que al entrar muestre todos. (Antes no lo hacía)
 (Elisa)		3-Actualizar contador de mensajes pendientes y socios por confirmar 
 
 			4-Gestión del Sitio

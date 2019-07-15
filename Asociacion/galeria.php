@@ -159,10 +159,14 @@ include('../models/connection.php');
         echo 'Problem type jpeg';
         exit;
       }
+
+      $aleatorio = rand(1,1000000);
+      $nombre= $_FILES['foto']['name'];
+      $uploaled_file = '../imagenes/uploads_img/'. $aleatorio .$nombre;
       
-      $uploaled_file = '../imagenes/uploads_img/'.$_FILES['foto']['name'];
 
       if (is_uploaded_file($_FILES['foto']['tmp_name']))
+
       {
         if(!move_uploaded_file($_FILES['foto']['tmp_name'], $uploaled_file))
         {
@@ -181,38 +185,31 @@ include('../models/connection.php');
      
       try{
      
-      $docu = '../imagenes/uploads_img/'. $_FILES['foto']['name'];
+      $docu=$uploaled_file;
+      //$docu = '../imagenes/uploads_img/'. $_FILES['foto']['name'] ;
       $user = $_SESSION['id_usuario'];
-      $titu = $_POST['titulo'];         
+      $titu = $_POST['titulo'];  
+      
       $sqlfoto = "INSERT INTO fotos (id_foto,userid,documento,fecha_upload,titulo) values (0,
-      '$_SESSION[id_usuario]','$docu',current_timestamp,'$_POST[titulo]')";
+      '$_SESSION[id_usuario]','$docu',current_timestamp,'$titu')";
       
          $consulta = mysqli_query($conexion, $sqlfoto);
-        
-        
-         
-      }   
+       
+        }   
       catch(Exception $e)   
       {
         echo($e);
         include ('noconfirm.php');
       
-
       }
+
       finally{
         mysqli_close($conexion);
-       
+      
         
       }
       
       
-//INSERT INTO FOTOS (userid,documento,fecha_upload,titulo) values (1,'../imagenes/uploads_img/fondo.jpg',CURRENT_TIME,'Verano 2018')
-                
-
-
-
-  //echo '<img src="../imagenes/uploads_img/'.$_FILES['foto']['name'].'"/ width="200px" heigth="200px" />';
-  // header('Location: ../../index.php');
   }
  
  include ('footer.php');   
