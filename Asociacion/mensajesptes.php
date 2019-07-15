@@ -18,6 +18,13 @@ include('../models/connection.php');
                   $tot=$tot+1;
                 }
                 $_SESSION['tot_pen'] = $tot;
+
+    $num_rows=$db->query('SELECT * FROM contacto where activo=1'); // 1 Pendientes aprobación
+    $tot=0;
+    foreach ($num_rows->fetchAll() as $contacto) {
+      $tot=$tot+1;
+    }
+    $_SESSION['tot_con'] = $tot;
               
 
     require_once('menu.php');
@@ -62,6 +69,14 @@ include('../models/connection.php');
                 }
                 $_SESSION['tot_con'] = $tot;
                 mysqli_close($conexion);
+
+                echo "<script type=\"text/javascript\">";
+                echo "$(document).ready(function(){";
+                echo "if(document.URL.indexOf(\"#\")==-1){";
+                echo " url = document.URL+\"#\"; location = \"#\";";
+                echo "location.reload(true);";
+                echo "}    });";
+                echo "</script>";
                             
           }
                 
