@@ -26,7 +26,7 @@ include('../models/connection.php');
        if (isset($_SESSION['rol1']))
        {
        
-        echo('<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadfile">
+        echo('<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadfile1">
                                 Añade una foto
                               </button>');
        }
@@ -40,15 +40,13 @@ include('../models/connection.php');
 
 
 
-
               
 <div class="accordion" id="accordionExample">
 
 <?php
      
                
-
-    $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+  $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
     $acentos="SET NAMES 'utf8'";
     mysqli_query($conexion, $acentos);
     $sql = "SELECT titulo FROM fotos group by titulo order by titulo";
@@ -109,7 +107,7 @@ include('../models/connection.php');
 
 
 
-       <div class="modal fade" id="uploadfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelur" aria-hidden="true">
+       <div class="modal fade" id="uploadfile1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelur" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -204,8 +202,11 @@ include('../models/connection.php');
       }
 
       finally{
-        mysqli_close($conexion);
       
+        mysqli_close($conexion);
+        unset($_POST['upload1']);
+
+
         
       }
       
@@ -215,6 +216,9 @@ include('../models/connection.php');
  include ('footer.php');   
 ?>
 
-</div>
+
+
+ 
+
 
 

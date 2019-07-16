@@ -7,23 +7,16 @@ include('../models/connection.php');
 
 
      $listaUsuarios = array(
-   array('id_usuario' => '','usuario' => '','passwd' => '','metodo' => '','email' => '','Nom_Ape' => '','dni' => '','provincia' => '','nombre' => '','telefono' => '','cuenta' => '','activo' => '','rol_id' => '')
+   array('idRol' => '','Nombre' => '')
     );
     $db=Db::getConnect();
 
-      $num_rows=$db->query('SELECT * FROM contacto where activo=1'); // 1 Pendientes aprobación
+      $num_rows=$db->query('SELECT * FROM rolusuario '); // 1 Pendientes aprobación
       $tot=0;
       foreach ($num_rows->fetchAll() as $contacto) {
                $tot=$tot+1;
                }
-      $_SESSION['tot_con'] = $tot;
-
-       $num_rows=$db->query('SELECT * FROM usuarios where activo=1'); // 1 Pendientes aprobación
-                $tot=0;
-                 foreach ($num_rows->fetchAll() as $usuario) {
-                  $tot=$tot+1;
-                }
-                $_SESSION['tot_pen'] = $tot;
+      //$_SESSION['tot_con'] = $tot;
 
 
     require_once('menu.php');
@@ -45,7 +38,7 @@ include('../models/connection.php');
 
       
 <?php
- require_once('vsociosptes.php');
+ require_once('vmtoroles.php');
 ?>
 
 
@@ -71,13 +64,6 @@ include('../models/connection.php');
                 $_SESSION['tot_pen'] = $tot;
                 mysqli_close($conexion);
                 
-                echo "<script type=\"text/javascript\">";
-                echo "$(document).ready(function(){";
-                echo " if(document.URL.indexOf(\"#\")==-1){";
-                echo " url = document.URL+\"#\"; location = \"#\";";
-                echo "location.reload(true);";
-                echo "}    });";
-                echo "</script>";              
                 
                
                 

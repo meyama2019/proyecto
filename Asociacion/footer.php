@@ -315,7 +315,7 @@
                 </div>
                 <div class="modal-body">
        
-            <!--<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">-->
+            
 
 				
 				    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -469,11 +469,11 @@
 
 
 <!-- Footer -->
-<footer class="page-footer font-small blue-grey lighten-5">
+<footer id="pie-container" class="page-footer font-small blue-grey lighten-5">
 
-  <div style="background-color: #006450; color: #ffffff;">
+  <div  style="background-color: #006450; color:#ffffff">
 
-    <div class="container">
+    <div  class="container">
 
       <!-- Grid row-->
       <div class="row py-4 d-flex align-items-center">

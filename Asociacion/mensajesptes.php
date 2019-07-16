@@ -76,10 +76,10 @@ include('../models/connection.php');
                 echo " url = document.URL+\"#\"; location = \"#\";";
                 echo "location.reload(true);";
                 echo "}    });";
-                echo "</script>";
+                echo "</script>";    
                             
           }
-                
+            
 
     ?>
 

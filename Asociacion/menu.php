@@ -53,12 +53,12 @@
                      {
                       
 
-                      echo '<li class="nav-item dropdown">
+                      echo ('<li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Gestión del Sitio
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Roles de Usuario</a>
+                        <a class="dropdown-item" href="http://localhost/proyecto/asociacion/mtoroles.php">Roles de Usuario</a>
                         <a class="dropdown-item" href="#">Usuarios</a>
                         <a class="dropdown-item" href="#">Noticias</a>
                         <a class="dropdown-item" href="#">Fotos</a>
@@ -84,7 +84,7 @@
                        </a>
                       
 
-                     </li>';
+                     </li>');
  
                      }
 

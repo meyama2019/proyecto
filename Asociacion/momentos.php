@@ -118,7 +118,7 @@ include('../models/connection.php');
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
-                  <button id="upload1" type="submit" class="btn btn-primary" name="upload1" >Añadir Foto</button>
+                  <button id="upload1" type="submit" class="btn btn-primary" name="upload2" >Añadir Foto</button>
                  
           </script>
                 </div>
@@ -132,7 +132,9 @@ include('../models/connection.php');
 
 
 <?php //*******************************Comprobación de las fotos y carga en BBDD 
-  if (isset($_POST['upload1']))
+
+ 
+  if (isset($_POST['upload2']))
   {
 
      if ($_FILES['foto']['error'] > 0)
@@ -175,12 +177,12 @@ include('../models/connection.php');
       $user = $_SESSION['id_usuario'];
       $titu = 'Fotos Varias'; 
 
-      $sqlfotom = "INSERT INTO fotos (id_foto,userid,documento,fecha_upload,titulo) values (0,
+      $sqlfotom = "INSERT INTO fotos (id_foto,userid,documento,fecha_upload,titulo) values (NULL,
       '$_SESSION[id_usuario]','$docu',current_timestamp,'$titu')";
       
          $consulta = mysqli_query($conexion, $sqlfotom);
              
-      }   
+       }   
       catch(Exception $e)   
       {
         echo($e);
@@ -190,14 +192,14 @@ include('../models/connection.php');
       }
       finally{
         mysqli_close($conexion);
-
+        unset($_POST['upload1']);
+        
        
         
       }
-      
+     
 
   }
    include ('footer.php'); 
 ?>
 
-</div>
