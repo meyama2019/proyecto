@@ -43,7 +43,7 @@ include('../models/connection.php');
 
 
 <?php // Se realiza el UPDATE en usuarios poniendo campo activo = 0 (Se activa plenamente el Socio)
-          if(isset($_POST['update_soc']))
+/*          if(isset($_POST['update_soc']))
           {
               
                 # code...
@@ -68,7 +68,7 @@ include('../models/connection.php');
                
                 
            
-          }
+          }*/
           
 ?>
 
