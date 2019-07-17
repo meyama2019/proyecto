@@ -133,7 +133,7 @@
                                             <td><button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
                                                 value='.$listaUsuarios[$x]['id_usuario'].'>Editar</button>
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
-                                                value='.$listaUsuarios[$x]['id_usuario'].'>Eliminar</button></td></tr>
+                                                value='.$listaUsuarios[$x]['id_usuario'].'>Borrar</button></td></tr>
                                             ');
                                             
 
@@ -180,7 +180,7 @@
                                             <td><button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
                                                 value='.$listaUsuarios[$x]['id_usuario'].'>Editar</button>
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
-                                                value='.$listaUsuarios[$x]['id_usuario'].'>Eliminar</button></td></tr>
+                                                value='.$listaUsuarios[$x]['id_usuario'].'>Borrar</button></td></tr>
                                             ');
                                      $x=$x+1; 
                                      $X=$x;

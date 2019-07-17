@@ -17,11 +17,11 @@
                 </div>
                 <div class="form-group col-md-3">
                     <label for="cmtofechaini"></label>
-                    <input type="text" class="form-control" id="cmtofechaini" name="cmtofechaini" placeholder="01/01/2019">
+                    <input type="date" class="form-control" id="cmtofechaini" name="cmtofechaini" placeholder="">
                 </div>
                 <div class="form-group col-md-3">
                     <label for="cmtofechafin"></label>
-                    <input type="text" class="form-control" id="cmtofechafin" name="cmtofechafin" placeholder="31/12/2019">
+                    <input type="date" class="form-control" id="cmtofechafin" name="cmtofechafin" placeholder="">
                 </div>
 
                 <div class="form-group col-md-3">
@@ -37,7 +37,7 @@
 
 
             </div>
-            <center><button type="submit" class="btn btn-primary btn-sm " name="mto_buscarrol" >Buscar</button></center>
+            <center><button type="submit" class="btn btn-primary btn-sm " name="mto_buscarnews" >Buscar</button></center>
             <div class="container">
                 <div class="form-row">
                     <button type="submit" class="btn btn-outline-danger " name="mto_newrol" >Nuevo</button>
@@ -56,12 +56,13 @@
                 <table class="table table-hover">
                     <thead class="thead-light">
                     <tr>
-                        <th scope="col">Id Noticia</th>
-                        <th scope="col">Id Usuario</th>
-                        <th scope="col">Fecha Inicio</th>
-                        <th scope="col">Fecha Fin</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Fec Inicio</th>
+                        <th scope="col">Fec Fin</th>
                         <th scope="col">Titulo</th>
                         <th scope="col">Descripcion</th>
+                        <th scope="col">Acción</th>
 
 
                     </tr>
@@ -76,7 +77,7 @@
                     $sqlInicial="SELECT * FROM noticias where 1 ";
                     $x=0;
                     Global $X;
-                    if(isset($_POST['mto_buscarrol']) )
+                    if(isset($_POST['mto_buscarnews']) )
                     {
 
                         if(isset($_POST['cmtoid']) && $_POST['cmtoid'] !='')
@@ -90,23 +91,23 @@
 
                         if(isset($_POST['cmtofechaini']) && $_POST['cmtofechaini'] !='')
                         {
-                            $sqlInicial = $sqlInicial . " && fechainicio like '%$_POST[cmtofechaini]%'";
+                            $sqlInicial = $sqlInicial . " && fechainicio >=  '$_POST[cmtofechaini]' ";
                         }
 
                         if(isset($_POST['cmtofechafin']) && $_POST['cmtofechafin'] !='')
                         {
-                            $sqlInicial = $sqlInicial . " && fechafin like '%$_POST[cmtofechafin]%'";
+                            $sqlInicial = $sqlInicial . " && date(fechafin) <= date('$_POST[cmtofechafin]')";
                         }
 
                         if(isset($_POST['cmtotitulo']) && $_POST['cmtotitulo'] !='')
                         {
-                            $sqlInicial = $sqlInicial . " && titulo '%$_POST[cmtotitulo]%'";
+                            $sqlInicial = $sqlInicial . " && titulo like '%$_POST[cmtotitulo]%'";
                         }
 
 
                         if(isset($_POST['cmtodescrip']) && $_POST['cmtodescrip'] !='')
                         {
-                            $sqlInicial = $sqlInicial . " && descripcion like '%$_POST[cmtotlf]%'";
+                            $sqlInicial = $sqlInicial . " && descripcion like '%$_POST[cmtodescrip]%'";
                         }
 
                         $sql=$db->query($sqlInicial);
@@ -117,15 +118,15 @@
                                              <tr>
                                             <th scope="row">'. utf8_encode($listaUsuarios[$x]['id_noticia']).'</th>
                                             <td>'. utf8_encode($listaUsuarios[$x]['userid']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['fechainicio']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['fechafin']). '</td>
+                                            <td>'. $listaUsuarios[$x]['fechainicio']. '</td>
+                                            <td>'. $listaUsuarios[$x]['fechafin']. '</td>
                                             <td>'. utf8_encode($listaUsuarios[$x]['titulo']). '</td>
                                             <td>'. utf8_encode($listaUsuarios[$x]['descripcion']). '</td>
-                                            
+                                           
                                             <td><button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
                                                 value='.$listaUsuarios[$x]['id_noticia'].'>Editar</button>
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
-                                                value='.$listaUsuarios[$x]['id_noticia'].'>Eliminar</button></td>
+                                                value='.$listaUsuarios[$x]['id_noticia'].'>Borrar</button></td></tr>
                                             ');
 
 
@@ -161,14 +162,14 @@
                                              <tr>
                                             <th scope="row">'. utf8_encode($listaUsuarios[$x]['id_noticia']).'</th>
                                             <td>'. utf8_encode($listaUsuarios[$x]['userid']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['fechainicio']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['fechafin']). '</td>
+                                            <td>'. $listaUsuarios[$x]['fechainicio']. '</td>
+                                            <td>'. $listaUsuarios[$x]['fechafin']. '</td>
                                             <td>'. utf8_encode($listaUsuarios[$x]['titulo']). '</td>
                                             <td>'. utf8_encode($listaUsuarios[$x]['descripcion']). '</td>
                                             <td><button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
                                                 value='.$listaUsuarios[$x]['id_noticia'].'>Editar</button>
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
-                                                value='.$listaUsuarios[$x]['id_noticia'].'>Eliminar</button></td>
+                                                value='.$listaUsuarios[$x]['id_noticia'].'>Borrar</button></td></tr>
                                             ');
                             $x=$x+1;
                             $X=$x;
@@ -202,4 +203,4 @@
 
 
 
-</div>
+
