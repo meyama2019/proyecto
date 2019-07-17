@@ -59,7 +59,7 @@
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="http://localhost/proyecto/asociacion/mtoroles.php">Roles de Usuario</a>
-                        <a class="dropdown-item" href="#">Usuarios</a>
+                        <a class="dropdown-item" href="http://localhost/proyecto/asociacion/mtousuarios.php">Usuarios</a>
                         <a class="dropdown-item" href="#">Noticias</a>
                         <a class="dropdown-item" href="#">Fotos</a>
                         <a class="dropdown-item" href="#">Documentos</a>
