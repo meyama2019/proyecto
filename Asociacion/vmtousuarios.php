@@ -94,23 +94,23 @@
 
                         if(isset($_POST['cmtoemail']) && $_POST['cmtoemail'] !='')
                           {
-                            $sqlInicial = $sqlInicial . " && nombre like '%$_POST[cmtoemail]%'";
+                            $sqlInicial = $sqlInicial . " && email like '%$_POST[cmtoemail]%'";
                           }
                          
                         if(isset($_POST['cmtonomape']) && $_POST['cmtonomape'] !='')
                           {
-                            $sqlInicial = $sqlInicial . " && nombre like '%$_POST[cmtonomape]%'";
+                            $sqlInicial = $sqlInicial . " && Nom_Ape like '%$_POST[cmtonomape]%'";
                           }
                           
                         if(isset($_POST['cmtodni']) && $_POST['cmtodni'] !='')
                           {
-                            $sqlInicial = $sqlInicial . " && nombre like '%$_POST[cmtodni]%'";
+                            $sqlInicial = $sqlInicial . " && dni like '%$_POST[cmtodni]%'";
                           }
                           
                                                 
                         if(isset($_POST['cmtotlf']) && $_POST['cmtotlf'] !='')
                           {
-                            $sqlInicial = $sqlInicial . " && nombre like '%$_POST[cmtotlf]%'";
+                            $sqlInicial = $sqlInicial . " && telefono like '%$_POST[cmtotlf]%'";
                           }          
                        
                          $sql=$db->query($sqlInicial);
@@ -119,12 +119,20 @@
                                 {                            
                                     echo ('
                                              <tr>
-                                            <th scope="row">'. utf8_encode($listaUsuarios[$x]['idRol']).'</th>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['Nombre']). '</td>
+                                            <th scope="row">'. utf8_encode($listaUsuarios[$x]['id_usuario']).'</th>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['usuario']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['email']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['Nom_Ape']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['dni']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['provincias']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['Pais']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['telefono']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['activo']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['rol_id']). '</td>
                                             <td><button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
-                                                value='.$listaUsuarios[$x]['idRol'].'>Editar</button>
+                                                value='.$listaUsuarios[$x]['id_usuario'].'>Editar</button>
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
-                                                value='.$listaUsuarios[$x]['idRol'].'>Eliminar</button></td>
+                                                value='.$listaUsuarios[$x]['id_usuario'].'>Eliminar</button></td>
                                             ');
                                             
 
