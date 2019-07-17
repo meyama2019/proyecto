@@ -39,43 +39,9 @@ include('../models/connection.php');
       
 <?php
  require_once('vmtoroles.php');
+ 
+ include ('footer.php');
+
 ?>
 
-
-<?php // Se realiza el UPDATE en usuarios poniendo campo activo = 0 (Se activa plenamente el Socio)
-          if(isset($_POST['update_soc']))
-          {
-              
-                # code...
-               
-                $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                $acentos="SET NAMES 'utf8'";
-                mysqli_query($conexion, $acentos);
-
-                $sql="UPDATE usuarios set activo = 0, rol_id=2 where id_usuario = $_POST[update_soc] ";
-                mysqli_query($conexion, $sql);
-                
-                
-                $num_rows=$db->query('SELECT * FROM usuarios where activo=1'); // 1 Pendientes aprobación
-                $tot=0;
-                 foreach ($num_rows->fetchAll() as $usuario) {
-                  $tot=$tot+1;
-                }
-                $_SESSION['tot_pen'] = $tot;
-                mysqli_close($conexion);
-                
-                
-               
-                
-           
-          }
-          
-?>
-
-
-
-      
-
-<?php
-  include ('footer.php');
-?>
+ 

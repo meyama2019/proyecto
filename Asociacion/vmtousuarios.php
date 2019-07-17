@@ -56,16 +56,17 @@
           <table class="table table-hover">
             <thead class="thead-light">
               <tr>
-                <th scope="col">id Usuario</th>
+                <th scope="col">Id</th>
                 <th scope="col">Usuario</th>
                 <th scope="col">email</th>
                 <th scope="col">Nombre</th>               
                 <th scope="col">dni</th>
-                <th scope="col">Provincia</th>
+                <th scope="col">Prov.</th>
                 <th scope="col">Pais</th>               
-                <th scope="col">Telefono</th>
+                <th scope="col">Tfno.</th>
                 <th scope="col">Activo</th>
-                <th scope="col">Rol id</th>               
+                <th scope="col">Rol</th> 
+                <th scope="col">Acción</th> 
                 
              
               </tr>
@@ -85,11 +86,11 @@
                      
                         if(isset($_POST['cmtoid']) && $_POST['cmtoid'] !='')
                           {
-                            $sqlInicial = $sqlInicial . " && idRol = '$_POST[cmtoid]'";
+                            $sqlInicial = $sqlInicial . " && id_usuario = '$_POST[cmtoid]'";
                           }
                         if(isset($_POST['cmtonombre']) && $_POST['cmtonombre'] !='')
                           {
-                            $sqlInicial = $sqlInicial . " && nombre like '%$_POST[cmtonombre]%'";
+                            $sqlInicial = $sqlInicial . " && Usuario like '%$_POST[cmtonombre]%'";
                           }
 
                         if(isset($_POST['cmtoemail']) && $_POST['cmtoemail'] !='')
@@ -132,7 +133,7 @@
                                             <td><button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
                                                 value='.$listaUsuarios[$x]['id_usuario'].'>Editar</button>
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
-                                                value='.$listaUsuarios[$x]['id_usuario'].'>Eliminar</button></td>
+                                                value='.$listaUsuarios[$x]['id_usuario'].'>Eliminar</button></td></tr>
                                             ');
                                             
 
@@ -179,7 +180,7 @@
                                             <td><button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
                                                 value='.$listaUsuarios[$x]['id_usuario'].'>Editar</button>
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
-                                                value='.$listaUsuarios[$x]['id_usuario'].'>Eliminar</button></td>
+                                                value='.$listaUsuarios[$x]['id_usuario'].'>Eliminar</button></td></tr>
                                             ');
                                      $x=$x+1; 
                                      $X=$x;
@@ -212,5 +213,3 @@
 </div>
 
 
-
-</div>
