@@ -315,7 +315,7 @@
                 </div>
                 <div class="modal-body">
        
-            
+            <!--<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">-->
 
 				
 				    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -358,7 +358,7 @@
             <?php
               $query = $mysqli -> query ("SELECT * FROM provincias");
               while ($valores = mysqli_fetch_array($query)) {
-              echo '<option value="'.$valores[id_provincia].'">'.$valores[provincia].'</option>';
+              echo '<option value="'.$valores[id_provincia].'">'.utf8_encode($valores[provincia]).'</option>';
               }
             ?>
             </select>
@@ -373,7 +373,7 @@
             <?php
               $query1 = $mysqli -> query ("SELECT * FROM paises");
               while ($valores1 = mysqli_fetch_array($query1)) {
-              echo '<option value="'.$valores1[id].'">'.$valores1[nombre].'</option>';
+              echo '<option value="'.$valores1[id].'">'.utf8_encode($valores1[nombre]).'</option>';
               }
             ?>
             </select>
@@ -469,11 +469,11 @@
 
 
 <!-- Footer -->
-<footer id="pie-container" class="page-footer font-small blue-grey lighten-5">
+<footer class="page-footer font-small blue-grey lighten-5">
 
-  <div  style="background-color: #006450; color:#ffffff">
+  <div style="background-color: #006450; color: #ffffff;">
 
-    <div  class="container">
+    <div class="container">
 
       <!-- Grid row-->
       <div class="row py-4 d-flex align-items-center">

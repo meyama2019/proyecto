@@ -60,9 +60,9 @@
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="http://localhost/proyecto/asociacion/mtoroles.php">Roles de Usuario</a>
                         <a class="dropdown-item" href="http://localhost/proyecto/asociacion/mtousuarios.php">Usuarios</a>
-                        <a class="dropdown-item" href="http://localhost/proyecto/asociacion/mtonoticias.php">Noticias</a>
+                        <a class="dropdown-item" href="http://localhost/proyecto/asociacion/noticias_g.php">Noticias</a>
                         <a class="dropdown-item" href="#">Fotos</a>
-                        <a class="dropdown-item" href="#">Documentos</a>
+                        <a class="dropdown-item" href="http://localhost/proyecto/asociacion/documentos_g.php">Documentos</a>
 
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
