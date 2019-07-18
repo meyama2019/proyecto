@@ -73,15 +73,14 @@ include('../models/connection.php');
 
 								
 
-							<div class="accordion" id="accordionExample">
+						
 								  <div class="card">
-									<div class="card-header" id="headingOne">
-									  <h2 class="mb-0">
-										<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-										  LISTADO DE DOCUMENTOS<BR>
-										  <a href="documentos_add.php" class="btn btn-success">Añadir Documentos</a>
-									  </h2>
-									</div>
+								  	<h5 class="card-header" style="background-color: #F78181">Gestión de Documentos</h5>
+								  	<div class="container">
+								  		<br>
+										<center><a href="documentos_add.php" class="btn btn-outline-danger btn-sm">Nuevo Doc</a></center>
+									</div>		
+									
 
 									<div id="collapseOne" class="collapse show container" aria-labelledby="headingOne" data-parent="#accordionExample">
 										<div class="card-body ">
@@ -120,14 +119,14 @@ include('../models/connection.php');
 																				<?php echo utf8_encode($docs_data['usuario']); ?>
 																				</td>
 																				<td class="form-group">
-																				<a href="<?php echo utf8_encode($docs_data['documento']); ?>" ><?php echo utf8_encode($docs_data['documento']); ?></a>
+																				<a href="<?php echo utf8_encode($docs_data['documento']); ?>" >Ver</a>
 																				<input type="hidden" name ="documento" value="<?php echo utf8_encode($docs_data['documento']); ?>">
 																				</td>
 																				<td>
 																				<input type="hidden" class="form-control" name ="id_documento" value="<?php echo utf8_encode($docs_data['id_documento']); ?>">
-																				<button type="submit" class="btn btn-primary" name="updatedocs">Editar</button>
+																				<button type="submit" class="btn btn-outline-danger btn-sm" name="updatedocs">Editar</button>
 																				<br> <br>
-																				<button type="submit" class="btn btn-primary" name="deletedocs">Eliminar</button>
+																				<button type="submit" class="btn btn-outline-danger btn-sm" name="deletedocs">Eliminar</button>
 																				</td>
 														
 																				
@@ -144,7 +143,7 @@ include('../models/connection.php');
 										</div>
 									</div>
 								</div>  
-							</div>    
+						
 
 			<?php
 				}
