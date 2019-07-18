@@ -17,11 +17,11 @@
           </div>
           <div class="form-group col-md-3">
             <label for="cmtodocumento"></label>
-            <input type="text" class="form-control" id="cmtodocumento" name="cmtodocumento" placeholder="documento">
+            <input type="text" class="form-control" id="cmtodocumento" name="cmtodocumento" placeholder="Foto">
           </div>
           <div class="form-group col-md-3">
             <label for="cmtofecha"></label>
-            <input type="text" class="form-control" id="cmtofecha" name="cmtofecha" placeholder="Fecha">
+            <input type="date" class="form-control" id="cmtofecha" name="cmtofecha" placeholder="Fecha">
           </div>
 
           <div class="form-group col-md-3">
@@ -53,9 +53,10 @@
               <tr>
                 <th scope="col">Id Foto</th>
                 <th scope="col">Id Usuario</th>
-                <th scope="col">Documento</th>
+                <th scope="col">Foto</th>
                 <th scope="col">Fecha</th>               
                 <th scope="col">Titulo</th>
+                <th scope="col">Acción</th>
                                
              
               </tr>
@@ -75,7 +76,7 @@
                      
                         if(isset($_POST['cmtoid']) && $_POST['cmtoid'] !='')
                           {
-                            $sqlInicial = $sqlInicial . " && id_usuario = '$_POST[cmtoid]'";
+                            $sqlInicial = $sqlInicial . " && id_foto = '$_POST[cmtoid]'";
                           }
                         if(isset($_POST['cmtonombre']) && $_POST['cmtonombre'] !='')
                           {
@@ -98,10 +99,10 @@
                          foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
                                 {                            
                                     echo ('
-                                             <tr contentEditable="true">
+                                             <tr >
                                             <th scope="row">'. utf8_encode($listaUsuarios[$x]['id_foto']).'</th>
                                             <td >'. utf8_encode($listaUsuarios[$x]['userid']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['documento']). '</td>
+                                            <td><img src='. utf8_encode($listaUsuarios[$x]['documento']). ' class="img-responsive" height="30px" width="30px" alt="..."></td>
                                             <td>'. utf8_encode($listaUsuarios[$x]['fecha_upload']). '</td>
                                             <td>'. utf8_encode($listaUsuarios[$x]['titulo']). '</td>
                                             <td><button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
@@ -143,7 +144,7 @@
                                              <tr>
                                             <th scope="row">'. utf8_encode($listaUsuarios[$x]['id_foto']).'</th>
                                             <td >'. utf8_encode($listaUsuarios[$x]['userid']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['documento']). '</td>
+                                            <td><img src='. utf8_encode($listaUsuarios[$x]['documento']). ' class="img-responsive" height="30px" width="30px" alt="..."></td>
                                             <td>'. utf8_encode($listaUsuarios[$x]['fecha_upload']). '</td>
                                             <td>'. utf8_encode($listaUsuarios[$x]['titulo']). '</td>
                                             <td><button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 

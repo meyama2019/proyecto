@@ -24,10 +24,10 @@ include('../models/connection.php');
 
     if(isset($_POST['addnews']))
        {
-		
+		$tit=utf8_encode($_POST['titulo']);
 		$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');		   
         $sql = "INSERT INTO noticias (titulo, descripcion, fechainicio, fechafin, userid ) 
-    		   values ('$_POST[titulo]','$_POST[descripcion]','$_POST[fechainicio]','$_POST[fechafin]', '$_POST[id]')
+    		   values ('$tit','utf8_encode($_POST[descripcion])','$_POST[fechainicio]','$_POST[fechafin]', '$_POST[id]')
 				";
 
                   $consulta = mysqli_query($conexion, $sql);
