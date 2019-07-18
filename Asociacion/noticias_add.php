@@ -67,16 +67,16 @@ include('../models/connection.php');
 																		<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8">
 																		
 																				<label for="titulo">Título</label>
-																				<textarea type="text" class="form-control" name ="titulo" value=""></textarea>
+																				<textarea type="text" class="form-control" name ="titulo" value="" required></textarea>
 																				<br>
 																				<label for="descripcion">Descripción</label>
-																				<textarea type="text" class="form-control" name ="descripcion" value=""></textarea>
+																				<textarea type="text" class="form-control" name ="descripcion" value="" required></textarea>
 																				<br>
 																				<label for="fechainicio">Fecha Inicio</label>
-																				<input type="date" class="form-control" name ="fechainicio" value="">
+																				<input type="date" class="form-control" name ="fechainicio" value="" required>
 																				<br>
 																				<label for="fechafin">Fecha Fin</label>
-																				<input type="date" class="form-control" name ="fechafin" value="">
+																				<input type="date" class="form-control" name ="fechafin" value="" required>
 																				<br>
 																				<input type="hidden" class="form-control" name ="id" value="<?php echo utf8_encode($_SESSION['id_usuario']); ?>">
 																				<button type="submit" class="btn btn-primary" name="addnews">Añadir</button>

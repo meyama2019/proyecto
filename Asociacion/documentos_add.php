@@ -22,23 +22,54 @@ include('../models/connection.php');
 
 <?php
 
-    if(isset($_POST['adddocs']))
-       {
-		$target_path = "../docs/";
-		$target_path = $target_path . basename( $_FILES['archivo']['name']); 
-		move_uploaded_file($_FILES['archivo']['tmp_name'], $target_path);  
-		$x= "../docs/". $_FILES['archivo']['name'];
-		$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');		   
-        $sql = "INSERT INTO documentos (titulo, descripcion, creation_date, userid,documento ) 
-    		   values ('$_POST[titulo]','$_POST[descripcion]','$_POST[creation_date]', '$_POST[id]', '$x')
-				";
+if(isset($_POST['adddocs']))
+{
+	$target_path = "../docs/";
+	$target_path = $target_path . basename( $_FILES['archivo']['name']); 
+	if ($_FILES['archivo']['size'] == 0)
+	{
+		echo "<script>alert('Error al cargar el archivo (recuerda, máximo 2 MB).');</script>";
+	}	
+	else
+	{
+		if ( (file_exists($target_path)))
+		{
+			echo "<script>alert('Archivo existe. Renómbralo por favor.');</script>";		
+		
+		}
+		else
+		{
+			$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');		   
+			 
+			$x=  $_FILES['archivo']['name'];
+			$anio= date("Y");
+			$mes= date("m");
+			$dia= date("d");
+			$hora = date("h");
+			$minuto = date("i");
+			$segundo= date("sa");
+			$quien = $_SESSION['id_usuario'] . "_";
+			$nuevo_nombre = $quien . $anio . $mes. $dia . $hora . $minuto . $segundo;
+			$nueva_ext = pathinfo($_FILES['archivo']['name'],PATHINFO_EXTENSION);
+			$x = "../docs/". $nuevo_nombre. ".$nueva_ext";
+			
+			move_uploaded_file($_FILES['archivo']['tmp_name'],$target_path ); 
+			
+			rename($target_path,$x);
+			
+			$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');		   
+			$sql = "INSERT INTO documentos (titulo, descripcion, creation_date, userid,documento ) 
+				   values ('$_POST[titulo]','$_POST[descripcion]','$_POST[creation_date]', '$_POST[id]', '$x')
+					";
 
                   $consulta = mysqli_query($conexion, $sql);
                   if($consulta)
                     {
                      echo "<script>alert('Registro añadido');</script>";		
-                    }      
-       }  
+                    }	
+        }
+	}	
+}		
 ?>
 
 
@@ -70,16 +101,18 @@ include('../models/connection.php');
 																		<form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8">
 																		
 																				<label for="titulo">Título</label>
-																				<textarea type="text" class="form-control" name ="titulo" value=""></textarea>
+																				<textarea type="text" class="form-control" name ="titulo" value="" required></textarea>
 																				<br>
 																				<label for="descripcion">Descripción</label>
-																				<textarea type="text" class="form-control" name ="descripcion" value=""></textarea>
+																				<textarea type="text" class="form-control" name ="descripcion" value="" required></textarea>
 																				<br>
 																				<label for="creation_date">Fecha subida</label>
-																				<input type="date" class="form-control" name ="creation_date" value="">
+																				<input type="date" class="form-control" name ="creation_date" value="" required>
 																				<br>
-																				<label for="archivo">Archivo</label>
-																				<input type="file" class="form-control" name ="archivo" value="">
+																				<label for="archivo" >Archivo </label>
+																				<small><br>Máximo 2 MB. Solo se admiten archivos pdf, de text (.txt) y MS Word, Excel, Power Point</small>
+																				<br>
+																				<input type="file" class="form-control" name ="archivo" value="2097152" required accept=".xlsx,.xls,.doc, .docx,.ppt, .pptx,.txt,.pdf" >
 																				<br>
 																				<input type="hidden" class="form-control" name ="id" value="<?php echo utf8_encode($_SESSION['id_usuario']); ?>">
 																				<button type="submit" class="btn btn-primary" name="adddocs">Añadir</button>
