@@ -71,15 +71,14 @@ include('../models/connection.php');
 
 								
 
-							<div class="accordion" id="accordionExample">
+							
 								  <div class="card">
+								  	<h5 class="card-header" style="background-color: #F78181">Gestión de Noticias</h5>
 									<div class="card-header" id="headingOne">
-									  <h2 class="mb-0">
-										<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-										  LISTADO DE NOTICIAS
-										  <a href="noticias_add.php" class="btn btn-success">Añadir noticia</a>
-									  </h2>
+									  <br>
+									  <center><a href="noticias_add.php" class="btn btn-outline-danger btn-sm">Nueva Noticia</a></center>
 									</div>
+									<br>
 
 									<div id="collapseOne" class="collapse show container" aria-labelledby="headingOne" data-parent="#accordionExample">
 										<div class="card-body ">
@@ -96,7 +95,9 @@ include('../models/connection.php');
 																
 															</tr>
 															<tbody>
-																<?php  
+																<?php
+																	
+												                    
 																	$mysqli = mysqli_connect('localhost', 'socio', 'socio', 'marte');
 																	$result = mysqli_query($mysqli, "SELECT * FROM noticias, usuarios
 																									 WHERE userid =id_usuario
@@ -122,9 +123,9 @@ include('../models/connection.php');
 																				</td>
 																				<td>
 																				<input type="hidden" class="form-control" name ="id_noticia" value="<?php echo utf8_encode($news_data['id_noticia']); ?>">
-																				<button type="submit" class="btn btn-primary" name="updatenews">Editar</button>
+																				<button type="submit" class="btn btn-outline-danger btn-sm" name="updatenews">Editar</button>
 																				<br> <br>
-																				<button type="submit" class="btn btn-primary" name="deletenews">Eliminar</button>
+																				<button type="submit" class="btn btn-outline-danger btn-sm" name="deletenews">Eliminar</button>
 																				</td>
 																				
 																				</form>
@@ -140,7 +141,7 @@ include('../models/connection.php');
 										</div>
 									</div>
 								</div>  
-							</div>    
+							 
 
 			<?php
 				}

@@ -119,9 +119,9 @@
                          foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
                                 {                            
                                     echo ('
-                                             <tr>
+                                             <tr contentEditable="true">
                                             <th scope="row">'. utf8_encode($listaUsuarios[$x]['id_usuario']).'</th>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['usuario']). '</td>
+                                            <td >'. utf8_encode($listaUsuarios[$x]['usuario']). '</td>
                                             <td>'. utf8_encode($listaUsuarios[$x]['email']). '</td>
                                             <td>'. utf8_encode($listaUsuarios[$x]['Nom_Ape']). '</td>
                                             <td>'. utf8_encode($listaUsuarios[$x]['dni']). '</td>

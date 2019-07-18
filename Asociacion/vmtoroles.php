@@ -39,10 +39,10 @@
   <div class="card-body">
   <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
    <div class="row d-flex justify-content-center">
-      <div class="container">
+      <div class="container" >
        
           <br>
-          <table class="table table-hover">
+          <table class="table table-hover table-responsive-sm">
             <thead class="thead-light">
               <tr>
                 <th scope="col">id Rol</th>
@@ -81,10 +81,11 @@
                                              <tr>
                                             <th scope="row">'. utf8_encode($listaUsuarios[$x]['idRol']).'</th>
                                             <td>'. utf8_encode($listaUsuarios[$x]['Nombre']). '</td>
-                                            <td ><button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
-                                                value='.$listaUsuarios[$x]['idRol'].'>Editar</button>
-                                                <button type="submit" class="btn btn-outline-danger btn-sm" name="delete-rol" 
-                                                value='.$listaUsuarios[$x]['idRol'].'>Eliminar</button></td>
+                                            <td ><button type="submit" class="btn btn-outline-danger btn-sm" name="editrol" 
+                                                value='.$listaUsuarios[$x]['idRol'].'>Editar</button></td>
+
+                                                <td><button type="submit" class="btn btn-outline-danger btn-sm" name="deleterol" 
+                                                value='.$listaUsuarios[$x]['idRol'].'>Borrar</button></td></tr>
                                             ');
                                             
 
@@ -119,11 +120,11 @@
                                     echo ('
                                              <tr>
                                             <th scope="row">'. utf8_encode($listaUsuarios[$x]['idRol']).'</th>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['Nombre']). '</td>
-                                            <td><button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
+                                            <td contentEditable="true">'. utf8_encode($listaUsuarios[$x]['Nombre']). '</td>
+                                            <td><button type="submit" class="btn btn-outline-danger btn-sm" name="editrol" 
                                                 value='.$listaUsuarios[$x]['idRol'].'>Editar</button>
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" name="deleterol" 
-                                                value='.$listaUsuarios[$x]['idRol'].'>Eliminar</button></td>
+                                                value='.$listaUsuarios[$x]['idRol'].'>Borrar</button></td></tr>
                                             ');
                                      $x=$x+1; 
                                      $X=$x;
@@ -146,7 +147,7 @@
 
 
            
-            
+              
             </tbody>
           </table>
         </div>
@@ -184,6 +185,36 @@
               </div>
             </div>
           </div>
+
+<!-- Modal -->
+          <div class="modal fade" id="mtoroledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabeled" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabeled">Registro de usuario</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                     
+                      <div class="form-group">
+                        <label for="mtorol_namenew">Descripción Rol</label>
+                        <input type="text" class="form-control" id="mtorol_namenew" name="mtorol_namenew" placeholder="Nombre Rol Nuevo" required>
+                      </div>
+                     
+                              
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
+                  <button type="submit" class="btn btn-primary" name="mtoroledit">Insertar</button>
+                </div>
+               </form>
+              </div>
+            </div>
+          </div>          
 
 
 
