@@ -16,7 +16,9 @@ include('../models/connection.php');
       require_once('menu.php');
   
 ?>
-																			
+
+
+<!----DOCUMENTOS UPDATE-->																			
 <?php
           if(isset($_POST['updatedocs']))
           {
@@ -41,6 +43,8 @@ include('../models/connection.php');
           }  
 ?>
 
+
+<!----DOCUMENTOS DELETE-->	
 <?php
           if(isset($_POST['deletedocs']))
           {
@@ -66,6 +70,9 @@ include('../models/connection.php');
     ?>
 
 
+
+
+
 	<?php
             if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0) // Habría que controlar activo = 0
 				{
@@ -81,7 +88,46 @@ include('../models/connection.php');
 										<center><a href="documentos_add.php" class="btn btn-outline-danger btn-sm">Nuevo Doc</a></center>
 									</div>		
 									
+									<!--INICIO BUSCADORES--->
+										<ul class="list-group">
+											<li class="list-group-item">
+												<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+													<div class="form-row align-items-center">
+																<input name="titulo" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Buscar en título">
+																<input name="descripcion" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Buscar en descripción">
+															
 
+																
+																<label for="fechainicio">Fecha inicio</label>
+																<input name="fechainicio" type="date" class="form-control mb-2" id="inlineFormInput" >
+																<label for="fechafin">Fecha fin</label>
+																<input name="fechafin" type="date" class="form-control mb-2" id="inlineFormInput">
+																					
+
+																<label for="quien">O buscar por quién subió la noticia</label>
+																<select class="form-control" id="quien" name ="quien" required >
+																<option value="0">Seleccione:</option>
+																<?php
+																  $mysqli1 = mysqli_connect('localhost', 'socio', 'socio', 'marte');	
+																  $query1 = $mysqli1 -> query ("SELECT * FROM usuarios");
+																  while ($valores = mysqli_fetch_array($query1))
+																  {
+																	echo '<option value="'.$valores[id_usuario].'">'.utf8_encode($valores[usuario]).'</option>';
+																  }
+																?>
+																</select>
+															
+													
+														<div class="col-auto">
+															<button type="submit" name="buscador" class="btn btn-primary mb-2">Buscar</button>
+														</div>
+													</div>
+												</form>
+											</li>
+										</ul>
+									<!--FIN BUSCADORES--->
+
+			
 									<div id="collapseOne" class="collapse show container" aria-labelledby="headingOne" data-parent="#accordionExample">
 										<div class="card-body ">
 											<div class="container">
@@ -98,10 +144,54 @@ include('../models/connection.php');
 															</tr>
 															<tbody>
 																<?php  
-																	$mysqli = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+															$mysqli = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+																if(isset($_POST['buscador']) )
+																{
+																	if(!empty($_POST['titulo']) )
+																		{
+																		  $query ="SELECT * FROM documentos, usuarios WHERE documentos.titulo like '%" . $_POST['titulo'] . "%' AND documentos.userid =usuarios.id_usuario";
+																		  $result = mysqli_query($mysqli, $query);
+																		}
+																	elseif (!empty($_POST['descripcion']) ) 
+																		{
+																		  $query ="SELECT * FROM documentos, usuarios WHERE documentos.descripcion like '%" . $_POST['descripcion'] . "%' AND documentos.userid =usuarios.id_usuario";
+																		  $result = mysqli_query($mysqli, $query);
+																		}
+																	elseif ( !empty($_POST['fechainicio'] && $_POST['fechafin']) ) 
+																		{
+																		  $fechainicio = date("Y-m-d", strtotime($_POST['fechainicio'])); 
+																		  $fechafin = date("Y-m-d", strtotime($_POST['fechafin']));
+																		  
+																		  if  ($fechafin < $fechainicio)
+																		  {
+																			  echo "<script>alert('Fecha fin no puede ser inferior a fecha de inicio');</script>";
+																			  goto general;
+																		  }
+																		  else
+																		  {
+																		  $query ="SELECT * FROM documentos, usuarios WHERE documentos.creation_date  >= '$fechainicio' AND documentos.creation_date  <= '$fechafin' AND documentos.userid =usuarios.id_usuario";
+																		  $result = mysqli_query($mysqli, $query);
+																		  }
+																		}
+																	elseif ( !empty($_POST['quien']) ) 
+																		{
+																		  $query ="SELECT * FROM documentos, usuarios WHERE documentos.userid like '%" . $_POST['quien'] . "%' AND documentos.userid =usuarios.id_usuario";
+																		  $result = mysqli_query($mysqli, $query);
+																		}	
+																	else
+																		{
+																			goto general;
+																		}
+																}
+																else
+																{
+																	general:
 																	$result = mysqli_query($mysqli, "SELECT * FROM documentos, usuarios
 																									 WHERE userid =id_usuario
 																									 ORDER BY creation_date  DESC");
+																}
+
+
 																	while($docs_data = mysqli_fetch_array($result))
 																		{?>
 																			<tr class="item">
