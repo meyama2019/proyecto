@@ -232,12 +232,12 @@
                         <input type="text" class="form-control" id="mtorol_namenew" name="mtorol_namenew" placeholder="Nombre Usuario" required>
                       </div>
                       <div class="form-group">
-                        <label for="Password">Password</label>
-                        <input required type="password" class="form-control" id="Password" name ="Password" placeholder="Contraseña">
+                        <label for="password">Password</label>
+                        <input required type="password" class="form-control" id="password" name ="password" placeholder="Contraseña">
                       </div>
                       <div class="form-group">
-                        <label for="Email">Correo electrónico</label>
-                        <input required type="email" class="form-control" id="Email" name ="Email" aria-describedby="emailHelp" placeholder="Ej. tuemail@dominio.es" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}" >
+                        <label for="email">Correo electrónico</label>
+                        <input required type="email" class="form-control" id="email" name ="email" aria-describedby="emailHelp" placeholder="Ej. tuemail@dominio.es" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}" >
                       </div>
                       <div class="form-group">
 
@@ -245,8 +245,8 @@
                         <input required type="text" class="form-control" id="NombreApellidos" name ="NombreApellidos" aria-describedby="emailHelp" placeholder="Nombre y Apellidos" >
                       </div>
                       <div class="form-group">
-                        <label for="DNI">DNI</label>
-                        <input required type="text" class="form-control" id="DNI" name ="DNI" aria-describedby="emailHelp" placeholder="DNI">
+                        <label for="dni">DNI</label>
+                        <input required type="text" class="form-control" id="dni" name ="dni" aria-describedby="emailHelp" placeholder="DNI">
                       </div>
                       <div class="form-group">
                         <label for="Provincia">Provincia</label>
@@ -286,8 +286,8 @@
             
                       <div class="form-group">
 
-                      <label for="Cuenta">Nº de Cuenta</label>
-                      <input type="text" class="form-control" id="Cuenta" name ="Cuenta" aria-describedby="emailHelp"  >
+                      <label for="cuenta">Nº de Cuenta</label>
+                      <input type="text" class="form-control" id="cuenta" name ="cuenta" aria-describedby="emailHelp"  >
                       </div>
 
                       <div class="form-group">
@@ -337,7 +337,8 @@
                 $indice = mysqli_fetch_row($next);
                 $indice[0] = $indice[0] + 1;
                 
-                $sql = "INSERT INTO usuarios (id_usuario,usuario) values (".$indice[0].",'$_POST[mtorol_namenew]')";
+                $sql = "INSERT INTO usuarios (id_usuario,usuario,passwd,metodo,email,Nom_Ape,dni,provincias,pais,telefono,cuenta,activo,rol_id)
+                 values (".$indice[0].",'$_POST[mtorol_namenew]','$_POST[password]',1,'$_POST[email]','$_POST[NombreApellidos]','$_POST[dni]','$_POST[Provincia]','$_POST[Pais]','$_POST[Telf]','$_POST[cuenta]',1,'$_POST[rolid]')";
                 $consulta = mysqli_query($conexion, $sql);
                  if($consulta)
                     {
