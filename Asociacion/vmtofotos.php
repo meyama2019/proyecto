@@ -195,8 +195,9 @@
                 </div>
                 <div class="modal-body">
 
-                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                     
+                    <!--<form method="post" action="<?php //echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"> -->
+                      <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data"> 
+                        <input type='hidden' name='MAX_FILE_SIZE' value='2000000'> 
                       <div class="form-group">
                         <label for="mtorol_namenew">Id usuario</label>
                         <?php
@@ -212,6 +213,7 @@
                       ?>
                       </select>
                       </div>
+                
                       <div class="form-group">
                         <label for="foto">Foto</label>
                         <input type="file" class="form-control" id="foto" name="foto" placeholder="File.." required>
@@ -244,42 +246,44 @@
           {
           
            if (isset($_POST['mtorol_namenew']) && $_POST['mtorol_namenew']!='')
+
               {
+               // echo($_POST['mtorol_namenew']);
 
-                //if ($_FILES['foto']['error'] > 0)
-                //{
-                //  echo 'Problem mayor 0';
-                //  exit;
+              if ($_FILES['foto']['error'] > 0)
+              {
+                echo 'Problem mayor 0';
+                exit;
 
-                //}
+              }
 
-                //if ($_FILES['foto']['type'] != 'image/jpeg')
-                //{
-                //  echo 'Problem type jpeg';
-                //  exit;
-                //}
+              if ($_FILES['foto']['type'] != 'image/jpeg')
+              {
+                echo 'Problem type jpeg';
+                exit;
+              }
 
-                $aleatorio = rand(1,1000000);
-                //$nombre= $_FILES['foto']['name'];
-                //$uploaled_file = '../imagenes/uploads_img/'. $aleatorio .$nombre;
-                
+              $aleatorio = rand(1,1000000);
+              $nombre= $_FILES['foto']['name'];
+              $uploaled_file = '../imagenes/uploads_img/'. $aleatorio .$nombre;
+              
 
-                //if (is_uploaded_file($_FILES['foto']['tmp_name']))
+              if (is_uploaded_file($_FILES['foto']['tmp_name']))
 
-                //{
-                //  if(!move_uploaded_file($_FILES['foto']['tmp_name'], $uploaled_file))
-                //  {
-                //    echo 'Problem on move';
-                //    exit;
-                //  }
-                //}
-               // else
-               // {
-               //   echo 'Possible Problem attack';
-               //   exit;
-               // }
+              {
+                if(!move_uploaded_file($_FILES['foto']['tmp_name'], $uploaled_file))
+                {
+                  echo 'Problem on move';
+                  exit;
+                }
+              }
+              else
+              {
+                echo 'Possible Problem attack';
+                exit;
+              }
 
-                //$docu=$uploaled_file;
+                $docu=$uploaled_file;
                 //$docu = '../imagenes/uploads_img/'. $_FILES['foto']['name'] ;
                 $user = $_SESSION['id_usuario'];
                  
@@ -294,16 +298,17 @@
                 $indice[0] = $indice[0] + 1;
                 
                 $sql = "INSERT INTO fotos (id_foto,userid,documento,fecha_upload,titulo)
-                 values (".$indice[0].",'$_POST[mtorol_namenew]','prueba',current_timestamp,'$_POST[titulo]')";
+                 values (0,'$_POST[mtorol_namenew]','$docu',current_timestamp,'$_POST[titulo]')";
                
                 $consulta = mysqli_query($conexion, $sql);
                  if($consulta)
                     {
-                      include ('confirm_rol.php');                   
+
+                      echo "<script>alert(Foto insertada correctamente');</script>";                  
                     }
                   else
                   {
-                   include ('noconfirm_rol.php');  
+                     echo "<script>alert(No se ha podido insertar, revise el documento');</script>";  
                    
                   }
                 mysqli_close($conexion);
