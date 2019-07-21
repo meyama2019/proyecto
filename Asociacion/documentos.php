@@ -37,7 +37,7 @@ include('../models/connection.php');
 										<div class="card-body ">
 											<div class="container">
 														<script src="https://www.w3schools.com/lib/w3.js"></script>
-														<table id="myTable" class="table">
+														<table id="table_format" class="table">
 															<tr class="thead-light">
 																<th onclick="w3.sortHTML('#myTable', '.item', 'td:nth-child(1)')" style="cursor:pointer" >Título</th>
 																<th onclick="w3.sortHTML('#myTable', '.item', 'td:nth-child(2)')" style="cursor:pointer" >Descripción</th>
@@ -47,13 +47,22 @@ include('../models/connection.php');
 															</tr>
 															<tbody>
 																<?php
-            													
-																
-																	$date = date("Y-m-d");
 																	$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+																		
+																		// (PAGINACIÓN CRÉDITOS: VER FIN DOCUMENTO) Validado  la variable GET
+																		$CantidadMostrar=10;
+																		$compag         =(int)(!isset($_GET['pag'])) ? 1 : $_GET['pag']; 
+																		$TotalReg       =$conexion->query("SELECT * FROM documentos WHERE creation_date <= CURDATE()");
+																		//Se divide la cantidad de registro de la BD con la cantidad a mostrar 
+																		$TotalRegistro  =ceil($TotalReg->num_rows/$CantidadMostrar);
+
+																	
+																	
+																	$date = date("Y-m-d");
 																	$sql = "SELECT * FROM documentos, usuarios
 																			WHERE userid =id_usuario AND creation_date <= CURDATE()
-																			ORDER BY creation_date DESC";
+																			ORDER BY creation_date DESC
+																			LIMIT ".(($compag-1)*$CantidadMostrar)." , ".$CantidadMostrar;
 																	$consulta = mysqli_query($conexion, $sql);
 																	
 																	$result = $conexion->query($sql);
@@ -75,28 +84,73 @@ include('../models/connection.php');
 																					</tr>
 																				<?php
 																				}
+																				?>
 																				
+																						<?php																						
 																		}
 																		else
-																		
-																		{
-																			echo "No hay documentos que mostrar";
-																		}
+																			{
+																				echo "No hay documentos que mostrar";
+																			}
 																	
 																?>
 
 
 															</tbody>
 														</table>
-												  
-												  
+																				<!--(CRÉDITOS: VER FIN DOCUMENTO)Sector de Paginacion - Operacion matematica para boton siguiente y atras--> 
+																				<nav>
+																				<?php
+																				$IncrimentNum =(($compag +1)<=$TotalRegistro)?($compag +1):1;
+																				$DecrementNum =(($compag -1))<1?1:($compag -1);
+																			  
+																				echo "<ul class=\"pagination\">
+																					  <li>
+																					  <a class=\"page-link\" href=\"?pag=".$DecrementNum."\">◀
+																					  </a>
+																					  </li>";
+																						//Se resta y suma con el numero de pag actual con el cantidad de 
+																						//numeros  a mostrar
+																						$Desde=$compag-(ceil($CantidadMostrar/2)-1);
+																						$Hasta=$compag+(ceil($CantidadMostrar/2)-1);
+																						
+																						//Se valida
+																						$Desde=($Desde<1)?1: $Desde;
+																						$Hasta=($Hasta<$CantidadMostrar)?$CantidadMostrar:$Hasta;
+																						//Se muestra los numeros de paginas
+																						for($i=$Desde; $i<=$Hasta;$i++)
+																						{
+																							//Se valida la paginacion total
+																							//de registros
+																							if($i<=$TotalRegistro)
+																							{
+																								//Validamos la pag activo
+																								if($i==$compag)
+																								{
+																								echo "<a class=\"page-link\" href=\"?pag=".$i."\">".$i."</a>";
+																								}
+																								else
+																								{
+																								echo "<a class=\"page-link\" href=\"?pag=".$i."\">".$i."</a>";
+																								}     		
+																							}
+																						}
+																						echo "<a class=\"page-link\" href=\"?pag=".$IncrimentNum."\">▶</a>
+																						</ul>";
+																						?>
+																						</nav>
+																				<!--Fin sector de Paginacion--> 
 													
 											</div>
 										</div>
 									</div>
 								</div>  
 							</div>    
-
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="lisenme.js"></script>
+<script>
+jQuery('#table_format').ddTableFilter();
+</script>
 			<?php
 				}
 			else
@@ -118,3 +172,12 @@ include('../models/connection.php');
 ?>
 
 
+
+
+<!--
+  CÓDIGO PAGINACIÓN ADAPTADO DE: 
+ * Autor: Rodrigo Chambi Q.
+ * Mail:  filvovmax@gmail.com
+ * web:   www.gitmedio.com
+ * Paginador datos para PHP y Mysql, HTML5
+-->
