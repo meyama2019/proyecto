@@ -1,8 +1,8 @@
 <div class="card">
-	<h5 class="card-header" style="background-color: #F78181">Gestión de Fotos</h5>
+  <h5 class="card-header" style="background-color: #F78181">Gestión de Fotos</h5>
 
-	<br>
-	<div class="container">    
+  <br>
+  <div class="container">    
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
           
        
@@ -69,7 +69,7 @@
                     $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
                     $acentos="SET NAMES 'utf8'";
                     mysqli_query($conexion, $acentos);
-                    $sqlInicial="SELECT * FROM fotos where 1 "; 
+                    $sqlInicial="SELECT * FROM fotos where 1 ";
                     $x=0;
                     Global $X;
                     if(isset($_POST['mto_buscarrol']) )
@@ -101,9 +101,54 @@
                           }
                           
                         
-                         $sql=$db->query($sqlInicial);
+                        // $sql=$db->query($sqlInicial);
+                        $mysqli = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                        $result = mysqli_query($mysqli, $sqlInicial);
+
+                        while($docs_data = mysqli_fetch_array($result))
+                        {?>
+                            <tr class="item">
+                                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8">
+
+                                    <td class="form-group" name ="idfoto" value=<?php echo ($docs_data['id_foto']); ?>>
+                                        <?php echo ($docs_data['id_foto']); ?>
+
+                                    </td>
+
+                                    <td class="form-group" name ="userid" value=<?php echo ($docs_data['userid']); ?>>
+                                        <?php echo ($docs_data['userid']); ?>
+
+                                    </td>
+
+                                    <td>
+                                        <img src='<?php echo ($docs_data['documento']); ?>' class="img-responsive" height="30px" width="30px" alt="...">
+                                    </td>
+
+                                    <td class="form-group" name ="fecha" value=<?php echo ($docs_data['fecha_upload']); ?>>
+                                        <?php echo ($docs_data['fecha_upload']); ?>
+                                    </td>
+
+                                    <td class="form-group" name ="titulo" value=<?php echo ($docs_data['titulo']); ?>>
+                                        <?php echo ($docs_data['titulo']); ?>
+                                    </td>
+
+                                    <td>
+                                        <input type="hidden" class="form-control" name ="idfoto" value="<?php echo utf8_decode($docs_data['id_foto']); ?>">
+                                        <button type="submit" class="btn btn-outline-danger btn-sm" name="updaterol">Editar</button>
+
+                                        <button type="submit" class="btn btn-outline-danger btn-sm" name="deletefoto">Eliminar</button>
+                                    </td>
+
+
+                                </form>
+                            </tr>
+                            <?php
+                            $x=$x+1;
+                            $X=$x;
+
+                        }
                          
-                         foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
+                        /* foreach ($sql->fetchAll() as $listaUsuarios[$x])
                                 {                            
                                     echo ('
                                              <tr >
@@ -124,7 +169,7 @@
                                      $x=$x+1;
                                      $X=$x;
                                     
-                                }
+                                }*/
 
                                    
                                    
@@ -137,17 +182,63 @@
                         $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
                         $acentos="SET NAMES 'utf8'";
                         mysqli_query($conexion, $acentos);
-                        $sqlInicial="SELECT * FROM fotos where 1 "; 
+                       // $sqlInicial="SELECT * FROM fotos where 1 ";
                         $x=0;
-                       
-                    
-                        $sql=$db->query($sqlInicial);
+                        $mysqli = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                        $result = mysqli_query($mysqli, "SELECT * FROM fotos where 1");
+
+              while($docs_data = mysqli_fetch_array($result))
+              {?>
+                  <tr class="item">
+                      <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8">
+
+                          <td class="form-group" name ="idfoto" value=<?php echo ($docs_data['id_foto']); ?>>
+                              <?php echo ($docs_data['id_foto']); ?>
+
+                          </td>
+
+                          <td class="form-group" name ="userid" value=<?php echo ($docs_data['userid']); ?>>
+                              <?php echo ($docs_data['userid']); ?>
+
+                          </td>
+
+                          <td>
+                              <img src='<?php echo ($docs_data['documento']); ?>' class="img-responsive" height="30px" width="30px" alt="...">
+                          </td>
+
+                          <td class="form-group" name ="fecha" value=<?php echo ($docs_data['fecha_upload']); ?>>
+                              <?php echo ($docs_data['fecha_upload']); ?>
+                          </td>
+
+                          <td class="form-group" name ="titulo" value=<?php echo ($docs_data['titulo']); ?>>
+                              <?php echo ($docs_data['titulo']); ?>
+                          </td>
+
+                          <td>
+                              <input type="hidden" class="form-control" name ="idfoto" value="<?php echo utf8_decode($docs_data['id_foto']); ?>">
+                              <button type="submit" class="btn btn-outline-danger btn-sm" name="updaterol">Editar</button>
+
+                              <button type="submit" class="btn btn-outline-danger btn-sm" name="deletefoto">Eliminar</button>
+                          </td>
+
+
+                      </form>
+                  </tr>
+                  <?php
+                  $x=$x+1;
+                  $X=$x;
+
+              }
+
+
+
+              //$sql=$db->query($sqlInicial);
                          
-                        foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
-                                {
+                        //foreach ($sql->fetchAll() as $listaUsuarios[$x])
+                        //        {
                                    
                                     
-                                    echo ('
+                         /*           echo ('
                                              <tr>
                                             <th scope="row">'. utf8_encode($listaUsuarios[$x]['id_foto']).'</th>
                                             <td >'. utf8_encode($listaUsuarios[$x]['userid']). '</td>
@@ -156,13 +247,13 @@
                                             <td>'. utf8_encode($listaUsuarios[$x]['titulo']). '</td>
                                             <td><button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
                                                 value='.$listaUsuarios[$x]['id_foto'].'>Editar</button>
-                                                <button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
+                                                <button type="submit" class="btn btn-outline-danger btn-sm" name="deletefoto" 
                                                 value='.$listaUsuarios[$x]['id_foto'].'>Borrar</button></td></tr>
                                             ');
                                      $x=$x+1; 
                                      $X=$x;
 
-                                }
+                                }*/
 
                                    
                                   
@@ -330,4 +421,24 @@
     ?>
 
 
+<?php // Funcion para Eliminar una foto ************************************************
+if(isset($_POST['deletefoto']))
+{
 
+    $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+    $id_foto = $_POST['idfoto'];
+    $nombre = $_POST['idfoto'];
+
+
+    $sql = "DELETE FROM fotos WHERE id_foto = $_POST[idfoto]";
+    $consulta = mysqli_query($conexion, $sql);
+    if($consulta)
+    {
+        echo "<script>alert('Eliminada foto ".$nombre." ');</script>";
+
+    }
+
+
+
+}
+?>
