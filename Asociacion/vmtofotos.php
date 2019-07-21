@@ -35,7 +35,8 @@
          <center><button type="submit" class="btn btn-primary btn-sm " name="mto_buscarrol" >Buscar</button></center>
          <div class="container">
            <div class="form-row">
-            <button type="submit" class="btn btn-outline-danger " name="mto_newrol" >Nuevo</button>
+            <!--<button type="submit" class="btn btn-outline-danger " name="mto_newrol" >Nuevo</button>-->
+            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#mtofotonew">Nuevo</button>
         </div>
          </div>
             
@@ -181,5 +182,141 @@
       </form>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="mtofotonew" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelur" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabelur">Registro de fotos</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                     
+                      <div class="form-group">
+                        <label for="mtorol_namenew">Id usuario</label>
+                        <?php
+                        $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+                      ?>
+                      <select class="form-control" id="mtorol_namenew" name ="mtorol_namenew" required >
+                      <option value="0">Seleccione:</option>
+                      <?php
+                        $query1 = $mysqli -> query ("SELECT * FROM usuarios");
+                        while ($valores1 = mysqli_fetch_array($query1)) {
+                        echo '<option value="'.$valores1[id_usuario].'">'.utf8_encode($valores1[usuario]).'</option>';
+                        }
+                      ?>
+                      </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="foto">Foto</label>
+                        <input type="file" class="form-control" id="foto" name="foto" placeholder="File.." required>
+                      </div>
+                      
+                      <div class="form-group">
+
+                        <label for="titulo">Titulo</label>
+                        <input required type="text" class="form-control" id="titulo" name ="titulo" aria-describedby="emailHelp" placeholder="" >
+                      </div>
+                                         
+
+
+                     
+                              
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
+                  <button type="submit" class="btn btn-primary" name="mtousernew1">Insertar</button>
+                </div>
+               </form>
+              </div>
+            </div>
+          </div>
+
+
+
+<?php // Control para añadir nuevas fotos
+     if(isset($_POST['mtousernew1']))
+          {
+          
+           if (isset($_POST['mtorol_namenew']) && $_POST['mtorol_namenew']!='')
+              {
+
+                //if ($_FILES['foto']['error'] > 0)
+                //{
+                //  echo 'Problem mayor 0';
+                //  exit;
+
+                //}
+
+                //if ($_FILES['foto']['type'] != 'image/jpeg')
+                //{
+                //  echo 'Problem type jpeg';
+                //  exit;
+                //}
+
+                $aleatorio = rand(1,1000000);
+                //$nombre= $_FILES['foto']['name'];
+                //$uploaled_file = '../imagenes/uploads_img/'. $aleatorio .$nombre;
+                
+
+                //if (is_uploaded_file($_FILES['foto']['tmp_name']))
+
+                //{
+                //  if(!move_uploaded_file($_FILES['foto']['tmp_name'], $uploaled_file))
+                //  {
+                //    echo 'Problem on move';
+                //    exit;
+                //  }
+                //}
+               // else
+               // {
+               //   echo 'Possible Problem attack';
+               //   exit;
+               // }
+
+                //$docu=$uploaled_file;
+                //$docu = '../imagenes/uploads_img/'. $_FILES['foto']['name'] ;
+                $user = $_SESSION['id_usuario'];
+                 
+                          
+                $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                $acentos="SET NAMES 'utf8'";
+                mysqli_query($conexion, $acentos);
+
+                $sqlindice = "SELECT id_foto from fotos order by id_foto desc limit 1";
+                $next=mysqli_query($conexion, $sqlindice);
+                $indice = mysqli_fetch_row($next);
+                $indice[0] = $indice[0] + 1;
+                
+                $sql = "INSERT INTO fotos (id_foto,userid,documento,fecha_upload,titulo)
+                 values (".$indice[0].",'$_POST[mtorol_namenew]','prueba',current_timestamp,'$_POST[titulo]')";
+               
+                $consulta = mysqli_query($conexion, $sql);
+                 if($consulta)
+                    {
+                      include ('confirm_rol.php');                   
+                    }
+                  else
+                  {
+                   include ('noconfirm_rol.php');  
+                   
+                  }
+                mysqli_close($conexion);
+                
+              }
+                
+             
+           
+          } 
+       unset($_POST['mtousernew1']);
+     
+
+    ?>
+
 
 
