@@ -88,6 +88,12 @@
                           {
                             $sqlInicial = $sqlInicial . " && documento like '%$_POST[cmtodocumento]%'";
                           }
+
+                        if(isset($_POST['cmtofecha']) && $_POST['cmtofecha'] !='')
+                        {
+                            $sqlInicial = $sqlInicial . " && fecha_upload like '%$_POST[cmtofecha]%'";
+                        }
+
                          
                         if(isset($_POST['cmtotitulo']) && $_POST['cmtotitulo'] !='')
                           {
