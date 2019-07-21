@@ -427,14 +427,14 @@ if(isset($_POST['deletefoto']))
 
     $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
     $id_foto = $_POST['idfoto'];
-    $nombre = $_POST['idfoto'];
+    //$nombre = $_POST['userid'];
 
 
     $sql = "DELETE FROM fotos WHERE id_foto = $_POST[idfoto]";
     $consulta = mysqli_query($conexion, $sql);
     if($consulta)
     {
-        echo "<script>alert('Eliminada foto ".$nombre." ');</script>";
+        echo "<script>alert('Eliminada foto ".$idfoto." ');</script>";
 
     }
 
