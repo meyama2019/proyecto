@@ -434,7 +434,7 @@ if(isset($_POST['deletefoto']))
     $consulta = mysqli_query($conexion, $sql);
     if($consulta)
     {
-        echo "<script>alert('Eliminada foto ".$idfoto." ');</script>";
+        echo "<script>alert('Eliminada foto ".$id_foto." ');</script>";
 
     }
 
