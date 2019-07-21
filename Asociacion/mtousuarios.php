@@ -74,35 +74,51 @@ require_once('menu.php');
           
        
         <div class="form-row">
-           <div class="form-group col-md-3">
+           <div class="form-group col-md-2">
             <label for="cmtoid"></label>
             <input type="text" class="form-control" id="cmtoid" name="cmtoid" placeholder="Id Usuario">
           </div>
-          <div class="form-group col-md-3">
+          <div class="form-group col-md-2">
             <label for="cmtonombre"></label>
             <input type="text" class="form-control" id="cmtonombre" name="cmtonombre" placeholder="Usuario">
           </div>
-          <div class="form-group col-md-3">
+          <div class="form-group col-md-4">
             <label for="cmtoemail"></label>
             <input type="text" class="form-control" id="cmtoemail" name="cmtoemail" placeholder="email">
           </div>
-          <div class="form-group col-md-3">
+          <div class="form-group col-md-4">
             <label for="cmtonomape"></label>
-            <input type="text" class="form-control" id="cmtonomape" name="cmtonomape" placeholder="Nombre">
+            <input type="text" class="form-control" id="cmtonomape" name="cmtonomape" placeholder="Asociado">
           </div>
+        </div>
 
-          <div class="form-group col-md-3">
+        <div class="form-row">
+          <div class="form-group col-md-2">
             <label for="cmtodni"></label>
             <input type="text" class="form-control" id="cmtodni" name="cmtodni" placeholder="DNI">
           </div>
 
-          <div class="form-group col-md-3">
+          <div class="form-group col-md-2">
             <label for="cmtotlf"></label>
             <input type="text" class="form-control" id="cmtotlf" name="cmtotlf" placeholder="Telefono">
+          </div>    
+           <div class="form-group col-md-2">
+            <label for="cmtopro"></label>
+            <input type="text" class="form-control" id="cmtopro" name="cmtopro" placeholder="Provincia">
           </div>
 
-         
-         
+          <div class="form-group col-md-2">
+            <label for="cmtopais"></label>
+            <input type="text" class="form-control" id="cmtopais" name="cmtopais" placeholder="Pais">
+          </div>
+           <div class="form-group col-md-2">
+            <label for="cmtosit"></label>
+            <input type="text" class="form-control" id="cmtosit" name="cmtosit" placeholder="Situación">
+          </div>           
+          <div class="form-group col-md-2">
+            <label for="cmtorol"></label>
+            <input type="text" class="form-control" id="cmtorol" name="cmtorol" placeholder="Tipo Usuario">
+          </div>  
          </div>
 
          <center><button type="submit" class="btn btn-primary btn-sm " name="mto_buscarrol" >Buscar</button></center> 
@@ -128,7 +144,7 @@ require_once('menu.php');
                 <th scope="col">Id</th>
                 <th scope="col">Usuario</th>
                 <th scope="col">email</th>
-                <th scope="col">Nombre</th>               
+                <th scope="col">Asociado</th>               
                 <th scope="col">dni</th>
                 <th scope="col">Prov.</th>
                 <th scope="col">Pais</th>               
@@ -176,12 +192,29 @@ require_once('menu.php');
                           {
                             $sqlInicial = $sqlInicial . " && dni like '%$_POST[cmtodni]%'";
                           }
+
+                        if(isset($_POST['cmtopro']) && $_POST['cmtopro'] !='')
+                          {
+                            $sqlInicial = $sqlInicial . " && provincias = '$_POST[cmtopro]'";
+                          }
                           
+                        if(isset($_POST['cmtopais']) && $_POST['cmtopais'] !='')
+                          {
+                            $sqlInicial = $sqlInicial . " && Pais = '$_POST[cmtopais]'";
+                          }  
                                                 
                         if(isset($_POST['cmtotlf']) && $_POST['cmtotlf'] !='')
                           {
                             $sqlInicial = $sqlInicial . " && telefono like '%$_POST[cmtotlf]%'";
-                          }          
+                          }  
+                        if(isset($_POST['cmtosit']) && $_POST['cmtosit'] !='')
+                          {
+                            $sqlInicial = $sqlInicial . " && activo = '$_POST[cmtosit]'";
+                          }
+                        if(isset($_POST['cmtorol']) && $_POST['cmtorol'] !='')
+                          {
+                            $sqlInicial = $sqlInicial . " && rol_id = '$_POST[cmtorol]'";
+                          }        
                        
                          $sql=$db->query($sqlInicial);
                          

@@ -103,47 +103,48 @@ require_once('menu.php');
 
                   <div class="form-row">
                       <div class="form-group col-md-4">
-
                               <label for="SocioCuenta">Nº de Cuenta</label>
                               <input type="text" class="form-control" id="SocioCuenta" name ="SocioCuenta" aria-describedby="emailHelp"  >
                               <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
-                            </div>
-                          
-          
+                      </div> 
+                      <div class="form-group col-md-4">
+                              <label for="SocioSitu">Situación</label>
+                              <input type="number" min="0" max="3" class="form-control" id="SocioSitu" name ="SocioSitu" aria-describedby="emailHelp"placeholder="0-Activo 1-Pte 2-Baja P 3-Baja D"  >
+                              
+                      </div>
+                      <div class="form-group col-md-4">
+                              <label for="SocioRol">Tipo Usuario</label>
+                               <?php
+                                  $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+                                ?>
+                                <select class="form-control" id="SocioRol" name ="SocioRol" value=required >
+                                <option value="0">Seleccione:</option>
+                                <?php
+                                  $query = $mysqli -> query ("SELECT * FROM rolusuario");
+                                  while ($valores = mysqli_fetch_array($query)) {
+                                  echo '<option value="'.$valores[idRol].'">'.utf8_encode($valores[Nombre]).'</option>';
+                                  }
+                                ?>
+                        </select>
+                             
+                              
+                      </div>         
                   </div>
 
                    
                             <center>
                             <a class="btn btn-outline-danger btn-sm" href="mtousuarios.php" >Cerrar</a>
                             <button type="submit" class="btn btn-outline-danger btn-sm" name="adduser">Añadir</button>
-                            <br>
+                            
                             </center>
+                            <br>
                            
-                          </form>
-                      </div>
+            </form>
+        </div>
+      </div>
 
-            
-                      
-
-           
-
-          
-          
-          
-
-
-                  
-               
-               
-              
-              <br>
+      <br>
          
-
-        
-
-
-      
-
 
 
 
@@ -160,13 +161,15 @@ require_once('menu.php');
     $pais = $_POST['SocioPais'];
     $telf = $_POST['SocioTelf'];
     $ccct = $_POST['SocioCuenta'];
+    $situ = $_POST['SocioSitu'];
+    $rol = $_POST['SocioRol'];
 
       $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
       $acentos="SET NAMES 'utf8'";
       mysqli_query($conexion, $acentos);    
       
       $sql = "INSERT INTO usuarios (usuario, passwd, email, Nom_Ape,  dni, provincias, pais, telefono, cuenta, activo, rol_id ) 
-          values ('$alias','$passw','$email','$nbap','$dni','$prov','$pais','$telf', '$ccct',0, 2)";
+          values ('$alias','$passw','$email','$nbap','$dni','$prov','$pais','$telf', '$ccct','$situ', '$rol')";
       $inserta = mysqli_query($conexion, $sql);
       if($inserta)
       {
