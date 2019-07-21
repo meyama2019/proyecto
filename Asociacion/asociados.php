@@ -83,7 +83,7 @@ require_once('menu.php');
                         $paginai = 1;
                        }
               $start_from = ($paginai)*$registro_por_pagina;*/
-              echo("iniciados");
+              //echo("iniciados");
                
                $sqlInicial="SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.iso,telefono,cuenta,activo,rol_id 
                                   FROM paises pa  
@@ -208,7 +208,7 @@ require_once('menu.php');
                 {
                  $pagina = 1;
                 }
-            echo("entra sin inicializar");
+            //echo("entra sin inicializar");
             $start_from = ($pagina-1)*$registro_por_pagina;
 
             $query = "SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.iso,telefono,cuenta,activo,rol_id 
