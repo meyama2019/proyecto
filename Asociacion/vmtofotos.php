@@ -11,7 +11,7 @@ if(isset($_POST['deletefoto']))
     $consulta = mysqli_query($conexion, $sql);
     if($consulta)
     {
-        echo "<script>alert('Eliminada foto ".$id_foto." ');</script>";
+        echo "<script>alert('Eliminada foto ". $id_foto." ');</script>";
 
     }
 
@@ -156,7 +156,7 @@ if(isset($_POST['deletefoto']))
 
                                     <td>
                                         <input type="hidden" class="form-control" name ="idfoto" value="<?php echo utf8_decode($docs_data['id_foto']); ?>">
-                                        <button type="submit" class="btn btn-outline-danger btn-sm" name="updaterol">Editar</button>
+                                        <!--<button type="submit" class="btn btn-outline-danger btn-sm" name="updaterol">Editar</button>-->
 
                                         <button type="submit" class="btn btn-outline-danger btn-sm" name="deletefoto">Eliminar</button>
                                     </td>
@@ -238,7 +238,7 @@ if(isset($_POST['deletefoto']))
 
                           <td>
                               <input type="hidden" class="form-control" name ="idfoto" value="<?php echo utf8_decode($docs_data['id_foto']); ?>">
-                              <button type="submit" class="btn btn-outline-danger btn-sm" name="updaterol">Editar</button>
+                              <!--<button type="submit" class="btn btn-outline-danger btn-sm" name="updaterol">Editar</button>-->
 
                               <button type="submit" class="btn btn-outline-danger btn-sm" name="deletefoto">Eliminar</button>
                           </td>
