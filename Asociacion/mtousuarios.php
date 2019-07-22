@@ -31,7 +31,65 @@ require_once('menu.php');
     exit;
   }
 
- 
+ function provincia($prov)
+ {
+   $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+   $sql = "SELECT * FROM provincias where id_provincia = '$prov' ";
+   $consulta = mysqli_query($conexion, $sql);
+   while ($valores = mysqli_fetch_array($consulta)) {
+    $provincia = $valores['provincia'];
+   }
+   return($provincia);
+
+ }
+  function paises($pais)
+ {
+   $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+   $sql = "SELECT * FROM paises where id = '$pais' ";
+   $consulta = mysqli_query($conexion, $sql);
+   while ($valores = mysqli_fetch_array($consulta)) {
+    $pais = $valores['nombre'];
+   }
+   return($pais);
+
+ }
+  function roles($rol)
+ {
+   $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+   $sql = "SELECT * FROM rolusuario where idRol = '$rol' ";
+   $consulta = mysqli_query($conexion, $sql);
+   while ($valores = mysqli_fetch_array($consulta)) {
+    $rol = $valores['Nombre'];
+   }
+   return($rol);
+
+ }
+  function estado($est)
+ {  
+  switch ($est) {
+    case '0':
+      return("Activo");
+      break;
+    case '1':
+      return("Pte.Confirmar");
+      break;
+    case '2':
+      return("Baja Prov.");
+      break;
+    case '3':
+      return("Baja Defin.");
+      break;
+    
+    default:
+      # code...
+      break;
+  }
+}
+   
+
+
+
+
 ?>  
 
 <?php // Funcion para Eliminar un Rol ************************************************
@@ -134,7 +192,7 @@ require_once('menu.php');
           </div>
            <div class="form-group col-md-2">
             <label for="cmtosit"></label>
-            <input type="text" class="form-control" id="cmtosit" name="cmtosit" placeholder="0-Ac 1-Pt 2-BP 3-BD">
+            <input type="number" min="0" max="3" class="form-control" id="cmtosit" name="cmtosit" placeholder="0-Ac 1-Pt 2-BP 3-BD">
           </div>           
           <div class="form-group col-md-2">
             <label for="cmtorol"></label>
@@ -235,7 +293,7 @@ require_once('menu.php');
                           {
                             $sqlInicial = $sqlInicial . " && telefono like '%$_POST[cmtotlf]%'";
                           }  
-                        if(isset($_POST['cmtosit']) && $_POST['cmtosit'] !='')
+                        if(isset($_POST['cmtosit']) && $_POST['cmtosit'] !='' )
                           {
                             $sqlInicial = $sqlInicial . " && activo = '$_POST[cmtosit]'";
                           }
@@ -261,14 +319,17 @@ require_once('menu.php');
                                                 value='.$listaUsuarios[$x]['id_usuario'].'>Borrar</button></td></tr>
 
                                             ');
+                                    $prov = provincia($listaUsuarios[$x]['provincias']);
+                                    $pais = paises($listaUsuarios[$x]['Pais']);
+                                    $estado = estado($listaUsuarios[$x]['activo']);
+                                    $roles = roles($listaUsuarios[$x]['rol_id']);
                                     echo ('
-
                                         <tr class ="fila2" style="display:none">
-                                            <td>'. utf8_encode($listaUsuarios[$x]['provincias']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['Pais']). '</td>
-                                           
-                                            <td>'. utf8_encode($listaUsuarios[$x]['activo']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['rol_id']). '</td>
+                                            
+                                            <td>'. utf8_encode($prov). '</td>
+                                            <td>'. utf8_encode($pais). '</td>
+                                            <td>'. utf8_encode($estado). '</td>
+                                            <td>'. utf8_encode($roles). '</td>
                                       ');
                                             
 
@@ -309,13 +370,17 @@ require_once('menu.php');
                                                 value='.$listaUsuarios[$x]['id_usuario'].'>Borrar</button></td></tr>
 
                                             ');
+                                    $prov = provincia($listaUsuarios[$x]['provincias']);
+                                    $pais = paises($listaUsuarios[$x]['Pais']);
+                                    $estado = estado($listaUsuarios[$x]['activo']);
+                                    $roles = roles($listaUsuarios[$x]['rol_id']);
                                     echo ('
                                         <tr class ="fila2" style="display:none">
-                                            <td>'. utf8_encode($listaUsuarios[$x]['provincias']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['Pais']). '</td>
                                             
-                                            <td>'. utf8_encode($listaUsuarios[$x]['activo']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['rol_id']). '</td>
+                                            <td>'. utf8_encode($prov). '</td>
+                                            <td>'. utf8_encode($pais). '</td>
+                                            <td>'. utf8_encode($estado). '</td>
+                                            <td>'. utf8_encode($roles). '</td>
                                       ');
                                             
 
@@ -486,11 +551,10 @@ require_once('menu.php');
     <script type="text/javascript">
       $(document).ready()
       {
-        $("tr").hover(function(){
-          $(this).css("cursor","pointer");
-
-          $(this).next("tr.fila2").toggle("class");
-         
+        
+        $("tr").click(function(){
+           $(this).css("cursor","pointer");
+          $(this).next("tr.fila2").toggle("class" );
 
 
         });
