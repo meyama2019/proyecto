@@ -104,20 +104,51 @@ require_once('menu.php');
           </div>    
            <div class="form-group col-md-2">
             <label for="cmtopro"></label>
-            <input type="text" class="form-control" id="cmtopro" name="cmtopro" placeholder="Provincia">
+            <select class="form-control" id="cmtopro" name ="cmtopro"  >
+                          <option value='' >Provincia:</option>
+                          <?php
+                            $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+                            $query = $mysqli -> query ("SELECT * FROM provincias");
+                            while ($valores = mysqli_fetch_array($query)) {
+                            echo '<option value="'.$valores[id_provincia].'">'.utf8_encode($valores[provincia]).'</option>';
+                            }
+                          ?>
+            </select>
+            <!--<input type="text" class="form-control" id="cmtopro" name="cmtopro" placeholder="Provincia">-->
           </div>
 
           <div class="form-group col-md-2">
             <label for="cmtopais"></label>
-            <input type="text" class="form-control" id="cmtopais" name="cmtopais" placeholder="Pais">
+            <select class="form-control" id="cmtopais" name ="cmtopais"  >
+                        <option value=''>Pais:</option>
+                        <?php
+                          $mysqlip = new mysqli('localhost', 'socio', 'socio', 'marte');  
+                          $queryp = $mysqlip -> query ("SELECT * FROM paises");
+                          while ($valoresp = mysqli_fetch_array($queryp)) {
+                          echo '<option value="'.$valoresp[id].'">'.utf8_encode($valoresp[nombre]).'</option>';
+                          }
+
+                        ?>
+            </select>
+            <!--<input type="text" class="form-control" id="cmtopais" name="cmtopais" placeholder="Pais">  -->
           </div>
            <div class="form-group col-md-2">
             <label for="cmtosit"></label>
-            <input type="text" class="form-control" id="cmtosit" name="cmtosit" placeholder="Situación">
+            <input type="text" class="form-control" id="cmtosit" name="cmtosit" placeholder="0-Ac 1-Pt 2-BP 3-BD">
           </div>           
           <div class="form-group col-md-2">
             <label for="cmtorol"></label>
-            <input type="text" class="form-control" id="cmtorol" name="cmtorol" placeholder="Tipo Usuario">
+             <select class="form-control" id="cmtorol" name ="cmtorol"  >
+                    <option value=''>Rol:</option>
+                    <?php
+                        $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+                        $query = $mysqli -> query ("SELECT * FROM rolusuario");
+                        while ($valores = mysqli_fetch_array($query)) {
+                             echo '<option value="'.$valores[idRol].'">'.utf8_encode($valores[Nombre]).'</option>';
+                             }
+                    ?>
+              </select>
+            <!--<input type="text" class="form-control" id="cmtorol" name="cmtorol" placeholder="Tipo Usuario"> -->
           </div>  
          </div>
 
@@ -146,11 +177,7 @@ require_once('menu.php');
                 <th scope="col">email</th>
                 <th scope="col">Asociado</th>               
                 <th scope="col">dni</th>
-                <th scope="col">Prov.</th>
-                <th scope="col">Pais</th>               
-                <th scope="col">Tfno.</th>
-                <th scope="col">Activo</th>
-                <th scope="col">Rol</th> 
+                <th scope="col">Teléfono</th>
                 <th scope="col">Acción</th> 
                 
              
@@ -164,6 +191,7 @@ require_once('menu.php');
                     $acentos="SET NAMES 'utf8'";
                     mysqli_query($conexion, $acentos);
                     $sqlInicial="SELECT * FROM usuarios where 1 "; 
+                    //$sqlInicial="SELECT id_usuario,usuario,passwd,email,Nom_Ape,dni,";
                     $x=0;
                     Global $X;
                     if(isset($_POST['mto_buscarrol']) )
@@ -195,7 +223,7 @@ require_once('menu.php');
 
                         if(isset($_POST['cmtopro']) && $_POST['cmtopro'] !='')
                           {
-                            $sqlInicial = $sqlInicial . " && provincias = '$_POST[cmtopro]'";
+                            $sqlInicial = $sqlInicial . " && provincias like '%$_POST[cmtopro]%'";
                           }
                           
                         if(isset($_POST['cmtopais']) && $_POST['cmtopais'] !='')
@@ -221,22 +249,27 @@ require_once('menu.php');
                          foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
                                 {                            
                                     echo ('
-                                             <tr >
+                                            <tr >
                                             <th scope="row">'. utf8_encode($listaUsuarios[$x]['id_usuario']).'</th>
                                             <td>'. utf8_encode($listaUsuarios[$x]['usuario']). '</td>
                                             <td>'. utf8_encode($listaUsuarios[$x]['email']). '</td>
                                             <td>'. utf8_encode($listaUsuarios[$x]['Nom_Ape']). '</td>
                                             <td>'. utf8_encode($listaUsuarios[$x]['dni']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['provincias']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['Pais']). '</td>
                                             <td>'. utf8_encode($listaUsuarios[$x]['telefono']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['activo']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['rol_id']). '</td>
                                             <td> <a class="btn btn-outline-danger btn-sm" href="mtousuario-a.php?id='.$listaUsuarios[$x]['id_usuario'].'">Editar</a>
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" name="userdel" 
                                                 value='.$listaUsuarios[$x]['id_usuario'].'>Borrar</button></td></tr>
 
                                             ');
+                                    echo ('
+
+                                        <tr class ="fila2" style="display:none">
+                                            <td>'. utf8_encode($listaUsuarios[$x]['provincias']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['Pais']). '</td>
+                                           
+                                            <td>'. utf8_encode($listaUsuarios[$x]['activo']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['rol_id']). '</td>
+                                      ');
                                             
 
                                      $x=$x+1;
@@ -261,36 +294,34 @@ require_once('menu.php');
                     
                         $sql=$db->query($sqlInicial);
                         echo('<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>');
-                        foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
-                                {
-                                   
-                                      echo ('
-                                             <tr  >
-                                              <th scope="row">'. utf8_encode($listaUsuarios[$x]['id_usuario']).'</th>
-                                              <td>'. utf8_encode($listaUsuarios[$x]['usuario']). '</td>
-                                              <td>'. utf8_encode($listaUsuarios[$x]['email']). '</td>
-                                              <td>'. utf8_encode($listaUsuarios[$x]['Nom_Ape']). '</td>
-                                              <td>'. utf8_encode($listaUsuarios[$x]['dni']). '</td>
-                                              <td>'. utf8_encode($listaUsuarios[$x]['provincias']). '</td>
-                                              <td>'. utf8_encode($listaUsuarios[$x]['Pais']). '</td>
-                                              <td>'. utf8_encode($listaUsuarios[$x]['telefono']). '</td>
-                                              <td>'. utf8_encode($listaUsuarios[$x]['activo']). '</td>
-                                              <td>'. utf8_encode($listaUsuarios[$x]['rol_id']). '</td>
-                                              <td>
-                                                <a class="btn btn-outline-danger btn-sm" href="mtousuario-a.php?id='.$listaUsuarios[$x]['id_usuario'].'">Editar</a>
+                         foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
+                                {                            
+                                    echo ('
+                                            <tr class ="fila1">
+                                            <th scope="row">'. utf8_encode($listaUsuarios[$x]['id_usuario']).'</th>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['usuario']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['email']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['Nom_Ape']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['dni']). '</td>
+                                             <td>'. utf8_encode($listaUsuarios[$x]['telefono']). '</td>
+                                            <td> <a class="btn btn-outline-danger btn-sm" href="mtousuario-a.php?id='.$listaUsuarios[$x]['id_usuario'].'">Editar</a>
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" name="userdel" 
-                                                  value='.$listaUsuarios[$x]['id_usuario'].'>Borrar
-                                                </button>
-                                                
-                                               
-                                              </td>
-                                              </tr>');
+                                                value='.$listaUsuarios[$x]['id_usuario'].'>Borrar</button></td></tr>
+
+                                            ');
+                                    echo ('
+                                        <tr class ="fila2" style="display:none">
+                                            <td>'. utf8_encode($listaUsuarios[$x]['provincias']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['Pais']). '</td>
                                             
-                                     $x=$x+1; 
+                                            <td>'. utf8_encode($listaUsuarios[$x]['activo']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios[$x]['rol_id']). '</td>
+                                      ');
+                                            
+
+                                     $x=$x+1;
                                      $X=$x;
                                     
-                                   
-
                                 }
 
                                     
@@ -317,8 +348,6 @@ require_once('menu.php');
       </form>
   </div>
 </div>
-
-
 
 
 
@@ -451,3 +480,22 @@ require_once('menu.php');
             </div>
 
           </div>
+
+
+      
+    <script type="text/javascript">
+      $(document).ready()
+      {
+        $("tr").hover(function(){
+          $(this).css("cursor","pointer");
+
+          $(this).next("tr.fila2").toggle("class");
+         
+
+
+        });
+       
+      }
+    </script>
+    
+    

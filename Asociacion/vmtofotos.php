@@ -1,3 +1,25 @@
+<?php // Funcion para Eliminar una foto ************************************************
+if(isset($_POST['deletefoto']))
+{
+
+    $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+    $id_foto = $_POST['idfoto'];
+    //$nombre = $_POST['userid'];
+
+
+    $sql = "DELETE FROM fotos WHERE id_foto = $_POST[idfoto]";
+    $consulta = mysqli_query($conexion, $sql);
+    if($consulta)
+    {
+        echo "<script>alert('Eliminada foto ".$id_foto." ');</script>";
+
+    }
+
+
+
+}
+?>
+
 <div class="card">
   <h5 class="card-header" style="background-color: #F78181">Gestión de Fotos</h5>
 
@@ -421,24 +443,3 @@
     ?>
 
 
-<?php // Funcion para Eliminar una foto ************************************************
-if(isset($_POST['deletefoto']))
-{
-
-    $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-    $id_foto = $_POST['idfoto'];
-    //$nombre = $_POST['userid'];
-
-
-    $sql = "DELETE FROM fotos WHERE id_foto = $_POST[idfoto]";
-    $consulta = mysqli_query($conexion, $sql);
-    if($consulta)
-    {
-        echo "<script>alert('Eliminada foto ".$id_foto." ');</script>";
-
-    }
-
-
-
-}
-?>
