@@ -67,7 +67,7 @@ include('../models/connection.php');
                               foreach ($sql->fetchAll() as $listanoticias[$x]) {
                                 //$listanoticias[]= $noticias;
                                 
-                              echo('<div class="card">
+                              echo('<div class="card ">
                                 <div class="card-header"><h3> '. utf8_encode($listanoticias[$x]['titulo']) .'            
                                          </h3>
                                       </div>

@@ -81,32 +81,26 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 ?>	
 	
 	<div class="card">
-		<h5 class="card-header" style="background-color: #F78181">Gestión de Noticias</h5>
-			<div class="card-header" id="headingOne">
-			<br>
-			<center><a href="noticias_add.php" class="btn btn-outline-danger btn-sm">Nueva Noticia</a></center>
-			</div>
-		<br>
-			
-			<!--INICIO BUSCADORES--->
-				<ul class="list-group">
-					<li class="list-group-item">
-						<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-							<div class="form-row align-items-center">
-									    <input name="titulo" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Buscar en título">
-										<input name="descripcion" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Buscar en descripción">
-									
+			 <h5 class="card-header" style="background-color: #F78181">Gestión de Noticias</h5>
 
-										<label for="fechainicio">Fecha inicio</label>
-									    <input name="fechainicio" type="date" class="form-control mb-2" id="inlineFormInput" >
-										<label for="fechafin">Fecha fin</label>
-										<input name="fechafin" type="date" class="form-control mb-2" id="inlineFormInput">
-
-									
-
-										<label for="quien">O buscar por quién subió la noticia</label>
+  <br>
+  <div class="container">    
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+          
+       
+        <div class="form-row">
+           <div class="form-group col-md-3">
+            <label for="titulo"></label>
+            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título">
+          </div>
+          <div class="form-group col-md-3">
+            <label for="descripcion"></label>
+            <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción">
+          </div>
+           <div class="form-group col-md-2">
+            <label for="quien"></label>
 										<select class="form-control" id="quien" name ="quien" required >
-										<option value="0">Seleccione:</option>
+										<option value="0">Subida por:</option>
 										<?php
 										  $mysqli1 = mysqli_connect('localhost', 'socio', 'socio', 'marte');	
 										  $query1 = $mysqli1 -> query ("SELECT * FROM usuarios");
@@ -115,17 +109,34 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 											echo '<option value="'.$valores[id_usuario].'">'.utf8_encode($valores[usuario]).'</option>';
 										  }
 										?>
-										</select>
-									
-							
-								<div class="col-auto">
-									<button type="submit" name="buscador" class="btn btn-primary mb-2">Buscar</button>
-								</div>
-							</div>
-						</form>
-					</li>
-				</ul>
-			<!--FIN BUSCADORES--->
+            </select>
+            <!--<input type="text" class="form-control" id="cmtopais" name="cmtopais" placeholder="Pais">  -->
+          </div>
+          <div class="form-group col-md-2">
+            <label for="fechainicio"></label>
+            <input type="date" class="form-control" id="fechainicio" name="fechainicio" placeholder="Desde">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="fechafin"></label>
+            <input type="date" class="form-control" id="fechafin" name="fechafin" placeholder="Hasta">
+          </div>
+        </div>
+
+       
+        <center><button type="submit" class="btn btn-primary btn-sm " name="buscador" >Buscar</button></center>
+         
+        
+         <div class="container">
+           <div class="form-row">
+           	
+            <center><a href="noticias_add.php" class="btn btn-outline-danger btn-sm">Nuevo</a></center>
+           
+        	</div>
+         </div>
+            
+       
+    </form>
+   </div>
 			
 			
 									

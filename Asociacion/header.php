@@ -6,8 +6,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Trabajo - Modulo 3</title>
-    <script type="text/javascript" src="../js/jquery.js"></script>
-    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="http://localhost/proyecto/js/jquery.js"></script>
+    <script type="text/javascript" src="http://localhost/proyecto/js/bootstrap.js"></script>
     <link rel="stylesheet" type="text/css" href="http://localhost/proyecto/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="http://localhost/proyecto/css/bootstrap.css">
     <link rel="stylesheet" media="screen" type="text/css" href="http://localhost/proyecto/css/principal.css" />
@@ -38,7 +38,7 @@
                                     {
                                         case '0':
                                             # code...
-                                            echo('<div class="alert alert-success" role="alert">Bienvenido '.$_SESSION['login1'].'!</div>');
+                                            echo('<div id="iconlogin" class="alert alert-success" role="alert" >Bienvenido '.$_SESSION['login1'].'!</div>');
                                             break;
                                         case '1':
                                             # code...
@@ -66,7 +66,12 @@
                  
                    
                
-               
+            <style type="text/css">
+                 #cabecera > .row > .col-3 > #iconlogin {
+
+                    color: red;
+                }
+            </style>   
 
                
            <img src="/open-iconic/svg/comment-square.svg">

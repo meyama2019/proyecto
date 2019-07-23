@@ -47,15 +47,10 @@ include('../models/connection.php');
 				{
 				?>	
 
-								
-
-							<div class="accordion" id="accordionExample">
 								  <div class="card">
-									<div class="card-header" id="headingOne">
-									  <h2 class="mb-0">
-
-									  </h2>
-									</div>
+								  	 <h5 class="card-header" style="background-color: #F78181">Gestión de Noticias (Alta)</h5>
+										<br>
+									
 
 									<div id="collapseOne" class="collapse show container" aria-labelledby="headingOne" data-parent="#accordionExample">
 										<div class="card-body ">
@@ -79,8 +74,12 @@ include('../models/connection.php');
 																				<input type="date" class="form-control" name ="fechafin" value="" required>
 																				<br>
 																				<input type="hidden" class="form-control" name ="id" value="<?php echo utf8_encode($_SESSION['id_usuario']); ?>">
-																				<button type="submit" class="btn btn-primary" name="addnews">Añadir</button>
-														
+																				<center>
+																				<a class="btn btn-outline-danger btn-sm" href="noticias_g.php" >Cerrar</a>
+																				<button type="submit" class="btn btn-outline-danger btn-sm" name="addnews">Añadir</button>
+																				</center>
+																				<br>
+							
 																				
 																			</form>
 																		</tr>
@@ -92,7 +91,9 @@ include('../models/connection.php');
 										</div>
 									</div>
 								</div>  
-							</div>    
+								
+							
+						
 
 			<?php
 				}

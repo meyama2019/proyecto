@@ -244,16 +244,20 @@ require_once('menu.php');
              <tbody>
                
 
-              <?php
+          <?php
                     $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
                     $acentos="SET NAMES 'utf8'";
                     mysqli_query($conexion, $acentos);
-                    $sqlInicial="SELECT * FROM usuarios where 1 "; 
-                    //$sqlInicial="SELECT id_usuario,usuario,passwd,email,Nom_Ape,dni,";
+                    
+                    
                     $x=0;
                     Global $X;
+                    
+
                     if(isset($_POST['mto_buscarrol']) )
                     {
+
+                        $sqlInicial="SELECT * FROM usuarios where 1 "; 
                      
                         if(isset($_POST['cmtoid']) && $_POST['cmtoid'] !='')
                           {
@@ -300,11 +304,48 @@ require_once('menu.php');
                         if(isset($_POST['cmtorol']) && $_POST['cmtorol'] !='')
                           {
                             $sqlInicial = $sqlInicial . " && rol_id = '$_POST[cmtorol]'";
-                          }        
-                       
-                         $sql=$db->query($sqlInicial);
+                          }
+                        //$sqlInicial = $sqlInicial ;
+                      }
+                    else
+                    {
+                        $sqlInicial= "SELECT * FROM usuarios where 1 ";
+                    }
+                      $registro_por_pagina = 10;
+                      $pagina = 0;
+                      if(isset($_GET["pagina"]))
+                            {
+                             $pagina = $_GET["pagina"];
+                            }
+                      else
+                            {
+                             $pagina = 1;
+                            }
+                        //echo("entra sin inicializar");
+                     $start_from = ($pagina-1)*$registro_por_pagina;
+                     $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                     //$page_query= "SELECT * FROM usuarios where 1 " . " LIMIT $start_from, $registro_por_pagina";
+                     
+                     $page_query= $sqlInicial . " LIMIT $start_from, $registro_por_pagina";
+
+                     $page_result = mysqli_query($conexion, $sqlInicial);
+                     $total_records = mysqli_num_rows($page_result);
+                      
+                     $total_pages = ceil($total_records/$registro_por_pagina);
+                     $start_loop = 1;
+                     
+                     $diferencia = $total_pages - $pagina;
+                     if($diferencia <= $start_loop)
+                        {
+                         //$start_loop = $total_pages;
+                          $start_loop = $pagina;
+
+                        } 
+                      //$end_loop = $start_loop + 1;
+                       $end_loop = $total_pages;
+                     $sql=$db->query($page_query); // ****
                          
-                         foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
+                    foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
                                 {                            
                                     echo ('
                                             <tr >
@@ -337,69 +378,7 @@ require_once('menu.php');
                                      $X=$x;
                                     
                                 }
-
-                                   
-                                   
-                                 
-                        echo ('<p>Resultados encontrados '.$X.'</p>');
-                     
-                      }
-                    else
-                    {   
-                        $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                        $acentos="SET NAMES 'utf8'";
-                        mysqli_query($conexion, $acentos);
-                        $sqlInicial="SELECT * FROM usuarios where 1 "; 
-                        $x=0;
-                       
-                    
-                        $sql=$db->query($sqlInicial);
-                        echo('<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>');
-                         foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
-                                {                            
-                                    echo ('
-                                            <tr class ="fila1">
-                                            <th scope="row">'. utf8_encode($listaUsuarios[$x]['id_usuario']).'</th>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['usuario']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['email']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['Nom_Ape']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['dni']). '</td>
-                                             <td>'. utf8_encode($listaUsuarios[$x]['telefono']). '</td>
-                                            <td> <a class="btn btn-outline-danger btn-sm" href="mtousuario-a.php?id='.$listaUsuarios[$x]['id_usuario'].'">Editar</a>
-                                                <button type="submit" class="btn btn-outline-danger btn-sm" name="userdel" 
-                                                value='.$listaUsuarios[$x]['id_usuario'].'>Borrar</button></td></tr>
-
-                                            ');
-                                    $prov = provincia($listaUsuarios[$x]['provincias']);
-                                    $pais = paises($listaUsuarios[$x]['Pais']);
-                                    $estado = estado($listaUsuarios[$x]['activo']);
-                                    $roles = roles($listaUsuarios[$x]['rol_id']);
-                                    echo ('
-                                        <tr class ="fila2" style="display:none">
-                                            
-                                            <td>'. utf8_encode($prov). '</td>
-                                            <td>'. utf8_encode($pais). '</td>
-                                            <td>'. utf8_encode($estado). '</td>
-                                            <td>'. utf8_encode($roles). '</td>
-                                      ');
-                                            
-
-                                     $x=$x+1;
-                                     $X=$x;
-                                    
-                                }
-
-                                    
-                          echo('</form>');
-                                   
-                                    
-                               
-                         echo ('<p>Resultados encontrados '.$X.'</p>');
-                               
-                       }
-
-                   mysqli_close($conexion);
-
+                        echo ('<p>Resultados encontrados '.$total_records.'</p>');
 
                ?>
 
@@ -407,9 +386,83 @@ require_once('menu.php');
            
             
             </tbody>
+         
+
           </table>
+              <?php
+                     
+                    
+                    if ($total_pages > 1)
+                    {
+
+                     echo('<center><nav aria-label="Page navigation example ">
+                        <ul class="pagination justify-content-center">');
+
+                     if($pagina == 1)
+                         {
+                           echo(' 
+                       
+                              <li><a class="page-link" href="mtousuarios.php?pagina='.($end_loop) .'" aria-label="Previous">
+                                 <span aria-hidden="true">&laquo;</span>
+                                </a>
+                              </li>');
+                         }
+
+                     if (($pagina <= $end_loop) && ($pagina != 1))
+
+                     {
+                       
+                        echo('<li><a class="page-link" href="mtousuarios.php?pagina='.($pagina - 1) .'" aria-label="Previous">
+                             <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>');
+
+                     }
+                    
+                    
+                    
+                    
+                   
+                  
+                
+                    for($i=1; $i<=$total_pages; $i++)
+                      {     
+                      echo(' <li class="page-item"><a class="page-link" href="mtousuarios.php?pagina='.$i.'">'.$i.'</a></li>');
+                    
+                      }
+                 
+              
+                    
+                    
+                    if(($pagina < $end_loop) && ($pagina != $end_loop))
+                    {
+                    
+                     echo (' <li class="page-item">
+                              <a class="page-link" href="mtousuarios.php?pagina='.($pagina + 1).'" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                              </a>
+                            </li>
+                            ');
+                    }
+                    if ($pagina == $end_loop)
+                    {
+                      echo (' <li class="page-item">
+                              <a class="page-link" href="mtousuarios.php?pagina=1" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                              </a>
+                            </li>
+                            ');
+                    }
+                    echo('</ul>
+                             </nav></center>');
+                   }
+                   
+
+                   
+             ?>
       
         </div>
+       
       </form>
   </div>
 </div>
@@ -419,7 +472,7 @@ require_once('menu.php');
 
       
 <?php
-
+   mysqli_close($conexion);
  include ('footer.php');
 ?>
 
@@ -554,7 +607,15 @@ require_once('menu.php');
         
         $("tr").click(function(){
            $(this).css("cursor","pointer");
-          $(this).next("tr.fila2").toggle("class" );
+           $(this).next("tr.fila2").toggle("class").css({
+            'color':'#2E2EFE',
+            'background':'#CEECF5',
+            'fontSize':'0.8em'}
+
+
+            );
+            
+          
 
 
         });
