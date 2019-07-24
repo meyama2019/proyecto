@@ -9,6 +9,7 @@ include('../models/connection1.php');
       require_once('menu.php');
       $listaeventos = array ('titulo' => ''); // Va a contener los grupo de Títulos
       
+ 
       
  
 ?>
