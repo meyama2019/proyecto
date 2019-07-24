@@ -14,6 +14,8 @@ if(isset($_POST['deletefoto']))
        
         echo "<script>alert('Eliminada foto ". $id_foto." ');</script>";
 
+    mysqli_close($conexion);    
+
     }
 
 
@@ -125,8 +127,9 @@ if(isset($_POST['deletefoto']))
                           
                         
                         // $sql=$db->query($sqlInicial);
-                        $mysqli = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                        $result = mysqli_query($mysqli, $sqlInicial);
+                        //$mysqli = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                        //$result = mysqli_query($mysqli, $sqlInicial);
+                        $result = mysqli_query($conexion, $sqlInicial);
 
                         while($docs_data = mysqli_fetch_array($result))
                         {?>
@@ -198,6 +201,8 @@ if(isset($_POST['deletefoto']))
                                    
                                  
                         echo ('<p>Resultados encontrados '.$X.'</p>');
+
+                         mysqli_close($conexion);
                      
                       }
                     else
@@ -207,8 +212,9 @@ if(isset($_POST['deletefoto']))
                         mysqli_query($conexion, $acentos);
                        // $sqlInicial="SELECT * FROM fotos where 1 ";
                         $x=0;
-                        $mysqli = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                        $result = mysqli_query($mysqli, "SELECT * FROM fotos where 1");
+                        //$mysqli = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                        //$result = mysqli_query($mysqli, "SELECT * FROM fotos where 1");
+                        $result = mysqli_query($conexion, "SELECT * FROM fotos where 1");
 
               while($docs_data = mysqli_fetch_array($result))
               {?>
@@ -284,10 +290,12 @@ if(isset($_POST['deletefoto']))
                                     
                                
                          echo ('<p>Resultados encontrados '.$X.'</p>');
+                        
+                         mysqli_close($conexion);
                                
                        }
 
-                   mysqli_close($conexion);
+                   //mysqli_close($conexion);
 
 
                ?>
@@ -330,6 +338,7 @@ if(isset($_POST['deletefoto']))
                         while ($valores1 = mysqli_fetch_array($query1)) {
                         echo '<option value="'.$valores1[id_usuario].'">'.utf8_encode($valores1[usuario]).'</option>';
                         }
+                        mysqli_close($mysqli);
                       ?>
                       </select>
                       </div>

@@ -9,13 +9,24 @@ include('../models/connection.php');
      $listaUsuarios = array(
    array('id_foto' => '','userid' => '','documento' => '','fecha_upload' => '','titulo' => '')
     );
-    $db=Db::getConnect();
+    //$db=Db::getConnect();
+     $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+      $sql = "SELECT * FROM fotos";
+      $consulta = mysqli_query($conexion, $sql);
+      $num_rows = mysqli_num_rows($consulta);
 
-      $num_rows=$db->query('SELECT * FROM fotos '); // 1 Pendientes aprobación
+      //$num_rows=$db->query('SELECT * FROM fotos '); // 1 Pendientes aprobación
       $tot=0;
-      foreach ($num_rows->fetchAll() as $contacto) {
-               $tot=$tot+1;
-               }
+      //foreach ($num_rows->fetchAll() as $contacto) {
+      //         $tot=$tot+1;
+      //         }
+
+       for ($i = 0; $i<= $num_rows; $i++) {
+           $tot=$tot+1;
+       }
+
+       mysqli_close($conexion);
+         
       //$_SESSION['tot_con'] = $tot;
 
 
