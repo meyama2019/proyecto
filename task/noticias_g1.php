@@ -44,7 +44,7 @@ include('../models/connection.php');
       $listaUsuarios[]= ($usuario['rol_id']);
     }
     //return $listaUsuarios;
-      require_once('menu.php');
+      require_once('../asociacion/menu.php');
   
 ?>
 				  

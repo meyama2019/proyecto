@@ -266,6 +266,7 @@ require_once('menu.php');
  
 
 
+                 
                     $end_loop = $start_loop + 1;
                    
                     echo('<center><nav aria-label="Page navigation example ">

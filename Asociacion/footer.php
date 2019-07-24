@@ -481,7 +481,9 @@
         <!-- Grid column -->
         <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
           <h6 class="mb-0">Contacte con nosotros en Redes Sociales</h6>
+          
         </div>
+        <div class="col-md-6 col-lg-5 text-center text-md-right mb-4 mb-md-0" id='myWatch'></div>
         <!-- Grid column -->
 
         <!-- Grid column -->
@@ -614,6 +616,13 @@
 
 </footer>
 <!-- Footer -->
+
+<!---- FUNCIONES AJAX --------------------------------------------->
+
+
+ 
+
+
 
 </body>
 

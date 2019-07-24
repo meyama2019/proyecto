@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,9 +8,19 @@
     <script type="text/javascript" src="http://localhost/proyecto/js/jquery.js"></script>
     <script type="text/javascript" src="http://localhost/proyecto/js/bootstrap.js"></script>
     <link rel="stylesheet" type="text/css" href="http://localhost/proyecto/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost/proyecto/css/bootstrap.css">
     <link rel="stylesheet" media="screen" type="text/css" href="http://localhost/proyecto/css/principal.css" />
     <link rel="stylesheet" media="print" type="text/css" href="http://localhost/proyecto/css/imprimir.css" />
+
+    <script type="text/javascript" src="../js/inicio.js"></script>
 </head>
+
+
+
+
+
+
+<body>
 
 
 
@@ -39,7 +48,8 @@
                   
                
                      <li class="nav-item ">
-                      <a class="nav-link" href="http://localhost/proyecto/asociacion/noticias.php">Noticias</a>
+                      <a class="nav-link" href="http://localhost/proyecto/asociacion/noticias.php">Noticias</a> 
+
                     </li>
                      <li class="nav-item ">
                       <a class="nav-link" href="http://localhost/proyecto/asociacion/asociados.php">Asociados </a>
@@ -70,14 +80,14 @@
                       </li>
                      <li>
                        <a href="http://localhost/proyecto/asociacion/sociosptes.php" class="btn btn-outline-danger btn-sm">
-                      Socios Ptes <span class="badge badge-light">'.$_SESSION['tot_pen'].'</span>
+                       Socios Ptes <span id="tot_pen" class="badge badge-light"></span>
                         <span class="sr-only">unread messages</span>
                        </a>
                      </li>
 
                     <li>
                        <a href="http://localhost/proyecto/asociacion/mensajesptes.php" class="btn btn-outline-warning btn-sm">
-                       Mensajes <span class="badge badge-light">'.$_SESSION['tot_con'].'</span>
+                       Mensajes <span id="tot_ure" class="badge badge-light"></span>
                         <span class="sr-only">unread messages</span>
                       
 
@@ -136,4 +146,8 @@
               </nav>
 
 
-
+<?php
+include_once('datetime.php');
+include_once('totpen.php');
+include_once('toture.php');
+?>
