@@ -25,6 +25,7 @@ include('../models/connection.php');
           {
           
                 $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                mysqli_set_charset($conexion, 'utf8');
 				$id_noticia = $_POST['id_noticia'];
                 $titulo =  utf8_encode($_POST['titulo']);
                 $descripcion =  utf8_encode($_POST['descripcion']);
