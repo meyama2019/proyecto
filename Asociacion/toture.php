@@ -16,5 +16,5 @@
                   }
 
                   //con esta funcion llamamos a la función getTimeAJAX cada segundo para actualizar el div que mostrará la hora
-                  setInterval(getTimeAJAX,500);
+                  setInterval(getTimeAJAX,100);
   </script>

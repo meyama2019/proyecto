@@ -11,20 +11,7 @@ include('../models/connection.php');
     );
     $db=Db::getConnect();
 
-      $num_rows=$db->query('SELECT * FROM contacto where activo=1'); // 1 Pendientes aprobación
-      $tot=0;
-      foreach ($num_rows->fetchAll() as $contacto) {
-               $tot=$tot+1;
-               }
-      $_SESSION['tot_con'] = $tot;
-
-       $num_rows=$db->query('SELECT * FROM usuarios where activo=1'); // 1 Pendientes aprobación
-                $tot=0;
-                 foreach ($num_rows->fetchAll() as $usuario) {
-                  $tot=$tot+1;
-                }
-                $_SESSION['tot_pen'] = $tot;
-
+  
 
     require_once('menu.php');
    

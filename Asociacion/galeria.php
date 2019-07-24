@@ -1,9 +1,7 @@
 <?php
  session_start();
-//define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
-//include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
-include('../models/connection.php');
+include('../models/connection1.php');
      $listaUsuarios = 
       array('id_foto' => '','user_id' => '','documento' => '','fecha_upload' => '','titulo' => '');
 
@@ -46,9 +44,8 @@ include('../models/connection.php');
 <?php
      
                
-  $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-    $acentos="SET NAMES 'utf8'";
-    mysqli_query($conexion, $acentos);
+    //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+   
     $sql = "SELECT titulo FROM fotos group by titulo order by titulo";
     $consulta = mysqli_query($conexion, $sql);
     $result = $conexion->query($sql);
