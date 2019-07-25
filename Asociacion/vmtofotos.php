@@ -1,8 +1,13 @@
+<?php
+ include('../models/connection1.php');
+?>
+
+
 <?php // Funcion para Eliminar una foto ************************************************
 if(isset($_POST['deletefoto']))
 {
 
-    $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+    //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
     $id_foto = $_POST['idfoto'];
     //$nombre = $_POST['userid'];
 
@@ -10,15 +15,12 @@ if(isset($_POST['deletefoto']))
     $sql = "DELETE FROM fotos WHERE id_foto = $_POST[idfoto]";
     $consulta = mysqli_query($conexion, $sql);
     if($consulta)
-    {   
-       
+    {
         echo "<script>alert('Eliminada foto ". $id_foto." ');</script>";
-
-    mysqli_close($conexion);    
 
     }
 
-
+    //mysqli_close($conexion);
 
 }
 ?>
@@ -91,9 +93,9 @@ if(isset($_POST['deletefoto']))
                
 
               <?php
-                    $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                    $acentos="SET NAMES 'utf8'";
-                    mysqli_query($conexion, $acentos);
+                    //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                    //$acentos="SET NAMES 'utf8'";
+                    //mysqli_query($conexion, $acentos);
                     $sqlInicial="SELECT * FROM fotos where 1 ";
                     $x=0;
                     Global $X;
@@ -202,21 +204,22 @@ if(isset($_POST['deletefoto']))
                                  
                         echo ('<p>Resultados encontrados '.$X.'</p>');
 
-                         mysqli_close($conexion);
+                       // mysqli_close($conexion);
                      
                       }
                     else
                     {   
-                        $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                        $acentos="SET NAMES 'utf8'";
-                        mysqli_query($conexion, $acentos);
+                        //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                        //$acentos="SET NAMES 'utf8'";
+                        //mysqli_query($conexion, $acentos);
                        // $sqlInicial="SELECT * FROM fotos where 1 ";
                         $x=0;
                         //$mysqli = mysqli_connect('localhost', 'socio', 'socio', 'marte');
                         //$result = mysqli_query($mysqli, "SELECT * FROM fotos where 1");
                         $result = mysqli_query($conexion, "SELECT * FROM fotos where 1");
 
-              while($docs_data = mysqli_fetch_array($result))
+
+                        while($docs_data = mysqli_fetch_array($result))
               {?>
                   <tr class="item">
                       <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8">
@@ -290,12 +293,12 @@ if(isset($_POST['deletefoto']))
                                     
                                
                          echo ('<p>Resultados encontrados '.$X.'</p>');
-                        
-                         mysqli_close($conexion);
+
+                        //mysqli_close($conexion);
                                
                        }
 
-                   //mysqli_close($conexion);
+                   mysqli_close($conexion);
 
 
                ?>
@@ -338,7 +341,7 @@ if(isset($_POST['deletefoto']))
                         while ($valores1 = mysqli_fetch_array($query1)) {
                         echo '<option value="'.$valores1[id_usuario].'">'.utf8_encode($valores1[usuario]).'</option>';
                         }
-                        mysqli_close($mysqli);
+                      mysqli_close($mysqli);
                       ?>
                       </select>
                       </div>
@@ -371,6 +374,9 @@ if(isset($_POST['deletefoto']))
 
 
 <?php // Control para añadir nuevas fotos
+
+     include('../models/connection1.php');
+     
      if(isset($_POST['mtousernew1']))
           {
           
@@ -417,9 +423,9 @@ if(isset($_POST['deletefoto']))
                 $user = $_SESSION['id_usuario'];
                  
                           
-                $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                $acentos="SET NAMES 'utf8'";
-                mysqli_query($conexion, $acentos);
+                //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                //$acentos="SET NAMES 'utf8'";
+                //mysqli_query($conexion, $acentos);
 
                 $sqlindice = "SELECT id_foto from fotos order by id_foto desc limit 1";
                 $next=mysqli_query($conexion, $sqlindice);

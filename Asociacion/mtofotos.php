@@ -3,14 +3,14 @@ session_start();
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
 //include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
-include('../models/connection.php');
+include('../models/connection1.php');
 
 
      $listaUsuarios = array(
    array('id_foto' => '','userid' => '','documento' => '','fecha_upload' => '','titulo' => '')
     );
     //$db=Db::getConnect();
-     $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+     //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
       $sql = "SELECT * FROM fotos";
       $consulta = mysqli_query($conexion, $sql);
       $num_rows = mysqli_num_rows($consulta);
