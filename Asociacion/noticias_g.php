@@ -12,6 +12,7 @@ require_once('menu.php');
 
 <!----NEWS UPDATE-->
 <?php
+/*
           if(isset($_POST['updatenews']))
           {
           
@@ -34,10 +35,13 @@ require_once('menu.php');
                     }		
               
           }  
+    */
 ?>
 
 <!----DELETE NOTICIA-->
+
 <?php
+
           if(isset($_POST['deletenews']))
           {
           
@@ -53,9 +57,10 @@ require_once('menu.php');
                     {
 					  echo "<script>alert('Registro eliminado');</script>";			
                       //echo "Registro Nº ".$_POST['id_noticia']." ha sido eliminado correctamente";
-                    }		
+                    }	
+           }	
               
-          }  
+
     ?>
 	
 
@@ -116,6 +121,7 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 
        
         <center><button type="submit" class="btn btn-primary btn-sm " name="buscador" >Buscar</button></center>
+
          
         
          <div class="container">
@@ -213,15 +219,19 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 										</td>
 										<td class="form-group">
 											<input type="date" class="form-control" name ="fechafin" value="<?php echo $news_data['fechafin']; ?>">
+											<input type="hidden" class="form-control" name ="id_noticia" value="<?php echo utf8_encode($news_data['id_noticia']); ?>">
 										</td>
 										<td>
-											<input type="hidden" class="form-control" name ="id_noticia" value="<?php echo utf8_encode($news_data['id_noticia']); ?>">
-											<button type="submit" class="btn btn-outline-danger btn-sm" name="updatenews">Editar</button>
+											
 
-											<a type="submit" class="btn btn-outline-danger btn-sm" href="updatenoticias.php?id_noticia=<?php echo ($news_data['id_noticia'])?> ">Editar</a></
+										<button type="submit" class="btn btn-outline-danger btn-sm" name="deletenews">
+										Borrar</button>
+										<a type="submit" class="btn btn-outline-danger btn-sm" 
+											href="updatenoticias.php?id=<?php echo ($news_data['id_noticia'])?>">
+											Editar</a>
 											
 											
-											<button type="submit" class="btn btn-outline-danger btn-sm" name="deletenews">Eliminar</button>
+											
 										</td>
 									</form>
 								</tr>

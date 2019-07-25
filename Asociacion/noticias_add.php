@@ -25,9 +25,10 @@ include('../models/connection.php');
     if(isset($_POST['addnews']))
        {
 		$tit=utf8_encode($_POST['titulo']);
+		$des=utf8_encode($_POST['descripcion']);
 		$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');		   
         $sql = "INSERT INTO noticias (titulo, descripcion, fechainicio, fechafin, userid ) 
-    		   values ('$tit','utf8_encode($_POST[descripcion])','$_POST[fechainicio]','$_POST[fechafin]', '$_POST[id]')
+    		   values ('$tit','$des','$_POST[fechainicio]','$_POST[fechafin]', '$_POST[id]')
 				";
 
                   $consulta = mysqli_query($conexion, $sql);
@@ -67,13 +68,20 @@ include('../models/connection.php');
 																				<label for="descripcion">Descripción</label>
 																				<textarea type="text" class="form-control" name ="descripcion" value="" required></textarea>
 																				<br>
+																				<div class="form-row">
+                     															 <div class="form-group col-md-3">
 																				<label for="fechainicio">Fecha Inicio</label>
 																				<input type="date" class="form-control" name ="fechainicio" value="" required>
+																				</div>
+
 																				<br>
+																				<div class="form-group col-md-3">
 																				<label for="fechafin">Fecha Fin</label>
 																				<input type="date" class="form-control" name ="fechafin" value="" required>
+																					</div>
+																				</div>
 																				<br>
-																				<input type="hidden" class="form-control" name ="id" value="<?php echo utf8_encode($_SESSION['id_usuario']); ?>">
+																				<input type="hidden" class="form-control" name ="id" value="<?php echo ($_SESSION['id_usuario']); ?>">
 																				<center>
 																				<a class="btn btn-outline-danger btn-sm" href="noticias_g.php" >Cerrar</a>
 																				<button type="submit" class="btn btn-outline-danger btn-sm" name="addnews">Añadir</button>
@@ -91,6 +99,8 @@ include('../models/connection.php');
 										</div>
 									</div>
 								</div>  
+
+
 								
 							
 						
@@ -112,5 +122,5 @@ include('../models/connection.php');
    
 
 
-  include ('footer.php');
+  //include ('footer.php');
 ?>

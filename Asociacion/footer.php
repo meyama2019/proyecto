@@ -166,7 +166,8 @@
                 $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
                 $acentos="SET NAMES 'utf8'";
                 mysqli_query($conexion, $acentos);
-                $sql = "INSERT INTO contacto (fecha_entrada, nombre, email, telefono, asunto, mensaje, activo) values (current_timestamp ,'$_POST[ContactoNombre]','$_POST[ContactoEmail]','$_POST[ContactoTelefono]','$_POST[ContactoAsunto]','$_POST[ContactoMensasje]', 1)";
+                $texto = htmlspecialchars($_POST['ContactoMensasje']);
+                $sql = "INSERT INTO contacto (fecha_entrada, nombre, email, telefono, asunto, mensaje, activo) values (current_timestamp ,'$_POST[ContactoNombre]','$_POST[ContactoEmail]','$_POST[ContactoTelefono]','$_POST[ContactoAsunto]','$texto', 1)";
                 $consulta = mysqli_query($conexion, $sql);
                 if($consulta)
                     {

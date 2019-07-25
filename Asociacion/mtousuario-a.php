@@ -25,6 +25,7 @@ require_once('menu.php');
 
   if(isset($_POST['updateuser']))
   {
+   
     $socioid= $_POST['socioid'];
     $email = $_POST['socioEmail'];
     if(isset($_POST['SocioPasswordN']) && $_POST['SocioPasswordN'] !='')
