@@ -3,7 +3,7 @@ session_start();
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
 //include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
-include('../models/connection.php');
+include('../models/connection1.php');
 require_once('menu.php');
 ?>
 
@@ -104,8 +104,8 @@ require_once('menu.php');
                     { $sqlInicial = $sqlInicial . " && telefono like '%$_POST[ctfno]%' "; }
                 $sqlInicial = $sqlInicial . $sqlFinal;
                 //echo($sqlInicial);
-                $conexion = mysqli_connect("localhost", "socio", "socio", "marte");
-           
+                //$conexion = mysqli_connect("localhost", "socio", "socio", "marte");
+                
                 $result = mysqli_query($conexion, $sqlInicial);
                 $number=0;
                      while($row = mysqli_fetch_array($result))
@@ -190,14 +190,14 @@ require_once('menu.php');
                     }
           */
 
-                mysqli_close($conexion);
+              //  mysqli_close($conexion);
                 
 
 
             }
             else 
             {
-              $conexion = mysqli_connect("localhost", "socio", "socio", "marte");
+              //$conexion = mysqli_connect("localhost", "socio", "socio", "marte");
               $registro_por_pagina = 10;
               $pagina = '';
               if(isset($_GET["pagina"]))
@@ -313,11 +313,11 @@ require_once('menu.php');
                     
  
 
-                mysqli_close($conexion);
+                //mysqli_close($conexion);
 
                }
  
-
+               mysqli_close($conexion);
               ?>
 
            
