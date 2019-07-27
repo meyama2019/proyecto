@@ -141,6 +141,7 @@ require_once('menu.php');
                   <div class="form-row">
                       <div class="form-group col-md-3">
                         <label for="SocioUsuario">Usuario</label>
+
                         <input required type="text" class="form-control" id="SocioUsuario" name ="SocioUsuario" aria-describedby="emailHelp" placeholder="Nombre de usuario" value= <?php echo(utf8_encode($news_data['usuario'])); ?>>
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
@@ -150,7 +151,8 @@ require_once('menu.php');
                      <div class="form-group col-md-6">
 
                         <label for="NombreApellidosSocio">Nombre y apellidos</label>
-                        <input  type="text" class="form-control" id="NombreApellidosSocio" name ="NombreApellidosSocio" aria-describedby="emailHelp" placeholder="Nombre y Apellidos" value= <?php echo($news_data['Nom_Ape']); ?>>
+
+                        <input  type="textarea" class="form-control" id="NombreApellidosSocio" name ="NombreApellidosSocio" aria-describedby="emailHelp" placeholder="Nombre y Apellidos" value= <?php echo(utf8_encode($news_data['Nom_Ape'])); ?>>
                       </div>
 
                       <div class="form-group col-md-3">

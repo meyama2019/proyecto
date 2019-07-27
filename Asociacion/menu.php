@@ -74,14 +74,14 @@
                         <a class="dropdown-item" href="http://localhost/proyecto/asociacion/mtofotos.php">Fotos</a>
                         <a class="dropdown-item" href="http://localhost/proyecto/asociacion/documentos_g.php">Documentos</a>
 
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                       
                       </div>
                       </li>
                      <li>
                        <a href="http://localhost/proyecto/asociacion/sociosptes.php" class="btn btn-outline-danger btn-sm">
                        Socios Ptes <span id="tot_pen" class="badge badge-light"></span>
                         <span class="sr-only">unread messages</span>
+                       
                        </a>
                      </li>
 
@@ -89,6 +89,7 @@
                        <a href="http://localhost/proyecto/asociacion/mensajesptes.php" class="btn btn-outline-warning btn-sm">
                        Mensajes <span id="tot_ure" class="badge badge-light"></span>
                         <span class="sr-only">unread messages</span>
+
                       
 
                        </a>
@@ -120,7 +121,8 @@
                                 <?php
                                     if (isset($_SESSION['rol1']) )
                                       {
-                                        echo('<button type="submit" class=" btn btn-outline-primary btn-sm" >Salir');
+                                        //echo('<button type="submit" class=" btn btn-outline-primary btn-sm" >Salir');
+                                        echo('<button type="submit" class=" btn btn-outline-primary btn-sm" ><img src="https://img.icons8.com/windows/20/000000/logout-rounded.png" > Salir');
                                         
                                       } 
                                     elseif (!isset($_SESSION['rol1']))

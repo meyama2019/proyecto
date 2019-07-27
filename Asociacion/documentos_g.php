@@ -83,48 +83,61 @@ include('../models/connection.php');
 						
 								  <div class="card">
 								  	<h5 class="card-header" style="background-color: #F78181">Gestión de Documentos</h5>
-								  	<div class="container">
-								  		<br>
-										<center><a href="documentos_add.php" class="btn btn-outline-danger btn-sm">Nuevo Doc</a></center>
-									</div>		
-									
-									<!--INICIO BUSCADORES--->
-										<ul class="list-group">
-											<li class="list-group-item">
-												<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-													<div class="form-row align-items-center">
-																<input name="titulo" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Buscar en título">
-																<input name="descripcion" type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Buscar en descripción">
-															
+								  	<br>
+								  	 <div class="container">
+								  <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+          
+       
+							        <div class="form-row">
+							           <div class="form-group col-md-3">
+							            <label for="titulo">Título</label>
+							            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título">
+							          </div>
+							          <div class="form-group col-md-3">
+							            <label for="descripcion">Descripción</label>
+							            <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción">
+							          </div>
+							           <div class="form-group col-md-2">
+							            <label for="quien">Autor</label>
+																	<select class="form-control" id="quien" name ="quien" required >
+																	<option value="0">Subido por:</option>
+																	<?php
+																	  $mysqli1 = mysqli_connect('localhost', 'socio', 'socio', 'marte');	
+																	  $query1 = $mysqli1 -> query ("SELECT * FROM usuarios");
+																	  while ($valores = mysqli_fetch_array($query1))
+																	  {
+																		echo '<option value="'.$valores[id_usuario].'">'.utf8_encode($valores[usuario]).'</option>';
+																	  }
+																	?>
+							            </select>
+							            <!--<input type="text" class="form-control" id="cmtopais" name="cmtopais" placeholder="Pais">  -->
+							          </div>
+							          <div class="form-group col-md-2">
+							            <label for="fechainicio">Desde</label>
+							            <input type="date" class="form-control" id="fechainicio" name="fechainicio" placeholder="Desde">
+							          </div>
+							          <div class="form-group col-md-2">
+							            <label for="fechafin">Hasta</label>
+							            <input type="date" class="form-control" id="fechafin" name="fechafin" placeholder="Hasta">
+							          </div>
+							        </div>
 
-																
-																<label for="fechainicio">Fecha inicio</label>
-																<input name="fechainicio" type="date" class="form-control mb-2" id="inlineFormInput" >
-																<label for="fechafin">Fecha fin</label>
-																<input name="fechafin" type="date" class="form-control mb-2" id="inlineFormInput">
-																					
+							       
+							        <center><button type="submit" class="btn btn-primary btn-sm " name="buscador" >Buscar</button></center>
 
-																<label for="quien">O buscar por quién subió la noticia</label>
-																<select class="form-control" id="quien" name ="quien" required >
-																<option value="0">Seleccione:</option>
-																<?php
-																  $mysqli1 = mysqli_connect('localhost', 'socio', 'socio', 'marte');	
-																  $query1 = $mysqli1 -> query ("SELECT * FROM usuarios");
-																  while ($valores = mysqli_fetch_array($query1))
-																  {
-																	echo '<option value="'.$valores[id_usuario].'">'.utf8_encode($valores[usuario]).'</option>';
-																  }
-																?>
-																</select>
-															
-													
-														<div class="col-auto">
-															<button type="submit" name="buscador" class="btn btn-primary mb-2">Buscar</button>
-														</div>
-													</div>
-												</form>
-											</li>
-										</ul>
+							         
+							        
+							         <div class="container">
+							           <div class="form-row">
+							           	
+							            <center><a href="documentos_add.php" class="btn btn-outline-danger btn-sm">Nuevo</a></center>
+							           
+							        	</div>
+							         </div>
+							            
+							       
+							    </form>
+							</div>
 									<!--FIN BUSCADORES--->
 
 			
@@ -196,29 +209,33 @@ include('../models/connection.php');
 																		{?>
 																			<tr class="item">
 																			<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8">
-																				<td class="form-group">
-																				<input type="date" class="form-control" name ="fecha" value="<?php echo utf8_encode($docs_data['creation_date']); ?>">
+																				<td >
+																				<input type="date" class="form-control " name ="fecha" value="<?php echo utf8_encode($docs_data['creation_date']); ?>">
 																				</td>
-																				<td class="form-group">
+																				<td >
 																				<textarea type="text" class="form-control" name ="titulo" value=""><?php echo utf8_encode($docs_data['titulo']); ?></textarea>
 																				</td>
-																				<td class="form-group">
+																				<td >
 																				<textarea type="text" class="form-control" name ="descripcion" value=""><?php echo utf8_encode($docs_data['descripcion']); ?></textarea>
 																				</td>
-																				<td class="form-group">
+																				<td >
 																				<?php echo utf8_encode($docs_data['usuario']); ?>
 																				</td>
-																				<td class="form-group">
+																				<td >
 																				<a href="<?php echo utf8_encode($docs_data['documento']); ?>" >Ver</a>
 																				<input type="hidden" name ="documento" value="<?php echo utf8_encode($docs_data['documento']); ?>">
 																				</td>
-																				<td>
+																				
 																				<input type="hidden" class="form-control" name ="id_documento" value="<?php echo utf8_encode($docs_data['id_documento']); ?>">
-																				<button type="submit" class="btn btn-outline-danger btn-sm" name="updatedocs">Editar</button>
-																				<br> <br>
+																				
+																				<td >
+																				<a class="btn btn-outline-danger btn-sm" href="updatedocumentos.php?id=<?php echo ($docs_data['id_documento'])?>">Editar</a>
+
 																				<button type="submit" class="btn btn-outline-danger btn-sm" name="deletedocs">Eliminar</button>
 																				</td>
 														
+
+
 																				
 																				</form>
 																			</tr>

@@ -52,6 +52,7 @@
                                             # code...
                                             echo('<div class="alert alert-success" role="alert">Bienvenido 
                                                 '.$_SESSION['login1'].'!</div>');
+                                            
                                             break;
                                         case '1':
                                             # code...
@@ -64,6 +65,7 @@
                                             echo('<div class="alert alert-danger" role="alert">
                                                   Usuario de Baja - '.$_SESSION['login1'].'!
                                                 </div>');
+
                                             break;
                                         
                                         default:

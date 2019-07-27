@@ -5,8 +5,8 @@ session_start();
 include ('../includes/header.php');
 include('../models/connection1.php');
 require_once('menu.php');
-?>
 
+?>
 
   
 <div class="card">
@@ -116,9 +116,9 @@ require_once('menu.php');
                        
                         <td><?php echo $row["id_usuario"]; ?></td>
                         <td><?php echo $row["email"]; ?></td>
-                        <td><?php echo utf8_encode($row["Nom_Ape"]); ?></td>
-                        <td><?php echo utf8_encode($row["provincia"]); ?></td>
-                        <td><?php echo utf8_encode($row["iso"]); ?></td>
+                        <td><?php echo ($row["Nom_Ape"]); ?></td>
+                        <td><?php echo ($row["provincia"]); ?></td>
+                        <td><?php echo ($row["iso"]); ?></td>
                         <td><?php echo $row["telefono"]; ?></td>
                        </tr>
                        <?php
@@ -130,68 +130,7 @@ require_once('menu.php');
                     <br />
 
                 <?php
-                       /*
-                        $page_resulti = mysqli_query($conexion, $sqlInicial);
-                        $total_recordsi = mysqli_num_rows($page_resulti);
-                      
-                        $total_pagesi = ceil($total_recordsi/$registro_por_pagina);
-                        $start_loop = $paginai;
-                        $diferencia = $total_pagesi - $paginai;
-                        if($diferencia <= $start_loop)
-                        {
-                         $start_loop = $total_pagesi - 1;
-
-                        }
- 
-
-
-                    $end_loop = $start_loop + 1;
-                   
-                    echo('<center><nav aria-label="Page navigation example ">
-                        <ul class="pagination justify-content-center">
-                        <li><a class="page-link" href="asociados.php?pagina=1" aria-label="Previous">
-                              <span aria-hidden="true">&laquo;</span>
-                            </a>
-                          </li>'); 
-                   
-                    if($paginai > 1)
-                    {
-                
-                     echo(' <li class="page-item"><a class="page-link" href="asociados.php?pagina='.($paginai - 1).'">1</a></li>');
-                 
-                    }
-                 
-                    for($ii=$start_loop; $ii<=$total_pagesi; $ii++)
-                    {     
-                    echo(' <li class="page-item"><a class="page-link" href="asociados.php?pagina='.$ii.'">'.$ii.'</a></li>');
-                  
-                    }
-                    if($paginai < $end_loop)
-                    {
-                    
-                     echo (' <li class="page-item">
-                              <a class="page-link" href="asociados.php?pagina='.($paginai + 1).'" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                              </a>
-                            </li>
-                          </ul>
-                        </nav></center>'); 
-                    }
-                    if($paginai == $end_loop)
-                    {
-                    
-                     echo (' <li class="page-item">
-                              <a class="page-link" href="asociados.php?pagina=1" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                              </a>
-                            </li>
-                          </ul>
-                        </nav></center>'); 
-                    }
-          */
-
-              //  mysqli_close($conexion);
-                
+   
 
 
             }
@@ -229,9 +168,9 @@ require_once('menu.php');
                        
                         <td><?php echo $row["id_usuario"]; ?></td>
                         <td><?php echo $row["email"]; ?></td>
-                        <td><?php echo utf8_encode($row["Nom_Ape"]); ?></td>
-                        <td><?php echo utf8_encode($row["provincia"]); ?></td>
-                        <td><?php echo utf8_encode($row["iso"]); ?></td>
+                        <td><?php echo ($row["Nom_Ape"]); ?></td>
+                        <td><?php echo ($row["provincia"]); ?></td>
+                        <td><?php echo ($row["iso"]); ?></td>
                         <td><?php echo $row["telefono"]; ?></td>
                        </tr>
                        <?php
@@ -330,6 +269,8 @@ require_once('menu.php');
 
 
 </div>
+
+
 
 
 
