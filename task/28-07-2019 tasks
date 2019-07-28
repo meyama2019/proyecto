@@ -1,0 +1,24 @@
+
+***********************************************************************************************************************************
+*												TASK 28-07-2019																	  *
+***********************************************************************************************************************************					
+28.07.2017 	
+
+(1) ------------------------------ CUESTIONES GENERALES / CONFIG DE LA APLICACION WEB -------------------------------------------------
+
+- Pendiente de confirmar si noticias_g1 junto con getrecord (Ajax) para las noticias. Incorporar a las demás páginas?
+- ¿Qué hacer si un usuario (Navegador) no tiene activo Javascript? Definir notificación para que la active, porque si no la tiene activada en su navegador, el menú no funciona, así como todo lo que esté por javascrip (Jquery).
+
+
+(2) ------------------------------ FUNCIONALIDAD --------------------------------------------------------------------------------------
+
+Asociados 	--> ¿incluir búsqueda por Provincia y Pais?
+			--> Incluir mensajes, Resultados encontrados XX
+
+Documentos 	--> Integrarlo en el diseño general 
+				
+  				- centrar paginación
+
+ 
+
+
