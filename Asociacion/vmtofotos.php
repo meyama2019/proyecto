@@ -63,7 +63,7 @@ if(isset($_POST['deletefoto']))
          <div class="container">
            <div class="form-row">
             <!--<button type="submit" class="btn btn-outline-danger " name="mto_newrol" >Nuevo</button>-->
-            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#mtofotonew">Nuevo</button>
+            <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#mtofotonew">Nuevo</button>
         </div>
          </div>
             
@@ -164,7 +164,7 @@ if(isset($_POST['deletefoto']))
                                         <input type="hidden" class="form-control" name ="idfoto" value="<?php echo utf8_decode($docs_data['id_foto']); ?>">
                                         <!--<button type="submit" class="btn btn-outline-danger btn-sm" name="updaterol">Editar</button>-->
 
-                                        <button type="submit" class="btn btn-outline-danger btn-sm" name="deletefoto">Eliminar</button>
+                                        <button type="submit" class="btn btn-outline-danger btn-sm" name="deletefoto">Borrar</button>
                                     </td>
 
 
@@ -250,7 +250,7 @@ if(isset($_POST['deletefoto']))
                               <input type="hidden" class="form-control" name ="idfoto" value="<?php echo utf8_decode($docs_data['id_foto']); ?>">
                               <!--<button type="submit" class="btn btn-outline-danger btn-sm" name="updaterol">Editar</button>-->
 
-                              <button type="submit" class="btn btn-outline-danger btn-sm" name="deletefoto">Eliminar</button>
+                              <button type="submit" class="btn btn-outline-danger btn-sm" name="deletefoto">Borrar</button>
                           </td>
 
 

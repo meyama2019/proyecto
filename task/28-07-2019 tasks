@@ -8,6 +8,12 @@
 
 - Pendiente de confirmar si noticias_g1 junto con getrecord (Ajax) para las noticias. Incorporar a las demás páginas?
 - ¿Qué hacer si un usuario (Navegador) no tiene activo Javascript? Definir notificación para que la active, porque si no la tiene activada en su navegador, el menú no funciona, así como todo lo que esté por javascrip (Jquery).
+- Footer - Diseño, contenido
+- Gestión y Control de errores:
+	1 - Probar comportamiento si Mysql no está funcionado...
+	2 - Cuando un usuario se loguea y no acceder, mostrar el motivo: no existe, incorrecto usuario / Passwd.
+	3 - Unificar mensajes (diseño, tipo, contenido) de error en la aplicación
+	
 
 
 (2) ------------------------------ FUNCIONALIDAD --------------------------------------------------------------------------------------
@@ -19,6 +25,17 @@ Documentos 	--> Integrarlo en el diseño general
 				
   				- centrar paginación
 
- 
+< Gestión del Sitio > 
 
+* En todas las opciones: cuando pulsamos eliminar, debería mostrar ¿Estás seguro?
+
+noticias 	--> Tabla editable? se incorpora ya un formulario para editar
+			--> la búsqueda por fechas, hay que poner obligatoriamente las 2
+				- Que busque sólo a partir de una fecha (desde)
+				- Que busque sólo hasta una fecha (hasta)
+			--> botón editar (sale en gris)
+
+
+fotos		OK--> botón nuevo, poner btn-sm 
+			 
 
