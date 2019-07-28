@@ -82,13 +82,12 @@ include('../models/connection1.php');
                   $tot=$tot+1;
                 }
                 $_SESSION['tot_con'] = $tot;
-                //mysqli_close($conexion);
+                mysqli_close($conexion);
  
                             
           }
 
-       mysqli_close($conexion);    
-            
+                   
 
     ?>
 

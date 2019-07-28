@@ -1,4 +1,6 @@
-
+<?php
+include('../models/connection1.php');
+?>
   <div class="card">
   <h5 class="card-header" style="background-color: #F78181">Mensajes Recibidos</h5>
 
@@ -74,9 +76,9 @@
 
               <?php
                  
-                  $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                  $acentos="SET NAMES 'utf8'";
-                  mysqli_query($conexion, $acentos);
+                  //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                  //$acentos="SET NAMES 'utf8'";
+                  //mysqli_query($conexion, $acentos);
                   $sql = "SELECT * from contacto where activo = 1";
                   $x=0;
                   Global $X;
@@ -114,30 +116,32 @@
                       
 
                         
-                          $sql1=$db->query($sql);
+                          //$sql1=$conexion->query($sql);
+                          $consulta = mysqli_query($conexion, $sql);
                          
                          //echo($sql . $_POST['ccont'] );
-                          foreach ($sql1->fetchAll() as $listaMensajes[$x]) 
+                         // foreach ($sql1->fetchAll() as $listaMensajes[$x]) 
+                          while ($listaMensajes = mysqli_fetch_array($consulta))   
                               {
                                 //$listanoticias[]= $noticias;
                                     
                                   echo ('
                                      <tr>
-                                          <th scope="row'.$x.'" name="row">'. utf8_encode($listaMensajes[$x]['id_solicitud']).'</th>
-                                          <td>'. utf8_encode($listaMensajes[$x]['fecha_entrada']). '</td>
-                                          <td>'. utf8_encode($listaMensajes[$x]['nombre']).'</td>
-                                          <td>'. utf8_encode($listaMensajes[$x]['email']).'</td>
-                                          <td>'. utf8_encode($listaMensajes[$x]['telefono']).'</td>
-                                          <td>'. utf8_encode($listaMensajes[$x]['asunto']).'</td>
-                                          <td>'. utf8_encode($listaMensajes[$x]['mensaje']).'</td>');
+                                          <th scope="row'.$x.'" name="row">'. utf8_encode($listaMensajes['id_solicitud']).'</th>
+                                          <td>'. utf8_encode($listaMensajes['fecha_entrada']). '</td>
+                                          <td>'. utf8_encode($listaMensajes['nombre']).'</td>
+                                          <td>'. utf8_encode($listaMensajes['email']).'</td>
+                                          <td>'. utf8_encode($listaMensajes['telefono']).'</td>
+                                          <td>'. utf8_encode($listaMensajes['asunto']).'</td>
+                                          <td>'. utf8_encode($listaMensajes['mensaje']).'</td>');
 
-                                          if($listaMensajes[$x]['activo']==1)
+                                          if($listaMensajes['activo']==1)
                                           {
                                             //echo('<td>Pdte</td>
                                             //  <td ><center><input type="checkbox" class="form-check-input"  id="exampleCheck1" ></center></td>
                                             //   </tr>');
                                             echo('<td><button type="submit" class="btn btn-outline-primary btn-sm" name="update_new" 
-                                              value='.$listaMensajes[$x]['id_solicitud'].'>Leido</button></td>');
+                                              value='.$listaMensajes['id_solicitud'].'>Leido</button></td>');
                                           }
                                
                                   
@@ -150,36 +154,40 @@
                   }
                   else
                   {
-                      $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                      $acentos="SET NAMES 'utf8'";
-                      mysqli_query($conexion, $acentos);
+                      //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                      //$acentos="SET NAMES 'utf8'";
+                      //mysqli_query($conexion, $acentos);
                       $sql = "SELECT * from contacto where activo = 1";
                       $x=0;
                       Global $X;
                        $sql1=$db->query($sql);
+
+                        $consulta = mysqli_query($conexion, $sql);
                          
                          //echo($sql . $_POST['ccont'] );
-                          foreach ($sql1->fetchAll() as $listaMensajes[$x]) 
+                          //foreach ($sql1->fetchAll() as $listaMensajes[$x]) 
+                          while ($listaMensajes = mysqli_fetch_array($consulta)) 
+
                               {
                                 //$listanoticias[]= $noticias;
                                     
                                   echo ('
                                      <tr>
-                                          <th scope="row'.$x.'" name="row">'. utf8_encode($listaMensajes[$x]['id_solicitud']).'</th>
-                                          <td>'. utf8_encode($listaMensajes[$x]['fecha_entrada']). '</td>
-                                          <td>'. utf8_encode($listaMensajes[$x]['nombre']).'</td>
-                                          <td>'. utf8_encode($listaMensajes[$x]['email']).'</td>
-                                          <td>'. utf8_encode($listaMensajes[$x]['telefono']).'</td>
-                                          <td>'. utf8_encode($listaMensajes[$x]['asunto']).'</td>
-                                          <td>'. utf8_encode($listaMensajes[$x]['mensaje']).'</td>');
+                                          <th scope="row'.$x.'" name="row">'. utf8_encode($listaMensajes['id_solicitud']).'</th>
+                                          <td>'. utf8_encode($listaMensajes['fecha_entrada']). '</td>
+                                          <td>'. utf8_encode($listaMensajes['nombre']).'</td>
+                                          <td>'. utf8_encode($listaMensajes['email']).'</td>
+                                          <td>'. utf8_encode($listaMensajes['telefono']).'</td>
+                                          <td>'. utf8_encode($listaMensajes['asunto']).'</td>
+                                          <td>'. utf8_encode($listaMensajes['mensaje']).'</td>');
 
-                                          if($listaMensajes[$x]['activo']==1)
+                                          if($listaMensajes['activo']==1)
                                           {
                                             //echo('<td>Pdte</td>
                                             //  <td ><center><input type="checkbox" class="form-check-input"  id="exampleCheck1" ></center></td>
                                             //   </tr>');
                                             echo('<td><button type="submit" class="btn btn-outline-primary btn-sm" name="update_new" 
-                                              value='.$listaMensajes[$x]['id_solicitud'].'>Leido</button></td>');
+                                              value='.$listaMensajes['id_solicitud'].'>Leido</button></td>');
                                           }
                                
                                   
@@ -190,7 +198,7 @@
                            echo ('<p>Resultados encontrados '.$X.'</p>');
                         
                   }
-                   db::cerrar();
+                   //db::cerrar();
                    mysqli_close($conexion);
                    $sql = '';
                    $sqlc = null;
