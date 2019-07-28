@@ -3,7 +3,7 @@ session_start();
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
 //include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
-include('../models/connection.php');
+include('../models/connection1.php');
     $listaUsuarios = array(
    array('id_usuario' => '','usuario' => '','passwd' => '','metodo' => '','email' => '','Nom_Ape' => '','dni' => '','provincia' => '','Pais' => '','telefono' => '','cuenta' => '','activo' => '1','rol_id' => '')
 );
@@ -11,9 +11,9 @@ include('../models/connection.php');
   array('id_noticia' => '1','userid' => '1','fechainicio' => '2019-06-25','fechafin' => '2019-06-30','titulo' => 'MOOC: ¿Estás preparado para competir? Transformación digital para pymes.','descripcion' => 'La transformación digital de las empresas es un factor clave hoy día para su competitividad y productividad. Próximamente, Andalucía Digital pone en marcha un MOOC sobre este tema, para los que quieran formarse de forma gratuita y on-line.')
 );
   
-    $db=Db::getConnect();
+    //$db=Db::getConnect();
     $y=0;
-    $sql=$db->query('SELECT * FROM usuarios');
+    $sql=$conexion->query('SELECT * FROM usuarios');
 
     // carga en la $listaUsuarios cada registro desde la base de datos
 
@@ -42,15 +42,15 @@ include('../models/connection.php');
                                 {
                                   case 95:
                                     # code...
-                                    $sql=$db->query('SELECT * FROM noticias order by 3 desc');
+                                    $sql=$conexion->query('SELECT * FROM noticias order by 3 desc');
                                     break;
                                    case 2:
                                     # code...
-                                     $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate() order by 3 desc');
+                                     $sql=$conexion->query('SELECT * FROM noticias where fechafin >= curdate() order by 3 desc');
                                     break;
                                     case 1:
                                     # code...
-                                     $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate() order by 3 desc limit 1');
+                                     $sql=$conexion->query('SELECT * FROM noticias where fechafin >= curdate() order by 3 desc limit 1');
                                     break;
                                   
                                   default:
@@ -61,7 +61,7 @@ include('../models/connection.php');
                              
                             else
                             {
-                               $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate() order by 3 desc limit 1');
+                               $sql=$conexion->query('SELECT * FROM noticias where fechafin >= curdate() order by 3 desc limit 1');
                             }
                               // $sql=$db->query('SELECT * FROM noticias where fechafin >= curdate()  limit 1');
                               foreach ($sql->fetchAll() as $listanoticias[$x]) {
@@ -84,7 +84,8 @@ include('../models/connection.php');
                               $x=$x+1;
                               }
                   
-                              $db=Db::cerrar();
+                              //$db=Db::cerrar();
+                              mysqli_close($conexion);
                 ?>
 
              

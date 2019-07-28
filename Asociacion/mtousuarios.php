@@ -2,13 +2,13 @@
 session_start();
 
 include ('../includes/header.php');
-include('../models/connection.php');
+include('../models/connection1.php');
 require_once('menu.php');
 
    $listaUsuarios = array(
    array('id_usuario' => '','usuario' => '','passwd' => '','metodo' => '','email' => '','Nom_Ape' => '','dni' => '','provincias' => '','Pais' => '','telefono' => '','cuenta' =>'','activo'=> 1,'rol_id' =>0)
     );
-    $db=Db::getConnect();
+    //$db=Db::getConnect();
 
     
 
@@ -93,7 +93,7 @@ require_once('menu.php');
           if(isset($_POST['userdel'])) 
           {
           
-            $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+            //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
             $id_Rol = $_POST['userdel']; 
            
                 
@@ -160,8 +160,8 @@ require_once('menu.php');
             <select class="form-control" id="cmtopro" name ="cmtopro"  >
                           <option value='' >Provincia:</option>
                           <?php
-                            $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
-                            $query = $mysqli -> query ("SELECT * FROM provincias");
+                            //$mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+                            $query = $conexion -> query ("SELECT * FROM provincias");
                             while ($valores = mysqli_fetch_array($query)) {
                             echo '<option value="'.$valores[id_provincia].'">'.utf8_encode($valores[provincia]).'</option>';
                             }
@@ -175,8 +175,8 @@ require_once('menu.php');
             <select class="form-control" id="cmtopais" name ="cmtopais"  >
                         <option value=''>Pais:</option>
                         <?php
-                          $mysqlip = new mysqli('localhost', 'socio', 'socio', 'marte');  
-                          $queryp = $mysqlip -> query ("SELECT * FROM paises");
+                          //$mysqlip = new mysqli('localhost', 'socio', 'socio', 'marte');  
+                          $queryp = $conexion -> query ("SELECT * FROM paises");
                           while ($valoresp = mysqli_fetch_array($queryp)) {
                           echo '<option value="'.$valoresp[id].'">'.utf8_encode($valoresp[nombre]).'</option>';
                           }
@@ -194,8 +194,8 @@ require_once('menu.php');
              <select class="form-control" id="cmtorol" name ="cmtorol"  >
                     <option value=''>Rol:</option>
                     <?php
-                        $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
-                        $query = $mysqli -> query ("SELECT * FROM rolusuario");
+                        //$mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+                        $query = $conexion -> query ("SELECT * FROM rolusuario");
                         while ($valores = mysqli_fetch_array($query)) {
                              echo '<option value="'.$valores[idRol].'">'.utf8_encode($valores[Nombre]).'</option>';
                              }
@@ -240,9 +240,9 @@ require_once('menu.php');
                
 
           <?php
-                    $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                    $acentos="SET NAMES 'utf8'";
-                    mysqli_query($conexion, $acentos);
+                    //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                    //$acentos="SET NAMES 'utf8'";
+                    //mysqli_query($conexion, $acentos);
                     
                     
                     $x=0;
@@ -318,7 +318,7 @@ require_once('menu.php');
                             }
                         //echo("entra sin inicializar");
                      $start_from = ($pagina-1)*$registro_por_pagina;
-                     $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                     //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
                      //$page_query= "SELECT * FROM usuarios where 1 " . " LIMIT $start_from, $registro_por_pagina";
                      
                      $page_query= $sqlInicial . " LIMIT $start_from, $registro_por_pagina";
@@ -338,27 +338,28 @@ require_once('menu.php');
                         } 
                       //$end_loop = $start_loop + 1;
                        $end_loop = $total_pages;
-                     $sql=$db->query($page_query); // ****
-                         
-                    foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
+                     $sql=$conexion->query($page_query); // ****
+
+                    //foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
+                    while($listaUsuarios = mysqli_fetch_array($sql))
                                 {                            
                                     echo ('
                                             <tr >
-                                            <th scope="row">'. utf8_encode($listaUsuarios[$x]['id_usuario']).'</th>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['usuario']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['email']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['Nom_Ape']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['dni']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['telefono']). '</td>
-                                            <td> <a class="btn btn-outline-danger btn-sm" href="mtousuario-a.php?id='.$listaUsuarios[$x]['id_usuario'].'">Editar</a>
+                                            <th scope="row">'. utf8_encode($listaUsuarios['id_usuario']).'</th>
+                                            <td>'. utf8_encode($listaUsuarios['usuario']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios['email']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios['Nom_Ape']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios['dni']). '</td>
+                                            <td>'. utf8_encode($listaUsuarios['telefono']). '</td>
+                                            <td> <a class="btn btn-outline-danger btn-sm" href="mtousuario-a.php?id='.$listaUsuarios['id_usuario'].'">Editar</a>
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" name="userdel" 
-                                                value='.$listaUsuarios[$x]['id_usuario'].'>Borrar</button></td></tr>
+                                                value='.$listaUsuarios['id_usuario'].'>Borrar</button></td></tr>
 
                                             ');
-                                    $prov = provincia($listaUsuarios[$x]['provincias']);
-                                    $pais = paises($listaUsuarios[$x]['Pais']);
-                                    $estado = estado($listaUsuarios[$x]['activo']);
-                                    $roles = roles($listaUsuarios[$x]['rol_id']);
+                                    $prov = provincia($listaUsuarios['provincias']);
+                                    $pais = paises($listaUsuarios['Pais']);
+                                    $estado = estado($listaUsuarios['activo']);
+                                    $roles = roles($listaUsuarios['rol_id']);
                                     echo ('
                                         <tr class ="fila2" style="display:none">
                                             
@@ -528,12 +529,12 @@ require_once('menu.php');
             <div class="form-group">
                         <label for="SocioProvincia">Provincia</label>
             <?php
-              $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+              //$mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
             ?>
             <select class="form-control" id="SocioProvincia" name ="SocioProvincia" required >
             <option value="0">Seleccione:</option>
             <?php
-              $query = $mysqli -> query ("SELECT * FROM provincias");
+              $query = $conexion -> query ("SELECT * FROM provincias");
               while ($valores = mysqli_fetch_array($query)) {
               echo '<option value="'.$valores[id_provincia].'">'.utf8_encode($valores[provincia]).'</option>';
               }
@@ -543,12 +544,12 @@ require_once('menu.php');
             <div class="form-group">
                         <label for="SocioPais">País</label>
             <?php
-              $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+              //$mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
             ?>
             <select class="form-control" id="SocioPais" name ="SocioPais" required >
             <option value="0">Seleccione:</option>
             <?php
-              $query1 = $mysqli -> query ("SELECT * FROM paises");
+              $query1 = $conexion -> query ("SELECT * FROM paises");
               while ($valores1 = mysqli_fetch_array($query1)) {
               echo '<option value="'.$valores1[id].'">'.utf8_encode($valores1[nombre]).'</option>';
               }

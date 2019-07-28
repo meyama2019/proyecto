@@ -332,12 +332,12 @@ if(isset($_POST['deletefoto']))
                       <div class="form-group">
                         <label for="mtorol_namenew">Id usuario</label>
                         <?php
-                        $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+                        //$mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
                       ?>
                       <select class="form-control" id="mtorol_namenew" name ="mtorol_namenew" required >
                       <option value="0">Seleccione:</option>
                       <?php
-                        $query1 = $mysqli -> query ("SELECT * FROM usuarios");
+                        $query1 = $conexion -> query ("SELECT * FROM usuarios");
                         while ($valores1 = mysqli_fetch_array($query1)) {
                         echo '<option value="'.$valores1[id_usuario].'">'.utf8_encode($valores1[usuario]).'</option>';
                         }
@@ -375,8 +375,7 @@ if(isset($_POST['deletefoto']))
 
 <?php // Control para añadir nuevas fotos
 
-     include('../models/connection1.php');
-     
+         
      if(isset($_POST['mtousernew1']))
           {
           

@@ -3,7 +3,7 @@ session_start();
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
 //include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
-include('../models/connection.php');
+include('../models/connection1.php');
 require_once('menu.php');
   
 ?>
@@ -45,7 +45,7 @@ require_once('menu.php');
           if(isset($_POST['deletenews']))
           {
           
-                $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
 				$id_noticia = $_POST['id_noticia'];
                 
 
@@ -99,8 +99,8 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 										<select class="form-control" id="quien" name ="quien" required >
 										<option value="0">Subida por:</option>
 										<?php
-										  $mysqli1 = mysqli_connect('localhost', 'socio', 'socio', 'marte');	
-										  $query1 = $mysqli1 -> query ("SELECT * FROM usuarios");
+										  //$mysqli1 = mysqli_connect('localhost', 'socio', 'socio', 'marte');	
+										  $query1 = $conexion -> query ("SELECT * FROM usuarios");
 										  while ($valores = mysqli_fetch_array($query1))
 										  {
 											echo '<option value="'.$valores[id_usuario].'">'.utf8_encode($valores[usuario]).'</option>';
@@ -154,18 +154,18 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 							
 							<tbody>
 							<?php
-								$mysqli = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+								//$mysqli = mysqli_connect('localhost', 'socio', 'socio', 'marte');
 								if(isset($_POST['buscador']) )
 								{
 									if(!empty($_POST['titulo']) )
 										{
 										  $query ="SELECT * FROM noticias, usuarios WHERE noticias.titulo like '%" . $_POST['titulo'] . "%' AND noticias.userid =usuarios.id_usuario";
-										  $result = mysqli_query($mysqli, $query);
+										  $result = mysqli_query($conexion, $query);
 										}
 									elseif (!empty($_POST['descripcion']) ) 
 										{
 										  $query ="SELECT * FROM noticias, usuarios WHERE noticias.descripcion like '%" . $_POST['descripcion'] . "%' AND noticias.userid =usuarios.id_usuario";
-										  $result = mysqli_query($mysqli, $query);
+										  $result = mysqli_query($conexion, $query);
 										}
 									elseif ( !empty($_POST['fechainicio'] && $_POST['fechafin']) ) 
 										{
@@ -179,13 +179,13 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 										  else
 										  {
 										  $query ="SELECT * FROM noticias, usuarios WHERE noticias.fechainicio >= '$fechainicio' AND noticias.fechainicio <= '$fechafin' AND noticias.userid =usuarios.id_usuario";
-										  $result = mysqli_query($mysqli, $query);
+										  $result = mysqli_query($conexion, $query);
 										  }
 										}
 									elseif ( !empty($_POST['quien']) ) 
 										{
 										  $query ="SELECT * FROM noticias, usuarios WHERE noticias.userid like '%" . $_POST['quien'] . "%' AND noticias.userid =usuarios.id_usuario";
-										  $result = mysqli_query($mysqli, $query);
+										  $result = mysqli_query($conexion, $query);
 										}	
 									else
 										{
@@ -195,7 +195,7 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 								else
 								{
 									general:
-									$result = mysqli_query($mysqli, "SELECT * FROM noticias, usuarios
+									$result = mysqli_query($conexion, "SELECT * FROM noticias, usuarios
 																 WHERE userid =id_usuario
 																 ORDER BY fechainicio DESC");
 								}
@@ -253,7 +253,8 @@ else
 		  No tienes permiso para visualizar el contenido
 	      </div></div> ');
 }	
-
+ 
+  mysqli_close($conexion);
 
   include ('footer.php');
 ?>

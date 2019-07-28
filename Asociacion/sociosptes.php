@@ -3,13 +3,13 @@ session_start();
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
 //include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
-include('../models/connection.php');
+include('../models/connection1.php');
 
 
      $listaUsuarios = array(
    array('id_usuario' => '','usuario' => '','passwd' => '','metodo' => '','email' => '','Nom_Ape' => '','dni' => '','provincia' => '','nombre' => '','telefono' => '','cuenta' => '','activo' => '','rol_id' => '')
     );
-    $db=Db::getConnect();
+    //$db=Db::getConnect();
 
   
 
@@ -42,19 +42,25 @@ include('../models/connection.php');
               
                 # code...
                
-                $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                $acentos="SET NAMES 'utf8'";
-                mysqli_query($conexion, $acentos);
+                //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                //$acentos="SET NAMES 'utf8'";
+                //mysqli_query($conexion, $acentos);
 
                 $sql="UPDATE usuarios set activo = 0, rol_id=2 where id_usuario = $_POST[update_soc] ";
                 mysqli_query($conexion, $sql);
                 
                 
-                $num_rows=$db->query('SELECT * FROM usuarios where activo=1'); // 1 Pendientes aprobación
+                //$num_rows=$conexion->query('SELECT * FROM usuarios where activo=1'); // 1 Pendientes aprobación
+                $sql1="SELECT * FROM usuarios where activo=1";
+                $consulta = mysqli_query($conexion, $sql1);
+                $num_rows = mysqli_num_rows($consulta);
+
                 $tot=0;
-                 foreach ($num_rows->fetchAll() as $usuario) {
+                 //foreach ($num_rows->fetchAll() as $usuario) {
+                for($i=0;$i<=$num_rows;$i++){
                   $tot=$tot+1;
                 }
+                
                 $_SESSION['tot_pen'] = $tot;
                 mysqli_close($conexion);
                 
@@ -70,7 +76,8 @@ include('../models/connection.php');
                 
            
           }
-          
+
+                   
 ?>
 
 
@@ -78,5 +85,6 @@ include('../models/connection.php');
       
 
 <?php
+ //mysqli_close($conexion);
   include ('footer.php');
 ?>

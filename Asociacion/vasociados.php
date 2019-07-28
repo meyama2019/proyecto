@@ -1,3 +1,8 @@
+<?php
+
+include('../models/connection1.php');
+?>
+
 <div class="card">
   <h5 class="card-header">Conoce a nuestros asociados</h5>
 
@@ -61,8 +66,8 @@
                 <?php
                    
 
-                    $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                    $acentos="SET NAMES 'utf8'";
+                    //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                    //$acentos="SET NAMES 'utf8'";
                     mysqli_query($conexion, $acentos);
                     $sqlInicial="SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.nombre,telefono,cuenta,activo,rol_id 
                         FROM paises pa  
@@ -93,23 +98,25 @@
                           }
                        
                        
-                        $sql=$db->query($sqlInicial);
+                        //$sql=$db->query($sqlInicial);
+                        $consulta = mysqli_query($conexion, $sqlInicial);
                         
-                        foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
+                        //foreach ($sql->fetchAll() as $listaUsuarios[$x])
+                        while ($listaUsuarios = mysqli_fetch_array($consulta)) 
                                 {
                                    
                                     
                                     echo ('
                                              <tr>
-                                            <th scope="row">'. utf8_encode($listaUsuarios[$x]['id_usuario']).'</th>
+                                            <th scope="row">'. utf8_encode($listaUsuarios['id_usuario']).'</th>
                                             
-                                            <td>'. utf8_encode($listaUsuarios[$x]['email']).'</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['Nom_Ape']).'</td>
+                                            <td>'. utf8_encode($listaUsuarios['email']).'</td>
+                                            <td>'. utf8_encode($listaUsuarios['Nom_Ape']).'</td>
                                            
-                                            <td>'. utf8_encode($listaUsuarios[$x]['provincia']).'</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['nombre']).'</td>
+                                            <td>'. utf8_encode($listaUsuarios['provincia']).'</td>
+                                            <td>'. utf8_encode($listaUsuarios['nombre']).'</td>
                                             
-                                            <td>'. utf8_encode($listaUsuarios[$x]['telefono']).'</td>');
+                                            <td>'. utf8_encode($listaUsuarios['telefono']).'</td>');
                                            
 
                                            
@@ -123,8 +130,8 @@
                     }
                     else
                     {
-                      $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                      $acentos="SET NAMES 'utf8'";
+                      //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                      //$acentos="SET NAMES 'utf8'";
                       mysqli_query($conexion, $acentos);
                       $sqlInicial="SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.nombre,telefono,cuenta,activo,rol_id 
                           FROM paises pa  
@@ -133,23 +140,25 @@
                           where 1 and rol_id != 95"; 
                        $x=0;
                        Global $X;
-                       $sql=$db->query($sqlInicial);
+                       //$sql=$db->query($sqlInicial);
+                       $consulta = mysqli_query($conexion, $sqlInicial);
                         
-                        foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
+                       // foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
+                       while ($listaUsuarios = mysqli_fetch_array($consulta))
                                 {
                                    
                                     
                                     echo ('
                                              <tr>
-                                            <th scope="row">'. utf8_encode($listaUsuarios[$x]['id_usuario']).'</th>
+                                            <th scope="row">'. utf8_encode($listaUsuarios['id_usuario']).'</th>
                                             
-                                            <td>'. utf8_encode($listaUsuarios[$x]['email']).'</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['Nom_Ape']).'</td>
+                                            <td>'. utf8_encode($listaUsuarios['email']).'</td>
+                                            <td>'. utf8_encode($listaUsuarios['Nom_Ape']).'</td>
                                            
-                                            <td>'. utf8_encode($listaUsuarios[$x]['provincia']).'</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['nombre']).'</td>
+                                            <td>'. utf8_encode($listaUsuarios['provincia']).'</td>
+                                            <td>'. utf8_encode($listaUsuarios['nombre']).'</td>
                                             
-                                            <td>'. utf8_encode($listaUsuarios[$x]['telefono']).'</td>');
+                                            <td>'. utf8_encode($listaUsuarios['telefono']).'</td>');
                                            
 
                                            

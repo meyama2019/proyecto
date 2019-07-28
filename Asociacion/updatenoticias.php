@@ -34,8 +34,8 @@ require_once('menu.php');
 
       //echo($socioid);
       //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-      $acentos="SET NAMES 'utf8'";
-      mysqli_query($conexion, $acentos);
+      //$acentos="SET NAMES 'utf8'";
+      //mysqli_query($conexion, $acentos);
       mysqli_set_charset($conexion, 'utf8');
     
       $update = "UPDATE NOTICIAS set 
