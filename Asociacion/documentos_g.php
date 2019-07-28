@@ -237,7 +237,7 @@ include('../models/connection1.php');
 																				<td >
 																				<a class="btn btn-outline-danger btn-sm" href="updatedocumentos.php?id=<?php echo ($docs_data['id_documento'])?>">Editar</a>
 
-																				<button type="submit" class="btn btn-outline-danger btn-sm" name="deletedocs">Eliminar</button>
+																				<button type="submit" class="btn btn-outline-danger btn-sm" name="deletedocs">Borrar</button>
 																				</td>
 														
 

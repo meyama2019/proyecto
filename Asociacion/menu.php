@@ -74,7 +74,7 @@
                         <a class="dropdown-item" href="http://localhost/proyecto/asociacion/mtofotos.php">Fotos</a>
                         <a class="dropdown-item" href="http://localhost/proyecto/asociacion/documentos_g.php">Documentos</a>
 
-                       
+                         
                       </div>
                       </li>
                      <li>

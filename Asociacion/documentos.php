@@ -26,7 +26,8 @@ include('../models/connection1.php');
 				?>	
 
 								
-
+						<div class="card">
+  							<h5 class="card-header">Documentos Disponibles</h5>
 							<div class="accordion" id="accordionExample">
 								  <div class="card">
 									<div class="card-header" id="headingOne">
@@ -102,54 +103,57 @@ include('../models/connection1.php');
 
 															</tbody>
 														</table>
-																				<!--(CRÉDITOS: VER FIN DOCUMENTO)Sector de Paginacion - Operacion matematica para boton siguiente y atras--> 
-																				<nav>
-																				<?php
-																				$IncrimentNum =(($compag +1)<=$TotalRegistro)?($compag +1):1;
-																				$DecrementNum =(($compag -1))<1?1:($compag -1);
-																			  
-																				echo "<ul class=\"pagination\">
-																					  <li>
-																					  <a class=\"page-link\" href=\"?pag=".$DecrementNum."\">◀
-																					  </a>
-																					  </li>";
-																						//Se resta y suma con el numero de pag actual con el cantidad de 
-																						//numeros  a mostrar
-																						$Desde=$compag-(ceil($CantidadMostrar/2)-1);
-																						$Hasta=$compag+(ceil($CantidadMostrar/2)-1);
+									<!--(CRÉDITOS: VER FIN DOCUMENTO)Sector de Paginacion - Operacion matematica para boton siguiente y atras--> 
+									
+									<nav>
+										
+										<?php
+											$IncrimentNum =(($compag +1)<=$TotalRegistro)?($compag +1):1;
+											$DecrementNum =(($compag -1))<1?1:($compag -1);
+																	  
+											echo "<ul class=\"pagination\">
+											  	<li>
+										  		<a class=\"page-link\" href=\"?pag=".$DecrementNum."\">◀
+												</a>
+												</li>";
+												//Se resta y suma con el numero de pag actual con el cantidad de 
+												//numeros  a mostrar
+												$Desde=$compag-(ceil($CantidadMostrar/2)-1);
+												$Hasta=$compag+(ceil($CantidadMostrar/2)-1);
 																						
-																						//Se valida
-																						$Desde=($Desde<1)?1: $Desde;
-																						$Hasta=($Hasta<$CantidadMostrar)?$CantidadMostrar:$Hasta;
-																						//Se muestra los numeros de paginas
-																						for($i=$Desde; $i<=$Hasta;$i++)
-																						{
-																							//Se valida la paginacion total
-																							//de registros
-																							if($i<=$TotalRegistro)
-																							{
-																								//Validamos la pag activo
-																								if($i==$compag)
-																								{
-																								echo "<a class=\"page-link\" href=\"?pag=".$i."\">".$i."</a>";
-																								}
-																								else
-																								{
-																								echo "<a class=\"page-link\" href=\"?pag=".$i."\">".$i."</a>";
-																								}     		
-																							}
-																						}
-																						echo "<a class=\"page-link\" href=\"?pag=".$IncrimentNum."\">▶</a>
-																						</ul>";
-																						?>
-																						</nav>
+												//Se valida
+												$Desde=($Desde<1)?1: $Desde;
+												$Hasta=($Hasta<$CantidadMostrar)?$CantidadMostrar:$Hasta;
+												//Se muestra los numeros de paginas
+												for($i=$Desde; $i<=$Hasta;$i++)
+													{
+													//Se valida la paginacion total de registros
+													if($i<=$TotalRegistro)
+														{
+															//Validamos la pag activo
+															if($i==$compag)
+																{
+																echo "<a class=\"page-link\" href=\"?pag=".$i."\">".$i."</a>";
+																}
+															else
+																{
+																echo "<a class=\"page-link\" href=\"?pag=".$i."\">".$i."</a>";
+																}     		
+														}
+													}
+													echo "<a class=\"page-link\" href=\"?pag=".$IncrimentNum."\">▶</a></ul>";
+										?>
+										
+									</nav>
+									
 																				<!--Fin sector de Paginacion--> 
 													
 											</div>
 										</div>
 									</div>
 								</div>  
-							</div>    
+							</div>   
+						</div> 
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="lisenme.js"></script>
 <script>
