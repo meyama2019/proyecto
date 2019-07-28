@@ -160,7 +160,7 @@ include('../models/connection1.php');
                       $sql = "SELECT * from contacto where activo = 1";
                       $x=0;
                       Global $X;
-                       $sql1=$db->query($sql);
+                       //$sql1=$db->query($sql);
 
                         $consulta = mysqli_query($conexion, $sql);
                          

@@ -3,7 +3,7 @@
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
 //include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
-include('../models/connection.php');
+include('../models/connection1.php');
      $listaUsuarios = 
       array('id_foto' => '','user_id' => '','documento' => '','fecha_upload' => '','titulo' => '');
 
@@ -38,11 +38,11 @@ include('../models/connection.php');
 <?php
 
 
-    $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-     $acentos="SET NAMES 'utf8'";
-    mysqli_query($conexion, $acentos);
+    //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+    // $acentos="SET NAMES 'utf8'";
+    //mysqli_query($conexion, $acentos);
     $sql = "SELECT date(fecha_upload) as fecha_upload,titulo FROM fotos group by date(fecha_upload) order by date(fecha_upload)desc";
-    $consulta = mysqli_query($conexion, $sql);
+    //$consulta = mysqli_query($conexion, $sql);
     $result = $conexion->query($sql);
     if ($result->num_rows > 0)
     {
@@ -66,7 +66,7 @@ include('../models/connection.php');
                //$sql1 = "SELECT documento FROM fotos where titulo = '".$row['titulo']."' order by fecha_upload desc";
                 $sql1 = "SELECT fo.documento,us.Nom_Ape,fo.fecha_upload FROM fotos fo inner join usuarios us on fo.userid=us.id_usuario where date(fecha_upload) = '".$row['fecha_upload']."' order by fecha_upload desc";
 
-               $consulta1 = mysqli_query($conexion, $sql1);
+               //$consulta1 = mysqli_query($conexion, $sql1);
                $result1 = $conexion->query($sql1);
              
                if ($result1->num_rows > 0) // Mostramos las fotos que tienen el mismo titulo
@@ -117,7 +117,7 @@ include('../models/connection.php');
                               
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
                   <button id="upload1" type="submit" class="btn btn-primary" name="upload2" >Añadir Foto</button>
                  
           </script>

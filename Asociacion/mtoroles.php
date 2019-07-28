@@ -3,7 +3,8 @@ session_start();
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
 //include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
-include('../models/connection.php');
+include('../models/connection1.php');
+
 require_once('menu.php');
   
 ?>
@@ -11,7 +12,7 @@ require_once('menu.php');
 <?php // Funcion para añadir un Rol Nuevo
   if(isset($_POST['addrol']))
   {
-    $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+    //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
     $sqlindice = "SELECT idRol from rolusuario where idRol < 95 or idRol > 95 order by idRol desc limit 1";
         $next=mysqli_query($conexion, $sqlindice);
         $indice = mysqli_fetch_row($next);
@@ -24,6 +25,8 @@ require_once('menu.php');
                    
           } 
   }
+
+  mysqli_close($conexion);
 ?>
 
 
@@ -32,7 +35,7 @@ require_once('menu.php');
           if(isset($_POST['updaterol']))
           {
           
-                $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+               // $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
         $id_Rol = $_POST['idRol'];               
                 $nombre = $_POST['Nombre'];
 
@@ -45,7 +48,9 @@ require_once('menu.php');
                      
                     }   
               
-          }  
+          } 
+
+          
 ?>
 
 
@@ -53,7 +58,7 @@ require_once('menu.php');
           if(isset($_POST['deleterol'])) 
           {
           
-                $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
         $id_Rol = $_POST['idRol'];               
                 $nombre = $_POST['Nombre'];
                 
@@ -67,7 +72,9 @@ require_once('menu.php');
 
 
 
-          }  
+          } 
+
+          
     ?>
 
 <?php
@@ -101,8 +108,10 @@ require_once('menu.php');
               </tr>
               <tbody>
                 <?php  
-                  $mysqli = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                  $result = mysqli_query($mysqli, "SELECT * FROM rolusuario where 1");
+                  //$mysqli = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                  //include('../models/connection1.php');
+                  $sql ="SELECT * FROM rolusuario where 1";
+                  $result = mysqli_query($conexion, $sql);
                   while($docs_data = mysqli_fetch_array($result))
                   {?>
                     <tr class="item">
@@ -153,8 +162,7 @@ require_once('menu.php');
             
                 
                 
-
-   
+      
 
 
   include ('footer.php');
