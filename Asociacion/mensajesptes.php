@@ -3,7 +3,7 @@ session_start();
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
 //include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
-include('../models/connection.php');
+include('../models/connection1.php');
 
 
 
@@ -11,17 +11,25 @@ include('../models/connection.php');
    array('id_solicitud' => '','fecha_entrada' => '','nombre' => '','email' => '','telefono' => '','asunto' => '','mensaje' => '',
       'activo' =>'')
     );
-    $db=Db::getConnect();
-    $num_rows=$db->query('SELECT * FROM usuarios where activo=1'); // 1 Pendientes aprobación
+    //$db=Db::getConnect();
+    //$num_rows=$db->query('SELECT * FROM usuarios where activo=1'); // 1 Pendientes aprobación
+    $sql = "SELECT * FROM usuarios where activo=1";
+    $consulta = mysqli_query($conexion, $sql);
+    $num_rows = mysqli_num_rows($consulta); 
                 $tot=0;
-                 foreach ($num_rows->fetchAll() as $usuario) {
+                // foreach ($num_rows->fetchAll() as $usuario) {
+                for ($i = 0; $i<= $num_rows; $i++) {  
                   $tot=$tot+1;
                 }
                 $_SESSION['tot_pen'] = $tot;
 
-    $num_rows=$db->query('SELECT * FROM contacto where activo=1'); // 1 Pendientes aprobación
+    //$num_rows=$db->query('SELECT * FROM contacto where activo=1'); // 1 Pendientes aprobación
+    $sql = "SELECT * FROM contacto where activo=1";
+    $consulta = mysqli_query($conexion, $sql);
+    $num_rows = mysqli_num_rows($consulta); 
     $tot=0;
-    foreach ($num_rows->fetchAll() as $contacto) {
+    //foreach ($num_rows->fetchAll() as $contacto) {
+    for ($i = 0; $i<= $num_rows; $i++) {
       $tot=$tot+1;
     }
     $_SESSION['tot_con'] = $tot;
@@ -39,6 +47,8 @@ include('../models/connection.php');
     exit;
   }
 
+   mysqli_close($conexion);
+
 ?>     
 
 <?php
@@ -54,24 +64,30 @@ include('../models/connection.php');
                 //echo($valor);
                 # code...
                
-                $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                $acentos="SET NAMES 'utf8'";
-                mysqli_query($conexion, $acentos);
+                //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                //$acentos="SET NAMES 'utf8'";
+                //mysqli_query($conexion, $acentos);
 
                 $sql="UPDATE contacto set activo= 0 where id_solicitud = $_POST[update_new] ";
                 mysqli_query($conexion, $sql);
                 
 
-                $num_rows=$db->query('SELECT * FROM contacto where activo=1'); // 1 Pendientes aprobación
-                $tot=0;
-                 foreach ($num_rows->fetchAll() as $contacto) {
+                //$num_rows=$db->query('SELECT * FROM contacto where activo=1'); // 1 Pendientes aprobación
+                 $sql = "SELECT * FROM contacto where activo=1";
+                 $consulta = mysqli_query($conexion, $sql);
+                 $num_rows = mysqli_num_rows($consulta); 
+                 $tot=0;
+                 //foreach ($num_rows->fetchAll() as $contacto) {
+                for ($i = 0; $i<= $num_rows; $i++) {
                   $tot=$tot+1;
                 }
                 $_SESSION['tot_con'] = $tot;
-                mysqli_close($conexion);
+                //mysqli_close($conexion);
  
                             
           }
+
+       mysqli_close($conexion);    
             
 
     ?>

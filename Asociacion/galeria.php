@@ -48,7 +48,7 @@ include('../models/connection1.php');
     //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
    
     $sql = "SELECT titulo FROM fotos group by titulo order by titulo";
-    $consulta = mysqli_query($conexion, $sql);
+    //$consulta = mysqli_query($conexion, $sql);
     $result = $conexion->query($sql);
     if ($result->num_rows > 0)
     {
@@ -74,7 +74,7 @@ include('../models/connection1.php');
                on fo.userid=us.id_usuario
                where titulo = '".$row['titulo']."' order by fecha_upload desc";
 
-               $consulta1 = mysqli_query($conexion, $sql1);
+               //$consulta1 = mysqli_query($conexion, $sql1);
                $result1 = $conexion->query($sql1);
              
                if ($result1->num_rows > 0) // Mostramos las fotos que tienen el mismo titulo

@@ -3,13 +3,17 @@ session_start();
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
 //include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
-include('../models/connection.php');
+include('../models/connection1.php');
     $listaUsuarios =[];
-    $db=Db::getConnect();
-    $sql=$db->query('SELECT * FROM usuarios');
+    //$db=Db::getConnect();
+    //$sql=$db->query('SELECT * FROM usuarios');
+
+    $sql = "SELECT * FROM usuarios";
+    $consulta = mysqli_query($conexion, $sql);
 
     // carga en la $listaUsuarios cada registro desde la base de datos
-    foreach ($sql->fetchAll() as $usuario) {
+    //foreach ($sql->fetchAll() as $usuario) {
+    while ($usuario = mysqli_fetch_array($consulta)) {
       $listaUsuarios[]= ($usuario['rol_id']);
     }
     //return $listaUsuarios;
@@ -47,7 +51,7 @@ include('../models/connection.php');
 															</tr>
 															<tbody>
 																<?php
-																	$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+																	//$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
 																		
 																		// (PAGINACIÓN CRÉDITOS: VER FIN DOCUMENTO) Validado  la variable GET
 																		$CantidadMostrar=10;
@@ -166,6 +170,7 @@ jQuery('#table_format').ddTableFilter();
 							  
 
    
+   mysqli_close($conexion);
 
 
   include ('footer.php');

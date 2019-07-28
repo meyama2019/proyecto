@@ -3,7 +3,7 @@ session_start();
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
 //include(RAIZ . 'asociacion/header.php');
 include ('includes/header.php');
-include('models/connection.php');
+//include('models/connection1.php');
 
 require_once('menu.php');
 

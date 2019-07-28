@@ -1,11 +1,8 @@
-
-   
-
   
 
 <?php
   session_start();
-require_once('../models/connection.php');
+//require_once('../models/connection.php');
 
 //Inputuser
 //Inputemail
@@ -20,7 +17,7 @@ require_once('../models/connection.php');
 define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
 include(RAIZ . 'asociacion/header.php');
 
-require_once('../models/connection.php');
+require_once('../models/connection1.php');
    
    // Cuando el usuer entra alias y passwd
     if (isset($_POST["Inputuser"]) && (isset($_POST["ole"]))) 
@@ -33,10 +30,13 @@ require_once('../models/connection.php');
           $listaUsuarios = array(
          array('id_usuario' => '','usuario' => '','passwd' => '','metodo' => '','email' => '','Nom_Ape' => '','dni' => '','provincia' => '','Pais' => '','telefono' => '','cuenta' => '','activo' => '','rol_id' => '')
           );
-        $db= Db::getConnect();
-        $sql=$db->query('SELECT * FROM usuarios where usuario = "'.$us.'" and passwd = "'.$pw.'"');
+        //$db= Db::getConnect();
+        //$sql=$db->query('SELECT * FROM usuarios where usuario = "'.$us.'" and passwd = "'.$pw.'"');
+        $sql = 'SELECT * FROM usuarios where usuario = "'.$us.'" and passwd = "'.$pw.'"';
+        $consulta = mysqli_query($conexion, $sql);
         // carga en la $listaUsuarios cada registro desde la base de datos
-          foreach ($sql->fetchAll() as $usuario) {
+        // foreach ($sql->fetchAll() as $usuario) {
+        while ($usuario = mysqli_fetch_array($consulta)) {
            $listaUsuarios[0]=$usuario;
           }
         
@@ -72,10 +72,13 @@ require_once('../models/connection.php');
           $listaUsuarios = array(
          array('id_usuario' => '','usuario' => '','passwd' => '','metodo' => '','email' => '','Nom_Ape' => '','dni' => '','provincia' => '','Pais' => '','telefono' => '','cuenta' => '','activo' => '','rol_id' => '')
           );
-        $db= Db::getConnect();
-        $sql=$db->query('SELECT * FROM usuarios where email = "'.$us.'" and passwd = "'.$pw.'" ');
+        //$db= Db::getConnect();
+        //$sql=$db->query('SELECT * FROM usuarios where email = "'.$us.'" and passwd = "'.$pw.'" ');
+        $sql = 'SELECT * FROM usuarios where email = "'.$us.'" and passwd = "'.$pw.'"';
+        $consulta = mysqli_query($conexion, $sql);
         // carga en la $listaUsuarios cada registro desde la base de datos
-          foreach ($sql->fetchAll() as $usuario) {
+        //  foreach ($sql->fetchAll() as $usuario) {
+        while ($usuario = mysqli_fetch_array($consulta)) {
            $listaUsuarios[0]=$usuario;
           }
         
@@ -91,16 +94,24 @@ require_once('../models/connection.php');
          }
        
       // Contamos el num de usuarios activos
-        $num_rows=$db->query('SELECT * FROM usuarios where activo=1'); // 1 Pendientes aprobación
+        //$num_rows=$conexion->query('SELECT * FROM usuarios where activo=1'); // 1 Pendientes aprobación
+        $sql = "SELECT * FROM usuarios where activo=1"; 
+        $consulta = mysqli_query($conexion, $sql);
+        $num_rows = mysqli_num_rows($consulta);
         $tot=0;
-         foreach ($num_rows->fetchAll() as $usuario) {
+        // foreach ($num_rows->fetchAll() as $usuario) {
+        for ($i = 0;$i <= $num_rows; $i++){ 
           $tot=$tot+1;
         }
         $_SESSION['tot_pen'] = $tot;
 
-        $num_rows=$db->query('SELECT * FROM contacto where activo=1'); // 1 Pendientes aprobación
+        //$num_rows=$conexion->query('SELECT * FROM contacto where activo=1'); // 1 Pendientes aprobación
+        $sql = "SELECT * FROM contacto where activo=1"; 
+        $consulta = mysqli_query($conexion, $sql);
+        $num_rows = mysqli_num_rows($consulta);
         $tot=0;
-         foreach ($num_rows->fetchAll() as $contacto) {
+        // foreach ($num_rows->fetchAll() as $contacto) {
+        for ($i = 0;$i <= $num_rows; $i++){   
           $tot=$tot+1;
         }
         $_SESSION['tot_con'] = $tot;
@@ -124,6 +135,7 @@ require_once('../models/connection.php');
     header("Location: http://$host$uri/$extra");
     exit;
      
+   mysqli_close($conexion);  
   
 ?>
 

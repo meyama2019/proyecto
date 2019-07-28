@@ -40,7 +40,12 @@
    
 </head>
 
+<?php
 
+define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
+include(RAIZ . 'models/connection1.php');
+//include('../models/connection1.php');
+?>
 
 
 <!--Para el alta de SOCIOS-->
@@ -51,7 +56,7 @@
             if (( !empty($_POST['SocioUsuario'])) && ( !empty($_POST['socioEmail'])) && ( !empty($_POST['SocioPassword'])) && ( !empty($_POST['SocioDNI'])) && ( !empty($_POST['SocioTelf'])) )
               {
                 
-                $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
                 $username = $_POST['SocioUsuario'];
                 $userdni = $_POST['SocioDNI'];
                 $useremail = $_POST['socioEmail'];
@@ -95,18 +100,7 @@
           }  
     ?>
 
-  
-  
-  
-  
-
-
-
-
-
  	
-	
-	
 	
 
 <!--Para el alta de USUARIOS REGISTRADOS-->
@@ -117,7 +111,7 @@
            if ((!empty($_POST['ur_email'])) && (!empty($_POST['ur_passwd'])))
               {
                 
-                $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
                 $em=$_POST['ur_email']; //obligatorio
                 $pw=sha1($_POST['ur_passwd']); //obligatorio
                 $activo=0; // <- Usuario registrado activo
@@ -163,9 +157,9 @@
 <?php
           if(isset($_POST['submitContacto']))
           {
-                $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                $acentos="SET NAMES 'utf8'";
-                mysqli_query($conexion, $acentos);
+                //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+                //$acentos="SET NAMES 'utf8'";
+                //mysqli_query($conexion, $acentos);
                 $texto = htmlspecialchars($_POST['ContactoMensasje']);
                 $sql = "INSERT INTO contacto (fecha_entrada, nombre, email, telefono, asunto, mensaje, activo) values (current_timestamp ,'$_POST[ContactoNombre]','$_POST[ContactoEmail]','$_POST[ContactoTelefono]','$_POST[ContactoAsunto]','$texto', 1)";
                 $consulta = mysqli_query($conexion, $sql);
@@ -179,9 +173,13 @@
                       //$mensaje = "Buenos días,\r\n¡Te damos la bienvenida!.\r\n¡Gracias por formar parte de nuestra familia!\r\n" ;
                       //$headers = "From: meyama2019@gmail.com" . "\r\n" . "BCC: meyama2019@gmail.com;  ";
                       //mail($to,$subject,$mensaje,$headers);
-                    $num_rows=$db->query('SELECT * FROM contacto where activo=1'); // 1 Pendientes aprobación
+                    //$num_rows=$conexion->query('SELECT * FROM contacto where activo=1'); // 1 Pendientes aprobación
+                    $sql = "SELECT * FROM contacto where activo=1";
+                    $consulta = mysqli_query($conexion, $sql);
+                    $num_rows = mysqli_num_rows($consulta);
                     $tot=0;
-                     foreach ($num_rows->fetchAll() as $contacto) {
+                    // foreach ($num_rows->fetchAll() as $contacto) {
+                    for ($i = 0; $i <= $num_rows; $i++) {
                       $tot=$tot+1;
                      $_SESSION['tot_con'] = $tot;
                     }
@@ -352,12 +350,12 @@
             <div class="form-group">
                         <label for="SocioProvincia">Provincia</label>
             <?php
-              $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+              //$mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
             ?>
             <select class="form-control" id="SocioProvincia" name ="SocioProvincia" required >
             <option value="0">Seleccione:</option>
             <?php
-              $query = $mysqli -> query ("SELECT * FROM provincias");
+              $query = $conexion -> query ("SELECT * FROM provincias");
               while ($valores = mysqli_fetch_array($query)) {
               echo '<option value="'.$valores[id_provincia].'">'.utf8_encode($valores[provincia]).'</option>';
               }
@@ -367,12 +365,12 @@
             <div class="form-group">
                         <label for="SocioPais">País</label>
             <?php
-              $mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
+              //$mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
             ?>
             <select class="form-control" id="SocioPais" name ="SocioPais" required >
             <option value="0">Seleccione:</option>
             <?php
-              $query1 = $mysqli -> query ("SELECT * FROM paises");
+              $query1 = $conexion -> query ("SELECT * FROM paises");
               while ($valores1 = mysqli_fetch_array($query1)) {
               echo '<option value="'.$valores1[id].'">'.utf8_encode($valores1[nombre]).'</option>';
               }
@@ -406,9 +404,9 @@
                     </form>
           
           
-          
-          
-
+                <?php
+                  mysqli_close($conexion);
+                ?>
 
                   
                 </div>

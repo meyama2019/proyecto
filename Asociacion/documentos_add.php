@@ -3,13 +3,17 @@ session_start();
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
 //include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
-include('../models/connection.php');
+include('../models/connection1.php');
     $listaUsuarios =[];
-    $db=Db::getConnect();
-    $sql=$db->query('SELECT * FROM usuarios');
+    //$db=Db::getConnect();
+    //$sql=$db->query('SELECT * FROM usuarios');
+
+    $sql = "SELECT * FROM usuarios";
+    $consulta = mysqli_query($conexion, $sql);
 
     // carga en la $listaUsuarios cada registro desde la base de datos
-    foreach ($sql->fetchAll() as $usuario) {
+    //foreach ($sql->fetchAll() as $usuario) {
+    while ($usuario = mysqli_fetch_array($consulta)) {
       $listaUsuarios[]= ($usuario['rol_id']);
     }
     //return $listaUsuarios;
@@ -39,7 +43,7 @@ if(isset($_POST['adddocs']))
 		}
 		else
 		{
-			$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');		   
+			//$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');		   
 			 
 			$x=  $_FILES['archivo']['name'];
 			$anio= date("Y");
@@ -57,7 +61,7 @@ if(isset($_POST['adddocs']))
 			
 			rename($target_path,$x);
 			
-			$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');		   
+			//$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');		   
 			$sql = "INSERT INTO documentos (titulo, descripcion, creation_date, userid,documento ) 
 				   values ('$_POST[titulo]','$_POST[descripcion]','$_POST[creation_date]', '$_POST[id]', '$x')
 					";
@@ -145,7 +149,7 @@ if(isset($_POST['adddocs']))
 							  
 
    
-
+  mysqli_close($conexion);
 
   include ('footer.php');
 ?>
