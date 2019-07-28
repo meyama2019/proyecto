@@ -13,7 +13,7 @@
 	1 - Probar comportamiento si Mysql no está funcionado...
 	2 - Cuando un usuario se loguea y no acceder, mostrar el motivo: no existe, incorrecto usuario / Passwd.
 	3 - Unificar mensajes (diseño, tipo, contenido) de error en la aplicación
-	
+
 
 
 (2) ------------------------------ FUNCIONALIDAD --------------------------------------------------------------------------------------
@@ -39,3 +39,4 @@ noticias 	--> Tabla editable? se incorpora ya un formulario para editar
 fotos		OK--> botón nuevo, poner btn-sm 
 			 
 
+ 
