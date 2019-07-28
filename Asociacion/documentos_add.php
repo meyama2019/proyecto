@@ -87,15 +87,11 @@ if(isset($_POST['adddocs']))
 
 								
 
-							<div class="accordion" id="accordionExample">
+							
 								  <div class="card">
-									<div class="card-header" id="headingOne">
-									  <h2 class="mb-0">
+									 <h5 class="card-header" style="background-color: #F78181">Gestión de Documentos (Alta)</h5>
 
-									  </h2>
-									</div>
-
-									<div id="collapseOne" class="collapse show container" aria-labelledby="headingOne" data-parent="#accordionExample">
+									
 										<div class="card-body ">
 											<div class="container">
 														<script src="https://www.w3schools.com/lib/w3.js"></script>
@@ -119,7 +115,12 @@ if(isset($_POST['adddocs']))
 																				<input type="file" class="form-control" name ="archivo" value="2097152" required accept=".xlsx,.xls,.doc, .docx,.ppt, .pptx,.txt,.pdf" >
 																				<br>
 																				<input type="hidden" class="form-control" name ="id" value="<?php echo utf8_encode($_SESSION['id_usuario']); ?>">
-																				<button type="submit" class="btn btn-primary" name="adddocs">Añadir</button>
+																				
+																				<center>
+														                            <a class="btn btn-outline-danger btn-sm" href="documentos_g.php" >Cerrar</a>
+														                            <button type="submit" class="btn btn-outline-danger btn-sm" name="adddocs">Añadir</button>
+														                            
+														                        </center>
 														
 																				
 																			</form>
@@ -131,8 +132,7 @@ if(isset($_POST['adddocs']))
 											</div>
 										</div>
 									</div>
-								</div>  
-							</div>    
+			
 
 			<?php
 				}
