@@ -134,7 +134,7 @@ include('../models/connection1.php');
                                           <td>'. utf8_encode($listaMensajes['telefono']).'</td>
                                           <td>'. utf8_encode($listaMensajes['asunto']).'</td>
                                           <td>'. utf8_encode($listaMensajes['mensaje']).'</td>');
-
+                                          
                                           if($listaMensajes['activo']==1)
                                           {
                                             //echo('<td>Pdte</td>
@@ -150,6 +150,7 @@ include('../models/connection1.php');
                                  
                                }
                            echo ('<p>Resultados encontrados '.$X.'</p>');
+
                         
                   }
                   else
@@ -186,6 +187,7 @@ include('../models/connection1.php');
                                             //echo('<td>Pdte</td>
                                             //  <td ><center><input type="checkbox" class="form-check-input"  id="exampleCheck1" ></center></td>
                                             //   </tr>');
+
                                             echo('<td><button type="submit" class="btn btn-outline-primary btn-sm" name="update_new" 
                                               value='.$listaMensajes['id_solicitud'].'>Leido</button></td>');
                                           }
@@ -196,10 +198,11 @@ include('../models/connection1.php');
                                  
                                }
                            echo ('<p>Resultados encontrados '.$X.'</p>');
+                          
                         
                   }
                    //db::cerrar();
-                   mysqli_close($conexion);
+                  // mysqli_close($conexion);
                    $sql = '';
                    $sqlc = null;
  

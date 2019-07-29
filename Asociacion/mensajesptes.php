@@ -68,6 +68,7 @@ include('../models/connection1.php');
                 //$acentos="SET NAMES 'utf8'";
                 //mysqli_query($conexion, $acentos);
 
+            
                 $sql="UPDATE contacto set activo= 0 where id_solicitud = $_POST[update_new] ";
                 mysqli_query($conexion, $sql);
                 
