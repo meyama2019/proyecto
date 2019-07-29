@@ -123,7 +123,7 @@ require_once('menu.php');
                       </td>
 
                       <td class="form-group">
-                        <input type="text" name="Nombre" value=<?php echo ($docs_data['Nombre']); ?>>                      
+                        <input type="text" name="Nombre" value=<?php echo utf8_decode($docs_data['Nombre']); ?>>                      
                       </td>
 
                       <td>
