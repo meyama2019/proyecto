@@ -117,14 +117,13 @@ require_once('menu.php');
                     <tr class="item">
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8">
                       
-                      <td class="form-group" name ="idRol" value=<?php echo ($docs_data['idRol']); ?>>
-                        <?php echo ($docs_data['idRol']); ?>
+                      <td class="form-group" name ="idRol" value="<?php echo utf8_encode($docs_data['idRol']); ?>"><?php echo utf8_encode($docs_data['idRol']); ?>
+                        
                         
                       </td>
 
                       <td class="form-group">
-                        <input type="text" name="Nombre" value=<?php echo utf8_decode($docs_data['Nombre']); ?>>                      
-                      </td>
+                        <input type="text" name="Nombre" value="<?php echo  utf8_encode($docs_data['Nombre'])?>"></td>
 
                       <td>
                         <input type="hidden" class="form-control" name ="idRol" value="<?php echo utf8_decode($docs_data['idRol']); ?>">

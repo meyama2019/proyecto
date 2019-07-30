@@ -23,7 +23,7 @@ include('../models/connection1.php');
 
        for ($i = 0; $i<= $num_rows; $i++) {
            $tot=$tot+1;
-       }
+       }  
 
        //mysqli_close($conexion);
          

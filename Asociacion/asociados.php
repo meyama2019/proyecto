@@ -106,9 +106,10 @@ require_once('menu.php');
                 //echo($sqlInicial);
                 //$conexion = mysqli_connect("localhost", "socio", "socio", "marte");
                 
-                $result = mysqli_query($conexion, $sqlInicial);
+                $resultT = mysqli_query($conexion, $sqlInicial);
+                $total_records = mysqli_num_rows($resultT);
                 $number=0;
-                     while($row = mysqli_fetch_array($result))
+                     while($row = mysqli_fetch_array($resultT))
                      {
                        $number++;
                        ?>
@@ -123,6 +124,7 @@ require_once('menu.php');
                        </tr>
                        <?php
                        }
+                       echo ('<p>Resultados encontrados '.$total_records.'</p>');
                        $number=0; 
                      ?>  
                     </table>
@@ -157,7 +159,8 @@ require_once('menu.php');
                                   where 1 and rol_id != 95 LIMIT $start_from, $registro_por_pagina "  ;
             //$query = "SELECT * FROM usuarios order by id_usuario LIMIT $start_from, $registro_por_pagina";
             $result = mysqli_query($conexion, $query);
-           
+
+            
 
                      $number=0;
                      while($row = mysqli_fetch_array($result))
@@ -175,6 +178,7 @@ require_once('menu.php');
                        </tr>
                        <?php
                        }
+                         
                      ?>
                     </table>
                      <div align="center">
