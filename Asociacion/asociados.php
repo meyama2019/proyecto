@@ -157,7 +157,10 @@ require_once('menu.php');
                                   inner join usuarios us on us.Pais = pa.id
                                   inner join provincias pr on pr.id_provincia = us.provincias                                
                                   where 1 and rol_id != 95 LIMIT $start_from, $registro_por_pagina "  ;
-            //$query = "SELECT * FROM usuarios order by id_usuario LIMIT $start_from, $registro_por_pagina";
+
+            
+            
+
             $result = mysqli_query($conexion, $query);
 
             
@@ -178,7 +181,7 @@ require_once('menu.php');
                        </tr>
                        <?php
                        }
-                         
+                      //echo ('<p>Resultados encontrados '.$total_records.'</p>');   
                      ?>
                     </table>
                      <div align="center">

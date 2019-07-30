@@ -222,13 +222,16 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 											<input type="hidden" class="form-control" name ="id_noticia" value="<?php echo utf8_encode($news_data['id_noticia']); ?>">
 										</td>
 										<td>
-											
+										
 
-										<button type="submit" class="btn btn-outline-danger btn-sm" name="deletenews">
-										Borrar</button>
-										<a type="submit" class="btn btn-outline-danger btn-sm" 
+									
+
+										
+										<a class="btn btn-outline-danger btn-sm" 
 											href="updatenoticias.php?id=<?php echo ($news_data['id_noticia'])?>">
 											Editar</a>
+										<button type="submit" class="btn btn-outline-danger btn-sm" name="deletenews">
+										Borrar</button>
 											
 											
 											

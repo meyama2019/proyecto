@@ -19,7 +19,7 @@
 (2) ------------------------------ FUNCIONALIDAD --------------------------------------------------------------------------------------
 
 Asociados 	--> ¿incluir búsqueda por Provincia y Pais?
-			--> Incluir mensajes, Resultados encontrados XX
+			OK	--> Incluir mensajes, Resultados encontrados XX
 
 Documentos 	--> Integrarlo en el diseño general 
 				
@@ -33,7 +33,7 @@ noticias 	--> Tabla editable? se incorpora ya un formulario para editar
 			--> la búsqueda por fechas, hay que poner obligatoriamente las 2
 				- Que busque sólo a partir de una fecha (desde)
 				- Que busque sólo hasta una fecha (hasta)
-			--> botón editar (sale en gris)
+			OK --> botón editar (sale en gris)
 
 
 fotos		OK--> botón nuevo, poner btn-sm 
