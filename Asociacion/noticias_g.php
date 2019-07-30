@@ -182,6 +182,24 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 										  $result = mysqli_query($conexion, $query);
 										  }
 										}
+									elseif ( !empty($_POST['fechainicio']) )
+                                    {
+                                        $fechainicio = date("Y-m-d", strtotime($_POST['fechainicio']));
+
+
+                                        $query ="SELECT * FROM noticias, usuarios WHERE noticias.fechainicio >= '$fechainicio' AND noticias.userid =usuarios.id_usuario";
+                                        $result = mysqli_query($conexion, $query);
+
+                                    }
+                                    elseif ( !empty($_POST['fechafin']) )
+                                    {
+                                        $fechafin = date("Y-m-d", strtotime($_POST['fechafin']));
+
+
+                                        $query ="SELECT * FROM noticias, usuarios WHERE noticias.fechafin <= '$fechafin' AND noticias.userid =usuarios.id_usuario";
+                                        $result = mysqli_query($conexion, $query);
+
+                                    }	
 									elseif ( !empty($_POST['quien']) ) 
 										{
 										  $query ="SELECT * FROM noticias, usuarios WHERE noticias.userid like '%" . $_POST['quien'] . "%' AND noticias.userid =usuarios.id_usuario";
