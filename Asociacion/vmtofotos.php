@@ -1,5 +1,5 @@
 <?php
- include('../models/connection1.php');
+ //include('../models/connection1.php');
 ?>
 
 
@@ -298,7 +298,7 @@ if(isset($_POST['deletefoto']))
                                
                        }
 
-                   mysqli_close($conexion);
+                   //mysqli_close($conexion);
 
 
                ?>
@@ -341,7 +341,7 @@ if(isset($_POST['deletefoto']))
                         while ($valores1 = mysqli_fetch_array($query1)) {
                         echo '<option value="'.$valores1[id_usuario].'">'.utf8_encode($valores1[usuario]).'</option>';
                         }
-                      mysqli_close($mysqli);
+                      //mysqli_close($mysqli);
                       ?>
                       </select>
                       </div>
@@ -445,7 +445,7 @@ if(isset($_POST['deletefoto']))
                      echo "<script>alert(No se ha podido insertar, revise el documento');</script>";  
                    
                   }
-                mysqli_close($conexion);
+                //mysqli_close($conexion);
                 
               }
                 
