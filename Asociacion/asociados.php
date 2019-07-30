@@ -85,11 +85,11 @@ require_once('menu.php');
               $start_from = ($paginai)*$registro_por_pagina;*/
               //echo("iniciados");
                
-               $sqlInicial="SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.iso,telefono,cuenta,activo,rol_id 
+               $sqlInicial=("SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.iso,telefono,cuenta,activo,rol_id 
                                   FROM paises pa  
                                   inner join usuarios us on us.Pais = pa.id
                                   inner join provincias pr on pr.id_provincia = us.provincias                                
-                                  where 1 "; 
+                                  where 1 "); // inyection 
                //$sqlFinal="and rol_id != 95 LIMIT $start_from, $registro_por_pagina";
                $sqlFinal="and rol_id != 95";                   
                $x=0;
@@ -143,7 +143,7 @@ require_once('menu.php');
               $pagina = '';
               if(isset($_GET["pagina"]))
                 {
-                 $pagina = $_GET["pagina"];
+                 $pagina = mysql_real_escape_string($_GET["pagina"]);
                 }
               else
                 {

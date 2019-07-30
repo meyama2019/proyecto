@@ -2,7 +2,7 @@
 session_start();
 
 include ('../includes/header.php');
-include('../models/connection.php');
+include('../models/connection1.php');
 require_once('menu.php');
 
   
@@ -38,8 +38,8 @@ require_once('menu.php');
     }
     
     $alias = $_POST['SocioUsuario'];
-    $nbap = utf8_encode($_POST['NombreApellidosSocio']);
-    $dni = $_POST['SocioDNI'];
+    $nbap = ($_POST['NombreApellidosSocio']);
+    $dni = utf8_encode($_POST['SocioDNI']);
     $prov = $_POST['SocioProvincia'];
     $pais = $_POST['SocioPais'];
     $telf = $_POST['SocioTelf'];
@@ -150,7 +150,7 @@ require_once('menu.php');
                      <div class="form-group col-md-6">
 
                         <label for="NombreApellidosSocio">Nombre y apellidos</label>
-                        <input  type="text" class="form-control" id="NombreApellidosSocio" name ="NombreApellidosSocio" aria-describedby="emailHelp" placeholder="Nombre y Apellidos" value= <?php echo($news_data['Nom_Ape']); ?>>
+                        <input  type="text" class="form-control" id="NombreApellidosSocio" name ="NombreApellidosSocio" aria-describedby="emailHelp" placeholder="Nombre y Apellidos" value= "<?php echo(utf8_encode($news_data['Nom_Ape'])); ?>">
                       </div>
 
                       <div class="form-group col-md-3">

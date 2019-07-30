@@ -348,7 +348,7 @@ require_once('menu.php');
                                             <th scope="row">'. utf8_encode($listaUsuarios['id_usuario']).'</th>
                                             <td>'. utf8_encode($listaUsuarios['usuario']). '</td>
                                             <td>'. utf8_encode($listaUsuarios['email']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios['Nom_Ape']). '</td>
+                                            <td>'. ($listaUsuarios['Nom_Ape']). '</td>
                                             <td>'. utf8_encode($listaUsuarios['dni']). '</td>
                                             <td>'. utf8_encode($listaUsuarios['telefono']). '</td>
                                             <td> <a class="btn btn-outline-danger btn-sm" href="mtousuario-a.php?id='.$listaUsuarios['id_usuario'].'">Editar</a>

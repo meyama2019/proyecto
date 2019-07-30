@@ -7,7 +7,7 @@
 (1) ------------------------------ CUESTIONES GENERALES / CONFIG DE LA APLICACION WEB -------------------------------------------------
 
 - Pendiente de confirmar si noticias_g1 junto con getrecord (Ajax) para las noticias. Incorporar a las demás páginas?
-- ¿Qué hacer si un usuario (Navegador) no tiene activo Javascript? Definir notificación para que la active, porque si no la tiene activada en su navegador, el menú no funciona, así como todo lo que esté por javascrip (Jquery).
+- ¿Qué hacer si un usuario (Navegador) no tiene activo Javascript? Definir notificación para que la active, porque si no la tiene activada en su navegador, el menú no funciona, así como todo lo que esté por javascript (Jquery).
 - Footer - Diseño, contenido
 - Gestión y Control de errores:
 	1 - Probar comportamiento si Mysql no está funcionado...
