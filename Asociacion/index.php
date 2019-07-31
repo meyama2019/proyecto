@@ -10,10 +10,12 @@ require_once('menu.php');
   
 ?>
 
+<noscript>
+    <?php
+    include ('nojava.php');
+    ?>
 
-
-
-             
+</noscript>             
 
 
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
