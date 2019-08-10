@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
 //include(RAIZ . 'asociacion/header.php');
@@ -52,3 +52,22 @@ include('../models/connection1.php');
  require_once('vmtofotos.php');
  include ('footer.php');
 ?>
+
+<!-------CONFIRMAR BORRAR DOCUMENTO--------------->
+<script type="text/javascript">
+
+<!--
+
+function confirmation() {
+
+	if(confirm("Realmente desea eliminar?"))
+
+		{window.location = "";
+
+	}
+
+}
+
+//-->
+
+</script>

@@ -1,3 +1,4 @@
+ <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <?php
 session_start();
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
@@ -5,7 +6,6 @@ session_start();
 include ('../includes/header.php');
 include('../models/connection1.php');
 require_once('menu.php');
-
 ?>
 
   
@@ -37,6 +37,34 @@ require_once('menu.php');
             <input type="text" class="form-control" id="ctfno" name="ctfno" placeholder="Teléfono">
           </div>
         </div>
+		<div class="form-group">
+        <label for="provincia">Provincia</label>
+            <?php
+            ?>
+            <select class="form-control" id="provincia" name ="provincia" required >
+				<option value="0">Seleccione:</option>
+				<?php
+				  $query = $conexion -> query ("SELECT * FROM provincias");
+				  while ($valores = mysqli_fetch_array($query)) {
+				  echo '<option value="'.$valores[id_provincia].'">'.utf8_decode($valores[provincia]).'</option>';
+				  }
+				?>
+            </select>
+        </div>
+        <div class="form-group">
+        <label for="pais">País</label>
+            <?php
+            ?>
+            <select class="form-control" id="pais" name ="pais" required >
+				<option value="0">Seleccione:</option>
+				<?php
+				  $query1 = $conexion -> query ("SELECT * FROM paises");
+				  while ($valores1 = mysqli_fetch_array($query1)) {
+				  echo '<option value="'.$valores1[id].'">'.utf8_encode($valores1[nombre]).'</option>';
+				  }
+				?>
+		</select>
+        </div>
    
         <center><button type="submit" class="btn btn-primary btn-sm" name="buscasocio">Buscar</button></center>
   </form>
@@ -47,11 +75,9 @@ require_once('menu.php');
     <div class="card-body">
         <div class="container">
           
-        
           <table class="table table-hover">
             <thead class="thead-light">
               <tr>
-               
                 <th scope="col">id</th>
                 <th scope="col">Email</th>
                 <th scope="col">Asociado</th>               
@@ -66,7 +92,7 @@ require_once('menu.php');
 
           <?php
               
-            if (isset($_POST['buscasocio']) && ((isset($_POST['cid']) && $_POST['cid'] !='') || isset($_POST['cemail']) && $_POST['cemail'] !='' || isset($_POST['cnomape']) && $_POST['cnomape'] !='' || isset($_POST['ctfno']) && $_POST['ctfno'] !=''))
+            if (isset($_POST['buscasocio']) && ((isset($_POST['pais']) && $_POST['pais'] !='' || isset($_POST['provincia']) && $_POST['provincia'] !='' || isset($_POST['cid']) && $_POST['cid'] !='') || isset($_POST['cemail']) && $_POST['cemail'] !='' || isset($_POST['cnomape']) && $_POST['cnomape'] !='' || isset($_POST['ctfno']) && $_POST['ctfno'] !=''))
 
             {
               /*
@@ -102,6 +128,8 @@ require_once('menu.php');
                     { $sqlInicial = $sqlInicial . " && Nom_Ape like '%$_POST[cnomape]%' "; }
                 if(isset($_POST['ctfno']) && $_POST['ctfno'] !='')
                     { $sqlInicial = $sqlInicial . " && telefono like '%$_POST[ctfno]%' "; }
+				if(isset($_POST['provincia']) && $_POST['provincia'] !='')
+                    { $sqlInicial = $sqlInicial . " && provincia like '%$_POST[provincia]%' "; }
                 $sqlInicial = $sqlInicial . $sqlFinal;
                 //echo($sqlInicial);
                 //$conexion = mysqli_connect("localhost", "socio", "socio", "marte");
@@ -143,7 +171,9 @@ require_once('menu.php');
               $pagina = '';
               if(isset($_GET["pagina"]))
                 {
-                 $pagina = mysql_real_escape_string($_GET["pagina"]);
+                 // 05/08/2019 - CORRECCIÓN POR YARUB
+				 // $pagina = mysql_real_escape_string($_GET["pagina"]);
+				 $pagina = mysqli_real_escape_string($conexion, $_GET["pagina"]);
                 }
               else
                 {
@@ -276,7 +306,6 @@ require_once('menu.php');
 
 
 </div>
-
 
 
 

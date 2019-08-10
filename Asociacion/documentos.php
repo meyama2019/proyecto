@@ -20,6 +20,9 @@ include('../models/connection1.php');
       require_once('menu.php');
   
 ?>
+					
+
+		
 	<?php
             if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0) // Habría que controlar activo = 0
 				{
@@ -31,24 +34,80 @@ include('../models/connection1.php');
 							<div class="accordion" id="accordionExample">
 								  <div class="card">
 									<div class="card-header" id="headingOne">
-									  <h2 class="mb-0">
+									  <!--<h2 class="mb-0">
 										<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 										  Registro / Solicitudes
 										</button>
-									  </h2>
+									  </h2>-->
+									  
+									  
+									   <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+          
+       
+							        <div class="form-row">
+							           <div class="form-group col-md-3">
+							            <label for="titulo">Título</label>
+							            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título">
+							          </div>
+							          <div class="form-group col-md-3">
+							            <label for="descripcion">Descripción</label>
+							            <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción">
+							          </div>
+							           <div class="form-group col-md-2">
+							            <label for="quien">Autor</label>
+																	<select class="form-control" id="quien" name ="quien" required >
+																	<option value="0">Subido por:</option>
+																	<?php
+																	  //$mysqli1 = mysqli_connect('localhost', 'socio', 'socio', 'marte');	
+																	  $query1 = $conexion -> query ("SELECT * FROM usuarios");
+																	  while ($valores = mysqli_fetch_array($query1))
+																	  {
+																		echo '<option value="'.$valores[id_usuario].'">'.utf8_encode($valores[usuario]).'</option>';
+																	  }
+																	?>
+							            </select>
+							          </div>
+							          <div class="form-group col-md-2">
+							            <label for="fechainicio">Desde</label>
+							            <input type="date" class="form-control" id="fechainicio" name="fechainicio" placeholder="Desde">
+							          </div>
+							          <div class="form-group col-md-2">
+							            <label for="fechafin">Hasta</label>
+							            <input type="date" class="form-control" id="fechafin" name="fechafin" placeholder="Hasta">
+							          </div>
+									  <div class="form-group col-md-2">
+							            <label for="tipo">Tipo</label>
+							            <select class="form-control" name ="tipo" >
+											<option value="0">Tipo</option>
+											<option value="xls">xls</option>
+											<option value="xlsx">xlsx</option>
+											<option value="doc">doc</option>
+											<option value="docx">docx</option>
+											<option value="ppt">ppt</option>
+											<option value="pptx">pptx</option>
+											<option value="txt">txt</option>
+											<option value="pdf">pdf</option>
+										</select>
+							          </div>
+							        </div>
+									
+								<center><button type="submit" class="btn btn-primary btn-sm " name="buscador" >Buscar</button></center>
+							    </form>
+								
+								
 									</div>
 
 									<div id="collapseOne" class="collapse show container" aria-labelledby="headingOne" data-parent="#accordionExample">
 										<div class="card-body ">
 											<div class="container">
 														<script src="https://www.w3schools.com/lib/w3.js"></script>
-														<table id="table_format" class="table">
+														<table class="table">
 															<tr class="thead-light">
-																<th onclick="w3.sortHTML('#myTable', '.item', 'td:nth-child(1)')" style="cursor:pointer" >Título</th>
-																<th onclick="w3.sortHTML('#myTable', '.item', 'td:nth-child(2)')" style="cursor:pointer" >Descripción</th>
-																<th onclick="w3.sortHTML('#myTable', '.item', 'td:nth-child(3)')" style="cursor:pointer" >Subido por</th>
-																<th onclick="w3.sortHTML('#myTable', '.item', 'td:nth-child(4)')" style="cursor:pointer" >Fecha</th>
-																<th onclick="w3.sortHTML('#myTable', '.item', 'td:nth-child(5)')" style="cursor:pointer" >Enlace</th>
+																<th >Título</th>
+																<th >Descripción</th>
+																<th >Subido por</th>
+																<th >Fecha</th>
+																<th >Enlace</th>
 															</tr>
 															<tbody>
 																<?php
@@ -61,16 +120,76 @@ include('../models/connection1.php');
 																		//Se divide la cantidad de registro de la BD con la cantidad a mostrar 
 																		$TotalRegistro  =ceil($TotalReg->num_rows/$CantidadMostrar);
 
+												
+																			//--------BUSCADOR - INICIO--->
+																			if(isset($_POST['buscador']) )
+																			{
+																				if(!empty($_POST['titulo']) )
+																				{
+																					$query ="SELECT * FROM documentos, usuarios WHERE documentos.titulo like '%" . $_POST['titulo'] . "%' AND documentos.userid =usuarios.id_usuario AND creation_date <= CURDATE()";
+																					$result = mysqli_query($conexion, $query);
+																				}
+																				elseif (!empty($_POST['descripcion']) ) 
+																				{
+																					$query ="SELECT * FROM documentos, usuarios WHERE documentos.descripcion like '%" . $_POST['descripcion'] . "%' AND documentos.userid =usuarios.id_usuario AND creation_date <= CURDATE()";
+																					$result = mysqli_query($conexion, $query);
+																				}
+																				elseif ( !empty($_POST['fechainicio'] && $_POST['fechafin']) ) 
+																				{
+																					$fechainicio = date("Y-m-d", strtotime($_POST['fechainicio'])); 
+																					$fechafin = date("Y-m-d", strtotime($_POST['fechafin']));
+
+																					if  ($fechafin < $fechainicio)
+																					{
+																						echo "Fecha fin no puede ser inferior a fecha de inicio";
+																						goto general;
+																					}
+																					else
+																					{
+																						$query ="SELECT * FROM documentos, usuarios WHERE documentos.creation_date  >= '$fechainicio' AND documentos.creation_date  <= '$fechafin' AND documentos.userid =usuarios.id_usuario";
+																						$result = mysqli_query($conexion, $query);
+																					}
+																				}
+																				elseif ( !empty($_POST['quien']) ) 
+																				{
+																					$query ="SELECT * FROM documentos, usuarios WHERE documentos.userid like '%" . $_POST['quien'] . "%' AND documentos.userid =usuarios.id_usuario AND creation_date <= CURDATE()";
+																					$result = mysqli_query($conexion, $query);
+																				}
+																				elseif ( !empty($_POST['tipo']) ) 
+																				{
+																					$query ="SELECT * FROM documentos, usuarios WHERE documentos.documento like '%" . $_POST['tipo'] . "%' AND documentos.userid =usuarios.id_usuario AND creation_date <= CURDATE()";
+																					$result = mysqli_query($conexion, $query);
+																				}																				
+																				else
+																				{
+																					if ( empty($_POST['fechainicio']) &&  !empty($_POST['fechafin']) || !empty($_POST['fechainicio']) &&  empty($_POST['fechafin']) )
+																					{
+																						echo "Debes introducir fecha inicio y fecha fin.";
+																						goto general;
+																					}
+																					else
+																					{
+																						echo "No hay documentos que mostrar";
+																						goto general;
+																					}
+																			}
+																				//--------BUSCADOR - FIN--->
+																			}
+																			else
+																			{
+																				general:
+																				$date = date("Y-m-d");
+																				$sql = "SELECT * FROM documentos, usuarios
+																						WHERE userid =id_usuario AND creation_date <= CURDATE()
+																						ORDER BY creation_date DESC
+																						LIMIT ".(($compag-1)*$CantidadMostrar)." , ".$CantidadMostrar;
+																				$consulta = mysqli_query($conexion, $sql);
+																				
+
+																				$result = $conexion->query($sql);
+																			}
+																			
 																	
-																	
-																	$date = date("Y-m-d");
-																	$sql = "SELECT * FROM documentos, usuarios
-																			WHERE userid =id_usuario AND creation_date <= CURDATE()
-																			ORDER BY creation_date DESC
-																			LIMIT ".(($compag-1)*$CantidadMostrar)." , ".$CantidadMostrar;
-																	$consulta = mysqli_query($conexion, $sql);
-																	
-																	$result = $conexion->query($sql);
 																	if ($result->num_rows > 0)
 																		{
 																			while($row = $result->fetch_assoc())
@@ -103,62 +222,57 @@ include('../models/connection1.php');
 
 															</tbody>
 														</table>
-									<!--(CRÉDITOS: VER FIN DOCUMENTO)Sector de Paginacion - Operacion matematica para boton siguiente y atras--> 
-									
-									<nav>
-										
-										<?php
-											$IncrimentNum =(($compag +1)<=$TotalRegistro)?($compag +1):1;
-											$DecrementNum =(($compag -1))<1?1:($compag -1);
-																	  
-											echo "<ul class=\"pagination\">
-											  	<li>
-										  		<a class=\"page-link\" href=\"?pag=".$DecrementNum."\">◀
-												</a>
-												</li>";
-												//Se resta y suma con el numero de pag actual con el cantidad de 
-												//numeros  a mostrar
-												$Desde=$compag-(ceil($CantidadMostrar/2)-1);
-												$Hasta=$compag+(ceil($CantidadMostrar/2)-1);
-																						
-												//Se valida
-												$Desde=($Desde<1)?1: $Desde;
-												$Hasta=($Hasta<$CantidadMostrar)?$CantidadMostrar:$Hasta;
-												//Se muestra los numeros de paginas
-												for($i=$Desde; $i<=$Hasta;$i++)
-													{
-													//Se valida la paginacion total de registros
-													if($i<=$TotalRegistro)
-														{
-															//Validamos la pag activo
-															if($i==$compag)
+											<!--(CRÉDITOS: VER FIN DOCUMENTO)Sector de Paginacion - Operacion matematica para boton siguiente y atras--> 
+												<?php
+													$IncrimentNum =(($compag +1)<=$TotalRegistro)?($compag +1):1;
+													$DecrementNum =(($compag -1))<1?1:($compag -1);
+																			  
+													echo "<ul class=\"pagination\">
+														<li>
+														<a class=\"page-link\" href=\"?pag=".$DecrementNum."\">◀
+														</a>
+														</li>";
+														//Se resta y suma con el numero de pag actual con el cantidad de 
+														//numeros  a mostrar
+														$Desde=$compag-(ceil($CantidadMostrar/2)-1);
+														$Hasta=$compag+(ceil($CantidadMostrar/2)-1);
+																								
+														//Se valida
+														$Desde=($Desde<1)?1: $Desde;
+														$Hasta=($Hasta<$CantidadMostrar)?$CantidadMostrar:$Hasta;
+														//Se muestra los numeros de paginas
+														for($i=$Desde; $i<=$Hasta;$i++)
+															{
+															//Se valida la paginacion total de registros
+															if($i<=$TotalRegistro)
 																{
-																echo "<a class=\"page-link\" href=\"?pag=".$i."\">".$i."</a>";
+																	//Validamos la pag activo
+																	if($i==$compag)
+																		{
+																		echo "<a class=\"page-link\" href=\"?pag=".$i."\">".$i."</a>";
+																		}
+																	else
+																		{
+																		echo "<a class=\"page-link\" href=\"?pag=".$i."\">".$i."</a>";
+																		}     		
 																}
-															else
-																{
-																echo "<a class=\"page-link\" href=\"?pag=".$i."\">".$i."</a>";
-																}     		
-														}
-													}
-													echo "<a class=\"page-link\" href=\"?pag=".$IncrimentNum."\">▶</a></ul>";
-										?>
-										
-									</nav>
-									
-																				<!--Fin sector de Paginacion--> 
-													
+															}
+															echo "<a class=\"page-link\" href=\"?pag=".$IncrimentNum."\">▶</a></ul>";
+												?>
+												
+											<!--Fin sector de Paginacion-->	
+												
 											</div>
+											
 										</div>
 									</div>
 								</div>  
 							</div>   
-						</div> 
+						</div>
+						 
+		
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="lisenme.js"></script>
-<script>
-jQuery('#table_format').ddTableFilter();
-</script>
+
 			<?php
 				}
 			else
@@ -170,7 +284,7 @@ jQuery('#table_format').ddTableFilter();
 					
 				}		
 					  
-							  
+						  
 							  
 
    
@@ -179,8 +293,6 @@ jQuery('#table_format').ddTableFilter();
 
   include ('footer.php');
 ?>
-
-
 
 
 <!--

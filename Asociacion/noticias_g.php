@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
 //include(RAIZ . 'asociacion/header.php');
@@ -222,7 +222,7 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 								while($news_data = mysqli_fetch_array($result))
 							{?>
 								<tr class="item">
-									<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8">
+									<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirmation()">
 										<td class="form-group">
 											<textarea type="text" class="form-control" name ="titulo" value="" ><?php echo utf8_encode($news_data['titulo']); ?></textarea>
 										</td>
@@ -248,7 +248,7 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 										<a class="btn btn-outline-danger btn-sm" 
 											href="updatenoticias.php?id=<?php echo ($news_data['id_noticia'])?>">
 											Editar</a>
-										<button type="submit" class="btn btn-outline-danger btn-sm" name="deletenews">
+										<button type="submit"  class="btn btn-outline-danger btn-sm" name="deletenews">
 										Borrar</button>
 											
 											
@@ -282,5 +282,23 @@ else
 
 
 
+<!-------CONFIRMAR BORRAR DOCUMENTO--------------->
+<script type="text/javascript">
+
+<!--
+
+function confirmation() {
+
+	if(confirm("Realmente deseas eliminar la noticia?"))
+
+		{window.location = "";
+
+	}
+
+}
+
+//-->
+
+</script>
 
 

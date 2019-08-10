@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
 //include(RAIZ . 'asociacion/header.php');
@@ -91,7 +91,7 @@ include('../models/connection1.php');
 								  	<h5 class="card-header" style="background-color: #F78181">Gestión de Documentos</h5>
 								  	<br>
 								  	 <div class="container">
-								  <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+								  <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >
           
        
 							        <div class="form-row">
@@ -214,7 +214,7 @@ include('../models/connection1.php');
 																	while($docs_data = mysqli_fetch_array($result))
 																		{?>
 																			<tr class="item">
-																			<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8">
+																			<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirmation()">
 																				<td >
 																				<input type="date" class="form-control " name ="fecha" value="<?php echo utf8_encode($docs_data['creation_date']); ?>">
 																				</td>
@@ -277,3 +277,25 @@ include('../models/connection1.php');
 
   include ('footer.php');
 ?>
+
+
+<!-------CONFIRMAR BORRAR DOCUMENTO--------------->
+<script type="text/javascript">
+
+<!--
+
+function confirmation() {
+
+	if(confirm("Realmente deseas eliminar el documento?"))
+
+		{window.location = "";
+
+	}
+
+}
+
+//-->
+
+</script>
+
+

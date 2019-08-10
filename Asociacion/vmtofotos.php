@@ -1,4 +1,4 @@
-<?php
+<?php 
  //include('../models/connection1.php');
 ?>
 
@@ -136,7 +136,7 @@ if(isset($_POST['deletefoto']))
                         while($docs_data = mysqli_fetch_array($result))
                         {?>
                             <tr class="item">
-                                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8">
+                                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirmation()">
 
                                     <td class="form-group" name ="idfoto" value=<?php echo ($docs_data['id_foto']); ?>>
                                         <?php echo ($docs_data['id_foto']); ?>
@@ -222,7 +222,7 @@ if(isset($_POST['deletefoto']))
                         while($docs_data = mysqli_fetch_array($result))
               {?>
                   <tr class="item">
-                      <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8">
+                      <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirmation()">
 
                           <td class="form-group" name ="idfoto" value=<?php echo ($docs_data['id_foto']); ?>>
                               <?php echo ($docs_data['id_foto']); ?>
@@ -456,5 +456,24 @@ if(isset($_POST['deletefoto']))
      
 
     ?>
+
+<!-------CONFIRMAR BORRAR DOCUMENTO--------------->
+<script type="text/javascript">
+
+<!--
+
+function confirmation() {
+
+	if(confirm("Realmente desea eliminar?"))
+
+		{window.location = "";
+
+	}
+
+}
+
+//-->
+
+</script>
 
 

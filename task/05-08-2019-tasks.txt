@@ -1,0 +1,35 @@
+
+***********************************************************************************************************************************
+*												TASK 05-08-2019																  *
+***********************************************************************************************************************************					
+
+(1) ------------------------------ CUESTIONES GENERALES / CONFIG DE LA APLICACION WEB -------------------------------------------------
+
+- Pendiente de confirmar si noticias_g1 junto con getrecord (Ajax) para las noticias. Incorporar a las demás páginas?
+- ¿Qué hacer si un usuario (Navegador) no tiene activo Javascript? Definir notificación para que la active, porque si no la tiene activada en su navegador, el menú no funciona, así como todo lo que esté por javascript (Jquery).
+- Footer - Diseño, contenido
+- Gestión y Control de errores:
+	1 - Probar comportamiento si Mysql no está funcionado...
+	2 - Cuando un usuario se loguea y no acceder, mostrar el motivo: no existe, incorrecto usuario / Passwd.
+	3 - Unificar mensajes (diseño, tipo, contenido) de error en la aplicación
+
+
+
+(2) ------------------------------ FUNCIONALIDAD --------------------------------------------------------------------------------------
+
+
+Asociados 	--> ¿incluir búsqueda por Provincia y Pais?
+
+OK--> Documentos 	--> 1) Integrarlo en el diseño general (yarub 08082019 - modificado documentos.php para búsquedas + eliminado lisenme.js)
+OK-->                2) centrar paginación (yarub 08082019 - \css\bootstrap.css)
+
+Gestión del Sitio --> En todas las opciones: cuando pulsamos eliminar, debería mostrar ¿Estás seguro?
+
+noticias --> 1) Tabla editable? se incorpora ya un formulario para editar /*NO ENTIENDO*/ HACE FALTA PAGINACION
+OK-->	       2) la búsqueda por fechas, hay que poner obligatoriamente las 2 				/****************************
+OK-->	       3) Que busque sólo a partir de una fecha (desde) 							YO POINO DE MANTENER TAL CUAL
+OK-->	       4) Que busque sólo hasta una fecha (hasta) 									*****************************/
+
+			 
+
+ 
