@@ -23,7 +23,11 @@
         }
     </style>
    
-   
+<noscript>
+<?php
+    include ('nojava.php');
+?> 
+</noscript> 
        
    
 </head>
@@ -35,6 +39,8 @@
 
 <body>
 
+  
+    
            <div class="container">
             <header id="cabecera">
                
@@ -87,7 +93,9 @@
                 
             </div> 
                  
-            <div class="clear"></div>
+            <div class="clear">
+			
+	</div>
             </header>
           
           
