@@ -70,7 +70,7 @@ include('../models/connection1.php');
                       //echo "Registro Nº ".$_POST['id_noticia']." ha sido eliminado correctamente";
                     }		
 
-            mysqli_close($conexion);
+           // mysqli_close($conexion);
 
           }  
     ?>
@@ -214,7 +214,7 @@ include('../models/connection1.php');
 																	while($docs_data = mysqli_fetch_array($result))
 																		{?>
 																			<tr class="item">
-																			<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirmation()">
+																			<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirm('¿Realmente deseas eliminar el documento?');">
 																				<td >
 																				<input type="date" class="form-control " name ="fecha" value="<?php echo utf8_encode($docs_data['creation_date']); ?>">
 																				</td>
@@ -279,23 +279,6 @@ include('../models/connection1.php');
 ?>
 
 
-<!-------CONFIRMAR BORRAR DOCUMENTO--------------->
-<script type="text/javascript">
 
-<!--
-
-function confirmation() {
-
-	if(confirm("Realmente deseas eliminar el documento?"))
-
-		{window.location = "";
-
-	}
-
-}
-
-//-->
-
-</script>
 
 
