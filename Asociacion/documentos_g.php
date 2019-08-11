@@ -1,3 +1,4 @@
+
 <?php 
 session_start();
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
