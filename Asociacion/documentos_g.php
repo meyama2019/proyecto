@@ -1,4 +1,3 @@
-
 <?php 
 session_start();
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
@@ -185,70 +184,104 @@ include('../models/connection1.php');
 																		  if  ($fechafin < $fechainicio)
 																		  {
 																			  echo "<script>alert('Fecha fin no puede ser inferior a fecha de inicio');</script>";
-																			  goto general;
+																			  //goto general;
+																			  $result = mysqli_query($conexion, "SELECT * FROM documentos, usuarios
+																									 WHERE userid =id_usuario
+																									 ORDER BY creation_date  DESC");
 																		  }
 																		  else
 																		  {
-																		  $query ="SELECT * FROM documentos, usuarios WHERE documentos.creation_date  >= '$fechainicio' AND documentos.creation_date  <= '$fechafin' AND documentos.userid =usuarios.id_usuario";
-																		  $result = mysqli_query($conexion, $query);
+																			$query ="SELECT * FROM documentos, usuarios WHERE documentos.creation_date  >= '$fechainicio' AND documentos.creation_date  <= '$fechafin' AND documentos.userid =usuarios.id_usuario";
+																			$result = mysqli_query($conexion, $query);
 																		  }
 																		}
 																	elseif ( !empty($_POST['quien']) ) 
 																		{
-																		  $query ="SELECT * FROM documentos, usuarios WHERE documentos.userid like '%" . $_POST['quien'] . "%' AND documentos.userid =usuarios.id_usuario";
-																		  $result = mysqli_query($conexion, $query);
+																			$query ="SELECT * FROM documentos, usuarios WHERE documentos.userid like '%" . $_POST['quien'] . "%' AND documentos.userid =usuarios.id_usuario";
+																			$result = mysqli_query($conexion, $query);
 																		}	
 																	else
 																		{
-																			goto general;
+																			if ( (empty($_POST['fechainicio']) &&  !empty($_POST['fechafin']) ) || (!empty($_POST['fechainicio']) &&  empty($_POST['fechafin'])) )		
+																			{
+																				echo "<script>alert('Debes introducir fecha inicio y fecha fin.');</script>";
+																				//goto general;
+																				$result = mysqli_query($conexion, "SELECT * FROM documentos, usuarios
+																									   WHERE userid =id_usuario
+																									   ORDER BY creation_date  DESC");
+																			}
+																			elseif ( empty($_POST['titulo']) &&  empty($_POST['descripcion']) &&  empty($_POST['fechainicio']) &&  empty($_POST['fechafin'])   &&  empty($_POST['quien']) )
+																			{
+																				echo "<script>alert('Debes introducir criterios de búsqueda.');</script>";
+																				//goto general;
+																				$result = mysqli_query($conexion, "SELECT * FROM documentos, usuarios
+																									   WHERE userid =id_usuario
+																									   ORDER BY creation_date  DESC");
+																			}
+																			else
+																			{
+																				
+																				//goto general;
+																				$result = mysqli_query($conexion, "SELECT * FROM documentos, usuarios
+																									   WHERE userid =id_usuario
+																									   ORDER BY creation_date  DESC");
+																					echo "<p class='alert alert-danger'>No hay documentos que mostrar.</p>";
+																			}
+																			
 																		}
 																}
 																else
 																{
-																	general:
+																	//general:
 																	$result = mysqli_query($conexion, "SELECT * FROM documentos, usuarios
 																									 WHERE userid =id_usuario
 																									 ORDER BY creation_date  DESC");
 																}
 
+																if ($result->num_rows > 0)
+																		{
+																		while($docs_data = mysqli_fetch_array($result))
+																			{?>
+																				<tr class="item">
+																				<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirm('¿Realmente deseas eliminar el documento?');">
+																					<td >
+																					<input type="date" class="form-control " name ="fecha" value="<?php echo utf8_encode($docs_data['creation_date']); ?>">
+																					</td>
+																					<td >
+																					<textarea type="text" class="form-control" name ="titulo" value=""><?php echo utf8_encode($docs_data['titulo']); ?></textarea>
+																					</td>
+																					<td >
+																					<textarea type="text" class="form-control" name ="descripcion" value=""><?php echo utf8_encode($docs_data['descripcion']); ?></textarea>
+																					</td>
+																					<td >
+																					<?php echo utf8_encode($docs_data['usuario']); ?>
+																					</td>
+																					<td >
+																					<a href="<?php echo utf8_encode($docs_data['documento']); ?>" >Ver</a>
+																					<input type="hidden" name ="documento" value="<?php echo utf8_encode($docs_data['documento']); ?>">
+																					</td>
+																					
+																					<input type="hidden" class="form-control" name ="id_documento" value="<?php echo utf8_encode($docs_data['id_documento']); ?>">
+																					
+																					<td >
+																					<a class="btn btn-outline-danger btn-sm" href="updatedocumentos.php?id=<?php echo ($docs_data['id_documento'])?>">Editar</a>
 
-																	while($docs_data = mysqli_fetch_array($result))
-																		{?>
-																			<tr class="item">
-																			<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirm('¿Realmente deseas eliminar el documento?');">
-																				<td >
-																				<input type="date" class="form-control " name ="fecha" value="<?php echo utf8_encode($docs_data['creation_date']); ?>">
-																				</td>
-																				<td >
-																				<textarea type="text" class="form-control" name ="titulo" value=""><?php echo utf8_encode($docs_data['titulo']); ?></textarea>
-																				</td>
-																				<td >
-																				<textarea type="text" class="form-control" name ="descripcion" value=""><?php echo utf8_encode($docs_data['descripcion']); ?></textarea>
-																				</td>
-																				<td >
-																				<?php echo utf8_encode($docs_data['usuario']); ?>
-																				</td>
-																				<td >
-																				<a href="<?php echo utf8_encode($docs_data['documento']); ?>" >Ver</a>
-																				<input type="hidden" name ="documento" value="<?php echo utf8_encode($docs_data['documento']); ?>">
-																				</td>
-																				
-																				<input type="hidden" class="form-control" name ="id_documento" value="<?php echo utf8_encode($docs_data['id_documento']); ?>">
-																				
-																				<td >
-																				<a class="btn btn-outline-danger btn-sm" href="updatedocumentos.php?id=<?php echo ($docs_data['id_documento'])?>">Editar</a>
-
-																				<button type="submit" class="btn btn-outline-danger btn-sm" name="deletedocs">Borrar</button>
-																				</td>
-														
+																					<button type="submit" class="btn btn-outline-danger btn-sm" name="deletedocs">Borrar</button>
+																					</td>
+															
 
 
-																				
-																				</form>
-																			</tr>
-																		<?php         
-																			    
+																					
+																					</form>
+																				</tr>
+																			<?php         
+																					
+																			}
 																		}
+																		else
+																			{
+																				echo "<div class='alert alert-danger' role='alert'>No hay documentos que mostrar.</div>";
+																			}
 																?>
 															</tbody>
 														</table>

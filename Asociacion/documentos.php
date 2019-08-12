@@ -141,8 +141,15 @@ include('../models/connection1.php');
 
 																					if  ($fechafin < $fechainicio)
 																					{
-																						echo "Fecha fin no puede ser inferior a fecha de inicio";
-																						goto general;
+																						echo "<div class='alert alert-danger' role='alert'>Fecha fin no puede ser inferior a fecha de inicio</div>";
+																						//goto general;
+																						$date = date("Y-m-d");
+																						$sql = "SELECT * FROM documentos, usuarios
+																								WHERE userid =id_usuario AND creation_date <= CURDATE()
+																								ORDER BY creation_date DESC
+																								LIMIT ".(($compag-1)*$CantidadMostrar)." , ".$CantidadMostrar;
+																						$consulta = mysqli_query($conexion, $sql);
+																						$result = $conexion->query($sql);
 																					}
 																					else
 																					{
@@ -162,30 +169,54 @@ include('../models/connection1.php');
 																				}																				
 																				else
 																				{
-																					if ( empty($_POST['fechainicio']) &&  !empty($_POST['fechafin']) || !empty($_POST['fechainicio']) &&  empty($_POST['fechafin']) )
+																					if ( (empty($_POST['fechainicio']) &&  !empty($_POST['fechafin']) ) || (!empty($_POST['fechainicio']) &&  empty($_POST['fechafin'])) )
 																					{
-																						echo "Debes introducir fecha inicio y fecha fin.";
-																						goto general;
+																						echo "<div class='alert alert-danger' role='alert'>Debes introducir fecha inicio y fecha fin.</div>";
+																						//goto general;
+																						$date = date("Y-m-d");
+																						$sql = "SELECT * FROM documentos, usuarios
+																								WHERE userid =id_usuario AND creation_date <= CURDATE()
+																								ORDER BY creation_date DESC
+																								LIMIT ".(($compag-1)*$CantidadMostrar)." , ".$CantidadMostrar;
+																						$consulta = mysqli_query($conexion, $sql);
+																						$result = $conexion->query($sql);
+																					}
+																					elseif ( empty($_POST['titulo']) &&  empty($_POST['descripcion']) &&  empty($_POST['fechainicio']) &&  empty($_POST['fechafin'])   &&  empty($_POST['quien'])  &&  empty($_POST['tipo']) )  
+																					{
+																						echo "<div class='alert alert-danger' role='alert'>Debes introducir algún dato para la búsqueda.</div>";
+																						//goto general;
+																						$date = date("Y-m-d");
+																						$sql = "SELECT * FROM documentos, usuarios
+																								WHERE userid =id_usuario AND creation_date <= CURDATE()
+																								ORDER BY creation_date DESC
+																								LIMIT ".(($compag-1)*$CantidadMostrar)." , ".$CantidadMostrar;
+																						$consulta = mysqli_query($conexion, $sql);
+																						$result = $conexion->query($sql);
 																					}
 																					else
 																					{
-																						echo "No hay documentos que mostrar";
-																						goto general;
+																						echo "<div class='alert alert-danger' role='alert'>No hay documentos que mostrar.</div>";
+																						//goto general;
+																						$date = date("Y-m-d");
+																						$sql = "SELECT * FROM documentos, usuarios
+																								WHERE userid =id_usuario AND creation_date <= CURDATE()
+																								ORDER BY creation_date DESC
+																								LIMIT ".(($compag-1)*$CantidadMostrar)." , ".$CantidadMostrar;
+																						$consulta = mysqli_query($conexion, $sql);
+																						$result = $conexion->query($sql);
 																					}
-																			}
+																				}
 																				//--------BUSCADOR - FIN--->
 																			}
 																			else
 																			{
-																				general:
+																				//general:
 																				$date = date("Y-m-d");
 																				$sql = "SELECT * FROM documentos, usuarios
 																						WHERE userid =id_usuario AND creation_date <= CURDATE()
 																						ORDER BY creation_date DESC
 																						LIMIT ".(($compag-1)*$CantidadMostrar)." , ".$CantidadMostrar;
 																				$consulta = mysqli_query($conexion, $sql);
-																				
-
 																				$result = $conexion->query($sql);
 																			}
 																			
@@ -214,7 +245,7 @@ include('../models/connection1.php');
 																		}
 																		else
 																			{
-																				echo "No hay documentos que mostrar";
+																				echo "<div class='alert alert-danger' role='alert'>No hay documentos que mostrar.</div>";
 																			}
 																	
 																?>

@@ -432,7 +432,7 @@ include(RAIZ . 'models/connection1.php');
                 </div>
                 <div class="modal-body">
 
-                    <form action="http://localhost/proyecto/asociacion/login.php" method="post">
+                    <form action="http://localhost/proyecto/asociacion/login.php" method="post" >
                        <div class="form-group">
                         <label for="exampleInputEmail1">Usuario</label>
                         <input type="text" class="form-control" id="Inputuser" name= "Inputuser" aria-describedby="emailHelp" placeholder="Para Socios y/o Admins">
