@@ -12,6 +12,8 @@
     <link rel="stylesheet" type="text/css" href="http://localhost/proyecto/css/bootstrap.min.css">
     <link rel="stylesheet" media="screen" type="text/css" href="http://localhost/proyecto/css/principal.css" />
     <link rel="stylesheet" media="print" type="text/css" href="http://localhost/proyecto/css/imprimir.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <style type="text/css">
          .carousel-inner img {
             width: 100%;

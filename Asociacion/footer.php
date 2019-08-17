@@ -479,38 +479,19 @@ include(RAIZ . 'models/connection1.php');
 
         <!-- Grid column -->
         <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-          <h6 class="mb-0">Contacte con nosotros en Redes Sociales</h6>
-          
-        </div>
+          <h6 class="mb-0">Contacte con nosotros en Redes Sociales
+		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img src="../imagenes/facebook.png" alt="facebook" width="20" height="20"></a>
+		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img src="../imagenes/instagram.png" alt="instagram" width="20" height="20"></a>
+		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img src="../imagenes/twitter.png" alt="twitter" width="20" height="20"></a>
+		  </h6>
+			
+
+		</div>
         <div class="col-md-6 col-lg-5 text-center text-md-right mb-4 mb-md-0" id='myWatch'></div>
         <!-- Grid column -->
 
-        <!-- Grid column -->
-        <div class="col-md-6 col-lg-7 text-center text-md-right">
-
-          <!-- Facebook -->
-          <a class="fb-ic">
-            <i class="fab fa-facebook-f white-text mr-4"> </i>
-          </a>
-          <!-- Twitter -->
-          <a class="tw-ic">
-            <i class="fab fa-twitter white-text mr-4"> </i>
-          </a>
-          <!-- Google +-->
-          <a class="gplus-ic">
-            <i class="fab fa-google-plus-g white-text mr-4"> </i>
-          </a>
-          <!--Linkedin -->
-          <a class="li-ic">
-            <i class="fab fa-linkedin-in white-text mr-4"> </i>
-          </a>
-          <!--Instagram-->
-          <a class="ins-ic">
-            <i class="fab fa-instagram white-text"> </i>
-          </a>
-
-        </div>
-        <!-- Grid column -->
+        
+        
 
       </div>
       <!-- Grid row-->
@@ -525,22 +506,30 @@ include(RAIZ . 'models/connection1.php');
     <div class="row mt-3 dark-grey-text">
 
       <!-- Grid column -->
-      <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+      <div class="col-md-20 col-lg-20 col-xl-20 mb-20">
 
         <!-- Content -->
-        <h6 class="text-uppercase font-weight-bold">Asociación Marte</h6>
-        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-          consectetur
-          adipisicing elit.</p>
+        <h6 class="text-uppercase font-weight-bold">Asociación de Hosteleros de Marte</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 100%;">
+        <p>Fundada en el 2019 y registrada e inscrita en el registro de Asociaciones Profesionales del Departamento de Justicia, Empleo y Seguridad Social con nº 2019/7. <br>
+			En cumplimiento de la Ley 34/2002 de 11 de Julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), la entidad Asociación de Hosteleros Marte informa de que es titular del portal www.marte.com.<br>
+			De acuerdo con las exigencias del artículo 10 de la citada ley informa de los siguientes datos:<br>
+			CIF: G--------<br>
+			Domicilio Social: C/El Carmen,100, 23660 - Alcaudete<br>
+			Teléfono: + 34 955 567 88<br>
+			Email: <a href="" class="badge badge-info" data-toggle="modal" data-target="#exampleModa4" >Formulario de Contacto</a>
+		<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 100%;">
+	
+		</p>
+		
 
       </div>
       <!-- Grid column -->
 
-      <!-- Grid column -->
+      <!-- Grid column 
       <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
 
-        <!-- Links -->
+        <!-- Links 
         <h6 class="text-uppercase font-weight-bold">Products</h6>
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
@@ -557,20 +546,18 @@ include(RAIZ . 'models/connection1.php');
         </p>
 
       </div>
-      <!-- Grid column -->
+      <!-- Grid column 
 
-      <!-- Grid column -->
+      <!-- Grid column 
       <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
 
-        <!-- Links -->
+        <!-- Links 
         <h6 class="text-uppercase font-weight-bold">Useful links</h6>
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
           <a class="dark-grey-text" href="#!">Your Account</a>
         </p>
-        <p>
-          <a href="" class="badge badge-info" data-toggle="modal" data-target="#exampleModa4" >Contacto</a>
-        </p>
+        
         <p>
           <a class="dark-grey-text" href="#!">Shipping Rates</a>
         </p>
@@ -579,13 +566,13 @@ include(RAIZ . 'models/connection1.php');
         </p>
 
       </div>
-      <!-- Grid column -->
+      <!-- Grid column 
 
-      <!-- Grid column -->
+      <!-- Grid column
       <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
-        <!-- Links -->
-        <h6 class="text-uppercase font-weight-bold">Contact</h6>
+        <!-- Links 
+        <h6 class="text-uppercase font-weight-bold">Contacto</h6>
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
           <i class="fas fa-home mr-3"></i> C/El Carmen,100</p>
@@ -596,6 +583,10 @@ include(RAIZ . 'models/connection1.php');
 
         <p>
           <i class="fas fa-phone mr-3"></i> + 34 955 567 88</p>
+		  
+		  <p>
+          <a href="" class="badge badge-info" data-toggle="modal" data-target="#exampleModa4" >Contacto</a>
+        </p>
        
 
       </div>
@@ -610,17 +601,14 @@ include(RAIZ . 'models/connection1.php');
   <!-- Copyright -->
   <div class="footer-copyright text-center text-black-50 py-3">© 2018 Copyright:
     <a class="dark-grey-text" href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
-  </div>
+  <br>
+  Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"             title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
   <!-- Copyright -->
 
 </footer>
 <!-- Footer -->
 
 <!---- FUNCIONES AJAX --------------------------------------------->
-
-
- 
-
 
 
 </body>

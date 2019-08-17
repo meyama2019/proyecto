@@ -82,7 +82,16 @@ include('../models/connection1.php');
 
                               $x=$x+1;
                               }
-                  
+							  
+							  if ($sql == 0 )
+								{
+									echo('<div class="container" align="center">
+									<div class="alert alert-danger" role="alert">
+									No hay noticias que mostrar.
+									</div></div> ');
+									
+								}	
+								  
                               //$db=Db::cerrar();
                               mysqli_close($conexion);
                 ?>
