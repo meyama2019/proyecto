@@ -54,6 +54,8 @@ if(isset($_POST['adddocs']))
 			$segundo= date("sa");
 			$quien = $_SESSION['id_usuario'] . "_";
 			$nuevo_nombre = $quien . $anio . $mes. $dia . $hora . $minuto . $segundo;
+			
+			$nuevo_nombre = $quien . $anio . $mes. $dia . $hora . $minuto . $segundo;
 			$nueva_ext = pathinfo($_FILES['archivo']['name'],PATHINFO_EXTENSION);
 			$x = "../docs/". $nuevo_nombre. ".$nueva_ext";
 			

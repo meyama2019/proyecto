@@ -480,9 +480,9 @@ include(RAIZ . 'models/connection1.php');
         <!-- Grid column -->
         <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
           <h6 class="mb-0">Contacte con nosotros en Redes Sociales
-		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img src="../imagenes/facebook.png" alt="facebook" width="20" height="20"></a>
-		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img src="../imagenes/instagram.png" alt="instagram" width="20" height="20"></a>
-		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img src="../imagenes/twitter.png" alt="twitter" width="20" height="20"></a>
+		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img src="http://localhost/proyecto/imagenes/facebook.png" alt="facebook" width="20" height="20"></a>
+		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img src="http://localhost/proyecto/imagenes/instagram.png" alt="instagram" width="20" height="20"></a>
+		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img src="http://localhost/proyecto/imagenes/twitter.png" alt="twitter" width="20" height="20"></a>
 		  </h6>
 			
 
