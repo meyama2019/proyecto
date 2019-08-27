@@ -1,7 +1,5 @@
 <?php 
 session_start();
-//define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
-//include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
 include('../models/connection1.php');
 require_once('menu.php');
@@ -10,33 +8,7 @@ require_once('menu.php');
 				  
 							  
 
-<!----NEWS UPDATE-->
-<?php
-/*
-          if(isset($_POST['updatenews']))
-          {
-          
-                $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-				$id_noticia = $_POST['id_noticia'];
-                $titulo =  utf8_encode($_POST['titulo']);
-                $descripcion =  utf8_encode($_POST['descripcion']);
-                $fechainicio = $_POST['fechainicio'];
-                $fechafin = $_POST['fechafin'];
 
-				$sql = "UPDATE noticias
-						SET titulo='$_POST[titulo]',descripcion='$_POST[descripcion]', fechainicio='$_POST[fechainicio]',fechafin='$_POST[fechafin]'
-						WHERE id_noticia = '$_POST[id_noticia]'
-						";
-				$consulta = mysqli_query($conexion, $sql);
-				if($consulta)
-                    {
-					  echo "<script>alert('Registro actualizado correctamente');</script>";		
-                      //echo "Registro Nº ".$_POST['id_noticia']." ha sido actualizado correctamente";
-                    }		
-              
-          }  
-    */
-?>
 
 <!----DELETE NOTICIA-->
 
@@ -45,7 +17,6 @@ require_once('menu.php');
           if(isset($_POST['deletenews']))
           {
           
-                //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
 				$id_noticia = $_POST['id_noticia'];
                 
 
@@ -56,7 +27,6 @@ require_once('menu.php');
 				if($consulta)
                     {
 					  echo "<script>alert('Registro eliminado');</script>";			
-                      //echo "Registro Nº ".$_POST['id_noticia']." ha sido eliminado correctamente";
                     }	
            }	
               
@@ -107,7 +77,6 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 										  }
 										?>
             </select>
-            <!--<input type="text" class="form-control" id="cmtopais" name="cmtopais" placeholder="Pais">  -->
           </div>
           <div class="form-group col-md-2">
             <label for="fechainicio">Desde</label>

@@ -26,7 +26,6 @@
          <center><button type="submit" class="btn btn-primary btn-sm " name="mto_buscarrol" >Buscar</button></center>
          <div class="container">
            <div class="form-row">
-            <!--<button type="submit" class="btn btn-outline-danger " name="mto_newrol" >Nuevo</button> -->
             <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#mtorolnew">
                                 Nuevo
                               </button>
@@ -58,9 +57,6 @@
                
 
               <?php
-                    //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                    //$acentos="SET NAMES 'utf8'";
-                    //mysqli_query($conexion, $acentos);
                     $sqlInicial="SELECT * FROM rolusuario where 1 "; 
                     $x=0;
                     Global $X;
@@ -76,10 +72,8 @@
                             $sqlInicial = $sqlInicial . " && nombre like '%$_POST[cmtonombre]%'";
                           }
                        
-                         //$sql=$db->query($sqlInicial);
                          $consulta = mysqli_query($conexion, $sqlInicial); 
                          
-                         //foreach ($sql->fetchAll() as $listaUsuarios[$x])
                          while ($listaUsuarios = mysqli_fetch_array($consulta))  
                                 {                            
                                     echo ('
@@ -109,17 +103,10 @@
                       }
                     else
                     {   
-                        //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                        //$acentos="SET NAMES 'utf8'";
-                        //mysqli_query($conexion, $acentos);
                         $sqlInicial="SELECT * FROM rolusuario where 1 "; 
                         $x=0;
-                       
-                    
-                        //$sql=$db->query($sqlInicial);
                         $consulta = mysqli_query($conexion,$sqlInicial);
                          
-                        //foreach ($sql->fetchAll() as $listaUsuarios[$x])
                         while ($listaUsuarios = mysqli_fetch_array($consulta))  
                                 {
                                    
@@ -232,12 +219,7 @@
           
            if (isset($_POST['mtorol_namenew']) && $_POST['mtorol_namenew']!='')
               {
-                
-                //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                //$acentos="SET NAMES 'utf8'";
-                //mysqli_query($conexion, $acentos);
-
-                $sqlindice = "SELECT idRol from rolusuario where idRol < 95 or idRol > 95 order by idRol desc limit 1";
+				$sqlindice = "SELECT idRol from rolusuario where idRol < 95 or idRol > 95 order by idRol desc limit 1";
                 $next=mysqli_query($conexion, $sqlindice);
                 $indice = mysqli_fetch_row($next);
                 $indice[0] = $indice[0] + 1;
@@ -272,14 +254,8 @@
            $x=$x-1;
            if ($_POST['deleterol'] !='' )
               {
-               
-                //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                //$acentos="SET NAMES 'utf8'";
-                //mysqli_query($conexion, $acentos);
-                //echo($_POST['delete-rol']);
                 $sqlindice = "SELECT * FROM USUARIOS where rol_id = ".$_POST['deleterol']." ";
                 $next=mysqli_query($conexion, $sqlindice);
-                //echo($_POST['deleterol']);
                 if(mysqli_num_rows($next)==0)
                 {
                   $sqlborra = "DELETE from rolusuario where idRol = '$_POST[deleterol]' ";

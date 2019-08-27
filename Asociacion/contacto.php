@@ -42,7 +42,6 @@ include ('includes/header.php');
                     <br/>
                     <input type="checkbox" name="privacidad" value="aceptar"/><strong>Entiendo y acepto la politica de privacidad</strong>
                     <br/>
-                    <!--<input class="botones" type="submit" name="enviar" value="Enviar"/>-->
                      <a class="btn btn-primary btn-sm" href="#" role="button" type="submit">Enviar</a>
                 </form>
                

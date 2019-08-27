@@ -1,22 +1,14 @@
  <?php
 session_start();
-//define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
-//include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
 include('../models/connection1.php');
     $listaUsuarios =[];
-    //$db=Db::getConnect();
-    //$sql=$db->query('SELECT * FROM usuarios');
-
     $sql = "SELECT * FROM usuarios";
     $consulta = mysqli_query($conexion, $sql);
 
-    // carga en la $listaUsuarios cada registro desde la base de datos
-    //foreach ($sql->fetchAll() as $usuario) {
     while ($usuario = mysqli_fetch_array($consulta)) {
       $listaUsuarios[]= ($usuario['rol_id']);
     }
-    //return $listaUsuarios;
       require_once('menu.php');
   
 ?>
@@ -34,13 +26,6 @@ include('../models/connection1.php');
 							<div class="accordion" id="accordionExample">
 								  <div class="card">
 									<div class="card-header" id="headingOne">
-									  <!--<h2 class="mb-0">
-										<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-										  Registro / Solicitudes
-										</button>
-									  </h2>-->
-									  
-									  
 									   <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
           
        
@@ -58,7 +43,6 @@ include('../models/connection1.php');
 																	<select class="form-control" id="quien" name ="quien" required >
 																	<option value="0">Subido por:</option>
 																	<?php
-																	  //$mysqli1 = mysqli_connect('localhost', 'socio', 'socio', 'marte');	
 																	  $query1 = $conexion -> query ("SELECT * FROM usuarios");
 																	  while ($valores = mysqli_fetch_array($query1))
 																	  {
@@ -111,7 +95,7 @@ include('../models/connection1.php');
 															</tr>
 															<tbody>
 																<?php
-																	//$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+
 																		
 																		// (PAGINACIÓN CRÉDITOS: VER FIN DOCUMENTO) Validado  la variable GET
 																		$CantidadMostrar=10;
@@ -142,7 +126,6 @@ include('../models/connection1.php');
 																					if  ($fechafin < $fechainicio)
 																					{
 																						echo "<div class='alert alert-danger' role='alert'>Fecha fin no puede ser inferior a fecha de inicio</div>";
-																						//goto general;
 																						$date = date("Y-m-d");
 																						$sql = "SELECT * FROM documentos, usuarios
 																								WHERE userid =id_usuario AND creation_date <= CURDATE()
@@ -172,7 +155,6 @@ include('../models/connection1.php');
 																					if ( (empty($_POST['fechainicio']) &&  !empty($_POST['fechafin']) ) || (!empty($_POST['fechainicio']) &&  empty($_POST['fechafin'])) )
 																					{
 																						echo "<div class='alert alert-danger' role='alert'>Debes introducir fecha inicio y fecha fin.</div>";
-																						//goto general;
 																						$date = date("Y-m-d");
 																						$sql = "SELECT * FROM documentos, usuarios
 																								WHERE userid =id_usuario AND creation_date <= CURDATE()
@@ -184,7 +166,6 @@ include('../models/connection1.php');
 																					elseif ( empty($_POST['titulo']) &&  empty($_POST['descripcion']) &&  empty($_POST['fechainicio']) &&  empty($_POST['fechafin'])   &&  empty($_POST['quien'])  &&  empty($_POST['tipo']) )  
 																					{
 																						echo "<div class='alert alert-danger' role='alert'>Debes introducir algún dato para la búsqueda.</div>";
-																						//goto general;
 																						$date = date("Y-m-d");
 																						$sql = "SELECT * FROM documentos, usuarios
 																								WHERE userid =id_usuario AND creation_date <= CURDATE()
@@ -196,7 +177,6 @@ include('../models/connection1.php');
 																					else
 																					{
 																						echo "<div class='alert alert-danger' role='alert'>No hay documentos que mostrar.</div>";
-																						//goto general;
 																						$date = date("Y-m-d");
 																						$sql = "SELECT * FROM documentos, usuarios
 																								WHERE userid =id_usuario AND creation_date <= CURDATE()
@@ -210,7 +190,6 @@ include('../models/connection1.php');
 																			}
 																			else
 																			{
-																				//general:
 																				$date = date("Y-m-d");
 																				$sql = "SELECT * FROM documentos, usuarios
 																						WHERE userid =id_usuario AND creation_date <= CURDATE()
@@ -253,6 +232,7 @@ include('../models/connection1.php');
 
 															</tbody>
 														</table>
+											
 											<!--(CRÉDITOS: VER FIN DOCUMENTO)Sector de Paginacion - Operacion matematica para boton siguiente y atras--> 
 												<?php
 													$IncrimentNum =(($compag +1)<=$TotalRegistro)?($compag +1):1;
@@ -324,6 +304,8 @@ include('../models/connection1.php');
 
   include ('footer.php');
 ?>
+
+
 
 
 <!--

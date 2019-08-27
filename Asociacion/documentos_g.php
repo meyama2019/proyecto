@@ -1,56 +1,19 @@
 <?php 
 session_start();
-//define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
-//include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
 include('../models/connection1.php');
     $listaUsuarios =[];
-    //$db=Db::getConnect();
-    //$sql=$db->query('SELECT * FROM usuarios');
-
     $sql = "SELECT * FROM usuarios";
     $consulta = mysqli_query($conexion, $sql);
-
-    // carga en la $listaUsuarios cada registro desde la base de datos
-    //foreach ($sql->fetchAll() as $usuario) {
     while ($usuario = mysqli_fetch_array($consulta)) {
       $listaUsuarios[]= ($usuario['rol_id']);
     }
-    //return $listaUsuarios;
       require_once('menu.php');
   
 ?>
 
 
-<!----DOCUMENTOS UPDATE-->																			
-<?php
-          if(isset($_POST['updatedocs']))
-          {
-          
-                //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-				$id_documento = $_POST['id_documento'];
-                $fecha = $_POST['fecha'];
-                $titulo = $_POST['titulo'];
-                $descripcion = $_POST['descripcion'];
-
-				$sql = "UPDATE documentos
-						SET titulo='$_POST[titulo]',descripcion='$_POST[descripcion]', creation_date='$_POST[fecha]'
-						WHERE id_documento = '$_POST[id_documento]'
-						";
-				$consulta = mysqli_query($conexion, $sql);
-				if($consulta)
-                    {
-					  echo "<script>alert('Información actualizada correctamente');</script>";		
-                      //echo "Registro Nº ".$_POST['id_noticia']." ha sido actualizado correctamente";
-                    }	
-
-            mysqli_close($conexion);	
-              
-          }  
-?>
-
-
-<!----DOCUMENTOS DELETE-->	
+<!----DOCUMENTOS DELETE | ELIMINAR DOCUMENTO-->	
 <?php
           if(isset($_POST['deletedocs']))
           {
@@ -67,10 +30,7 @@ include('../models/connection1.php');
 				if($consulta)
                     {
 					  echo "<script>alert('Documento eliminado de la tabla y del servidor');</script>";			
-                      //echo "Registro Nº ".$_POST['id_noticia']." ha sido eliminado correctamente";
                     }		
-
-           // mysqli_close($conexion);
 
           }  
     ?>
@@ -79,21 +39,17 @@ include('../models/connection1.php');
 
 
 
-	<?php
+<?php
             if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0) // Habría que controlar activo = 0
 				{
 				?>	
-
-								
-
-						
-								  <div class="card">
+								<div class="card">
 								  	<h5 class="card-header" style="background-color: #F78181">Gestión de Documentos</h5>
 								  	<br>
 								  	 <div class="container">
 								  <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >
           
-       
+
 							        <div class="form-row">
 							           <div class="form-group col-md-3">
 							            <label for="titulo">Título</label>
@@ -108,7 +64,6 @@ include('../models/connection1.php');
 																	<select class="form-control" id="quien" name ="quien" required >
 																	<option value="0">Subido por:</option>
 																	<?php
-																	  //$mysqli1 = mysqli_connect('localhost', 'socio', 'socio', 'marte');	
 																	  $query1 = $conexion -> query ("SELECT * FROM usuarios");
 																	  while ($valores = mysqli_fetch_array($query1))
 																	  {
@@ -116,7 +71,6 @@ include('../models/connection1.php');
 																	  }
 																	?>
 							            </select>
-							            <!--<input type="text" class="form-control" id="cmtopais" name="cmtopais" placeholder="Pais">  -->
 							          </div>
 							          <div class="form-group col-md-2">
 							            <label for="fechainicio">Desde</label>
@@ -163,7 +117,6 @@ include('../models/connection1.php');
 															</tr>
 															<tbody>
 																<?php  
-															//$mysqli = mysqli_connect('localhost', 'socio', 'socio', 'marte');
 																if(isset($_POST['buscador']) )
 																{
 																	if(!empty($_POST['titulo']) )
@@ -184,7 +137,6 @@ include('../models/connection1.php');
 																		  if  ($fechafin < $fechainicio)
 																		  {
 																			  echo "<script>alert('Fecha fin no puede ser inferior a fecha de inicio');</script>";
-																			  //goto general;
 																			  $result = mysqli_query($conexion, "SELECT * FROM documentos, usuarios
 																									 WHERE userid =id_usuario
 																									 ORDER BY creation_date  DESC");
@@ -205,7 +157,6 @@ include('../models/connection1.php');
 																			if ( (empty($_POST['fechainicio']) &&  !empty($_POST['fechafin']) ) || (!empty($_POST['fechainicio']) &&  empty($_POST['fechafin'])) )		
 																			{
 																				echo "<script>alert('Debes introducir fecha inicio y fecha fin.');</script>";
-																				//goto general;
 																				$result = mysqli_query($conexion, "SELECT * FROM documentos, usuarios
 																									   WHERE userid =id_usuario
 																									   ORDER BY creation_date  DESC");
@@ -213,7 +164,6 @@ include('../models/connection1.php');
 																			elseif ( empty($_POST['titulo']) &&  empty($_POST['descripcion']) &&  empty($_POST['fechainicio']) &&  empty($_POST['fechafin'])   &&  empty($_POST['quien']) )
 																			{
 																				echo "<script>alert('Debes introducir criterios de búsqueda.');</script>";
-																				//goto general;
 																				$result = mysqli_query($conexion, "SELECT * FROM documentos, usuarios
 																									   WHERE userid =id_usuario
 																									   ORDER BY creation_date  DESC");
@@ -221,7 +171,6 @@ include('../models/connection1.php');
 																			else
 																			{
 																				
-																				//goto general;
 																				$result = mysqli_query($conexion, "SELECT * FROM documentos, usuarios
 																									   WHERE userid =id_usuario
 																									   ORDER BY creation_date  DESC");
@@ -232,7 +181,6 @@ include('../models/connection1.php');
 																}
 																else
 																{
-																	//general:
 																	$result = mysqli_query($conexion, "SELECT * FROM documentos, usuarios
 																									 WHERE userid =id_usuario
 																									 ORDER BY creation_date  DESC");

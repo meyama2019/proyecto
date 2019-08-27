@@ -1,22 +1,13 @@
 <?php
 session_start();
-//define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
-//include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
 include('../models/connection1.php');
     $listaUsuarios =[];
-    //$db=Db::getConnect();
-    //$sql=$db->query('SELECT * FROM usuarios');
-
     $sql = "SELECT * FROM usuarios";
     $consulta = mysqli_query($conexion, $sql);
-
-    // carga en la $listaUsuarios cada registro desde la base de datos
-    //foreach ($sql->fetchAll() as $usuario) {
     while ($usuario = mysqli_fetch_array($consulta)) {
       $listaUsuarios[]= ($usuario['rol_id']);
     }
-    //return $listaUsuarios;
       require_once('menu.php');
   
 ?>
@@ -43,8 +34,6 @@ if(isset($_POST['adddocs']))
 		}
 		else
 		{
-			//$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');		   
-			 
 			$x=  $_FILES['archivo']['name'];
 			$anio= date("Y");
 			$mes= date("m");
@@ -54,16 +43,12 @@ if(isset($_POST['adddocs']))
 			$segundo= date("sa");
 			$quien = $_SESSION['id_usuario'] . "_";
 			$nuevo_nombre = $quien . $anio . $mes. $dia . $hora . $minuto . $segundo;
-			
 			$nuevo_nombre = $quien . $anio . $mes. $dia . $hora . $minuto . $segundo;
 			$nueva_ext = pathinfo($_FILES['archivo']['name'],PATHINFO_EXTENSION);
 			$x = "../docs/". $nuevo_nombre. ".$nueva_ext";
 			
 			move_uploaded_file($_FILES['archivo']['tmp_name'],$target_path ); 
-			
 			rename($target_path,$x);
-			
-			//$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');		   
 			$sql = "INSERT INTO documentos (titulo, descripcion, creation_date, userid,documento ) 
 				   values ('$_POST[titulo]','$_POST[descripcion]','$_POST[creation_date]', '$_POST[id]', '$x')
 					";

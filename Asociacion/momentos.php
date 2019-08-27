@@ -1,7 +1,5 @@
 <?php
  session_start();
-//define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
-//include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
 include('../models/connection1.php');
      $listaUsuarios = 
@@ -38,11 +36,7 @@ include('../models/connection1.php');
 <?php
 
 
-    //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-    // $acentos="SET NAMES 'utf8'";
-    //mysqli_query($conexion, $acentos);
     $sql = "SELECT date(fecha_upload) as fecha_upload,titulo FROM fotos group by date(fecha_upload) order by date(fecha_upload)desc";
-    //$consulta = mysqli_query($conexion, $sql);
     $result = $conexion->query($sql);
     if ($result->num_rows > 0)
     {
@@ -63,10 +57,8 @@ include('../models/connection1.php');
                     <div id="collapse'.$x.'" class="collapse show" aria-labelledby="heading'.$x.'" data-parent="#accordionExample">
                      <div class="card-body">
                        <div class="row">');
-               //$sql1 = "SELECT documento FROM fotos where titulo = '".$row['titulo']."' order by fecha_upload desc";
                 $sql1 = "SELECT fo.documento,us.Nom_Ape,fo.fecha_upload FROM fotos fo inner join usuarios us on fo.userid=us.id_usuario where date(fecha_upload) = '".$row['fecha_upload']."' order by fecha_upload desc";
 
-               //$consulta1 = mysqli_query($conexion, $sql1);
                $result1 = $conexion->query($sql1);
              
                if ($result1->num_rows > 0) // Mostramos las fotos que tienen el mismo titulo
@@ -83,8 +75,6 @@ include('../models/connection1.php');
                            
                         </a>
                       </figure>');
-                   // echo('<div class="col-4"><img src='.$row1['documento'].' alt="..." class="img-thumbnail">
-                   //                   </div>');
                  }
                  echo('</div>');
                }
@@ -173,7 +163,6 @@ include('../models/connection1.php');
       try{
      
       $docu=$uploaled_file;
-      //$docu = '../imagenes/uploads_img/'. $_FILES['foto']['name'];
       $user = $_SESSION['id_usuario'];
       $titu = 'Fotos Varias'; 
 

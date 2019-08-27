@@ -31,22 +31,13 @@ include('../models/connection1.php');
             <input type="text" class="form-control" id="ctfno" name="ctfno" placeholder="Teléfono">
           </div>
         </div>
-      
 
-        
-
-      
         <center><button type="submit" class="btn btn-primary btn-sm" name="busca_socio">Buscar</button></center>
   </form>
 </div>
- 
-
-
-
-    
+     
     <div class="card-body">
         <div class="container">
-          
         
           <table class="table table-hover">
             <thead class="thead-light">
@@ -64,10 +55,6 @@ include('../models/connection1.php');
              <tbody>
                
                 <?php
-                   
-
-                    //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                    //$acentos="SET NAMES 'utf8'";
                     mysqli_query($conexion, $acentos);
                     $sqlInicial="SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.nombre,telefono,cuenta,activo,rol_id 
                         FROM paises pa  
@@ -78,8 +65,7 @@ include('../models/connection1.php');
                      Global $X;
                     if(isset($_POST['busca_socio']) )
                     {
-                     
-                         if(isset($_POST['cid']) && $_POST['cid'] !='')
+                        if(isset($_POST['cid']) && $_POST['cid'] !='')
                           {
                             $sqlInicial = $sqlInicial . " && id_usuario = '$_POST[cid]'";
                           }
@@ -97,15 +83,11 @@ include('../models/connection1.php');
                             $sqlInicial = $sqlInicial . " && telefono like '%$_POST[ctfno]%'";
                           }
                        
-                       
-                        //$sql=$db->query($sqlInicial);
                         $consulta = mysqli_query($conexion, $sqlInicial);
                         
-                        //foreach ($sql->fetchAll() as $listaUsuarios[$x])
                         while ($listaUsuarios = mysqli_fetch_array($consulta)) 
                                 {
                                    
-                                    
                                     echo ('
                                              <tr>
                                             <th scope="row">'. utf8_encode($listaUsuarios['id_usuario']).'</th>
@@ -130,8 +112,6 @@ include('../models/connection1.php');
                     }
                     else
                     {
-                      //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                      //$acentos="SET NAMES 'utf8'";
                       mysqli_query($conexion, $acentos);
                       $sqlInicial="SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.nombre,telefono,cuenta,activo,rol_id 
                           FROM paises pa  
@@ -140,10 +120,8 @@ include('../models/connection1.php');
                           where 1 and rol_id != 95"; 
                        $x=0;
                        Global $X;
-                       //$sql=$db->query($sqlInicial);
                        $consulta = mysqli_query($conexion, $sqlInicial);
                         
-                       // foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
                        while ($listaUsuarios = mysqli_fetch_array($consulta))
                                 {
                                    

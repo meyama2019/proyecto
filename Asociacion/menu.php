@@ -121,7 +121,6 @@
                                 <?php
                                     if (isset($_SESSION['rol1']) )
                                       {
-                                        //echo('<button type="submit" class=" btn btn-outline-primary btn-sm" >Salir');
                                         echo('<button type="submit" class=" btn btn-outline-primary btn-sm" ><img src="https://img.icons8.com/windows/20/000000/logout-rounded.png" > Salir');
                                         
                                       } 
@@ -129,11 +128,7 @@
                                     {
                                       echo('<button type="button" class=" btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModa3">Accede');
                                     }
-                                   
-                                     
-                                     
-                                   
-                                     // $db=Db::cerrar();
+
                                       ?>
                                        
                                

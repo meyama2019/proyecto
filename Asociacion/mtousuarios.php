@@ -22,7 +22,6 @@ require_once('menu.php');
     echo('<div class="container"><div class="alert alert-danger" role="alert">
               Hay que estar registrado para poder visualizar este contenido, Ve a Home y regístrate
             </div></div>');
-    //header("Location: http://localhost/proyecto/home.php");
     exit;
   }
 
@@ -92,11 +91,7 @@ require_once('menu.php');
           // documentos, fotos, noticias. Realizar borrado lógico poniendo 2 - Baja Provisional o 3-Baja Definitiva
           if(isset($_POST['userdel'])) 
           {
-          
-            //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
             $id_Rol = $_POST['userdel']; 
-           
-                
             $sql = "UPDATE usuarios set activo = 2 WHERE id_usuario = '$_POST[userdel]' ";
             $consulta = mysqli_query($conexion, $sql);
             if($consulta)
@@ -160,14 +155,12 @@ require_once('menu.php');
             <select class="form-control" id="cmtopro" name ="cmtopro"  >
                           <option value='' >Provincia:</option>
                           <?php
-                            //$mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
                             $query = $conexion -> query ("SELECT * FROM provincias");
                             while ($valores = mysqli_fetch_array($query)) {
                             echo '<option value="'.$valores[id_provincia].'">'.utf8_encode($valores[provincia]).'</option>';
                             }
                           ?>
             </select>
-            <!--<input type="text" class="form-control" id="cmtopro" name="cmtopro" placeholder="Provincia">-->
           </div>
 
           <div class="form-group col-md-2">
@@ -175,7 +168,6 @@ require_once('menu.php');
             <select class="form-control" id="cmtopais" name ="cmtopais"  >
                         <option value=''>Pais:</option>
                         <?php
-                          //$mysqlip = new mysqli('localhost', 'socio', 'socio', 'marte');  
                           $queryp = $conexion -> query ("SELECT * FROM paises");
                           while ($valoresp = mysqli_fetch_array($queryp)) {
                           echo '<option value="'.$valoresp[id].'">'.utf8_encode($valoresp[nombre]).'</option>';
@@ -183,7 +175,6 @@ require_once('menu.php');
 
                         ?>
             </select>
-            <!--<input type="text" class="form-control" id="cmtopais" name="cmtopais" placeholder="Pais">  -->
           </div>
            <div class="form-group col-md-2">
             <label for="cmtosit"></label>
@@ -194,14 +185,12 @@ require_once('menu.php');
              <select class="form-control" id="cmtorol" name ="cmtorol"  >
                     <option value=''>Rol:</option>
                     <?php
-                        //$mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
                         $query = $conexion -> query ("SELECT * FROM rolusuario");
                         while ($valores = mysqli_fetch_array($query)) {
                              echo '<option value="'.$valores[idRol].'">'.utf8_encode($valores[Nombre]).'</option>';
                              }
                     ?>
               </select>
-            <!--<input type="text" class="form-control" id="cmtorol" name="cmtorol" placeholder="Tipo Usuario"> -->
           </div>  
          </div>
 
@@ -209,7 +198,6 @@ require_once('menu.php');
          <div class="container">
            <div class="form-row">
             <a href="mtousuarios-u.php" class="btn btn-outline-danger btn-sm">Nuevo</a></button>
-            <!--<button type="submit" class="btn btn-outline-danger " name="mto_newrol" >Nuevo</button> -->
         </div>
          </div>
             
@@ -240,10 +228,6 @@ require_once('menu.php');
                
 
           <?php
-                    //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                    //$acentos="SET NAMES 'utf8'";
-                    //mysqli_query($conexion, $acentos);
-                    
                     
                     $x=0;
                     Global $X;
@@ -300,7 +284,6 @@ require_once('menu.php');
                           {
                             $sqlInicial = $sqlInicial . " && rol_id = '$_POST[cmtorol]'";
                           }
-                        //$sqlInicial = $sqlInicial ;
                       }
                     else
                     {
@@ -316,13 +299,8 @@ require_once('menu.php');
                             {
                              $pagina = 1;
                             }
-                        //echo("entra sin inicializar");
                      $start_from = ($pagina-1)*$registro_por_pagina;
-                     //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                     //$page_query= "SELECT * FROM usuarios where 1 " . " LIMIT $start_from, $registro_por_pagina";
-                     
                      $page_query= $sqlInicial . " LIMIT $start_from, $registro_por_pagina";
-
                      $page_result = mysqli_query($conexion, $sqlInicial);
                      $total_records = mysqli_num_rows($page_result);
                       
@@ -332,15 +310,12 @@ require_once('menu.php');
                      $diferencia = $total_pages - $pagina;
                      if($diferencia <= $start_loop)
                         {
-                         //$start_loop = $total_pages;
                           $start_loop = $pagina;
 
                         } 
-                      //$end_loop = $start_loop + 1;
                        $end_loop = $total_pages;
                      $sql=$conexion->query($page_query); // ****
 
-                    //foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
                     while($listaUsuarios = mysqli_fetch_array($sql))
                                 {                            
                                     echo ('
@@ -377,10 +352,7 @@ require_once('menu.php');
                         echo ('<p>Resultados encontrados '.$total_records.'</p>');
 
                ?>
-
-
-           
-            
+        
             </tbody>
          
 
@@ -475,13 +447,8 @@ require_once('menu.php');
 
 
 <!-- Modal del Alta / Update de Socio  ------------------------------------------------------->
-
       <!-- Modal -->
-
-
-
-
-           <div class="modal fade" id="updateuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe2" aria-hidden="true">
+        <div class="modal fade" id="updateuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe2" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -492,8 +459,6 @@ require_once('menu.php');
                 </div>
                 <div class="modal-body">
        
-            <!--<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">-->
-
         
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
               
@@ -513,7 +478,6 @@ require_once('menu.php');
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
 
-            <!--<div class="form-group">-->
 
                      <div class="form-group">
 
@@ -529,7 +493,6 @@ require_once('menu.php');
             <div class="form-group">
                         <label for="SocioProvincia">Provincia</label>
             <?php
-              //$mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
             ?>
             <select class="form-control" id="SocioProvincia" name ="SocioProvincia" required >
             <option value="0">Seleccione:</option>
@@ -544,7 +507,6 @@ require_once('menu.php');
             <div class="form-group">
                         <label for="SocioPais">País</label>
             <?php
-              //$mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
             ?>
             <select class="form-control" id="SocioPais" name ="SocioPais" required >
             <option value="0">Seleccione:</option>
@@ -564,7 +526,6 @@ require_once('menu.php');
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
 
-            <!--<div class="form-group">-->
             <div class="form-group">
 
                         <label for="SocioCuenta">Nº de Cuenta</label>

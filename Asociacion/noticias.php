@@ -1,7 +1,5 @@
 <?php
 session_start();
-//define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
-//include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
 include('../models/connection1.php');
     $listaUsuarios = array(
@@ -10,13 +8,8 @@ include('../models/connection1.php');
     $listanoticias = array(
   array('id_noticia' => '1','userid' => '1','fechainicio' => '2019-06-25','fechafin' => '2019-06-30','titulo' => 'MOOC: ¿Estás preparado para competir? Transformación digital para pymes.','descripcion' => 'La transformación digital de las empresas es un factor clave hoy día para su competitividad y productividad. Próximamente, Andalucía Digital pone en marcha un MOOC sobre este tema, para los que quieran formarse de forma gratuita y on-line.')
 );
+     require_once('menu.php');
 
-
-
-    //return $listaUsuarios;
-      require_once('menu.php');
-
-  
 ?>
 
           
@@ -92,7 +85,6 @@ include('../models/connection1.php');
 									
 								}	
 								  
-                              //$db=Db::cerrar();
                               mysqli_close($conexion);
                 ?>
 

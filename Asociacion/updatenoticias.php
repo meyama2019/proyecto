@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 include ('../includes/header.php');
 include('../models/connection1.php');
 require_once('menu.php');
@@ -12,7 +11,6 @@ require_once('menu.php');
     echo('<div class="container"><div class="alert alert-danger" role="alert">
               Hay que estar registrado para poder visualizar este contenido, Ve a Home y regístrate
             </div></div>');
-    //header("Location: http://localhost/proyecto/home.php");
     exit;
   }
 ?>
@@ -31,11 +29,6 @@ require_once('menu.php');
       $fechai = $_POST['fechainicio'];
       $fechaf = $_POST['fechafin'];
 
-
-      //echo($socioid);
-      //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-      //$acentos="SET NAMES 'utf8'";
-      //mysqli_query($conexion, $acentos);
       mysqli_set_charset($conexion, 'utf8');
     
       $update = "UPDATE NOTICIAS set 
@@ -60,9 +53,6 @@ require_once('menu.php');
 
         echo "<script>alert(Notica no encontrada');</script>";
       }
-
-      
-
     }
 
     ?>
@@ -113,8 +103,6 @@ require_once('menu.php');
                                               <label for="fechainicio">Fecha Inicio</label>
                                               <input type="date" class="form-control" name ="fechainicio" id ="fechainicio" value=<?php echo($data['fechainicio']);?> >
                                             </div>
-
-                                    
 
                                             <div class="form-group col-md-3">
                                               <label for="fechafin">Fecha Fin</label>

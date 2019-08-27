@@ -76,9 +76,6 @@
              <tbody>
 
               <?php
-                    //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                    //$acentos="SET NAMES 'utf8'";
-                    //mysqli_query($conexion, $acentos);
                     $sqlInicial="SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.nombre,telefono,cuenta,activo,rol_id 
                         FROM paises pa  
                         inner join usuarios us on us.Pais = pa.id
@@ -114,11 +111,9 @@
                           {
                             $sqlInicial = $sqlInicial . " && cuenta like '%$_POST[ccuenta]%'";
                           }
-                         //$sql=$db->query($sqlInicial);
 
                          $consulta = mysqli_query($conexion, $sqlInicial);                         
                          
-                        //foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
                         while ($listaUsuarios = mysqli_fetch_array($consulta)) 
                                 {
                                    
@@ -151,9 +146,7 @@
                     }
                     else
                     {
-                      //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                      //$acentos="SET NAMES 'utf8'";
-                      //mysqli_query($conexion, $acentos);
+
                       $sqlInicial="SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.nombre,telefono,cuenta,activo,rol_id 
                           FROM paises pa  
                           inner join usuarios us on us.Pais = pa.id
@@ -161,11 +154,7 @@
                           where us.activo = 1 "; 
                       $x=0;
                       Global $X;
-                        //$sql=$db->query($sqlInicial);
-
                         $consulta = mysqli_query($conexion, $sqlInicial);
-                         
-                        //foreach ($sql->fetchAll() as $listaUsuarios[$x]) 
                         while ($listaUsuarios = mysqli_fetch_array($consulta)) 
                                 {
                                    

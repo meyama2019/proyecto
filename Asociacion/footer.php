@@ -44,8 +44,8 @@
 
 define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
 include(RAIZ . 'models/connection1.php');
-//include('../models/connection1.php');
 ?>
+
 
 
 <!--Para el alta de SOCIOS-->
@@ -56,7 +56,6 @@ include(RAIZ . 'models/connection1.php');
             if (( !empty($_POST['SocioUsuario'])) && ( !empty($_POST['socioEmail'])) && ( !empty($_POST['SocioPassword'])) && ( !empty($_POST['SocioDNI'])) && ( !empty($_POST['SocioTelf'])) )
               {
                 
-                //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
                 $username = $_POST['SocioUsuario'];
                 $userdni = $_POST['SocioDNI'];
                 $useremail = $_POST['socioEmail'];
@@ -81,13 +80,6 @@ include(RAIZ . 'models/connection1.php');
                   if($consulta)
                     {
                       include ('confirm.php');
-                      //ini_set('SMTP','smtp.gmail.com');
-                      //ini_set('smtp_port',587);
-                      //$to = "meyama2019@gmail.com";
-                      //$subject = "Alta como socio";
-                      //$mensaje = "Buenos días,\r\n¡Te damos la bienvenida!.\r\n¡Gracias por formar parte de nuestra familia!\r\n" ;
-                      //$headers = "From: meyama2019@gmail.com" . "\r\n" . "BCC: meyama2019@gmail.com;  ";
-                      //mail($to,$subject,$mensaje,$headers);
                     }
                   mysqli_close($conexion);
                 
@@ -110,22 +102,16 @@ include(RAIZ . 'models/connection1.php');
           
            if ((!empty($_POST['ur_email'])) && (!empty($_POST['ur_passwd'])))
               {
-                
-                //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
+
                 $em=$_POST['ur_email']; //obligatorio
                 $pw=sha1($_POST['ur_passwd']); //obligatorio
                 $activo=0; // <- Usuario registrado activo
                 $rol=1;    // <- Rol de Usuario registrado
-                
                
                 $sql_e = "SELECT * FROM usuarios WHERE email='$em'";
-               
                 $res_e = mysqli_query($conexion, $sql_e);
                 
-               
-                
                 if ((mysqli_num_rows($res_e) == 0))
-                
                 {
                   $sql = "INSERT INTO usuarios ( email, passwd, metodo, activo, rol_id )
                    values ('$_POST[ur_email]','$pw',1,'$activo', '$rol')";
@@ -133,13 +119,6 @@ include(RAIZ . 'models/connection1.php');
                   if($consulta)
                     {
                       include ('confirm_ur.php');
-                      //ini_set('SMTP','smtp.gmail.com');
-                      //ini_set('smtp_port',587);
-                      //$to = "meyama2019@gmail.com";
-                      //$subject = "Alta como socio";
-                      //$mensaje = "Buenos días,\r\n¡Te damos la bienvenida!.\r\n¡Gracias por formar parte de nuestra familia!\r\n" ;
-                      //$headers = "From: meyama2019@gmail.com" . "\r\n" . "BCC: meyama2019@gmail.com;  ";
-                      //mail($to,$subject,$mensaje,$headers);
                     }
                   mysqli_close($conexion);
                 
@@ -157,28 +136,16 @@ include(RAIZ . 'models/connection1.php');
 <?php
           if(isset($_POST['submitContacto']))
           {
-                //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                //$acentos="SET NAMES 'utf8'";
-                //mysqli_query($conexion, $acentos);
                 $texto = htmlspecialchars($_POST['ContactoMensasje']);
                 $sql = "INSERT INTO contacto (fecha_entrada, nombre, email, telefono, asunto, mensaje, activo) values (current_timestamp ,'$_POST[ContactoNombre]','$_POST[ContactoEmail]','$_POST[ContactoTelefono]','$_POST[ContactoAsunto]','$texto', 1)";
                 $consulta = mysqli_query($conexion, $sql);
                 if($consulta)
                     {
                       include ('confirm_me.php');
-                      //ini_set('SMTP','smtp.gmail.com');
-                      //ini_set('smtp_port',587);
-                      //$to = "meyama2019@gmail.com";
-                      //$subject = "Alta como socio";
-                      //$mensaje = "Buenos días,\r\n¡Te damos la bienvenida!.\r\n¡Gracias por formar parte de nuestra familia!\r\n" ;
-                      //$headers = "From: meyama2019@gmail.com" . "\r\n" . "BCC: meyama2019@gmail.com;  ";
-                      //mail($to,$subject,$mensaje,$headers);
-                    //$num_rows=$conexion->query('SELECT * FROM contacto where activo=1'); // 1 Pendientes aprobación
                     $sql = "SELECT * FROM contacto where activo=1";
                     $consulta = mysqli_query($conexion, $sql);
                     $num_rows = mysqli_num_rows($consulta);
                     $tot=0;
-                    // foreach ($num_rows->fetchAll() as $contacto) {
                     for ($i = 0; $i <= $num_rows; $i++) {
                       $tot=$tot+1;
                      $_SESSION['tot_con'] = $tot;
@@ -198,7 +165,6 @@ include(RAIZ . 'models/connection1.php');
 
  
  <!-- Modal del Contacto y comunicación con Administrador / Empresa  ------------------------------------------------------->
-
       <!-- Modal -->
           <div class="modal fade" id="exampleModa4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe4" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -301,7 +267,6 @@ include(RAIZ . 'models/connection1.php');
 
 
 <!-- Modal del Alta de Socio  ------------------------------------------------------->
-
       <!-- Modal -->
            <div class="modal fade" id="exampleModa2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe2" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -314,9 +279,7 @@ include(RAIZ . 'models/connection1.php');
                 </div>
                 <div class="modal-body">
        
-            <!--<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">-->
-
-				
+			
 				    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
                       <div class="form-group">
@@ -334,7 +297,6 @@ include(RAIZ . 'models/connection1.php');
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
 
-            <!--<div class="form-group">-->
 
 					           <div class="form-group">
 
@@ -349,9 +311,7 @@ include(RAIZ . 'models/connection1.php');
 
             <div class="form-group">
                         <label for="SocioProvincia">Provincia</label>
-            <?php
-              //$mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
-            ?>
+
             <select class="form-control" id="SocioProvincia" name ="SocioProvincia" required >
             <option value="0">Seleccione:</option>
             <?php
@@ -365,7 +325,6 @@ include(RAIZ . 'models/connection1.php');
             <div class="form-group">
                         <label for="SocioPais">País</label>
             <?php
-              //$mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
             ?>
             <select class="form-control" id="SocioPais" name ="SocioPais" required >
             <option value="0">Seleccione:</option>
@@ -385,7 +344,6 @@ include(RAIZ . 'models/connection1.php');
                         <small id="emailHelp" class="form-text text-muted">No compartas datos sensibles con otras personas.</small>
                       </div>
 
-            <!--<div class="form-group">-->
 					  <div class="form-group">
 
                         <label for="SocioCuenta">Nº de Cuenta</label>
@@ -419,7 +377,6 @@ include(RAIZ . 'models/connection1.php');
 
 
  <!-- Modal del Acceso de Usuarios  ------------------------------------------------------->
-
       <!-- Modal -->
           <div class="modal fade" id="exampleModa3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe2" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -467,12 +424,13 @@ include(RAIZ . 'models/connection1.php');
 
 
 
+
+
 <!-- Footer -->
 <footer class="page-footer font-small blue-grey lighten-5">
 
-  <div style="background-color: #006450; color: #ffffff;">
-
-    <div class="container">
+<div style="background-color: #006450; color: #ffffff;">
+<div class="container">
 
       <!-- Grid row-->
       <div class="row py-4 d-flex align-items-center">
@@ -484,27 +442,20 @@ include(RAIZ . 'models/connection1.php');
 		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img src="http://localhost/proyecto/imagenes/instagram.png" alt="instagram" width="20" height="20"></a>
 		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img src="http://localhost/proyecto/imagenes/twitter.png" alt="twitter" width="20" height="20"></a>
 		  </h6>
-			
-
 		</div>
         <div class="col-md-6 col-lg-5 text-center text-md-right mb-4 mb-md-0" id='myWatch'></div>
         <!-- Grid column -->
 
-        
-        
-
-      </div>
-      <!-- Grid row-->
-
     </div>
-  </div>
+    <!-- Grid row-->
 
-  <!-- Footer Links -->
-  <div class="container text-center text-md-left mt-5">
+</div>
+</div>
 
+<!-- Footer Links -->
+<div class="container text-center text-md-left mt-5">
     <!-- Grid row -->
     <div class="row mt-3 dark-grey-text">
-
       <!-- Grid column -->
       <div class="col-md-20 col-lg-20 col-xl-20 mb-20">
 
@@ -523,94 +474,24 @@ include(RAIZ . 'models/connection1.php');
 		</p>
 		
 
-      </div>
-      <!-- Grid column -->
-
-      <!-- Grid column 
-      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-
-        <!-- Links 
-        <h6 class="text-uppercase font-weight-bold">Products</h6>
-        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>
-          <a class="dark-grey-text" href="#!">MDBootstrap</a>
-        </p>
-        <p>
-          <a class="dark-grey-text" href="#!">MDWordPress</a>
-        </p>
-        <p>
-          <a class="dark-grey-text" href="#!">BrandFlow</a>
-        </p>
-        <p>
-          <a class="dark-grey-text" href="#!">Bootstrap Angular</a>
-        </p>
-
-      </div>
-      <!-- Grid column 
-
-      <!-- Grid column 
-      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-
-        <!-- Links 
-        <h6 class="text-uppercase font-weight-bold">Useful links</h6>
-        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>
-          <a class="dark-grey-text" href="#!">Your Account</a>
-        </p>
-        
-        <p>
-          <a class="dark-grey-text" href="#!">Shipping Rates</a>
-        </p>
-        <p>
-          <a class="dark-grey-text" href="#!">Help</a>
-        </p>
-
-      </div>
-      <!-- Grid column 
-
-      <!-- Grid column
-      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-
-        <!-- Links 
-        <h6 class="text-uppercase font-weight-bold">Contacto</h6>
-        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>
-          <i class="fas fa-home mr-3"></i> C/El Carmen,100</p>
-        <p>
-          <i class="fas fa-homee mr-3"></i> 23660 - Alcaudete</p>
-        <p>
-          <i class="fas fa-envelope mr-3"></i> alcaudete@curso.es</p>
-
-        <p>
-          <i class="fas fa-phone mr-3"></i> + 34 955 567 88</p>
-		  
-		  <p>
-          <a href="" class="badge badge-info" data-toggle="modal" data-target="#exampleModa4" >Contacto</a>
-        </p>
-       
-
-      </div>
-      <!-- Grid column -->
-
+    </div>
+    <!-- Grid column -->
     </div>
     <!-- Grid row -->
 
-  </div>
-  <!-- Footer Links -->
+</div>
+<!-- Footer Links -->
 
-  <!-- Copyright -->
+<!-- Copyright -->
   <div class="footer-copyright text-center text-black-50 py-3">© 2018 Copyright:
     <a class="dark-grey-text" href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
   <br>
   Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"             title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-  <!-- Copyright -->
+<!-- Copyright -->
 
 </footer>
 <!-- Footer -->
 
-<!---- FUNCIONES AJAX --------------------------------------------->
-
 
 </body>
-
 </html>

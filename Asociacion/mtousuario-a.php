@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 include ('../includes/header.php');
 include('../models/connection1.php');
 require_once('menu.php');
@@ -12,7 +11,6 @@ require_once('menu.php');
     echo('<div class="container"><div class="alert alert-danger" role="alert">
               Hay que estar registrado para poder visualizar este contenido, Ve a Home y regístrate
             </div></div>');
-    //header("Location: http://localhost/proyecto/home.php");
     exit;
   }
 ?>
@@ -25,7 +23,6 @@ require_once('menu.php');
 
   if(isset($_POST['updateuser']))
   {
-   
     $socioid= $_POST['socioid'];
     $email = $_POST['socioEmail'];
     if(isset($_POST['SocioPasswordN']) && $_POST['SocioPasswordN'] !='')
@@ -46,7 +43,6 @@ require_once('menu.php');
     $ccct = $_POST['SocioCuenta'];
     $situ = $_POST['SocioSitu'];
     $rolu = $_POST['SocioRol'];
-    //echo($socioid);
       $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
       $acentos="SET NAMES 'utf8'";
       mysqli_query($conexion, $acentos);
@@ -69,7 +65,6 @@ require_once('menu.php');
     $resultado = mysqli_query($conexion, $update);
     if($resultado)
     {
-       //echo "<script>alert('Cojones de Socio correcta');</script>";
        $_GET['id'] = $socioid;
     }
     else
@@ -86,7 +81,6 @@ require_once('menu.php');
 <?php
   if(isset($_GET['id']))
   {
-    
     $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
     $id_user = $_GET['id'];
     $sql = "SELECT * FROM usuarios where id_usuario=".$id_user." ";
@@ -94,9 +88,6 @@ require_once('menu.php');
     if($consulta)
         {
           $news_data = mysqli_fetch_array($consulta);
-
-          //echo "<script>alert('Registro actualizado correctamente');</script>";   
-           
         }   
 
   }
@@ -108,14 +99,8 @@ require_once('menu.php');
 
       <div class="card">
           <h5 class="card-header" style="background-color: #F78181">Gestión de Usuarios (Actualización)</h5>
-
           <br>
-             
          <div class="container">
-       
-          
-
-        
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                   <div class="form-row">
                       <div class="form-group col-md-1">

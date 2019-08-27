@@ -44,12 +44,7 @@ include('../models/connection1.php');
 <div class="accordion" id="accordionExample">
 
 <?php
-     
-               
-    //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-   
-    $sql = "SELECT titulo FROM fotos group by titulo order by titulo";
-    //$consulta = mysqli_query($conexion, $sql);
+	$sql = "SELECT titulo FROM fotos group by titulo order by titulo";
     $result = $conexion->query($sql);
     if ($result->num_rows > 0)
     {
@@ -75,7 +70,6 @@ include('../models/connection1.php');
                on fo.userid=us.id_usuario
                where titulo = '".$row['titulo']."' order by fecha_upload desc";
 
-               //$consulta1 = mysqli_query($conexion, $sql1);
                $result1 = $conexion->query($sql1);
              
                if ($result1->num_rows > 0) // Mostramos las fotos que tienen el mismo titulo
@@ -124,7 +118,7 @@ include('../models/connection1.php');
                         <input type='hidden' name='MAX_FILE_SIZE' value='2000000'>
                        <div class="form-group">
                         <label for="foto">Foto</label>
-                        <input type="file" class="form-control" id="foto" name="foto" placeholder="File.." required>
+                        <input type="file" class="form-control" id="foto" name="foto" placeholder="File.." required accept=".jpeg,.jpg,.png, .bmp">
                       </div>
                        <div class="form-group">
                         <label for="titulo">Titulo</label>
@@ -186,7 +180,6 @@ include('../models/connection1.php');
       try{
      
       $docu=$uploaled_file;
-      //$docu = '../imagenes/uploads_img/'. $_FILES['foto']['name'] ;
       $user = $_SESSION['id_usuario'];
       $titu = $_POST['titulo'];  
       

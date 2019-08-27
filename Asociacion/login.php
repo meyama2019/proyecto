@@ -1,25 +1,14 @@
 
 <?php
-  session_start();
-//require_once('../models/connection.php');
-
-//Inputuser
-//Inputemail
-//InputPassword
-
-		
-//define('RAIZ', $_SERVER['DOCUMENT_ROOT'].'/');
-//include('../proyecto/includes/header.php');
+session_start();
 define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
 include(RAIZ . 'asociacion/header.php');
-
 require_once('../models/connection1.php');
  
 
 	
 
 //////////COMPROBACIÓN SI EXISTE + MENSAJE DE ERROR
-///////// 11/08/2019 - YARUB
 if ( !empty($_POST['Inputuser']) && !empty($_POST['ole']) && !empty($_POST['Inputemail']) ) 
 {
 	echo "<script type='text/javascript'>alert('DEBES LOGEAR USANDO EMAIL O NOMBRE DE USUARIO NO AMBAS OPCIONES');  location.href = 'http://localhost/proyecto/home.php';</script>";
@@ -69,7 +58,6 @@ elseif ( isset($_POST['Inputuser']) && isset($_POST['ole']) && empty($_POST['Inp
 			 
 			 $host  = $_SERVER['HTTP_HOST'];
 				$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-				//$uri   = '/proyecto';
 				$extra = '../home.php';
 				header("Refresh:0");
 				header("Location: http://$host$uri/$extra");
@@ -130,7 +118,6 @@ else
 {
 	$host  = $_SERVER['HTTP_HOST'];
     $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-    //$uri   = '/proyecto';
     $extra = '../home.php';
     header("Refresh:0");
     header("Location: http://$host$uri/$extra");
@@ -139,10 +126,7 @@ else
 
 	
 //////////FIN COMPROBACIÓN SI EXISTE + MENSAJE DE ERROR
-
-
-
-     
+   
    mysqli_close($conexion);  
   
 ?>

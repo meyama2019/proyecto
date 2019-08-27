@@ -12,7 +12,6 @@ require_once('menu.php');
     echo('<div class="container"><div class="alert alert-danger" role="alert">
               Hay que estar registrado para poder visualizar este contenido, Ve a Home y regístrate
             </div></div>');
-    //header("Location: http://localhost/proyecto/home.php");
     exit;
   }
 
@@ -67,7 +66,6 @@ require_once('menu.php');
                         <div class="form-group col-md-3">
                         <label for="SocioProvincia">Provincia</label>
                         <?php
-                          //$mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
                         ?>
                         <select class="form-control" id="SocioProvincia" name ="SocioProvincia" value=required >
                         <option value="0">Seleccione:</option>
@@ -82,7 +80,6 @@ require_once('menu.php');
                         <div class="form-group col-md-3">
                                     <label for="SocioPais">País</label>
                         <?php
-                          //$mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
                         ?>
                         <select class="form-control" id="SocioPais" name ="SocioPais" required >
                         <option value="0">Seleccione:</option>
@@ -115,7 +112,6 @@ require_once('menu.php');
                       <div class="form-group col-md-4">
                               <label for="SocioRol">Tipo Usuario</label>
                                <?php
-                                  //$mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
                                 ?>
                                 <select class="form-control" id="SocioRol" name ="SocioRol" value=required >
                                 <option value="0">Seleccione:</option>
@@ -164,9 +160,6 @@ require_once('menu.php');
     $situ = $_POST['SocioSitu'];
     $rol = $_POST['SocioRol'];
 
-      //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-      //$acentos="SET NAMES 'utf8'";
-      //mysqli_query($conexion, $acentos);    
       
       $sql = "INSERT INTO usuarios (usuario, passwd, email, Nom_Ape,  dni, provincias, pais, telefono, cuenta, activo, rol_id ) 
           values ('$alias','$passw','$email','$nbap','$dni','$prov','$pais','$telf', '$ccct','$situ', '$rol')";

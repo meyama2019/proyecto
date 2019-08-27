@@ -1,15 +1,9 @@
-<?php 
- //include('../models/connection1.php');
-?>
-
 
 <?php // Funcion para Eliminar una foto ************************************************
 if(isset($_POST['deletefoto']))
 {
 
-    //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
     $id_foto = $_POST['idfoto'];
-    //$nombre = $_POST['userid'];
 
 
     $sql = "DELETE FROM fotos WHERE id_foto = $_POST[idfoto]";
@@ -19,8 +13,6 @@ if(isset($_POST['deletefoto']))
         echo "<script>alert('Eliminada foto ". $id_foto." ');</script>";
 
     }
-
-    //mysqli_close($conexion);
 
 }
 ?>
@@ -62,7 +54,6 @@ if(isset($_POST['deletefoto']))
          <center><button type="submit" class="btn btn-primary btn-sm " name="mto_buscarrol" >Buscar</button></center>
          <div class="container">
            <div class="form-row">
-            <!--<button type="submit" class="btn btn-outline-danger " name="mto_newrol" >Nuevo</button>-->
             <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#mtofotonew">Nuevo</button>
         </div>
          </div>
@@ -93,9 +84,6 @@ if(isset($_POST['deletefoto']))
                
 
               <?php
-                    //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                    //$acentos="SET NAMES 'utf8'";
-                    //mysqli_query($conexion, $acentos);
                     $sqlInicial="SELECT * FROM fotos where 1 ";
                     $x=0;
                     Global $X;
@@ -128,9 +116,7 @@ if(isset($_POST['deletefoto']))
                           }
                           
                         
-                        // $sql=$db->query($sqlInicial);
-                        //$mysqli = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                        //$result = mysqli_query($mysqli, $sqlInicial);
+
                         $result = mysqli_query($conexion, $sqlInicial);
 
                         while($docs_data = mysqli_fetch_array($result))
@@ -176,49 +162,17 @@ if(isset($_POST['deletefoto']))
 
                         }
                          
-                        /* foreach ($sql->fetchAll() as $listaUsuarios[$x])
-                                {                            
-                                    echo ('
-                                             <tr >
-                                            <th scope="row">'. utf8_encode($listaUsuarios[$x]['id_foto']).'</th>
-                                            <td >'. utf8_encode($listaUsuarios[$x]['userid']). '</td>
-                                            <td><img src='. utf8_encode($listaUsuarios[$x]['documento']). ' class="img-responsive" height="30px" width="30px" alt="..."></td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['fecha_upload']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['titulo']). '</td>
-                                            <td><button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
-                                                value='.$listaUsuarios[$x]['id_foto'].'>Editar</button>
-                                                <button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
-                                                value='.$listaUsuarios[$x]['id_foto'].'>Borrar</button></td></tr>
-                                            ');
-                                            
-
-
-                                                
-                                     $x=$x+1;
-                                     $X=$x;
-                                    
-                                }*/
-
-                                   
-                                   
+                              
                                  
                         echo ('<p>Resultados encontrados '.$X.'</p>');
 
-                       // mysqli_close($conexion);
                      
                       }
                     else
                     {   
-                        //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                        //$acentos="SET NAMES 'utf8'";
-                        //mysqli_query($conexion, $acentos);
-                       // $sqlInicial="SELECT * FROM fotos where 1 ";
+                        
                         $x=0;
-                        //$mysqli = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                        //$result = mysqli_query($mysqli, "SELECT * FROM fotos where 1");
                         $result = mysqli_query($conexion, "SELECT * FROM fotos where 1");
-
-
                         while($docs_data = mysqli_fetch_array($result))
               {?>
                   <tr class="item">
@@ -248,7 +202,6 @@ if(isset($_POST['deletefoto']))
 
                           <td>
                               <input type="hidden" class="form-control" name ="idfoto" value="<?php echo utf8_decode($docs_data['id_foto']); ?>">
-                              <!--<button type="submit" class="btn btn-outline-danger btn-sm" name="updaterol">Editar</button>-->
 
                               <button type="submit" class="btn btn-outline-danger btn-sm" name="deletefoto">Borrar</button>
                           </td>
@@ -259,48 +212,9 @@ if(isset($_POST['deletefoto']))
                   <?php
                   $x=$x+1;
                   $X=$x;
-
               }
-
-
-
-              //$sql=$db->query($sqlInicial);
-                         
-                        //foreach ($sql->fetchAll() as $listaUsuarios[$x])
-                        //        {
-                                   
-                                    
-                         /*           echo ('
-                                             <tr>
-                                            <th scope="row">'. utf8_encode($listaUsuarios[$x]['id_foto']).'</th>
-                                            <td >'. utf8_encode($listaUsuarios[$x]['userid']). '</td>
-                                            <td><img src='. utf8_encode($listaUsuarios[$x]['documento']). ' class="img-responsive" height="30px" width="30px" alt="..."></td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['fecha_upload']). '</td>
-                                            <td>'. utf8_encode($listaUsuarios[$x]['titulo']). '</td>
-                                            <td><button type="submit" class="btn btn-outline-danger btn-sm" name="edit-rol" 
-                                                value='.$listaUsuarios[$x]['id_foto'].'>Editar</button>
-                                                <button type="submit" class="btn btn-outline-danger btn-sm" name="deletefoto" 
-                                                value='.$listaUsuarios[$x]['id_foto'].'>Borrar</button></td></tr>
-                                            ');
-                                     $x=$x+1; 
-                                     $X=$x;
-
-                                }*/
-
-                                   
-                                  
-                                   
-                                    
-                               
                          echo ('<p>Resultados encontrados '.$X.'</p>');
-
-                        //mysqli_close($conexion);
-                               
                        }
-
-                   //mysqli_close($conexion);
-
-
                ?>
 
 
@@ -326,13 +240,11 @@ if(isset($_POST['deletefoto']))
                 </div>
                 <div class="modal-body">
 
-                    <!--<form method="post" action="<?php //echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"> -->
                       <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data"> 
                         <input type='hidden' name='MAX_FILE_SIZE' value='2000000'> 
                       <div class="form-group">
                         <label for="mtorol_namenew">Id usuario</label>
                         <?php
-                        //$mysqli = new mysqli('localhost', 'socio', 'socio', 'marte');
                       ?>
                       <select class="form-control" id="mtorol_namenew" name ="mtorol_namenew" required >
                       <option value="0">Seleccione:</option>
@@ -341,14 +253,13 @@ if(isset($_POST['deletefoto']))
                         while ($valores1 = mysqli_fetch_array($query1)) {
                         echo '<option value="'.$valores1[id_usuario].'">'.utf8_encode($valores1[usuario]).'</option>';
                         }
-                      //mysqli_close($mysqli);
                       ?>
                       </select>
                       </div>
                 
                       <div class="form-group">
                         <label for="foto">Foto</label>
-                        <input type="file" class="form-control" id="foto" name="foto" placeholder="File.." required>
+                        <input type="file" class="form-control" id="foto" name="foto" placeholder="File.." required accept=".jpeg,.jpg,.png, .bmp">
                       </div>
                       
                       <div class="form-group">
@@ -382,13 +293,10 @@ if(isset($_POST['deletefoto']))
            if (isset($_POST['mtorol_namenew']) && $_POST['mtorol_namenew']!='')
 
               {
-               // echo($_POST['mtorol_namenew']);
-
               if ($_FILES['foto']['error'] > 0)
               {
                 echo 'Problem mayor 0';
                 exit;
-
               }
 
               if ($_FILES['foto']['type'] != 'image/jpeg')
@@ -418,13 +326,7 @@ if(isset($_POST['deletefoto']))
               }
 
                 $docu=$uploaled_file;
-                //$docu = '../imagenes/uploads_img/'. $_FILES['foto']['name'] ;
                 $user = $_SESSION['id_usuario'];
-                 
-                          
-                //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                //$acentos="SET NAMES 'utf8'";
-                //mysqli_query($conexion, $acentos);
 
                 $sqlindice = "SELECT id_foto from fotos order by id_foto desc limit 1";
                 $next=mysqli_query($conexion, $sqlindice);
@@ -445,8 +347,7 @@ if(isset($_POST['deletefoto']))
                      echo "<script>alert(No se ha podido insertar, revise el documento');</script>";  
                    
                   }
-                //mysqli_close($conexion);
-                
+               
               }
                 
              

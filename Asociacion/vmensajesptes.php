@@ -76,9 +76,7 @@ include('../models/connection1.php');
 
               <?php
                  
-                  //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                  //$acentos="SET NAMES 'utf8'";
-                  //mysqli_query($conexion, $acentos);
+
                   $sql = "SELECT * from contacto where activo = 1";
                   $x=0;
                   Global $X;
@@ -116,15 +114,11 @@ include('../models/connection1.php');
                       
 
                         
-                          //$sql1=$conexion->query($sql);
                           $consulta = mysqli_query($conexion, $sql);
                          
-                         //echo($sql . $_POST['ccont'] );
-                         // foreach ($sql1->fetchAll() as $listaMensajes[$x]) 
                           while ($listaMensajes = mysqli_fetch_array($consulta))   
                               {
-                                //$listanoticias[]= $noticias;
-                                    
+                                   
                                   echo ('
                                      <tr>
                                           <th scope="row'.$x.'" name="row">'. utf8_encode($listaMensajes['id_solicitud']).'</th>
@@ -137,9 +131,6 @@ include('../models/connection1.php');
                                           
                                           if($listaMensajes['activo']==1)
                                           {
-                                            //echo('<td>Pdte</td>
-                                            //  <td ><center><input type="checkbox" class="form-check-input"  id="exampleCheck1" ></center></td>
-                                            //   </tr>');
                                             echo('<td><button type="submit" class="btn btn-outline-primary btn-sm" name="update_new" 
                                               value='.$listaMensajes['id_solicitud'].'>Leido</button></td>');
                                           }
@@ -155,22 +146,16 @@ include('../models/connection1.php');
                   }
                   else
                   {
-                      //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-                      //$acentos="SET NAMES 'utf8'";
-                      //mysqli_query($conexion, $acentos);
+
                       $sql = "SELECT * from contacto where activo = 1";
                       $x=0;
                       Global $X;
-                       //$sql1=$db->query($sql);
 
                         $consulta = mysqli_query($conexion, $sql);
                          
-                         //echo($sql . $_POST['ccont'] );
-                          //foreach ($sql1->fetchAll() as $listaMensajes[$x]) 
                           while ($listaMensajes = mysqli_fetch_array($consulta)) 
 
                               {
-                                //$listanoticias[]= $noticias;
                                     
                                   echo ('
                                      <tr>
@@ -184,10 +169,6 @@ include('../models/connection1.php');
 
                                           if($listaMensajes['activo']==1)
                                           {
-                                            //echo('<td>Pdte</td>
-                                            //  <td ><center><input type="checkbox" class="form-check-input"  id="exampleCheck1" ></center></td>
-                                            //   </tr>');
-
                                             echo('<td><button type="submit" class="btn btn-outline-primary btn-sm" name="update_new" 
                                               value='.$listaMensajes['id_solicitud'].'>Leido</button></td>');
                                           }
@@ -201,8 +182,6 @@ include('../models/connection1.php');
                           
                         
                   }
-                   //db::cerrar();
-                  // mysqli_close($conexion);
                    $sql = '';
                    $sqlc = null;
  

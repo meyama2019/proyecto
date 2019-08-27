@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 include ('../includes/header.php');
 include('../models/connection1.php');
 require_once('menu.php');
@@ -12,7 +11,6 @@ require_once('menu.php');
     echo('<div class="container"><div class="alert alert-danger" role="alert">
               Hay que estar registrado para poder visualizar este contenido, Ve a Home y regístrate
             </div></div>');
-    //header("Location: http://localhost/proyecto/home.php");
     exit;
   }
 ?>
@@ -23,21 +21,13 @@ require_once('menu.php');
 
   if(isset($_POST['updatedoc']))
     {
-     
       $iddocu = $_POST['id'];
       $iduser = $_POST['iduser'];
       $titulo= ($_POST['titulo']);
       $descrip = ($_POST['descripcion']);
       $fecha = $_POST['fechanew'];
       $docu= $_POST['documento'];
-      
-
-
-      //echo($socioid);
-      //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
-      //$acentos="SET NAMES 'utf8'";
-      //mysqli_query($conexion, $acentos);
-      mysqli_set_charset($conexion, 'utf8');
+	  mysqli_set_charset($conexion, 'utf8');
     
       $update = "UPDATE documentos set 
             userid = '$iduser',
@@ -72,8 +62,6 @@ require_once('menu.php');
 <?php
   if(isset($_GET['id']))
   {
-    
-   // $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
     $id_docu = $_GET['id'];
     $sql = "SELECT * FROM documentos where id_documento = ".$id_docu." ";
     $consulta = mysqli_query($conexion, $sql);

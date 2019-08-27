@@ -1,8 +1,6 @@
  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <?php
 session_start();
-//define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
-//include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
 include('../models/connection1.php');
 require_once('menu.php');
@@ -95,28 +93,12 @@ require_once('menu.php');
             if (isset($_POST['buscasocio']) && ((isset($_POST['pais']) && $_POST['pais'] !='' || isset($_POST['provincia']) && $_POST['provincia'] !='' || isset($_POST['cid']) && $_POST['cid'] !='') || isset($_POST['cemail']) && $_POST['cemail'] !='' || isset($_POST['cnomape']) && $_POST['cnomape'] !='' || isset($_POST['ctfno']) && $_POST['ctfno'] !=''))
 
             {
-              /*
-              $registro_por_pagina = 10;
-              $paginai = '';
-                        
-              if(isset($_GET["pagina"]))
-                  {
-                    //$paginai = $_GET["pagina"];
-                    $paginai = 1;
-                   }
-                   else
-                      {
-                        $paginai = 1;
-                       }
-              $start_from = ($paginai)*$registro_por_pagina;*/
-              //echo("iniciados");
-               
                $sqlInicial=("SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.iso,telefono,cuenta,activo,rol_id 
                                   FROM paises pa  
                                   inner join usuarios us on us.Pais = pa.id
                                   inner join provincias pr on pr.id_provincia = us.provincias                                
-                                  where 1 "); // inyection 
-               //$sqlFinal="and rol_id != 95 LIMIT $start_from, $registro_por_pagina";
+                                  where 1 "); 
+
                $sqlFinal="and rol_id != 95";                   
                $x=0;
                Global $X;
@@ -131,8 +113,7 @@ require_once('menu.php');
 				if(isset($_POST['provincia']) && $_POST['provincia'] !='')
                     { $sqlInicial = $sqlInicial . " && provincia like '%$_POST[provincia]%' "; }
                 $sqlInicial = $sqlInicial . $sqlFinal;
-                //echo($sqlInicial);
-                //$conexion = mysqli_connect("localhost", "socio", "socio", "marte");
+                
                 
                 $resultT = mysqli_query($conexion, $sqlInicial);
                 $total_records = mysqli_num_rows($resultT);
@@ -166,20 +147,18 @@ require_once('menu.php');
             }
             else 
             {
-              //$conexion = mysqli_connect("localhost", "socio", "socio", "marte");
+              
               $registro_por_pagina = 10;
               $pagina = '';
               if(isset($_GET["pagina"]))
                 {
-                 // 05/08/2019 - CORRECCIÓN POR YARUB
-				 // $pagina = mysql_real_escape_string($_GET["pagina"]);
-				 $pagina = mysqli_real_escape_string($conexion, $_GET["pagina"]);
+                 $pagina = mysqli_real_escape_string($conexion, $_GET["pagina"]);
                 }
               else
                 {
                  $pagina = 1;
                 }
-            //echo("entra sin inicializar");
+
             $start_from = ($pagina-1)*$registro_por_pagina;
 
             $query = "SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.iso,telefono,cuenta,activo,rol_id 
@@ -188,8 +167,6 @@ require_once('menu.php');
                                   inner join provincias pr on pr.id_provincia = us.provincias                                
                                   where 1 and rol_id != 95 LIMIT $start_from, $registro_por_pagina "  ;
 
-            
-            
 
             $result = mysqli_query($conexion, $query);
 
@@ -211,18 +188,13 @@ require_once('menu.php');
                        </tr>
                        <?php
                        }
-                      //echo ('<p>Resultados encontrados '.$total_records.'</p>');   
                      ?>
                     </table>
                      <div align="center">
                     <br />
                     <?php
                     
-                   
-                    // 
-                                          
-                       
-                        
+
                         $page_query = "SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.iso,telefono,cuenta,activo,rol_id 
                         FROM paises pa  
                         inner join usuarios us on us.Pais = pa.id
@@ -286,11 +258,6 @@ require_once('menu.php');
                           </ul>
                         </nav></center>');
                     }
-                    
- 
-
-                //mysqli_close($conexion);
-
                }
  
                mysqli_close($conexion);

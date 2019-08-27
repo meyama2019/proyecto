@@ -1,10 +1,6 @@
 <?php
 session_start();
-//define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
-//include(RAIZ . 'asociacion/header.php');
 include ('includes/header.php');
-//include('models/connection1.php');
-
 require_once('menu.php');
 
   
@@ -105,8 +101,7 @@ require_once('menu.php');
          
 
 <?php
-  //require_once('update1.php');
-  require_once ('./asociacion/footer.php');
+  include ('footer.php');
 ?>
 
 
