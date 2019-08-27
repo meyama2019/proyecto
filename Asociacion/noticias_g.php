@@ -1,5 +1,6 @@
 <?php 
 session_start();
+header('Content-type: text/html; charset=utf-8');
 include ('../includes/header.php');
 include('../models/connection1.php');
 require_once('menu.php');
@@ -193,13 +194,13 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 								<tr class="item">
 									<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirmation()">
 										<td class="form-group">
-											<textarea type="text" class="form-control" name ="titulo" value="" ><?php echo utf8_encode($news_data['titulo']); ?></textarea>
+											<textarea type="text" class="form-control" name ="titulo" value="" ><?php echo $news_data['titulo']; ?></textarea>
 										</td>
 										<td class="form-group">
-											<textarea type="text" class="form-control" name ="descripcion" value="" ><?php echo utf8_encode($news_data['descripcion']); ?></textarea>
+											<textarea type="text" class="form-control" name ="descripcion" value="" ><?php echo $news_data['descripcion']; ?></textarea>
 										</td>
 										<td class="form-group">
-											<?php echo utf8_encode($news_data['usuario']); ?>
+											<?php echo $news_data['usuario']; ?>
 										</td>
 										<td class="form-group">
 											<input type="date" class="form-control" name ="fechainicio" value="<?php echo $news_data['fechainicio']; ?>">

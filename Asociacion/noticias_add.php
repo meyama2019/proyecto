@@ -2,6 +2,8 @@
 session_start();
 include ('../includes/header.php');
 include('../models/connection1.php');
+
+
     $listaUsuarios =[];
 	$sql = "SELECT * FROM usuarios";
     $consulta = mysqli_query($conexion, $sql);
@@ -17,7 +19,7 @@ include('../models/connection1.php');
 
 
 <?php
-
+  
     if(isset($_POST['addnews']))
        {
 		$tit=utf8_encode($_POST['titulo']);
