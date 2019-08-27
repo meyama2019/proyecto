@@ -101,7 +101,7 @@ include('../models/connection1.php');
                         <input type='hidden' name='MAX_FILE_SIZE' value='2000000'>
                        <div class="form-group">
                         <label for="foto">Foto</label>
-                        <input type="file" class="form-control" id="foto" name="foto" placeholder="File.." required>
+                        <input type="file" class="form-control" id="foto" name="foto" placeholder="File.." required accept=".jpeg,.jpg,.png, .bmp">
                       </div>
                       
                               
