@@ -46,7 +46,7 @@ include('../models/connection1.php');
 																	  $query1 = $conexion -> query ("SELECT * FROM usuarios");
 																	  while ($valores = mysqli_fetch_array($query1))
 																	  {
-																		echo '<option value="'.$valores[id_usuario].'">'.utf8_encode($valores[usuario]).'</option>';
+																		echo '<option value="'.$valores[id_usuario].'">'.$valores[usuario].'</option>';
 																	  }
 																	?>
 							            </select>

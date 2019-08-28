@@ -251,7 +251,7 @@ if(isset($_POST['deletefoto']))
                       <?php
                         $query1 = $conexion -> query ("SELECT * FROM usuarios");
                         while ($valores1 = mysqli_fetch_array($query1)) {
-                        echo '<option value="'.$valores1[id_usuario].'">'.utf8_encode($valores1[usuario]).'</option>';
+                        echo '<option value="'.$valores1[id_usuario].'">'.$valores1[usuario].'</option>';
                         }
                       ?>
                       </select>

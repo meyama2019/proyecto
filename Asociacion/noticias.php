@@ -60,13 +60,13 @@ include('../models/connection1.php');
                               
                                 
                               echo('<div class="card ">
-                                <div class="card-header"><h3> '. utf8_encode($listanoticias[$x]['titulo']) .'            
+                                <div class="card-header"><h3> '. $listanoticias[$x]['titulo'] .'            
                                          </h3>
                                       </div>
                                       <div class="card-body">
-                                        <h6 class="card-title">'. utf8_encode($listanoticias[$x]['fechainicio']) .'</h6>
-                                        <p class="card-text">'. utf8_encode(substr($listanoticias[$x]['descripcion'],0,105)) . '....'.'</p>
-                                        <p class="card-text1">'. utf8_encode($listanoticias[$x]['descripcion']) .'</p>
+                                        <h6 class="card-title">'. $listanoticias[$x]['fechainicio'] .'</h6>
+                                        <p class="card-text">'. substr($listanoticias[$x]['descripcion'],0,105) . '....'.'</p>
+                                        <p class="card-text1">'. $listanoticias[$x]['descripcion'] .'</p>
  
                                      
                                         <a href="#" class="btn btn-primary">Ver más..</a>

@@ -73,7 +73,7 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 										  $query1 = $conexion -> query ("SELECT * FROM usuarios");
 										  while ($valores = mysqli_fetch_array($query1))
 										  {
-											echo '<option value="'.$valores[id_usuario].'">'.utf8_encode($valores[usuario]).'</option>';
+											echo '<option value="'.$valores[id_usuario].'">'.$valores[usuario].'</option>';
 										  }
 										?>
             </select>
@@ -193,20 +193,20 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 								<tr class="item">
 									<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirmation()">
 										<td class="form-group">
-											<textarea type="text" class="form-control" name ="titulo" value="" ><?php echo utf8_encode($news_data['titulo']); ?></textarea>
+											<textarea type="text" class="form-control" name ="titulo" value="" ><?php echo $news_data['titulo']; ?></textarea>
 										</td>
 										<td class="form-group">
-											<textarea type="text" class="form-control" name ="descripcion" value="" ><?php echo utf8_encode($news_data['descripcion']); ?></textarea>
+											<textarea type="text" class="form-control" name ="descripcion" value="" ><?php echo $news_data['descripcion']; ?></textarea>
 										</td>
 										<td class="form-group">
-											<?php echo utf8_encode($news_data['usuario']); ?>
+											<?php echo $news_data['usuario']; ?>
 										</td>
 										<td class="form-group">
 											<input type="date" class="form-control" name ="fechainicio" value="<?php echo $news_data['fechainicio']; ?>">
 										</td>
 										<td class="form-group">
 											<input type="date" class="form-control" name ="fechafin" value="<?php echo $news_data['fechafin']; ?>">
-											<input type="hidden" class="form-control" name ="id_noticia" value="<?php echo utf8_encode($news_data['id_noticia']); ?>">
+											<input type="hidden" class="form-control" name ="id_noticia" value="<?php echo $news_data['id_noticia']; ?>">
 										</td>
 										<td>
 										
