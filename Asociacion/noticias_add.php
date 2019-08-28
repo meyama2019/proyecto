@@ -2,8 +2,6 @@
 session_start();
 include ('../includes/header.php');
 include('../models/connection1.php');
-
-
     $listaUsuarios =[];
 	$sql = "SELECT * FROM usuarios";
     $consulta = mysqli_query($conexion, $sql);
@@ -19,14 +17,14 @@ include('../models/connection1.php');
 
 
 <?php
-  
+
     if(isset($_POST['addnews']))
        {
-		$tit=utf8_encode($_POST['titulo']);
-		$des=utf8_encode($_POST['descripcion']);
+		//$tit= utf8_encode($_POST['titulo']);
+		//$des= utf8_encode($_POST['descripcion']);
 		$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');		   
         $sql = "INSERT INTO noticias (titulo, descripcion, fechainicio, fechafin, userid ) 
-    		   values ('$tit','$des','$_POST[fechainicio]','$_POST[fechafin]', '$_POST[id]')
+    		   values ('$_POST[titulo]','$_POST[descripcion]','$_POST[fechainicio]','$_POST[fechafin]', '$_POST[id]')
 				";
 
                   $consulta = mysqli_query($conexion, $sql);
@@ -51,14 +49,13 @@ include('../models/connection1.php');
 										<br>
 									
 
-									<div id="collapseOne" class="collapse show container" aria-labelledby="headingOne" data-parent="#accordionExample">
 										<div class="card-body ">
 											<div class="container">
 														<script src="https://www.w3schools.com/lib/w3.js"></script>
 														<table id="myTable" class="table">
 															<tbody>
 																		<tr class="item">
-																		<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8">
+																		<form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8">
 																		
 																				<label for="titulo">Título</label>
 																				<textarea type="text" class="form-control" name ="titulo" value="" required></textarea>
@@ -79,7 +76,7 @@ include('../models/connection1.php');
 																					</div>
 																				</div>
 																				<br>
-																				<input type="hidden" class="form-control" name ="id" value="<?php echo ($_SESSION['id_usuario']); ?>">
+																				<input type="hidden" class="form-control" name ="id" value="<?php echo utf8_encode($_SESSION['id_usuario']);  ?>">
 																				<center>
 																				<a class="btn btn-outline-danger btn-sm" href="noticias_g.php" >Cerrar</a>
 																				<button type="submit" class="btn btn-outline-danger btn-sm" name="addnews">Añadir</button>
@@ -95,7 +92,6 @@ include('../models/connection1.php');
 											
 											</div>
 										</div>
-									</div>
 								</div>  
 
 

@@ -46,11 +46,13 @@ if(isset($_POST['adddocs']))
 			$nuevo_nombre = $quien . $anio . $mes. $dia . $hora . $minuto . $segundo;
 			$nueva_ext = pathinfo($_FILES['archivo']['name'],PATHINFO_EXTENSION);
 			$x = "../docs/". $nuevo_nombre. ".$nueva_ext";
+			$pt = $_POST['titulo'];
+			$pd = $_POST['descripcion'];
 			
 			move_uploaded_file($_FILES['archivo']['tmp_name'],$target_path ); 
 			rename($target_path,$x);
 			$sql = "INSERT INTO documentos (titulo, descripcion, creation_date, userid,documento ) 
-				   values ('$_POST[titulo]','$_POST[descripcion]','$_POST[creation_date]', '$_POST[id]', '$x')
+				   values ('$pt','$pd','$_POST[creation_date]', '$_POST[id]', '$x')
 					";
 
                   $consulta = mysqli_query($conexion, $sql);

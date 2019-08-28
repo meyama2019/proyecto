@@ -67,7 +67,7 @@ include('../models/connection1.php');
 																	  $query1 = $conexion -> query ("SELECT * FROM usuarios");
 																	  while ($valores = mysqli_fetch_array($query1))
 																	  {
-																		echo '<option value="'.$valores[id_usuario].'">'.utf8_encode($valores[usuario]).'</option>';
+																		echo '<option value="'.$valores[id_usuario].'">'.$valores[usuario].'</option>';
 																	  }
 																	?>
 							            </select>
@@ -193,23 +193,23 @@ include('../models/connection1.php');
 																				<tr class="item">
 																				<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirm('¿Realmente deseas eliminar el documento?');">
 																					<td >
-																					<input type="date" class="form-control " name ="fecha" value="<?php echo utf8_encode($docs_data['creation_date']); ?>">
+																					<input type="date" class="form-control " name ="fecha" value="<?php echo $docs_data['creation_date']; ?>">
 																					</td>
 																					<td >
-																					<textarea type="text" class="form-control" name ="titulo" value=""><?php echo utf8_encode($docs_data['titulo']); ?></textarea>
+																					<textarea type="text" class="form-control" name ="titulo" value=""><?php echo $docs_data['titulo']; ?></textarea>
 																					</td>
 																					<td >
-																					<textarea type="text" class="form-control" name ="descripcion" value=""><?php echo utf8_encode($docs_data['descripcion']); ?></textarea>
+																					<textarea type="text" class="form-control" name ="descripcion" value=""><?php echo $docs_data['descripcion']; ?></textarea>
 																					</td>
 																					<td >
-																					<?php echo utf8_encode($docs_data['usuario']); ?>
+																					<?php echo $docs_data['usuario']; ?>
 																					</td>
 																					<td >
-																					<a href="<?php echo utf8_encode($docs_data['documento']); ?>" >Ver</a>
-																					<input type="hidden" name ="documento" value="<?php echo utf8_encode($docs_data['documento']); ?>">
+																					<a href="<?php echo $docs_data['documento']; ?>" >Ver</a>
+																					<input type="hidden" name ="documento" value="<?php echo $docs_data['documento']; ?>">
 																					</td>
 																					
-																					<input type="hidden" class="form-control" name ="id_documento" value="<?php echo utf8_encode($docs_data['id_documento']); ?>">
+																					<input type="hidden" class="form-control" name ="id_documento" value="<?php echo $docs_data['id_documento']; ?>">
 																					
 																					<td >
 																					<a class="btn btn-outline-danger btn-sm" href="updatedocumentos.php?id=<?php echo ($docs_data['id_documento'])?>">Editar</a>

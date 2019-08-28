@@ -1,6 +1,5 @@
 <?php 
 session_start();
-header('Content-type: text/html; charset=utf-8');
 include ('../includes/header.php');
 include('../models/connection1.php');
 require_once('menu.php');
@@ -74,7 +73,7 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 										  $query1 = $conexion -> query ("SELECT * FROM usuarios");
 										  while ($valores = mysqli_fetch_array($query1))
 										  {
-											echo '<option value="'.$valores[id_usuario].'">'.utf8_encode($valores[usuario]).'</option>';
+											echo '<option value="'.$valores[id_usuario].'">'.$valores[usuario].'</option>';
 										  }
 										?>
             </select>
@@ -207,7 +206,7 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 										</td>
 										<td class="form-group">
 											<input type="date" class="form-control" name ="fechafin" value="<?php echo $news_data['fechafin']; ?>">
-											<input type="hidden" class="form-control" name ="id_noticia" value="<?php echo utf8_encode($news_data['id_noticia']); ?>">
+											<input type="hidden" class="form-control" name ="id_noticia" value="<?php echo $news_data['id_noticia']; ?>">
 										</td>
 										<td>
 										

@@ -35,7 +35,6 @@ session_start();
 //include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
 include('../models/connection.php');
-header('Content-type: text/html; charset=utf-8');
     $listaUsuarios =[];
     $db=Db::getConnect();
     $sql=$db->query('SELECT * FROM usuarios');
@@ -58,8 +57,8 @@ header('Content-type: text/html; charset=utf-8');
           
                 $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
 				$id_noticia = $_POST['id_noticia'];
-                $titulo =  ($_POST['titulo']);
-                $descripcion =  ($_POST['descripcion']);
+                $titulo =  utf8_encode($_POST['titulo']);
+                $descripcion =  utf8_encode($_POST['descripcion']);
                 $fechainicio = $_POST['fechainicio'];
                 $fechafin = $_POST['fechafin'];
 
@@ -229,10 +228,10 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 								<tr class="item">
 									<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8">
 										<td class="form-group">
-											<textarea type="text" class="form-control" name ="titulo" value="" ><?php echo ($news_data['titulo']); ?></textarea>
+											<textarea type="text" class="form-control" name ="titulo" value="" ><?php echo utf8_encode($news_data['titulo']); ?></textarea>
 										</td>
 										<td class="form-group">
-											<textarea type="text" class="form-control" name ="descripcion" value="" ><?php echo ($news_data['descripcion']); ?></textarea>
+											<textarea type="text" class="form-control" name ="descripcion" value="" ><?php echo utf8_encode($news_data['descripcion']); ?></textarea>
 										</td>
 										<td class="form-group">
 											<?php echo utf8_encode($news_data['usuario']); ?>

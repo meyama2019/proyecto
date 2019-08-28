@@ -2,7 +2,6 @@
 session_start();
 include ('../includes/header.php');
 include('../models/connection1.php');
-header('Content-type: text/html; charset=utf-8');
     $listaUsuarios = array(
    array('id_usuario' => '','usuario' => '','passwd' => '','metodo' => '','email' => '','Nom_Ape' => '','dni' => '','provincia' => '','Pais' => '','telefono' => '','cuenta' => '','activo' => '1','rol_id' => '')
 );
@@ -61,7 +60,7 @@ header('Content-type: text/html; charset=utf-8');
                               
                                 
                               echo('<div class="card ">
-                                <div class="card-header"><h3> '. $listanoticias[$x]['titulo'].'            
+                                <div class="card-header"><h3> '. $listanoticias[$x]['titulo'] .'            
                                          </h3>
                                       </div>
                                       <div class="card-body">
