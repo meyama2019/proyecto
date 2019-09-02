@@ -22,9 +22,11 @@ include('../models/connection1.php');
        {
 		//$tit= utf8_encode($_POST['titulo']);
 		//$des= utf8_encode($_POST['descripcion']);
-		$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');		   
+		$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');	
+		$ti = utf8_decode($_POST['titulo']);
+		$de = utf8_decode($_POST['descripcion']);   
         $sql = "INSERT INTO noticias (titulo, descripcion, fechainicio, fechafin, userid ) 
-    		   values ('$_POST[titulo]','$_POST[descripcion]','$_POST[fechainicio]','$_POST[fechafin]', '$_POST[id]')
+    		   values ('$ti','$de','$_POST[fechainicio]','$_POST[fechafin]', '$_POST[id]')
 				";
 
                   $consulta = mysqli_query($conexion, $sql);
