@@ -118,7 +118,7 @@ require_once('menu.php');
 
   <br>
   <div class="container">    
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="return confirm('¿Realmente deseas eliminar el Usuario?');">
           
        
         <div class="form-row">
@@ -206,7 +206,7 @@ require_once('menu.php');
   </div>
 
   <div class="card-body">
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="return confirm('¿Realmente deseas eliminar el usuario?');">
   
       <div class="container">
           <br>

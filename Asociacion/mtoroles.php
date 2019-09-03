@@ -55,9 +55,10 @@ require_once('menu.php');
           if(isset($_POST['deleterol'])) 
 
           {
+
               $id_Rol = $_POST['idRol'];               
               $nombre = $_POST['Nombre'];
-                        
+
               $sql = "DELETE FROM rolusuario WHERE idRol = '$_POST[idRol]' ";
               $consulta = mysqli_query($conexion, $sql);
               if($consulta)
@@ -73,7 +74,7 @@ require_once('menu.php');
 
 <?php
             if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0) // Habría que controlar activo = 0
-        {
+        { 
 ?>  
 
         <div class="card">
@@ -107,7 +108,7 @@ require_once('menu.php');
                   while($docs_data = mysqli_fetch_array($result))
                   {?>
                     <tr class="item">
-                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8">
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirm('¿Realmente deseas eliminar el Rol?');">
                       <td class="form-group" name ="idRol" value="<?php echo utf8_encode($docs_data['idRol']); ?>"><?php echo utf8_encode($docs_data['idRol']); ?>
                       </td>
                       <td class="form-group">
