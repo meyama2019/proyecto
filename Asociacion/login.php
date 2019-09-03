@@ -17,8 +17,8 @@ if ( !empty($_POST['Inputuser']) && !empty($_POST['ole']) && !empty($_POST['Inpu
 elseif ( isset($_POST['Inputuser']) && isset($_POST['ole']) && empty($_POST['Inputemail']) ) 
     {
 		
-		$us = $_POST['Inputuser'];
-		$pw = sha1($_POST['ole']); 
+		$us = mysqli_real_escape_string($conexion, $_POST['Inputuser']);
+		$pw = mysqli_real_escape_string($conexion, sha1($_POST['ole'])); 
 
 		$sql_us = "SELECT * FROM usuarios WHERE usuario='$us'";
         $sql_pw = "SELECT * FROM usuarios WHERE passwd='$pw'";
@@ -67,8 +67,8 @@ elseif ( isset($_POST['Inputuser']) && isset($_POST['ole']) && empty($_POST['Inp
 	
 elseif ( isset($_POST['Inputemail']) && isset($_POST['ole']) && empty($_POST['Inputuser'])) 
     {
-		$ue = $_POST['Inputemail'];
-		$pw = sha1($_POST['ole']); 
+		$ue = mysqli_real_escape_string($conexion, $_POST['Inputemail']);
+		$pw = mysqli_real_escape_string($conexion, sha1($_POST['ole'])); 
 		
 		$sql_ue = "SELECT * FROM usuarios WHERE email='$ue'";
         $sql_pw = "SELECT * FROM usuarios WHERE passwd='$pw'";

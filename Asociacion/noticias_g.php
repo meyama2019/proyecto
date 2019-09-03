@@ -184,16 +184,16 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 									general:
 									$result = mysqli_query($conexion, "SELECT * FROM noticias, usuarios
 																 WHERE userid =id_usuario
-																 ORDER BY id_noticia desc,fechainicio ");
+																 ORDER BY fechainicio DESC");
 								}
 								
 								
 								while($news_data = mysqli_fetch_array($result))
 							{?>
 								<tr class="item">
-									<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirmation()">
+									<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirm('¿Realmente deseas eliminar el documento?');">
 										<td class="form-group">
-											<textarea type="text" class="form-control" name ="titulo" value="" ><?php echo ($news_data['titulo']); ?></textarea>
+											<textarea type="text" class="form-control" name ="titulo" value="" ><?php echo $news_data['titulo']; ?></textarea>
 										</td>
 										<td class="form-group">
 											<textarea type="text" class="form-control" name ="descripcion" value="" ><?php echo $news_data['descripcion']; ?></textarea>

@@ -18,7 +18,6 @@ include('../models/connection1.php');
           if(isset($_POST['deletedocs']))
           {
           
-                //$conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
 				$id_documento = $_POST['id_documento'];
                 $x= $_POST['documento'];
 				

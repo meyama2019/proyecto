@@ -4,13 +4,15 @@ if(isset($_POST['deletefoto']))
 {
 
     $id_foto = $_POST['idfoto'];
-
+	$x = $_POST['documento'];
+				
+	unlink($x);
 
     $sql = "DELETE FROM fotos WHERE id_foto = $_POST[idfoto]";
     $consulta = mysqli_query($conexion, $sql);
     if($consulta)
     {
-        echo "<script>alert('Eliminada foto ". $id_foto." ');</script>";
+        echo "<script>alert('Foto eliminada');</script>";
 
     }
 
@@ -122,7 +124,7 @@ if(isset($_POST['deletefoto']))
                         while($docs_data = mysqli_fetch_array($result))
                         {?>
                             <tr class="item">
-                                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirmation()">
+                                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8">
 
                                     <td class="form-group" name ="idfoto" value=<?php echo ($docs_data['id_foto']); ?>>
                                         <?php echo ($docs_data['id_foto']); ?>
@@ -136,6 +138,7 @@ if(isset($_POST['deletefoto']))
 
                                     <td>
                                         <img src='<?php echo ($docs_data['documento']); ?>' class="img-responsive" height="30px" width="30px" alt="...">
+										<input type="hidden" name ="documento" value="<?php echo ($docs_data['documento']); ?>">
                                     </td>
 
                                     <td class="form-group" name ="fecha" value=<?php echo ($docs_data['fecha_upload']); ?>>
@@ -148,9 +151,10 @@ if(isset($_POST['deletefoto']))
 
                                     <td>
                                         <input type="hidden" class="form-control" name ="idfoto" value="<?php echo utf8_decode($docs_data['id_foto']); ?>">
+										
                                         <!--<button type="submit" class="btn btn-outline-danger btn-sm" name="updaterol">Editar</button>-->
 
-                                        <button type="submit" class="btn btn-outline-danger btn-sm" name="deletefoto">Borrar</button>
+                                        <button type="submit" class="btn btn-outline-danger btn-sm" name="deletefoto" onclick="return confirm('¿Confirma eliminación foto?');">Borrar</button>
                                     </td>
 
 
@@ -176,7 +180,7 @@ if(isset($_POST['deletefoto']))
                         while($docs_data = mysqli_fetch_array($result))
               {?>
                   <tr class="item">
-                      <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirmation()">
+                      <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" >
 
                           <td class="form-group" name ="idfoto" value=<?php echo ($docs_data['id_foto']); ?>>
                               <?php echo ($docs_data['id_foto']); ?>
@@ -190,6 +194,7 @@ if(isset($_POST['deletefoto']))
 
                           <td>
                               <img src='<?php echo ($docs_data['documento']); ?>' class="img-responsive" height="30px" width="30px" alt="...">
+							  <input type="hidden" name ="documento" value="<?php echo ($docs_data['documento']); ?>">
                           </td>
 
                           <td class="form-group" name ="fecha" value=<?php echo ($docs_data['fecha_upload']); ?>>
@@ -203,7 +208,7 @@ if(isset($_POST['deletefoto']))
                           <td>
                               <input type="hidden" class="form-control" name ="idfoto" value="<?php echo utf8_decode($docs_data['id_foto']); ?>">
 
-                              <button type="submit" class="btn btn-outline-danger btn-sm" name="deletefoto">Borrar</button>
+                              <button type="submit" class="btn btn-outline-danger btn-sm" name="deletefoto" onclick="return confirm('¿Confirma eliminación foto?');">Borrar</button>
                           </td>
 
 
@@ -358,6 +363,8 @@ if(isset($_POST['deletefoto']))
 
     ?>
 
+
+
 <!-------CONFIRMAR BORRAR DOCUMENTO--------------->
 <script type="text/javascript">
 
@@ -365,7 +372,7 @@ if(isset($_POST['deletefoto']))
 
 function confirmation() {
 
-	if(confirm("Realmente desea eliminar?"))
+	if(confirm("Realmente deseas eliminar la noticia?"))
 
 		{window.location = "";
 
@@ -376,5 +383,3 @@ function confirmation() {
 //-->
 
 </script>
-
-
