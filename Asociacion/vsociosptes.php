@@ -125,8 +125,8 @@
                                             <td>'. utf8_encode($listaUsuarios['email']).'</td>
                                             <td>'. utf8_encode($listaUsuarios['Nom_Ape']).'</td>
                                             <td>'. utf8_encode($listaUsuarios['dni']).'</td>
-                                            <td>'. utf8_encode($listaUsuarios['provincia']).'</td>
-                                            <td>'. utf8_encode($listaUsuarios['nombre']).'</td>
+                                            <td>'. ($listaUsuarios['provincia']).'</td>
+                                            <td>'. ($listaUsuarios['nombre']).'</td>
                                             
                                             <td>'. utf8_encode($listaUsuarios['telefono']).'</td>
                                             <td>'. utf8_encode($listaUsuarios['cuenta']).'</td>');
@@ -166,8 +166,8 @@
                                             <td>'. utf8_encode($listaUsuarios['email']).'</td>
                                             <td>'. utf8_encode($listaUsuarios['Nom_Ape']).'</td>
                                             <td>'. utf8_encode($listaUsuarios['dni']).'</td>
-                                            <td>'. utf8_encode($listaUsuarios['provincia']).'</td>
-                                            <td>'. utf8_encode($listaUsuarios['nombre']).'</td>
+                                            <td>'. ($listaUsuarios['provincia']).'</td>
+                                            <td>'. ($listaUsuarios['nombre']).'</td>
                                             
                                             <td>'. utf8_encode($listaUsuarios['telefono']).'</td>
                                             <td>'. utf8_encode($listaUsuarios['cuenta']).'</td>');
