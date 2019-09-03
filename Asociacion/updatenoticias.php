@@ -97,7 +97,7 @@ require_once('menu.php');
                                         
                                          <br>
                                         <label for="descripcion">Descripción</label>
-                                        <textarea  type="textarea" class="form-control" name ="descripcion" id ="descripcion" value= <?php echo($data['descripcion']);?> ><?php echo(utf8_encode($data['descripcion']));?></textarea> <br>                            
+                                        <textarea  type="textarea" class="form-control" name ="descripcion" id ="descripcion" value= <?php echo($data['descripcion']);?> ><?php echo($data['descripcion']);?></textarea> <br>                            
                                         <div class="form-row">
                                             <div class="form-group col-md-3">
                                               <label for="fechainicio">Fecha Inicio</label>

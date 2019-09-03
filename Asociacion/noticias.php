@@ -27,17 +27,17 @@ include('../models/connection1.php');
                                 {
                                   case 95:
                                     # code...
-                                    $sql=('SELECT * FROM noticias order by 3 desc');
+                                    $sql=('SELECT * FROM noticias order by 1 desc, 3');
                                     $result = mysqli_query($conexion, $sql);
                                     break;
                                   case 2:
                                     # code...
-                                    $sql=('SELECT * FROM noticias where fechafin >= curdate() order by 3 desc');
+                                    $sql=('SELECT * FROM noticias where fechafin >= curdate() order by 1 desc, 3');
                                     $result = mysqli_query($conexion, $sql);                                   
                                     break;
                                   case 1:
                                     # code...
-                                    $sql=('SELECT * FROM noticias where fechafin >= curdate() order by 3 desc limit 5');
+                                    $sql=('SELECT * FROM noticias where fechafin >= curdate() order by 1 desc, 3 limit 5');
                                     $result = mysqli_query($conexion, $sql);
                                    
                                     break;
@@ -50,7 +50,7 @@ include('../models/connection1.php');
                              
                             else
                             {
-                               $sql="SELECT * FROM noticias where fechafin >= curdate() order by 3 desc limit 1" ;
+                               $sql="SELECT * FROM noticias where fechafin >= curdate() order by 1 desc, 3 limit 1" ;
                                $result = mysqli_query($conexion, $sql);
                               
                             }
