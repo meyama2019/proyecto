@@ -126,8 +126,8 @@ include('../models/connection1.php');
                                           <td>'. utf8_encode($listaMensajes['nombre']).'</td>
                                           <td>'. utf8_encode($listaMensajes['email']).'</td>
                                           <td>'. utf8_encode($listaMensajes['telefono']).'</td>
-                                          <td>'. utf8_encode($listaMensajes['asunto']).'</td>
-                                          <td>'. utf8_encode($listaMensajes['mensaje']).'</td>');
+                                          <td>'. ($listaMensajes['asunto']).'</td>
+                                          <td>'. ($listaMensajes['mensaje']).'</td>');
                                           
                                           if($listaMensajes['activo']==1)
                                           {
@@ -164,8 +164,8 @@ include('../models/connection1.php');
                                           <td>'. utf8_encode($listaMensajes['nombre']).'</td>
                                           <td>'. utf8_encode($listaMensajes['email']).'</td>
                                           <td>'. utf8_encode($listaMensajes['telefono']).'</td>
-                                          <td>'. utf8_encode($listaMensajes['asunto']).'</td>
-                                          <td>'. utf8_encode($listaMensajes['mensaje']).'</td>');
+                                          <td>'. ($listaMensajes['asunto']).'</td>
+                                          <td>'. ($listaMensajes['mensaje']).'</td>');
 
                                           if($listaMensajes['activo']==1)
                                           {

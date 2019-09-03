@@ -32,7 +32,7 @@ require_once('menu.php');
           {
           
         $id_Rol = $_POST['idRol'];               
-                $nombre = $_POST['Nombre'];
+        $nombre = $_POST['Nombre'];
 
         $sql = "UPDATE rolusuario
             SET nombre='$_POST[Nombre]' WHERE idRol = '$_POST[idRol]'";
@@ -50,26 +50,26 @@ require_once('menu.php');
 
 
 <?php // Funcion para Eliminar un Rol ************************************************
+
+
           if(isset($_POST['deleterol'])) 
+
           {
-          
-        $id_Rol = $_POST['idRol'];               
-                $nombre = $_POST['Nombre'];
-                
-        $sql = "DELETE FROM rolusuario WHERE idRol = '$_POST[idRol]' ";
-        $consulta = mysqli_query($conexion, $sql);
-        if($consulta)
+              $id_Rol = $_POST['idRol'];               
+              $nombre = $_POST['Nombre'];
+                        
+              $sql = "DELETE FROM rolusuario WHERE idRol = '$_POST[idRol]' ";
+              $consulta = mysqli_query($conexion, $sql);
+              if($consulta)
                     {
-            echo "<script>alert('Eliminado Rol ".$nombre." ');</script>";     
-                     
-                    }   
-
-
-
-          } 
-
+                      echo "<script>alert('Eliminado Rol ".$nombre." ');</script>";     
+                             
+                    } 
+          }
           
-    ?>
+            
+?>
+
 
 <?php
             if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0) // Habría que controlar activo = 0
@@ -117,13 +117,15 @@ require_once('menu.php');
                         <input type="hidden" class="form-control" name ="idRol" value="<?php echo utf8_decode($docs_data['idRol']); ?>">
                         <button type="submit" class="btn btn-outline-danger btn-sm" name="updaterol">Editar</button>
                       
-                        <button type="submit" class="btn btn-outline-danger btn-sm" name="deleterol">Eliminar</button>
+                        <button type="submit" class="btn btn-outline-danger btn-sm" name="deleterol" >Eliminar</button> 
+                       
+                        
                       </td>
-                            
+                          
                                       
                     </form>
               </tr>
-              <?php         
+              <?php           
                                   
               }
               ?>
@@ -186,5 +188,7 @@ require_once('menu.php');
               </div>
             </div>
           </div>
+
+
 
  
