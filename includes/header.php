@@ -81,8 +81,13 @@
                                             break;
                                     }
                                 }
-
-
+                                if (isset($_SESSION['start']))
+                                {
+                                    if (time() - $_SESSION['start'] > 300)
+                                    {
+                                        header("Location:logout.php");
+                                    }
+                                }
                        
                                 ?>
                         </div>

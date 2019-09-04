@@ -32,13 +32,14 @@
                         </div>
                         <div class="col-3">
                               <?php
-                                if (isset($_SESSION['activo'])) 
+                                
+                                if (isset($_SESSION['activo']) && isset($_SESSION['start'])) 
                                 {
                                     switch ($_SESSION['activo'])
                                     {
                                         case '0':
                                             # code...
-                                            echo('<div id="iconlogin" class="alert alert-success" role="alert" >Bienvenido '.$_SESSION['login1'].'!</div>');
+                                            echo('<div id="iconlogin" class="alert alert-success" role="alert" > Bienvenido '.$_SESSION['login1'].'!</div>');
                                             break;
                                         case '1':
                                             # code...
@@ -57,6 +58,10 @@
                                             # code...
                                             break;
                                     }
+                                // Comprobación del tiempo
+                                    
+                                   
+
                                 }
 
 

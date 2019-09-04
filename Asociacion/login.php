@@ -59,7 +59,7 @@ elseif ( isset($_POST['Inputuser']) && isset($_POST['ole']) && empty($_POST['Inp
 			 $host  = $_SERVER['HTTP_HOST'];
 				$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 				$extra = '../home.php';
-				header("Refresh:0");
+				header("Refresh:1");
 				header("Location: http://$host$uri/$extra");
 				exit;	
 		}
@@ -109,7 +109,7 @@ elseif ( isset($_POST['Inputemail']) && isset($_POST['ole']) && empty($_POST['In
 			$host  = $_SERVER['HTTP_HOST'];
 			$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 			$extra = '../home.php';
-			header("Refresh:0");
+			header("Refresh:1");
 			header("Location: http://$host$uri/$extra");
 			exit;	
 		}
@@ -119,7 +119,7 @@ else
 	$host  = $_SERVER['HTTP_HOST'];
     $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
     $extra = '../home.php';
-    header("Refresh:0");
+    header("Refresh:1");
     header("Location: http://$host$uri/$extra");
     exit;	
 }
