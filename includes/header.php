@@ -87,6 +87,10 @@
                                     {
                                         header("Location:logout.php");
                                     }
+                                    else
+                                    {
+                                        $_SESSION['start'] = time();
+                                    }
                                 }
                        
                                 ?>
