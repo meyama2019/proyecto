@@ -118,7 +118,7 @@ require_once('menu.php');
 
   <br>
   <div class="container">    
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" onsubmit="return confirm('¿Realmente deseas eliminar el Usuario?');">
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >
           
        
         <div class="form-row">
