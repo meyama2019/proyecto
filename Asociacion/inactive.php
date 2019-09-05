@@ -30,7 +30,7 @@
      <div class="col-sm-6">
       <div class="card text-center">
             <div class="card-header">
-              Featured
+              Sesión Inactiva
             </div>
             <div class="card-body">
               <h5 class="card-title">La sesión ha expirado</h5>
