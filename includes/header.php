@@ -85,7 +85,7 @@
                                 {
                                     if (time() - $_SESSION['start'] > 300)
                                     {
-                                        header("Location:logout.php");
+                                        header("Location:inactive.php");
                                     }
                                     else
                                     {
