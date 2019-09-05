@@ -62,6 +62,14 @@ include('../models/connection1.php');
                 }
                 $_SESSION['tot_con'] = $tot;
                 mysqli_close($conexion);
+                
+                echo "<script type=\"text/javascript\">";
+                echo "$(document).ready(function(){";
+                echo " if(document.URL.indexOf(\"#\")==-1){";
+                echo " url = document.URL+\"#\"; location = \"#\";";
+                echo "location.reload(true);";
+                echo "}    });";
+                echo "</script>"; 
           }
     ?>
     

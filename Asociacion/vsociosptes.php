@@ -123,7 +123,7 @@
                                             <th scope="row">'. utf8_encode($listaUsuarios['id_usuario']).'</th>
                                             <td>'. utf8_encode($listaUsuarios['usuario']). '</td>
                                             <td>'. utf8_encode($listaUsuarios['email']).'</td>
-                                            <td>'. utf8_encode($listaUsuarios['Nom_Ape']).'</td>
+                                            <td>'. ($listaUsuarios['Nom_Ape']).'</td>
                                             <td>'. utf8_encode($listaUsuarios['dni']).'</td>
                                             <td>'. ($listaUsuarios['provincia']).'</td>
                                             <td>'. ($listaUsuarios['nombre']).'</td>
@@ -164,7 +164,7 @@
                                             <th scope="row">'. utf8_encode($listaUsuarios['id_usuario']).'</th>
                                             <td>'. utf8_encode($listaUsuarios['usuario']). '</td>
                                             <td>'. utf8_encode($listaUsuarios['email']).'</td>
-                                            <td>'. utf8_encode($listaUsuarios['Nom_Ape']).'</td>
+                                            <td>'. ($listaUsuarios['Nom_Ape']).'</td>
                                             <td>'. utf8_encode($listaUsuarios['dni']).'</td>
                                             <td>'. ($listaUsuarios['provincia']).'</td>
                                             <td>'. ($listaUsuarios['nombre']).'</td>
