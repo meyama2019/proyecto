@@ -119,7 +119,7 @@
                                    
                                     
                                     echo ('
-                                             <tr>
+                                             <tr style = font-size:0.7em>
                                             <th scope="row">'. utf8_encode($listaUsuarios['id_usuario']).'</th>
                                             <td>'. utf8_encode($listaUsuarios['usuario']). '</td>
                                             <td>'. utf8_encode($listaUsuarios['email']).'</td>
@@ -134,7 +134,7 @@
                                             if($listaUsuarios['activo']==1)
                                             {
                                               
-                                               echo('<td><button type="submit" class="btn btn-outline-primary btn-sm" name="update_soc" 
+                                               echo('<td><button type="submit" class="btn btn-outline-danger btn-sm" name="update_soc" 
                                                 value='.$listaUsuarios['id_usuario'].'>Activar</button></td>');
                                             }
 
@@ -160,7 +160,7 @@
                                    
                                     
                                     echo ('
-                                             <tr>
+                                             <tr style = font-size:0.7em>
                                             <th scope="row">'. utf8_encode($listaUsuarios['id_usuario']).'</th>
                                             <td>'. utf8_encode($listaUsuarios['usuario']). '</td>
                                             <td>'. utf8_encode($listaUsuarios['email']).'</td>
@@ -175,7 +175,7 @@
                                             if($listaUsuarios['activo']==1)
                                             {
                                               
-                                               echo('<td><button type="submit" class="btn btn-outline-primary btn-sm" name="update_soc" 
+                                               echo('<td><button type="submit" class="btn btn-outline-danger btn-sm" name="update_soc" 
                                                 value='.$listaUsuarios['id_usuario'].'>Activar</button></td>');
                                             }
 

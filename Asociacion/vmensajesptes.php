@@ -112,7 +112,7 @@ include('../models/connection1.php');
                              $sql = $sql . " and telefono like '%$_POST[ctfno]%'";
                           }
                       
-
+                          $sql = $sql ." order by fecha_entrada desc";
                         
                           $consulta = mysqli_query($conexion, $sql);
                          
@@ -120,7 +120,7 @@ include('../models/connection1.php');
                               {
                                    
                                   echo ('
-                                     <tr>
+                                     <tr style = font-size:0.7em>
                                           <th scope="row'.$x.'" name="row">'. utf8_encode($listaMensajes['id_solicitud']).'</th>
                                           <td>'. utf8_encode($listaMensajes['fecha_entrada']). '</td>
                                           <td>'. utf8_encode($listaMensajes['nombre']).'</td>
@@ -131,7 +131,7 @@ include('../models/connection1.php');
                                           
                                           if($listaMensajes['activo']==1)
                                           {
-                                            echo('<td><button type="submit" class="btn btn-outline-primary btn-sm" name="update_new" 
+                                            echo('<td><button type="submit" class="btn btn-outline-danger btn-sm" name="update_new" 
                                               value='.$listaMensajes['id_solicitud'].'>Leido</button></td>');
                                           }
                                
@@ -147,7 +147,7 @@ include('../models/connection1.php');
                   else
                   {
 
-                      $sql = "SELECT * from contacto where activo = 1";
+                      $sql = "SELECT * from contacto where activo = 1 order by fecha_entrada desc";
                       $x=0;
                       Global $X;
 
@@ -158,7 +158,7 @@ include('../models/connection1.php');
                               {
                                     
                                   echo ('
-                                     <tr>
+                                     <tr style = font-size:0.7em>
                                           <th scope="row'.$x.'" name="row">'. utf8_encode($listaMensajes['id_solicitud']).'</th>
                                           <td>'. utf8_encode($listaMensajes['fecha_entrada']). '</td>
                                           <td>'. utf8_encode($listaMensajes['nombre']).'</td>
@@ -169,7 +169,7 @@ include('../models/connection1.php');
 
                                           if($listaMensajes['activo']==1)
                                           {
-                                            echo('<td><button type="submit" class="btn btn-outline-primary btn-sm" name="update_new" 
+                                            echo('<td><button type="submit" class="btn btn-outline-danger btn-sm" name="update_new" 
                                               value='.$listaMensajes['id_solicitud'].'>Leido</button></td>');
                                           }
                                
