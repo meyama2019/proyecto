@@ -56,9 +56,9 @@ include(RAIZ . 'models/connection1.php');
             if (( !empty($_POST['SocioUsuario'])) && ( !empty($_POST['socioEmail'])) && ( !empty($_POST['SocioPassword'])) && ( !empty($_POST['SocioDNI'])) && ( !empty($_POST['SocioTelf'])) )
               {
                 
-                $username = $_POST['SocioUsuario'];
-                $userdni = $_POST['SocioDNI'];
-                $useremail = $_POST['socioEmail'];
+                $username = strip_tags(mysqli_real_escape_string($conexion, trim($_POST['SocioUsuario'])));
+                $userdni = strip_tags(mysqli_real_escape_string($conexion, trim($_POST['SocioDNI'])));
+                $useremail = strip_tags(mysqli_real_escape_string($conexion, trim($_POST['socioEmail'])));
                 
                 $sql_u = "SELECT * FROM usuarios WHERE usuario='$username'";
                 $sql_d = "SELECT * FROM usuarios WHERE dni='$userdni'";
@@ -67,14 +67,20 @@ include(RAIZ . 'models/connection1.php');
                 $res_d = mysqli_query($conexion, $sql_d);
                 $res_e = mysqli_query($conexion, $sql_e);
                 
-                $password = sha1($_POST['SocioPassword']);
+                $password = strip_tags(mysqli_real_escape_string($conexion, trim(sha1($_POST['SocioPassword']))));
                 
                 if ((mysqli_num_rows($res_d) == 0) && (mysqli_num_rows($res_e) == 0) && (mysqli_num_rows($res_u) == 0))
                 
                 {
+				  $Nom_Ape= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['NombreApellidosSocio']))); 
+				  $provincias= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['SocioProvincia'])));
+				  $pais= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['SocioPais'])));
+				  $telefono= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['SocioTelf'])));
+				  $cuenta= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['SocioCuenta'])));
+				  
                   $sql = "INSERT INTO usuarios (usuario, passwd, email, Nom_Ape,  dni, provincias, pais, telefono, cuenta, activo, rol_id ) 
 
-				  values ('$_POST[SocioUsuario]','$password','$_POST[socioEmail]','$_POST[NombreApellidosSocio]','$_POST[SocioDNI]','$_POST[SocioProvincia]','$_POST[SocioPais]','$_POST[SocioTelf]', '$_POST[SocioCuenta]',1, 1)";
+				  values ('$username','$password','$useremail','$$Nom_Ape','$userdni','$provincias','$pais','$telefono', '$cuenta',1, 1)";
 
                   $consulta = mysqli_query($conexion, $sql);
                   if($consulta)
@@ -102,9 +108,9 @@ include(RAIZ . 'models/connection1.php');
           
            if ((!empty($_POST['ur_email'])) && (!empty($_POST['ur_passwd'])))
               {
-
-                $em=$_POST['ur_email']; //obligatorio
-                $pw=sha1($_POST['ur_passwd']); //obligatorio
+				
+                $em= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['ur_email']))); //obligatorio
+                $pw= strip_tags(mysqli_real_escape_string($conexion, trim(sha1($_POST['ur_passwd'])))); //obligatorio
                 $activo=0; // <- Usuario registrado activo
                 $rol=1;    // <- Rol de Usuario registrado
                
@@ -136,8 +142,13 @@ include(RAIZ . 'models/connection1.php');
 <?php
           if(isset($_POST['submitContacto']))
           {
-                $texto = htmlspecialchars($_POST['ContactoMensasje']);
-                $sql = "INSERT INTO contacto (fecha_entrada, nombre, email, telefono, asunto, mensaje, activo) values (current_timestamp ,'$_POST[ContactoNombre]','$_POST[ContactoEmail]','$_POST[ContactoTelefono]','$_POST[ContactoAsunto]','$texto', 1)";
+				$nombre= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['ContactoNombre'])));
+				$email= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['ContactoEmail'])));
+				$telefono= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['ContactoTelefono'])));
+				$asunto= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['ContactoAsunto'])));
+				$texto= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['ContactoMensasje'])));
+                //$texto = htmlspecialchars($_POST['ContactoMensasje']);
+                $sql = "INSERT INTO contacto (fecha_entrada, nombre, email, telefono, asunto, mensaje, activo) values (current_timestamp ,'$nombre','$email','$telefono','$asunto','$texto', 1)";
                 $consulta = mysqli_query($conexion, $sql);
                 if($consulta)
                     {
@@ -180,7 +191,7 @@ include(RAIZ . 'models/connection1.php');
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                        <div class="form-group">
                         <label for="ContactoNombre">Nombre y apellidos</label>
-                        <input type="text" class="form-control" name="ContactoNombre" aria-describedby="emailHelp" placeholder="¿Cómo quieres que te llamemos?" pattern="[A-Za-z \- \/_]{1,45}" title="máximo 45 letras (se admiten espacios y '-&_'" required>
+                        <input type="text" class="form-control" name="ContactoNombre" aria-describedby="emailHelp" placeholder="¿Cómo quieres que te llamemos?" title="máximo 45 letras (se admiten espacios y '-&_'" required>
                       
                       </div>
                       <div class="form-group">
@@ -438,7 +449,7 @@ include(RAIZ . 'models/connection1.php');
         <!-- Grid column -->
         <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
           <h6 class="mb-0">Contacte con nosotros en Redes Sociales
-		  <a href="#" target="_blank" style="width:20px; height:20px;  margin:6px 2px 6px 0px; "><img src="http://localhost/proyecto/imagenes/facebook.png" alt="facebook" width="20" height="20" ></a>
+		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img src="http://localhost/proyecto/imagenes/facebook.png" alt="facebook" width="20" height="20"></a>
 		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img src="http://localhost/proyecto/imagenes/instagram.png" alt="instagram" width="20" height="20"></a>
 		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img src="http://localhost/proyecto/imagenes/twitter.png" alt="twitter" width="20" height="20"></a>
 		  </h6>
