@@ -1,24 +1,18 @@
 <?php
 session_start();
-
 include ('../includes/header.php');
 include('../models/connection1.php');
 require_once('menu.php');
-
    $listaUsuarios = array(
    array('id_usuario' => '','usuario' => '','passwd' => '','metodo' => '','email' => '','Nom_Ape' => '','dni' => '','provincias' => '','Pais' => '','telefono' => '','cuenta' =>'','activo'=> 1,'rol_id' =>0)
     );
     //$db=Db::getConnect();
-
     
-
-
     require_once('menu.php');
    
   
   if (!isset($_SESSION['rol1']))
   {
-
     echo('<div class="container"><div class="alert alert-danger" role="alert">
               Hay que estar registrado para poder visualizar este contenido, Ve a Home y regístrate
             </div></div>');
@@ -30,12 +24,11 @@ require_once('menu.php');
    $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
    $sql = "SELECT * FROM provincias where id_provincia = '$prov' ";
    $consulta = mysqli_query($conexion, $sql);
-   while ($valores = mysqli_fetch_array($consulta)) {
-    $provincia = $valores['provincia'];
-   }
+   while ($valores = mysqli_fetch_array($consulta)) 
+    {   $provincia = $valores['provincia'];   }
    return($provincia);
-
  }
+
   function paises($pais)
  {
    $conexion = mysqli_connect('localhost', 'socio', 'socio', 'marte');
@@ -45,7 +38,6 @@ require_once('menu.php');
     $pais = $valores['nombre'];
    }
    return($pais);
-
  }
   function roles($rol)
  {
@@ -56,7 +48,6 @@ require_once('menu.php');
     $rol = $valores['Nombre'];
    }
    return($rol);
-
  }
   function estado($est)
  {  
@@ -80,10 +71,6 @@ require_once('menu.php');
   }
 }
    
-
-
-
-
 ?>  
 
 <?php // Funcion para Eliminar un Rol ************************************************
@@ -99,9 +86,6 @@ require_once('menu.php');
                       echo "<script>alert('Baja Provisional Realizada');</script>";     
                      
                     }   
-
-
-
           }  
     ?>
 
@@ -172,7 +156,6 @@ require_once('menu.php');
                           while ($valoresp = mysqli_fetch_array($queryp)) {
                           echo '<option value="'.$valoresp[id].'">'.utf8_encode($valoresp[nombre]).'</option>';
                           }
-
                         ?>
             </select>
           </div>
@@ -232,10 +215,8 @@ require_once('menu.php');
                     $x=0;
                     Global $X;
                     
-
                     if(isset($_POST['mto_buscarrol']) )
                     {
-
                         $sqlInicial="SELECT * FROM usuarios where 1 "; 
                      
                         if(isset($_POST['cmtoid']) && $_POST['cmtoid'] !='')
@@ -246,7 +227,6 @@ require_once('menu.php');
                           {
                             $sqlInicial = $sqlInicial . " && Usuario like '%$_POST[cmtonombre]%'";
                           }
-
                         if(isset($_POST['cmtoemail']) && $_POST['cmtoemail'] !='')
                           {
                             $sqlInicial = $sqlInicial . " && email like '%$_POST[cmtoemail]%'";
@@ -261,7 +241,6 @@ require_once('menu.php');
                           {
                             $sqlInicial = $sqlInicial . " && dni like '%$_POST[cmtodni]%'";
                           }
-
                         if(isset($_POST['cmtopro']) && $_POST['cmtopro'] !='')
                           {
                             $sqlInicial = $sqlInicial . " && provincias like '%$_POST[cmtopro]%'";
@@ -311,11 +290,9 @@ require_once('menu.php');
                      if($diferencia <= $start_loop)
                         {
                           $start_loop = $pagina;
-
                         } 
                        $end_loop = $total_pages;
                      $sql=$conexion->query($page_query); // ****
-
                     while($listaUsuarios = mysqli_fetch_array($sql))
                                 {                            
                                     echo ('
@@ -329,7 +306,6 @@ require_once('menu.php');
                                             <td> <a class="btn btn-outline-danger btn-sm" href="mtousuario-a.php?id='.$listaUsuarios['id_usuario'].'">Editar</a>
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" name="userdel" 
                                                 value='.$listaUsuarios['id_usuario'].'>Borrar</button></td></tr>
-
                                             ');
                                     $prov = provincia($listaUsuarios['provincias']);
                                     $pais = paises($listaUsuarios['Pais']);
@@ -344,13 +320,11 @@ require_once('menu.php');
                                             <td>'. utf8_encode($roles). '</td>
                                       ');
                                             
-
                                      $x=$x+1;
                                      $X=$x;
                                     
                                 }
                         echo ('<p>Resultados encontrados '.$total_records.'</p>');
-
                ?>
         
             </tbody>
@@ -362,70 +336,57 @@ require_once('menu.php');
                     
                     if ($total_pages > 1)
                     {
-
-                     echo('<center><nav aria-label="Page navigation example ">
-                        <ul class="pagination justify-content-center">');
-
-                     if($pagina == 1)
-                         {
-                           echo(' 
-                       
-                              <li><a class="page-link" href="mtousuarios.php?pagina='.($end_loop) .'" aria-label="Previous">
-                                 <span aria-hidden="true">&laquo;</span>
-                                </a>
-                              </li>');
-                         }
-
-                     if (($pagina <= $end_loop) && ($pagina != 1))
-
-                     {
-                       
-                        echo('<li><a class="page-link" href="mtousuarios.php?pagina='.($pagina - 1) .'" aria-label="Previous">
-                             <span aria-hidden="true">&laquo;</span>
-                            </a>
-                          </li>');
-
-                     }
+                       echo('<center><nav aria-label="Page navigation example ">
+                          <ul class="pagination justify-content-center">');
+                       if($pagina == 1)
+                           {
+                             echo(' 
+                         
+                                <li><a class="page-link" href="mtousuarios.php?pagina='.($end_loop) .'" aria-label="Previous">
+                                   <span aria-hidden="true">&laquo;</span>
+                                  </a>
+                                </li>');
+                           }
+                       if (($pagina <= $end_loop) && ($pagina != 1))
+                       {
+                         
+                          echo('<li><a class="page-link" href="mtousuarios.php?pagina='.($pagina - 1) .'" aria-label="Previous">
+                               <span aria-hidden="true">&laquo;</span>
+                              </a>
+                            </li>');
+                       }
                     
-                    
-                    
-                    
-                   
-                  
-                
-                    for($i=1; $i<=$total_pages; $i++)
-                      {     
-                      echo(' <li class="page-item"><a class="page-link" href="mtousuarios.php?pagina='.$i.'">'.$i.'</a></li>');
-                    
-                      }
+               
+                      for($i=1; $i<=$total_pages; $i++)
+                        {     
+                        echo(' <li class="page-item"><a class="page-link" href="mtousuarios.php?pagina='.$i.'">'.$i.'</a></li>');
+                      
+                        }
                  
-              
-                    
-                    
-                    if(($pagina < $end_loop) && ($pagina != $end_loop))
-                    {
-                    
-                     echo (' <li class="page-item">
-                              <a class="page-link" href="mtousuarios.php?pagina='.($pagina + 1).'" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                              </a>
-                            </li>
-                            ');
-                    }
-                    if ($pagina == $end_loop)
-                    {
-                      echo (' <li class="page-item">
-                              <a class="page-link" href="mtousuarios.php?pagina=1" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                              </a>
-                            </li>
-                            ');
-                    }
-                    echo('</ul>
-                             </nav></center>');
+                  
+                      if(($pagina < $end_loop) && ($pagina != 4))
+                      {
+                      
+                       echo (' <li class="page-item">
+                                <a class="page-link" href="mtousuarios.php?pagina='.($pagina + 1).'" aria-label="Next">
+                                  <span aria-hidden="true">&raquo;</span>
+                                </a>
+                              </li>
+                              ');
+                      }
+                      if ($pagina == 4)
+                      {
+                        echo (' <li class="page-item">
+                                <a class="page-link" href="mtousuarios.php?pagina=1" aria-label="Next">
+                                  <span aria-hidden="true">&raquo;</span>
+                                </a>
+                              </li>
+                              ');
+                      }
+                      echo('</ul>
+                               </nav></center>');
                    }
                    
-
                    
              ?>
       
@@ -499,7 +460,7 @@ require_once('menu.php');
             <?php
               $query = $conexion -> query ("SELECT * FROM provincias");
               while ($valores = mysqli_fetch_array($query)) {
-              echo '<option value="'.$valores[id_provincia].'">'.utf8_encode($valores[provincia]).'</option>';
+              echo '<option value="'.$valores[id_provincia].'">'.($valores[provincia]).'</option>';
               }
             ?>
             </select>
@@ -568,16 +529,10 @@ require_once('menu.php');
             'color':'#2E2EFE',
             'background':'#CEECF5',
             'fontSize':'0.8em'}
-
-
             );
             
           
-
-
         });
        
       }
     </script>
-    
-    

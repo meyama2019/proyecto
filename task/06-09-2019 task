@@ -20,5 +20,5 @@
 		OK ⦁	El texto en rojo que sale que no hay más noticias que mostrar ¿es necesario? - He comentado el mensaje.
 
 6 - Asociados
-	⦁	No realiza búsquedas - BUG
-	⦁	Inputs Provincia y Pais reordenarlos en una sóla línea.
+		OK⦁	No realiza búsquedas - BUG
+		⦁	Inputs Provincia y Pais reordenarlos en una sóla línea. No realizamos búsquedas por Pais/Provincia 
