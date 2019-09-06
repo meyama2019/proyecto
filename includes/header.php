@@ -58,20 +58,27 @@
                                     {
                                         case '0':
                                             # code...
-                                            echo('<div class="alert alert-success" role="alert">Bienvenido 
-                                                '.$_SESSION['login1'].'!</div>');
+                                            echo('<div class="alert alert-success text-truncate" role="alert" >
+                                                
+                                                 <p>User:'.$_SESSION['login1'].'</p>
+                                                
+                                                
+                                                </div>');
                                             
                                             break;
                                         case '1':
                                             # code...
-                                            echo('<div class="alert alert-warning" role="alert">
-                                                  Pendiente confirmación '.$_SESSION['login1'].'!
+                                            echo('<div class="alert alert-warning text-truncate" role="alert" >
+                                                  <p>Pendiente confirmación </p>
+                                                  <p style="font-size:0.8em">'.$_SESSION['login1'].'</p>
                                                 </div>');
                                             break;
                                         case '2':
                                             # code...
                                             echo('<div class="alert alert-danger" role="alert">
-                                                  Usuario de Baja - '.$_SESSION['login1'].'!
+                                                    <p>Usuario de Baja</p>
+                                                    <p style="font-size:0.8em">'.$_SESSION['login1'].'</p>
+                                                 
                                                 </div>');
 
                                             break;

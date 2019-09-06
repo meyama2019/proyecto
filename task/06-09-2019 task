@@ -2,20 +2,23 @@
 *												TASK 06-09-2019		Marcelo														  *
 ***********************************************************************************************************************************	
 1 - Pantalla Inicial - Home.php
-	⦁	Los logos de Facebook, Instagram no se visualizan
+		OK ⦁	Los logos de Facebook, Instagram no se visualizan
 	⦁	Footer - diseño nuevo
    
 2 - Registro Usuario
-	⦁	Enviar Noticias (check) ¿sirve para algo?
-	⦁	Cuando entras con el usuario que se acaba de registrar, si el email es muy largo, se sale de la cabecera.
+	⦁	Enviar Noticias (check) ¿sirve para algo? - No guardamos en BBDD este estado. 
+		OK ⦁	Cuando entras con el usuario que se acaba de registrar, si el email es muy largo, se sale de la cabecera.
 
 3 - Socio Nuevo
-	⦁	Si no marcamos el check de Acepto los términos y condiciones también lo da de alta y no debería dejar darse de alta sin marcar el check. ¿Poner un link de un doc pdf con los términos y condiciones?
-	Galería
-	⦁	El texto que hay debajo de Momentos compartidos, poner un texto en castellano haciendo referencia al objetivo o función de las fotos subidas (socios, usuarios...)
-	Noticias
-	⦁	El texto en rojo que sale que no hay más noticias que mostrar ¿es necesario?
+		OK ⦁	Si no marcamos el check de Acepto los términos y condiciones también lo da de alta y no debería dejar darse de alta sin marcar el check. ¿Poner un link de un doc pdf con los términos y condiciones?
 
-4 - Asociados
+4 - Galería
+
+		OK ⦁	El texto que hay debajo de Momentos compartidos, poner un texto en castellano haciendo referencia al objetivo o función de las fotos subidas (socios, usuarios...)
+
+5 - Noticias
+		OK ⦁	El texto en rojo que sale que no hay más noticias que mostrar ¿es necesario? - He comentado el mensaje.
+
+6 - Asociados
 	⦁	No realiza búsquedas - BUG
 	⦁	Inputs Provincia y Pais reordenarlos en una sóla línea.

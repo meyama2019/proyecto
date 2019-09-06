@@ -39,7 +39,8 @@
                                     {
                                         case '0':
                                             # code...
-                                            echo('<div id="iconlogin" class="alert alert-success" role="alert" > Bienvenido '.$_SESSION['login1'].'!</div>');
+                                            /*echo('<div id="iconlogin" class="alert alert-success" role="alert" > Bienvenido '.$_SESSION['login1'].'!</div>');*/
+                                            
                                             break;
                                         case '1':
                                             # code...

@@ -16,7 +16,7 @@ include('../models/connection1.php');
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">Momentos Compartidos</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    <p class="lead">Trocitos de historia en imágenes de la Asociación</p>
     <?php
        if (isset($_SESSION['rol1']))
        {
