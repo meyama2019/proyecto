@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="http://localhost/proyecto/css/bootstrap.min.css">
     <link rel="stylesheet" media="screen" type="text/css" href="http://localhost/proyecto/css/principal.css" />
     <link rel="stylesheet" media="print" type="text/css" href="http://localhost/proyecto/css/imprimir.css" />
+    <link rel="stylesheet" media="screen" type="text/css" href="http://localhost/proyecto/css/animate.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style type="text/css">
@@ -48,7 +49,7 @@
                
                     <div class="row">
                         <div class="col-9">
-                             <h1>ASOCIACION DE HOTELEROS DE MARTE</h1>
+                             <h1 class="heartBeat">ASOCIACION DE HOTELEROS DE MARTE</h1>
                         </div>
                         <div class="col-3">
                               <?php
@@ -68,7 +69,7 @@
                                             break;
                                         case '1':
                                             # code...
-                                            echo('<div class="alert alert-warning text-truncate" role="alert" >
+                                            echo('<div class="alert alert-warning text-truncate " role="alert" >
                                                   <p>Pendiente confirmación </p>
                                                   <p style="font-size:0.8em">'.$_SESSION['login1'].'</p>
                                                 </div>');
@@ -92,7 +93,7 @@
                                 {
                                     if (time() - $_SESSION['start'] > 300)
                                     {
-                                        header("Location:inactive.php");
+                                        header("Location:http://localhost/proyecto/asociacion/inactive.php");
                                     }
                                     else
                                     {

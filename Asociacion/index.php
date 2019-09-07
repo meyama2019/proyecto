@@ -40,7 +40,7 @@ require_once('menu.php');
 		 
 	
           <div class="row">
-            <div class=" col-6 shadow p-3 mb-5 bg-white  border-left">
+            <div class=" col-6 shadow p-3 mb-5 bg-white  border-left" id="column-1">
                <article id="beneficios">
                 <h3 >Beneficios</h3>
                 <p >Estar informado/a y compartir con todos los asociados, la trayectoria futura de nuestra

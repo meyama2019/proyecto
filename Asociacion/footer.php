@@ -440,7 +440,7 @@ include(RAIZ . 'models/connection1.php');
 <!-- Footer -->
 <footer class="page-footer font-small blue-grey lighten-5">
 
-<div style="background-color: #006450; color: #ffffff;">
+<div style="background-color: #0B0B3B; color: #ffffff;">
 <div class="container">
 
       <!-- Grid row-->
@@ -473,13 +473,13 @@ include(RAIZ . 'models/connection1.php');
         <!-- Content -->
         <h6 class="text-uppercase font-weight-bold">Asociación de Hosteleros de Marte</h6>
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 100%;">
-        <p>Fundada en el 2019 y registrada e inscrita en el registro de Asociaciones Profesionales del Departamento de Justicia, Empleo y Seguridad Social con nº 2019/7. <br>
+        <p style="font-size: 0.7em">Fundada en el 2019 y registrada e inscrita en el registro de Asociaciones Profesionales del Departamento de Justicia, Empleo y Seguridad Social con nº 2019/7. <br>
 			En cumplimiento de la Ley 34/2002 de 11 de Julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), la entidad Asociación de Hosteleros Marte informa de que es titular del portal www.marte.com.<br>
 			De acuerdo con las exigencias del artículo 10 de la citada ley informa de los siguientes datos:<br>
 			CIF: G--------<br>
 			Domicilio Social: C/El Carmen,100, 23660 - Alcaudete<br>
 			Teléfono: + 34 955 567 88<br>
-			Email: <a href="" class="badge badge-info" data-toggle="modal" data-target="#exampleModa4" >Formulario de Contacto</a>
+			Email: 
 		<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 100%;">
 	
 		</p>
@@ -513,6 +513,8 @@ include(RAIZ . 'models/connection1.php');
             <br>
             <a href="http://localhost/proyecto/asociacion/documentos.php">Documentos</a>
             <br>
+            <a href="" class="badge badge-info" data-toggle="modal" data-target="#exampleModa4" >Formulario de Contacto</a>
+            <br>
             <a href="#top"><img src="http://localhost/proyecto/imagenes/arrow.png"></a>
 
             </p>
@@ -531,8 +533,9 @@ include(RAIZ . 'models/connection1.php');
 <!-- Footer Links -->
 
 <!-- Copyright -->
-  <div class="footer-copyright text-center text-black-50 py-3">© 2018 Copyright:
-    <a class="dark-grey-text" href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+  <div class="footer-copyright text-center text-black-50 py-3">© 2019 Copyright:
+    <a class="dark-grey-text" href="https://github.com/meyama2019/proyecto"> Meyama2019.com</a>
+    <!--<a class="dark-grey-text" href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>-->
   <br>
   Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"             title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 <!-- Copyright -->
