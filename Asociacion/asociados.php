@@ -3,7 +3,7 @@ session_start();
 //define('RAIZ', $_SERVER['DOCUMENT_ROOT']. '/proyecto/'); 
 //include(RAIZ . 'asociacion/header.php');
 include ('../includes/header.php');
-include('../models/connection.php');
+include('../models/connection1.php');
 require_once('menu.php');
 ?>
 
@@ -69,28 +69,39 @@ require_once('menu.php');
             if (isset($_POST['buscasocio']) && ((isset($_POST['cid']) && $_POST['cid'] !='') || isset($_POST['cemail']) && $_POST['cemail'] !='' || isset($_POST['cnomape']) && $_POST['cnomape'] !='' || isset($_POST['ctfno']) && $_POST['ctfno'] !=''))
 
             {
-              
-               
+
                $sqlInicial="SELECT id_usuario,usuario,email,Nom_Ape,dni,pr.provincia,pa.iso,telefono,cuenta,activo,rol_id 
                                   FROM paises pa  
                                   inner join usuarios us on us.Pais = pa.id
                                   inner join provincias pr on pr.id_provincia = us.provincias                                
                                   where 1 "; 
-               //$sqlFinal="and rol_id != 95 LIMIT $start_from, $registro_por_pagina";
+
                $sqlFinal="and rol_id != 95";                   
                $x=0;
                Global $X;
                 if(isset($_POST['cid']) && $_POST['cid'] !='')
-                    { $sqlInicial = $sqlInicial . " && id_usuario = '$_POST[cid]' ";  }
+					{ 
+						$cid= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['cid'])));
+						$sqlInicial = $sqlInicial . " && id_usuario = '$cid' ";
+					}
                 if(isset($_POST['cemail']) && $_POST['cemail'] !='')
-                    { $sqlInicial = $sqlInicial . " && email like '%$_POST[cemail]%' "; }
+					{
+						$cemail= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['cemail'])));
+						$sqlInicial = $sqlInicial . " && email like '%$cemail%' ";
+					}
                 if(isset($_POST['cnomape']) && $_POST['cnomape'] !='')
-                    { $sqlInicial = $sqlInicial . " && Nom_Ape like '%$_POST[cnomape]%' "; }
+					{
+						$cnomape= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['cnomape'])));
+						$sqlInicial = $sqlInicial . " && Nom_Ape like '%$cnomape%' ";
+					}
                 if(isset($_POST['ctfno']) && $_POST['ctfno'] !='')
-                    { $sqlInicial = $sqlInicial . " && telefono like '%$_POST[ctfno]%' "; }
+					{
+						$ctfno= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['ctfno'])));
+						$sqlInicial = $sqlInicial . " && telefono like '%$ctfno%' ";
+					}
                 $sqlInicial = $sqlInicial . $sqlFinal;
-                //echo($sqlInicial);
-                $conexion = mysqli_connect("localhost", "socio", "socio", "marte");
+
+                //$conexion = mysqli_connect("localhost", "socio", "socio", "marte");
            
                 $result = mysqli_query($conexion, $sqlInicial);
                 $number=0;
@@ -194,50 +205,7 @@ require_once('menu.php');
 
                   
                     $end_loop = $total_pages;
-                   /*
-                    echo('<center><nav aria-label="Page navigation example ">
-                        <ul class="pagination justify-content-center">
-                        <li><a class="page-link" href="asociados.php?pagina=1" aria-label="Previous">
-                              <span aria-hidden="true">&laquo;</span>
-                            </a>
-                          </li>');
-                   
-                    if($pagina > 1)
-                    {
-                
-                     echo(' <li class="page-item"><a class="page-link" href="asociados.php?pagina='.($pagina - 1).'">1</a></li>');
-                 
-                    }
-                 
-                    for($i=$start_loop; $i<=$total_pages; $i++)
-                    {     
-                    echo(' <li class="page-item"><a class="page-link" href="asociados.php?pagina='.$i.'">'.$i.'</a></li>');
                   
-                    }
-                    if($pagina < $end_loop)
-                    {
-                    
-                     echo (' <li class="page-item">
-                              <a class="page-link" href="asociados.php?pagina='.($pagina + 1).'" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                              </a>
-                            </li>
-                          </ul>
-                        </nav></center>');
-                    }
-                    if($pagina == $end_loop)
-                    {
-                    
-                     echo (' <li class="page-item">
-                              <a class="page-link" href="asociados.php?pagina=1" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                              </a>
-                            </li>
-                          </ul>
-                        </nav></center>');
-                    }
-                    
-                  */
                     $start_loop=1;
                     if ($total_pages > 1)
                     {
