@@ -468,7 +468,7 @@ include(RAIZ . 'models/connection1.php');
     <!-- Grid row -->
     <div class="row mt-3 dark-grey-text">
       <!-- Grid column -->
-      <div class="col-md-20 col-lg-20 col-xl-20 mb-20">
+      <div class="col-md-5 col-lg-20 col-xl-20 mb-20">
 
         <!-- Content -->
         <h6 class="text-uppercase font-weight-bold">Asociación de Hosteleros de Marte</h6>
@@ -487,6 +487,41 @@ include(RAIZ . 'models/connection1.php');
 
     </div>
     <!-- Grid column -->
+     <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-20 col-xl-20 mb-20">
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-5 col-lg-20 col-xl-20 mb-20">
+
+            <!-- Content -->
+            <h6 class="text-uppercase font-weight-bold">Enlaces</h6>
+            <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 100%;">
+            <a href="http://localhost/proyecto/home.php">Inicio</a>
+            <br>
+            <a href="http://localhost/proyecto/asociacion/galeria.php">Fotos de la Asociación</a>
+            <br>
+            <a href="http://localhost/proyecto/asociacion/momentos.php">Momentos compartidos</a>
+            <br>
+            <a href="http://localhost/proyecto/asociacion/noticias.php">Noticias</a>
+            <br>
+            <a href="http://localhost/proyecto/asociacion/asociados.php">Asociados </a>
+            <br>
+            <a href="http://localhost/proyecto/asociacion/documentos.php">Documentos</a>
+
+            </p>
+
+
+        </div>
+        <!-- Grid column -->
+    </div>
+    <!-- Grid row -->
+
+
     </div>
     <!-- Grid row -->
 
