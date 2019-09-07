@@ -110,18 +110,23 @@ include('../models/connection1.php');
 																			{
 																				if(!empty($_POST['titulo']) )
 																				{
-																					$query ="SELECT * FROM documentos, usuarios WHERE documentos.titulo like '%" . $_POST['titulo'] . "%' AND documentos.userid =usuarios.id_usuario AND creation_date <= CURDATE()";
+																					$titulo= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['titulo'])));
+																					$query ="SELECT * FROM documentos, usuarios WHERE documentos.titulo like '%" . $titulo . "%' AND documentos.userid =usuarios.id_usuario AND creation_date <= CURDATE()";
 																					$result = mysqli_query($conexion, $query);
 																				}
 																				elseif (!empty($_POST['descripcion']) ) 
 																				{
-																					$query ="SELECT * FROM documentos, usuarios WHERE documentos.descripcion like '%" . $_POST['descripcion'] . "%' AND documentos.userid =usuarios.id_usuario AND creation_date <= CURDATE()";
+																					$descripcion= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['descripcion'])));
+																					$query ="SELECT * FROM documentos, usuarios WHERE documentos.descripcion like '%" . $descripcion. "%' AND documentos.userid =usuarios.id_usuario AND creation_date <= CURDATE()";
 																					$result = mysqli_query($conexion, $query);
 																				}
 																				elseif ( !empty($_POST['fechainicio'] && $_POST['fechafin']) ) 
 																				{
 																					$fechainicio = date("Y-m-d", strtotime($_POST['fechainicio'])); 
 																					$fechafin = date("Y-m-d", strtotime($_POST['fechafin']));
+																					
+																					$fechainicio = strip_tags(mysqli_real_escape_string($conexion, trim($fechainicio)));
+																					$fechafin = strip_tags(mysqli_real_escape_string($conexion, trim($fechafin)));
 
 																					if  ($fechafin < $fechainicio)
 																					{
@@ -142,12 +147,14 @@ include('../models/connection1.php');
 																				}
 																				elseif ( !empty($_POST['quien']) ) 
 																				{
-																					$query ="SELECT * FROM documentos, usuarios WHERE documentos.userid like '%" . $_POST['quien'] . "%' AND documentos.userid =usuarios.id_usuario AND creation_date <= CURDATE()";
+																					$quien= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['quien'])));
+																					$query ="SELECT * FROM documentos, usuarios WHERE documentos.userid like '%" . $quien . "%' AND documentos.userid =usuarios.id_usuario AND creation_date <= CURDATE()";
 																					$result = mysqli_query($conexion, $query);
 																				}
 																				elseif ( !empty($_POST['tipo']) ) 
 																				{
-																					$query ="SELECT * FROM documentos, usuarios WHERE documentos.documento like '%" . $_POST['tipo'] . "%' AND documentos.userid =usuarios.id_usuario AND creation_date <= CURDATE()";
+																					$tipo= strip_tags(mysqli_real_escape_string($conexion, trim($_POST['tipo'])));
+																					$query ="SELECT * FROM documentos, usuarios WHERE documentos.documento like '%" . $tipo . "%' AND documentos.userid =usuarios.id_usuario AND creation_date <= CURDATE()";
 																					$result = mysqli_query($conexion, $query);
 																				}																				
 																				else
