@@ -5,7 +5,7 @@
    <script type="text/javascript" src="http://localhost/proyecto/js/jquery.js"></script>
     <script type="text/javascript" src="http://localhost/proyecto/js/bootstrap.js"></script>
     <link rel="stylesheet" type="text/css" href="http://localhost/proyecto/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css"  href="http://localhost/proyecto/css/signin.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost/proyecto/css/signin.css">
 </head>
 <body>
   <div class="container">
@@ -25,6 +25,7 @@
       <a class="btn btn-lg btn-primary btn-block" href="http://localhost/proyecto/home.php">Ir a Home</a>
     </form>
   </div>
+  
 </body>
 </html>
 
