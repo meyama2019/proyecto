@@ -33,7 +33,7 @@
               Acceso a Datos
             </div>
             <div class="card-body">
-              <h5 class="card-title">No se puede acceder a la BBDD</h5>
+              <h5 class="card-title">Sitio temporalmente en mantenimiento..</h5>
               <p class="card-text">Contacte con Administrador</p>
               <a href="../home.php" class="btn btn-primary">Entrar</a>
             </div>
