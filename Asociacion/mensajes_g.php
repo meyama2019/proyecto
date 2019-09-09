@@ -82,30 +82,44 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
             </select>
         </div>
 		<span><br></span>
-		<div class="form-group col-md-3">
+		<div class="form-group col-md-4">
             <label for="fecha">Fecha</label>
             <input type="date" class="form-control" id="fecha" name="fecha" placeholder="fecha">
         </div>
-		<br><br><br><br>	
-		<div class="form-group col-md-5">
+		
+		<div class="form-group col-md-4">
             <label for="estado">Estado</label>
             <select class="form-control" id="estado" name ="estado" required>
 			<option value="0">Escoge una opción</option>
-			<option value="1">Pendiente</option>
-			<option value="2">No pendiente</option>
+			<option value="1">Leído(s)</option>
+			<option value="2">No leído(s)</option>
 			</select>
         </div>
 		
-		<div class="form-group col-md-8">
-            <label for="persona">REMITENTE Y CONTACTO<br></label>
-            <input type="text" class="form-control" id="persona" name="persona" placeholder="Busca por nombre de remitente, su email o teléfono">
+		<div class="form-group col-md-4">
+            <label for="persona">REMITENTE<br></label>
+            <input type="text" class="form-control" id="persona" name="persona" placeholder="Busca por nombre del remitente">
         </div>
 		
-		<div class="form-group col-md-8">
-            <label for="mensaje">ASUNTO Y MENSAJE</label>
-            <input type="text" class="form-control" id="mensaje" name="mensaje" placeholder="Busca por contenido del mensaje o el asunto">
+		<div class="form-group col-md-4">
+            <label for="email">EMAIL<br></label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="Busca por email del remitente">
         </div>
 		
+		<div class="form-group col-md-4">
+            <label for="telefono">TELÉFONO<br></label>
+            <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Busca por teléfono del remitente">
+        </div>
+		
+		<div class="form-group col-md-4">
+            <label for="asunto">ASUNTO</label>
+            <input type="text" class="form-control" id="asunto" name="asunto" placeholder="Busca por asunto">
+        </div>
+		
+		<div class="form-group col-md-4">
+            <label for="mensaje">MENSAJE</label>
+            <input type="text" class="form-control" id="mensaje" name="mensaje" placeholder="Busca por contenido del mensaje">
+        </div>
 		
 
         </div>
@@ -125,13 +139,16 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 			<div id="collapseOne" class="collapse show container" aria-labelledby="headingOne" data-parent="#accordionExample">
 				<div class="card-body ">
 					<div class="container">
-						<table id="myTable" class="table">
+						<table class="table table-hover">
 							<tr class="table-info">
-								<th >ID</th>
-								<th >FECHA</th>
-								<th >REMITENTE Y CONTACTO</th>
-								<th >ASUNTO Y MENSAJE</th>
-								<th >ESTADO ACTUAL</th>
+								<th scope="col">id</th>
+								<th scope="col">Fecha</th>
+								<th scope="col">Nombre</th>
+								<th scope="col">Email</th>
+								<th scope="col">Telefono</th>
+								<th scope="col">Asunto</th>
+								<th scope="col">Mensaje</th>
+								<th scope="col">Acción</th>
 							</tr>
 							
 							<tbody>
@@ -149,7 +166,21 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 										{
 										  $persona = $_POST['persona'];	
 										  echo "<div class='alert alert-dark' role='alert'>Resultados para: $persona</div>";
-										  $query ="SELECT * FROM contacto WHERE nombre like '%" . $_POST['persona'] . "%' OR email like '%" . $_POST['persona'] . "%' OR telefono like '%" . $_POST['persona'] . "%' ";
+										  $query ="SELECT * FROM contacto WHERE nombre like '%" . $_POST['persona'] . "%' ";
+										  $result = mysqli_query($conexion, $query);
+										}
+									elseif (!empty($_POST['email']) ) 
+										{
+										  $email = $_POST['email'];	
+										  echo "<div class='alert alert-dark' role='alert'>Resultados para: $email</div>";
+										  $query ="SELECT * FROM contacto WHERE email like '%" . $_POST['email'] . "%' ";
+										  $result = mysqli_query($conexion, $query);
+										}
+									elseif (!empty($_POST['telefono']) ) 
+										{
+										  $telefono = $_POST['telefono'];	
+										  echo "<div class='alert alert-dark' role='alert'>Resultados para: $telefono</div>";
+										  $query ="SELECT * FROM contacto WHERE telefono like '%" . $_POST['telefono'] . "%' ";
 										  $result = mysqli_query($conexion, $query);
 										}
 									elseif ( !empty($_POST['fecha']  )) 
@@ -169,23 +200,30 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 										  $result = mysqli_query($conexion, $query);
 										  }
 										}
+									elseif ( !empty($_POST['asunto']) ) 
+										{
+										  $asunto = $_POST['asunto'];	
+										  echo "<div class='alert alert-dark' role='alert'>Resultados para: $asunto</div>";
+										  $query ="SELECT * FROM contacto WHERE asunto like '%" . $_POST['asunto'] . "%'  ";
+										  $result = mysqli_query($conexion, $query);
+										}
 									elseif ( !empty($_POST['mensaje']) ) 
 										{
 										  $mensaje = $_POST['mensaje'];	
 										  echo "<div class='alert alert-dark' role='alert'>Resultados para: $mensaje</div>";
-										  $query ="SELECT * FROM contacto WHERE asunto like '%" . $_POST['mensaje'] . "%' OR mensaje like '%" . $_POST['mensaje'] . "%' ";
+										  $query ="SELECT * FROM contacto WHERE mensaje like '%" . $_POST['mensaje'] . "%' ";
 										  $result = mysqli_query($conexion, $query);
 										}
 									elseif ( !empty($_POST['estado']) ) 
 										{
-										  if ($_POST['estado'] == '2')
+										  if ($_POST['estado'] == '1')
 										  {
 											  $estado = $_POST['estado'];	
 											  echo "<div class='alert alert-dark' role='alert'>Lista de solicitudes tramitadas</div>";
 											  $query ="SELECT * FROM contacto WHERE activo='0' ";
 											  $result = mysqli_query($conexion, $query);
 										  }
-										  elseif ($_POST['estado'] == '1')
+										  elseif ($_POST['estado'] == '2')
 										  {
 											  $estado = $_POST['estado'];	
 											  echo "<div class='alert alert-dark' role='alert'>Lista de solicitudes pendientes</div>";
@@ -196,20 +234,20 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 									else
 										{
 										$result = mysqli_query($conexion, "SELECT * FROM contacto
-																 ORDER BY fecha_entrada DESC");
+																 ORDER BY id_solicitud DESC");
 										}
 								}
 								else
 								{
 									$result = mysqli_query($conexion, "SELECT * FROM contacto
-																 ORDER BY fecha_entrada DESC");
+																 ORDER BY id_solicitud DESC");
 								}
 	
 								
 								
 								while($contact_data = mysqli_fetch_array($result))
 							{?>
-								<tr class="item">
+								<tr class="item" style = "font-size:0.9em">
 									<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirm('¿Confirmar el cambio de estado?');">
 										<td class="form-group">
 											<?php echo $contact_data['id_solicitud']; ?>
@@ -221,11 +259,22 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 										</td>
 										
 										<td class="form-group">
-											<center><?php echo $contact_data['nombre']; echo "<br>"; echo "<hr>";?> <strong><?php echo $contact_data['email']; echo " | "; echo $contact_data['telefono']; ?></strong></center>
+											<?php echo $contact_data['nombre']; ?>
 										</td>
 										
 										<td class="form-group">
-											<?php echo $contact_data['asunto']; echo "<br>"; echo "<hr>";?> <strong> <?php  echo $contact_data['mensaje'];?></strong>
+											<?php echo $contact_data['email'];  ?>
+										</td>
+										<td class="form-group">
+											<?php echo $contact_data['telefono']; ?></strong></center>
+										</td>
+										
+										<td class="form-group">
+											<?php echo $contact_data['asunto']; ?>
+										</td>
+										
+										<td class="form-group">
+											<?php echo $contact_data['mensaje'];?>
 										</td>
 										
 										<td>
@@ -234,15 +283,13 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 												if ($contact_data['activo'] == 0)
 												{
 													?>
-														<p>Solicitud Tramitada</p>
-														<button type="submit"  class="btn btn-outline-danger btn-sm" name="change_msg">PONER EN PENDIENTES</button>
+														<button type="submit" class="btn btn-outline-danger btn-sm" name="change_msg">NO LEÍDO</button>
 													<?php
 												}
 												else
 												{
 													?>
-														<p>Solicitud pendiente</p>
-														<button type="submit"  class="btn btn-success" name="change_msg">MARCAR COMO FINALIZADO</button>
+														<button type="submit"  class="btn btn-success" name="change_msg">LEÍDO</button>
 													<?php
 												}
 											?>	
