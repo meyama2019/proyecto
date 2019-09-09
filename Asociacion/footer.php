@@ -448,11 +448,7 @@ include(RAIZ . 'models/connection1.php');
 
         <!-- Grid column -->
         <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-          <h6 class="mb-0">Contacte con nosotros en Redes Sociales
-    		  <a id ="facebook" href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img class="socialmedia" src="http://localhost/proyecto/imagenes/facebook.png" alt="facebook" width="20" height="20" title="Facebook"></a>
-    		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img class="socialmedia" src="http://localhost/proyecto/imagenes/instagram.png" alt="instagram" width="20" height="20" title="instagram"></a>
-    		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img class="socialmedia" src="http://localhost/proyecto/imagenes/twitter.png" alt="twitter" width="20" height="20" title="twitter"></a>
-		  </h6>
+          
 		</div>
         <div class="col-md-6 col-lg-5 text-center text-md-right mb-4 mb-md-0" id='myWatch'></div>
         <!-- Grid column -->
@@ -467,36 +463,9 @@ include(RAIZ . 'models/connection1.php');
 <div class="container text-center text-md-left mt-5">
     <!-- Grid row -->
     <div class="row mt-3 dark-grey-text">
-      <!-- Grid column -->
-      <div class="col-md-5 col-lg-20 col-xl-20 mb-20">
-
-        <!-- Content -->
-        <h6 class="text-uppercase font-weight-bold">Asociación de Hosteleros de Marte</h6>
-        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 100%;">
-        <p style="font-size: 0.7em">Fundada en el 2019 y registrada e inscrita en el registro de Asociaciones Profesionales del Departamento de Justicia, Empleo y Seguridad Social con nº 2019/7. <br>
-			En cumplimiento de la Ley 34/2002 de 11 de Julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), la entidad Asociación de Hosteleros Marte informa de que es titular del portal www.marte.com.<br>
-			De acuerdo con las exigencias del artículo 10 de la citada ley informa de los siguientes datos:<br>
-			CIF: G--------<br>
-			Domicilio Social: C/El Carmen,100, 23660 - Alcaudete<br>
-			Teléfono: + 34 955 567 88<br>
-			Email: 
-		<hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 100%;">
 	
-		</p>
-		
-
-    </div>
-    <!-- Grid column -->
-     <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-2 col-lg-20 col-xl-20 mb-20">
-
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-5 col-lg-20 col-xl-20 mb-20">
+	<!-- Grid column -->
+        <div class="col-md-3 col-lg-20 col-xl-20 mb-20">
 
             <!-- Content -->
             <h6 class="text-uppercase font-weight-bold">Enlaces</h6>
@@ -514,14 +483,61 @@ include(RAIZ . 'models/connection1.php');
             <a href="http://localhost/proyecto/asociacion/documentos.php">Documentos</a>
             <br>
             <a href="" class="badge badge-info" data-toggle="modal" data-target="#exampleModa4" >Formulario de Contacto</a>
-            <br>
-            <a href="#top"><img src="http://localhost/proyecto/imagenes/arrow.png"></a>
+            
 
             </p>
 
 
         </div>
         <!-- Grid column -->
+	
+	<!-- Grid column -->
+        <div class="col-md-3 col-lg-20 col-xl-20 mb-20">
+
+            <!-- Content -->
+            <h6 class="text-uppercase font-weight-bold">Páginas de interés</h6>
+            <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 100%;">
+            <a href="#">Mercurio</a>
+            <br>
+            <a href="#">Venus</a>
+            <br>
+            <a href="#">Saturno</a>
+            <br>
+            <a href="#">Neptuno</a>
+            
+            <br>
+            
+
+            </p>
+
+
+        </div>
+        <!-- Grid column -->
+	
+	
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-20 col-xl-20 mb-20">
+
+        <!-- Content -->
+        <h6 class="text-uppercase font-weight-bold">En las Redes Sociales</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 100%;">
+        <a id ="facebook" href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img class="socialmedia" src="http://localhost/proyecto/imagenes/facebook.png" alt="facebook" width="20" height="20" title="Facebook"></a>
+    		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img class="socialmedia" src="http://localhost/proyecto/imagenes/instagram.png" alt="instagram" width="20" height="20" title="instagram"></a>
+    		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img class="socialmedia" src="http://localhost/proyecto/imagenes/twitter.png" alt="twitter" width="20" height="20" title="twitter"></a>
+		<br>
+            <a href="#top"><img src="http://localhost/proyecto/imagenes/arrow.png" style="width:35px; height:35px; margin:6px 2px 6px 0px; "></a>
+    </div>
+	
+    <!-- Grid column -->
+     <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-20 col-xl-20 mb-20">
+
+        </div>
+        <!-- Grid column -->
+
+        
     </div>
     <!-- Grid row -->
 
@@ -533,7 +549,12 @@ include(RAIZ . 'models/connection1.php');
 <!-- Footer Links -->
 
 <!-- Copyright -->
-  <div class="footer-copyright text-center text-black-50 py-3">© 2019 Copyright:
+  <div class="footer-copyright text-center text-black-50 py-3" style="font-size: 0.7em">
+  <p >De acuerdo con las exigencias del artículo 10 de la citada ley informa de los siguientes datos:<br>
+			CIF: G-------- | Domicilio Social: C/El Carmen,100, 23660 - Alcaudete | Telf: + 34 955 567 88 | Email: marte@marte.com
+	
+		</p>
+		© 2019 Copyright:
     <a class="dark-grey-text" href="https://github.com/meyama2019/proyecto"> Meyama2019.com</a>
     <!--<a class="dark-grey-text" href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>-->
   <br>
