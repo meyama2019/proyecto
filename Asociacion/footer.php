@@ -438,7 +438,7 @@ include(RAIZ . 'models/connection1.php');
 
 
 <!-- Footer -->
-<footer class="page-footer font-small blue-grey lighten-5">
+<footer class="page-footer font-small blue-grey lighten-5 py-0">
 
 <div style="background-color: #0B0B3B; color: #ffffff;">
 <div class="container">
@@ -447,10 +447,9 @@ include(RAIZ . 'models/connection1.php');
       <div class="row py-4 d-flex align-items-center">
 
         <!-- Grid column -->
-        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-          
+        <div class="col-md-6 col-lg-6 text-center text-md-left mb-4 mb-md-0">       
 		</div>
-        <div class="col-md-6 col-lg-5 text-center text-md-right mb-4 mb-md-0" id='myWatch'></div>
+        <div class="col-md-6 col-lg-6 text-center text-md-right mb-4 mb-md-0" id='myWatch'></div>
         <!-- Grid column -->
 
     </div>
@@ -465,7 +464,7 @@ include(RAIZ . 'models/connection1.php');
     <div class="row mt-3 dark-grey-text">
 	
 	<!-- Grid column -->
-        <div class="col-md-3 col-lg-20 col-xl-20 mb-20">
+        <div class="col-md-4 col-lg-20 col-xl-20 mb-20">
 
             <!-- Content -->
             <h6 class="text-uppercase font-weight-bold">Enlaces</h6>
@@ -492,7 +491,7 @@ include(RAIZ . 'models/connection1.php');
         <!-- Grid column -->
 	
 	<!-- Grid column -->
-        <div class="col-md-3 col-lg-20 col-xl-20 mb-20">
+        <div class="col-md-4 col-lg-20 col-xl-20 mb-20">
 
             <!-- Content -->
             <h6 class="text-uppercase font-weight-bold">Páginas de interés</h6>
@@ -516,7 +515,7 @@ include(RAIZ . 'models/connection1.php');
 	
 	
       <!-- Grid column -->
-      <div class="col-md-3 col-lg-20 col-xl-20 mb-20">
+      <div class="col-md-4 col-lg-20 col-xl-20 mb-20">
 
         <!-- Content -->
         <h6 class="text-uppercase font-weight-bold">En las Redes Sociales</h6>
@@ -529,13 +528,7 @@ include(RAIZ . 'models/connection1.php');
     </div>
 	
     <!-- Grid column -->
-     <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-2 col-lg-20 col-xl-20 mb-20">
-
-        </div>
-        <!-- Grid column -->
+          
 
         
     </div>
