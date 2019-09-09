@@ -143,7 +143,9 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 										  if  ($fechafin < $fechainicio)
 										  {
 											  echo "<script>alert('Fecha fin no puede ser inferior a fecha de inicio');</script>";
-											  goto general;
+											  $result = mysqli_query($conexion, "SELECT * FROM noticias, usuarios
+																 WHERE userid =id_usuario
+																 ORDER BY fechainicio DESC");
 										  }
 										  else
 										  {
@@ -176,7 +178,9 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 										}	
 									else
 										{
-											goto general;
+											$result = mysqli_query($conexion, "SELECT * FROM noticias, usuarios
+																 WHERE userid =id_usuario
+																 ORDER BY fechainicio DESC");
 										}
 								}
 								else

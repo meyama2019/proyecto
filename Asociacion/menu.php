@@ -73,6 +73,7 @@
                         <a class="dropdown-item" href="http://localhost/proyecto/asociacion/noticias_g.php">Noticias</a>
                         <a class="dropdown-item" href="http://localhost/proyecto/asociacion/mtofotos.php">Fotos</a>
                         <a class="dropdown-item" href="http://localhost/proyecto/asociacion/documentos_g.php">Documentos</a>
+						<a class="dropdown-item" href="http://localhost/proyecto/asociacion/mensajes_g.php">Mensajes</a>
 
                          
                       </div>
