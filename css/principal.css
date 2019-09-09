@@ -395,10 +395,13 @@ footer{
   }
 }
 
+.socialmedia{
+  opacity: 0.6;
+}
 
 .socialmedia:hover{
  
-  background: red;
+  opacity: 1;
   
   
 }

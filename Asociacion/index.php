@@ -36,17 +36,17 @@ require_once('menu.php');
 
 <br>
 
-         <div class="container">
-		 
-		 <div class="col-12 col-5 shadow p-3 mb-5 bg-white rounded">
+      <div class="container">
+		    <div class="row">
+		      <div class="col-12 col-5 shadow p-3 mb-5 bg-white rounded">
              <article id="general">
-                <h3 class="titgeneral" align="center"><u>NUESTRA ASOCIACIÓN</u></h3>
-                <p >Fundada en el 2019 y registrada e inscrita en el registro de Asociaciones Profesionales del Departamento de Justicia, Empleo y Seguridad Social con nº 2019/7. <br>
-			En cumplimiento de la Ley 34/2002 de 11 de Julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), la entidad Asociación de Hosteleros Marte informa de que es titular del portal www.marte.com.<br>
-			
-		</p>
-            </article>
-            </div>
+                <h3 class="titgeneral font-weight-bold" align="center"><u>NUESTRA ASOCIACIÓN</u></h3>
+                <p  >Fundada en el 2019 y registrada e inscrita en el registro de Asociaciones Profesionales del Departamento de Justicia, Empleo y Seguridad Social con nº 2019/7. <br>
+			           En cumplimiento de la Ley 34/2002 de 11 de Julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), la entidad Asociación de Hosteleros Marte informa de que es titular del portal www.marte.com.<br>
+                </p>
+           </article>
+          </div>
+        </div>  
 			
 	
           <div class="row">

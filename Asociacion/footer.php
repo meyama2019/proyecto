@@ -374,7 +374,7 @@ include(RAIZ . 'models/connection1.php');
           
           
                 <?php
-                  mysqli_close($conexion);
+                  //mysqli_close($conexion);
                 ?>
 
                   
@@ -441,21 +441,22 @@ include(RAIZ . 'models/connection1.php');
 <footer class="page-footer font-small blue-grey lighten-5 py-0">
 
 <div style="background-color: #0B0B3B; color: #ffffff;">
-<div class="container">
+
+    <div class="container">
 
       <!-- Grid row-->
       <div class="row py-4 d-flex align-items-center">
 
         <!-- Grid column -->
-        <div class="col-md-6 col-lg-6 text-center text-md-left mb-4 mb-md-0">       
-		</div>
+        <div class="col-md-6 col-lg-6 text-center text-md-left mb-4 mb-md-0"></div>       
+		    
         <div class="col-md-6 col-lg-6 text-center text-md-right mb-4 mb-md-0" id='myWatch'></div>
         <!-- Grid column -->
 
-    </div>
+      </div>
     <!-- Grid row-->
 
-</div>
+    </div>
 </div>
 
 <!-- Footer Links -->
@@ -464,7 +465,7 @@ include(RAIZ . 'models/connection1.php');
     <div class="row mt-3 dark-grey-text">
 	
 	<!-- Grid column -->
-        <div class="col-md-4 col-lg-20 col-xl-20 mb-20">
+        <div class="col-4">
 
             <!-- Content -->
             <h6 class="text-uppercase font-weight-bold">Enlaces</h6>
@@ -491,7 +492,7 @@ include(RAIZ . 'models/connection1.php');
         <!-- Grid column -->
 	
 	<!-- Grid column -->
-        <div class="col-md-4 col-lg-20 col-xl-20 mb-20">
+        <div class="col-4">
 
             <!-- Content -->
             <h6 class="text-uppercase font-weight-bold">Páginas de interés</h6>
@@ -515,24 +516,34 @@ include(RAIZ . 'models/connection1.php');
 	
 	
       <!-- Grid column -->
-      <div class="col-md-4 col-lg-20 col-xl-20 mb-20">
+      <div class="col-4">
+        <div class="row">
+          <div class="col-12">
+            <!-- Content -->
+            <h6 class="text-uppercase font-weight-bold">En las Redes Sociales</h6>
+            <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 100%;">
+            <a id ="facebook" href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img class="socialmedia" src="http://localhost/proyecto/imagenes/facebook.png" alt="facebook" width="20" height="20" title="Facebook"></a>
+              <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img class="socialmedia" src="http://localhost/proyecto/imagenes/instagram.png" alt="instagram" width="20" height="20" title="instagram"></a>
+              <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img class="socialmedia" src="http://localhost/proyecto/imagenes/twitter.png" alt="twitter" width="20" height="20" title="twitter"></a>
+          </div>
 
-        <!-- Content -->
-        <h6 class="text-uppercase font-weight-bold">En las Redes Sociales</h6>
-        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 100%;">
-        <a id ="facebook" href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img class="socialmedia" src="http://localhost/proyecto/imagenes/facebook.png" alt="facebook" width="20" height="20" title="Facebook"></a>
-    		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img class="socialmedia" src="http://localhost/proyecto/imagenes/instagram.png" alt="instagram" width="20" height="20" title="instagram"></a>
-    		  <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img class="socialmedia" src="http://localhost/proyecto/imagenes/twitter.png" alt="twitter" width="20" height="20" title="twitter"></a>
-		<br>
-            <a href="#top"><img src="http://localhost/proyecto/imagenes/arrow.png" style="width:35px; height:35px; margin:6px 2px 6px 0px; "></a>
-    </div>
-	
-    <!-- Grid column -->
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+             <a href="#top"><img src="http://localhost/proyecto/imagenes/arrow.png" style="width:50px; height:50px; margin:6px 2px 6px 0px; " title="Top"></a>
+          </div>
           
-
-        
+        </div>
+     
+      </div>    
+       
     </div>
-    <!-- Grid row -->
 
 
     </div>
