@@ -522,9 +522,9 @@ include(RAIZ . 'models/connection1.php');
             <!-- Content -->
             <h6 class="text-uppercase font-weight-bold">En las Redes Sociales</h6>
             <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 100%;">
-            <a id ="facebook" href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img class="socialmedia" src="http://localhost/proyecto/imagenes/facebook.png" alt="facebook" width="20" height="20" title="Facebook"></a>
-              <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img class="socialmedia" src="http://localhost/proyecto/imagenes/instagram.png" alt="instagram" width="20" height="20" title="instagram"></a>
-              <a href="#" target="_blank" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img class="socialmedia" src="http://localhost/proyecto/imagenes/twitter.png" alt="twitter" width="20" height="20" title="twitter"></a>
+            <a id ="facebook" href="#" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img class="socialmedia" src="http://localhost/proyecto/imagenes/facebook.png" alt="facebook" width="20" height="20" title="Facebook"></a>
+              <a href="#" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img class="socialmedia" src="http://localhost/proyecto/imagenes/instagram.png" alt="instagram" width="20" height="20" title="instagram"></a>
+              <a href="#" style="width:20px; height:20px; margin:6px 2px 6px 0px; "><img class="socialmedia" src="http://localhost/proyecto/imagenes/twitter.png" alt="twitter" width="20" height="20" title="twitter"></a>
           </div>
 
         </div>

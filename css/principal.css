@@ -421,3 +421,12 @@ a.scroll-top img {
   top: 3px;
 }
 
+#borderDemo {
+border: 1px inset #1C6EA4;
+border-radius: 8px 40px 8px 40px;
+}
+
+
+#demotext {
+text-shadow: 0px 0px 8px rgba(0,0,0,0.77);
+}
