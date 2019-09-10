@@ -51,9 +51,9 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 ?>	
 	
 	<div class="card">
-			 <h5 class="card-header" style="background-color: #F78181" align="center"><br>CENTRO DE MENSAJES<br><br></h5>
+			  <h5 class="card-header" style="background-color: #F78181">Gestión de Mensajes (Contactos)</h5>
 
-  <br>
+  		<br>
  
 
 
@@ -283,13 +283,13 @@ if (isset($_SESSION['rol1']) && $_SESSION['rol1']!= 1 && $_SESSION['activo']==0)
 												if ($contact_data['activo'] == 0)
 												{
 													?>
-														<button type="submit" class="btn btn-outline-danger btn-sm" name="change_msg">NO LEÍDO</button>
+														<button type="submit" class="btn btn-outline-danger btn-sm" name="change_msg">Revisar</button>
 													<?php
 												}
 												else
 												{
 													?>
-														<button type="submit"  class="btn btn-success" name="change_msg">LEÍDO</button>
+														<button type="submit"  class="btn btn-outline-success btn-sm" name="change_msg">Validar</button>
 													<?php
 												}
 											?>	

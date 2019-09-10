@@ -536,7 +536,7 @@ include(RAIZ . 'models/connection1.php');
 
         <div class="row">
           <div class="col-12">
-             <a href="#top"><img src="http://localhost/proyecto/imagenes/arrow.png" style="width:50px; height:50px; margin:6px 2px 6px 0px; " title="Top"></a>
+            
           </div>
           
         </div>
@@ -567,7 +567,7 @@ include(RAIZ . 'models/connection1.php');
 
 </footer>
 <!-- Footer -->
-
+ <a class="scroll-top" href="#top"><img src="http://localhost/proyecto/imagenes/arrow.png" style="width:50px; height:50px; margin:6px 2px 6px 0px; " title="Top"></a>
 
 </body>
 </html>
