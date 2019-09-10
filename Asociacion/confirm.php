@@ -28,7 +28,7 @@
             <div class="alert alert-success" role="alert">
                 <div class="col-12 col-5 shadow p-3 mb-5 bg-white rounded">
                  <article id="general">
-                    <h3 class="titgeneral">REGISTRO REALIZADO CON ÉIXTO</h3>
+                    <h3 class="titgeneral">REGISTRO REALIZADO</h3>
                     <p>Hola,<br>¡Te damos la bienvenida!.<br>¡Gracias por formar parte de nuestra familia!<br>Hemos recibido tu solicitud. Un administrador del sistema se pondrá en contacto contigo en breves para finalizar el proceso.<br>¡Gracias!</p>
                 </article>
                 </div>
