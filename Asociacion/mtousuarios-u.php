@@ -72,7 +72,7 @@ require_once('menu.php');
                         <?php
                           $query = $conexion -> query ("SELECT * FROM provincias");
                           while ($valores = mysqli_fetch_array($query)) {
-                          echo '<option value="'.$valores[id_provincia].'">'.utf8_encode($valores[provincia]).'</option>';
+                          echo '<option value="'.$valores[id_provincia].'">'.$valores[provincia].'</option>';
                           }
                         ?>
                         </select>
@@ -86,7 +86,7 @@ require_once('menu.php');
                         <?php
                           $query1 = $conexion -> query ("SELECT * FROM paises");
                           while ($valores1 = mysqli_fetch_array($query1)) {
-                          echo '<option value="'.$valores1[id].'">'.utf8_encode($valores1[nombre]).'</option>';
+                          echo '<option value="'.$valores1[id].'">'.$valores1[nombre].'</option>';
                           }
                         ?>
                         </select></div>

@@ -141,7 +141,7 @@ require_once('menu.php');
                           <?php
                             $query = $conexion -> query ("SELECT * FROM provincias");
                             while ($valores = mysqli_fetch_array($query)) {
-                            echo '<option value="'.$valores[id_provincia].'">'.utf8_encode($valores[provincia]).'</option>';
+                            echo '<option value="'.$valores[id_provincia].'">'.$valores[provincia].'</option>';
                             }
                           ?>
             </select>
@@ -154,14 +154,14 @@ require_once('menu.php');
                         <?php
                           $queryp = $conexion -> query ("SELECT * FROM paises");
                           while ($valoresp = mysqli_fetch_array($queryp)) {
-                          echo '<option value="'.$valoresp[id].'">'.utf8_encode($valoresp[nombre]).'</option>';
+                          echo '<option value="'.$valoresp[id].'">'.$valoresp[nombre].'</option>';
                           }
                         ?>
             </select>
           </div>
            <div class="form-group col-md-2">
             <label for="cmtosit"></label>
-            <input type="number" min="0" max="3" class="form-control" id="cmtosit" name="cmtosit" placeholder="0-Ac 1-Pt 2-BP 3-BD">
+            <input type="number" min="0" max="3" class="form-control" id="cmtosit" name="cmtosit" placeholder="Estado: 0, 1, 2 o 3">
           </div>           
           <div class="form-group col-md-2">
             <label for="cmtorol"></label>
@@ -170,7 +170,7 @@ require_once('menu.php');
                     <?php
                         $query = $conexion -> query ("SELECT * FROM rolusuario");
                         while ($valores = mysqli_fetch_array($query)) {
-                             echo '<option value="'.$valores[idRol].'">'.utf8_encode($valores[Nombre]).'</option>';
+                             echo '<option value="'.$valores[idRol].'">'.$valores[Nombre].'</option>';
                              }
                     ?>
               </select>
