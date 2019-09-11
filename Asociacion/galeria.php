@@ -93,15 +93,15 @@ include('../models/connection1.php');
                }
           $x=$x+1;
 		  
-          echo('</div></div>');
+          echo('</div></div></div>');
         }
        
 	   }
       
-  
+  include ('footer.php'); 
   ?>
 
-</div> </div>
+</div> </div> 
 
        <div class="modal fade" id="uploadfile1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelur" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -136,7 +136,7 @@ include('../models/connection1.php');
               </div>
             </div>
           </div>
-
+</div>
 
 <?php //*******************************Comprobación de las fotos y carga en BBDD 
   if (isset($_POST['upload1']))
@@ -207,7 +207,7 @@ include('../models/connection1.php');
       
       
   }
- include ('footer.php'); 
+ 
   
 ?>
 
