@@ -108,7 +108,7 @@ require_once('menu.php');
                   while($docs_data = mysqli_fetch_array($result))
                   {?>
                     <tr class="item">
-                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirm('¿Realmente deseas eliminar el Rol?');">
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" accept-charset="utf-8" onsubmit="return confirm('¿Actualizar el Rol?');">
                       <td class="form-group" name ="idRol" value="<?php echo utf8_encode($docs_data['idRol']); ?>"><?php echo utf8_encode($docs_data['idRol']); ?>
                       </td>
                       <td class="form-group">
@@ -116,10 +116,11 @@ require_once('menu.php');
 
                       <td>
                         <input type="hidden" class="form-control" name ="idRol" value="<?php echo utf8_decode($docs_data['idRol']); ?>">
-                        <button type="submit" class="btn btn-outline-danger btn-sm" name="updaterol">Editar</button>
+                      
                       
                         <button type="submit" class="btn btn-outline-danger btn-sm" name="deleterol" >Eliminar</button> 
-                       
+
+                         <button type="submit" class="btn btn-outline-danger btn-sm" name="updaterol">Editar</button>
                         
                       </td>
                           
